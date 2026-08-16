@@ -37,6 +37,13 @@ The first CLI deploy still created a Production alias, even with `--target previ
 
 Leave it up unless the founder asks to take it down. Do not use it as the review surface. Founder waiver: not yet.
 
+## Pipeline
+
+**PR CI:** `.github/workflows/verify.yml` — `npm run verify` (content contract, typecheck, ESLint, static build).  
+**Preview Health:** `.github/workflows/preview-health.yml` — curls **Preview** `/health` only. Shape is API Sandbox [PR #33](https://github.com/devcamos/apisandbox/pull/33). Preview ≠ Production.
+
+How-to: `products/agent-onboarding/PREVIEW-PIPELINE.md`
+
 ## Health
 
 `GET /health` returns `{ ok: true, product: "bible-compass" }`.

@@ -11,6 +11,7 @@ Tick boxes on Notion. Do not copy the checklist into git.
 **GitHub:** https://github.com/devcamos/bible-compass  
 **Git Preview (SSO):** https://bible-compass-git-chore-vercel-git-wrap-devonte-amos-projects.vercel.app  
 **Verify:** `npm run verify` · **Health:** `/health`  
+**Pipeline:** PR [verify](https://github.com/devcamos/bible-compass/actions/workflows/verify.yml) · Preview Health [preview-health.yml](https://github.com/devcamos/bible-compass/actions/workflows/preview-health.yml). Preview ≠ Production.  
 **Surface:** local + Vercel Preview. Production still waits on GO. Template: [Released app runbook](https://app.notion.com/p/3be7233a96ec8100bf7ed4d7ce997fb1).
 
 ## Public routes

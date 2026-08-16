@@ -1,0 +1,85 @@
+# Preview Health — Bible Compass
+# Shape from API Sandbox PR #33 (Preview URL + health). Preview ≠ Production.
+# Do not enable main → Production here. vercel.json keeps git.deploymentEnabled.main false.
+
+name: Preview Health
+
+on:
+  deployment_status:
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: Preview URL to health-check (never a Production alias)
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: preview-health-${{ github.event.deployment.id || github.run_id }}
+  cancel-in-progress: true
+
+jobs:
+  health:
+    name: Verify Preview /health
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      (
+        github.event.deployment_status.state == 'success' &&
+        github.event.deployment.environment != 'Production' &&
+        github.event.deployment.environment != 'production' &&
+        github.event.deployment_status.target_url != ''
+      )
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      DEPLOYMENT_URL: ${{ github.event.deployment_status.target_url || inputs.base_url }}
+      VERCEL_AUTOMATION_BYPASS_SECRET: ${{ secrets.VERCEL_AUTOMATION_BYPASS_SECRET }}
+    steps:
+      - name: Reject Production review surface
+        run: |
+          set -euo pipefail
+          test -n "${DEPLOYMENT_URL}"
+          case "${DEPLOYMENT_URL}" in
+            *bible-compass-three.vercel.app*)
+              echo "Accidental Production alias is not the review surface."
+              exit 1
+              ;;
+          esac
+          env_name="${{ github.event.deployment.environment || 'workflow_dispatch' }}"
+          echo "Checking Preview health at ${DEPLOYMENT_URL} (environment: ${env_name})"
+
+      - name: GET /health JSON
+        run: |
+          set -euo pipefail
+          health_url="${DEPLOYMENT_URL%/}/health"
+          extra_headers=()
+          if [ -n "${VERCEL_AUTOMATION_BYPASS_SECRET:-}" ]; then
+            extra_headers+=(-H "x-vercel-protection-bypass: ${VERCEL_AUTOMATION_BYPASS_SECRET}")
+            extra_headers+=(-H "x-vercel-set-bypass-cookie: true")
+            health_url="${health_url}?x-vercel-protection-bypass=${VERCEL_AUTOMATION_BYPASS_SECRET}"
+          fi
+          body="$(mktemp)"
+          http_code="$(curl --silent --show-error --retry 8 --retry-all-errors \
+            --connect-timeout 10 --max-time 30 \
+            -o "${body}" -w "%{http_code}" \
+            "${extra_headers[@]}" \
+            "${health_url}")"
+          echo "HTTP ${http_code}"
+          content_type="$(file --brief --mime-type "${body}" || true)"
+          if [ "${http_code}" != "200" ]; then
+            echo "Preview /health expected HTTP 200, got ${http_code}"
+            head -c 400 "${body}"; echo
+            if [ -z "${VERCEL_AUTOMATION_BYPASS_SECRET:-}" ]; then
+              echo "If this Preview is SSO-gated, set GitHub secret VERCEL_AUTOMATION_BYPASS_SECRET."
+            fi
+            exit 1
+          fi
+          if grep -qi "vercel authentication\|<html" "${body}"; then
+            echo "Response looks like Vercel SSO HTML, not /health JSON."
+            echo "Set GitHub secret VERCEL_AUTOMATION_BYPASS_SECRET (do not put it in git)."
+            exit 1
+          fi
+          jq -e '.ok == true and .product == "bible-compass"' "${body}"
+          echo "Preview /health passed"
