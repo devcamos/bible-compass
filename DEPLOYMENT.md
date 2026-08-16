@@ -17,15 +17,15 @@ Bible Compass is a static-first Next.js app with no database and no secrets.
 
 ## First Preview
 
-GitHub: https://github.com/devramos/bible-compass
+GitHub: https://github.com/devcamos/bible-compass  
+Vercel project: `bible-compass` on team `devonte-amos-projects` — Git is connected to that repo.
 
-**Review surface (Preview):** https://bible-compass-4ohye1914-devonte-amos-projects.vercel.app  
-(earlier hashed URLs remain valid for older builds)
-Health: `/health`
+**Review surface (hashed CLI Preview, still valid):** https://bible-compass-4ohye1914-devonte-amos-projects.vercel.app  
+Git Previews come from non-`main` branches after the Git wrap. Health: `/health`
 
 Vercel Authentication is on for hashed Preview URLs. Open it signed in to the Vercel team.
 
-Git auto-deploy from `main` stays off. The Vercel GitHub App could not see this new repo yet; later Git Previews need the app granted access to `devramos/bible-compass`.
+Git auto-deploy from `main` stays **off** (`vercel.json` `git.deploymentEnabled.main: false`). Production is founder GO only. Do not `vercel --prod`.
 
 ## Guardian residual
 
@@ -41,4 +41,4 @@ Leave it up unless the founder asks to take it down. Do not use it as the review
 
 Preview deployments stay `noindex`. Production indexing is gated until the founder promotes a named Preview.
 
-Release UI and the share card must use Nexus brand colours (`refinery-brand`: cream, ink, copper). Do not invent a palette.
+Release UI and the share card must use Nexus brand colours (`refinery-brand`: cream, ink, copper). Those hexes are the colour reference for **all** UI work, not only release. Do not invent a palette.
