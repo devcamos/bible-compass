@@ -1,0 +1,108 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f7f5f0;
+  --foreground: #2c2a26;
+  --muted-foreground: #6b675e;
+  --card: #fffcf7;
+  --border: #e6e1d8;
+  --peace: #d7e7f6;
+  --courage: #f4e4c4;
+  --faith: #deeadc;
+  --bible: #e6e2db;
+  --grace: #f8e4e8;
+  --link: #345c86;
+  --focus: #2f6f9f;
+  color-scheme: light;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-peace: var(--peace);
+  --color-courage: var(--courage);
+  --color-faith: var(--faith);
+  --color-bible: var(--bible);
+  --color-grace: var(--grace);
+  --color-link: var(--link);
+  --font-sans: var(--font-geist-sans);
+  --font-serif: var(--font-source-serif);
+}
+
+html {
+  background: var(--background);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 20;
+  border-radius: 999px;
+  background: var(--foreground);
+  color: var(--background);
+  padding: 0.5rem 0.85rem;
+}
+
+.skip-link:focus {
+  top: 0.75rem;
+}
+
+.bc-title {
+  font-family: var(--font-source-serif), ui-serif, Georgia, serif;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+details > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  min-height: 2.75rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+.summary-label {
+  flex: 1;
+  min-width: 0;
+}
+
+details > summary::after {
+  content: "▸";
+  flex-shrink: 0;
+  color: var(--muted-foreground);
+}
+
+details[open] > summary::after {
+  content: "▾";
+}
