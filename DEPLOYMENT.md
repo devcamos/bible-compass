@@ -17,7 +17,22 @@ Bible Compass is a static-first Next.js app with no database and no secrets.
 
 ## First Preview
 
-Create GitHub `devramos/bible-compass`, add the Vercel project first (`vercel project add`), link it, then `vercel deploy` without `--prod`. Record the Preview URL on the Notion item and in `#nexus-trace`.
+GitHub: https://github.com/devramos/bible-compass
+
+**Review surface (Preview):** https://bible-compass-39elm4g42-devonte-amos-projects.vercel.app  
+Health: `/health`
+
+Vercel Authentication is on for hashed Preview URLs. Open it signed in to the Vercel team.
+
+Git auto-deploy from `main` stays off. The Vercel GitHub App could not see this new repo yet; later Git Previews need the app granted access to `devramos/bible-compass`.
+
+## Guardian residual
+
+The first CLI deploy still created a Production alias, even with `--target preview`:
+
+- https://bible-compass-three.vercel.app
+
+Leave it up unless the founder asks to take it down. Do not use it as the review surface. Founder waiver: not yet.
 
 ## Health
 
