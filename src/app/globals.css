@@ -1,18 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f7f5f0;
-  --foreground: #2c2a26;
-  --muted-foreground: #6b675e;
-  --card: #fffcf7;
-  --border: #e6e1d8;
-  --peace: #d7e7f6;
-  --courage: #f4e4c4;
-  --faith: #deeadc;
-  --bible: #e6e2db;
-  --grace: #f8e4e8;
-  --link: #345c86;
-  --focus: #2f6f9f;
+  --ink: #1b1510;
+  --paper: #f3ead8;
+  --paper-2: #e7dcc4;
+  --rule: #cbbfa3;
+  --copper: #b85a2a;
+  --copper-2: #8a3d18;
+  --moss: #2f5a43;
+  --mute: #6d6254;
+  --cream: #fffaf1;
+  --gold: #e8c07a;
+  --sage: #9dcea8;
+  --background: var(--cream);
+  --foreground: var(--ink);
+  --muted-foreground: var(--mute);
+  --card: var(--paper);
+  --border: var(--rule);
+  --link: var(--copper);
+  --focus: var(--copper-2);
   color-scheme: light;
 }
 
@@ -22,12 +28,15 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-card: var(--card);
   --color-border: var(--border);
-  --color-peace: var(--peace);
-  --color-courage: var(--courage);
-  --color-faith: var(--faith);
-  --color-bible: var(--bible);
-  --color-grace: var(--grace);
   --color-link: var(--link);
+  --color-ink: var(--ink);
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-copper: var(--copper);
+  --color-cream: var(--cream);
+  --color-moss: var(--moss);
+  --color-gold: var(--gold);
+  --color-sage: var(--sage);
   --font-sans: var(--font-geist-sans);
   --font-serif: var(--font-source-serif);
 }
@@ -63,8 +72,8 @@ body {
   top: -3rem;
   z-index: 20;
   border-radius: 999px;
-  background: var(--foreground);
-  color: var(--background);
+  background: var(--copper);
+  color: var(--cream);
   padding: 0.5rem 0.85rem;
 }
 
@@ -76,6 +85,35 @@ body {
   font-family: var(--font-source-serif), ui-serif, Georgia, serif;
   font-weight: 600;
   letter-spacing: -0.02em;
+}
+
+.bc-kicker {
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--copper);
+}
+
+.bc-btn {
+  display: inline-flex;
+  min-height: 2.75rem;
+  align-items: center;
+  border-radius: 999px;
+  background: var(--copper);
+  color: var(--cream);
+  padding: 0 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.bc-callout {
+  margin-bottom: 1.5rem;
+  border-radius: 1rem;
+  border-left: 4px solid var(--copper);
+  background: var(--paper);
+  padding: 1.25rem;
 }
 
 details > summary {

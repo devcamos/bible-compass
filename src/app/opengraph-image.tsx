@@ -15,13 +15,13 @@ export default function OpenGraphImage() {
           flexDirection: "column",
           justifyContent: "center",
           padding: 80,
-          background: "#F7F5F0",
-          color: "#2C2A26",
+          background: "#fffaf1",
+          color: "#1b1510",
         }}
       >
-        <div style={{ fontSize: 28, color: "#6B675E" }}>Bible Compass</div>
+        <div style={{ fontSize: 28, color: "#b85a2a", letterSpacing: "0.18em" }}>BIBLE COMPASS</div>
         <div style={{ fontSize: 72, fontWeight: 600, marginTop: 16 }}>Come as you are.</div>
-        <div style={{ fontSize: 28, color: "#6B675E", marginTop: 24, maxWidth: 820 }}>
+        <div style={{ fontSize: 28, color: "#6d6254", marginTop: 24, maxWidth: 820 }}>
           Meet Scripture with an open heart, understand it in context, and take one faithful
           step at a time.
         </div>

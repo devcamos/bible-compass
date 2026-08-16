@@ -10,7 +10,7 @@ export default function NotFound() {
       </p>
       <Link
         href="/"
-        className="inline-flex min-h-11 items-center rounded-full bg-foreground px-4 text-sm font-medium text-background no-underline"
+        className="bc-btn"
       >
         Back to Compass
       </Link>

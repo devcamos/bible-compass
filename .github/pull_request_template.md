@@ -16,6 +16,7 @@
 - [ ] Product verify command passed (`npm run verify`)
 - [ ] E2E journey from `products/agent-onboarding/E2E.md` clicked on local
 - [ ] Preview URL checked (PR review surface — not localhost)
+- [ ] Nexus brand colours on UI + share/Open Graph card (`refinery-brand`; no invented palette)
 - [ ] Tests updated; new code covered (target ≥90% where coverage is measured — currently **Not measured**)
 - [ ] Docs updated only if this is a large architecture change
 - [ ] No Production DB/keys used from Preview
@@ -28,5 +29,6 @@
 <!-- Remaining risk. What you did not test. -->
 
 ## Handoff
+- Chat completion: localhost URL (required — Preview does not replace it)
 - Preview: (PR review — Vercel Preview URL)
-- Local / Wi-Fi: in-dev only
+- Local / Wi-Fi: in-dev only (last in Slack/PR)

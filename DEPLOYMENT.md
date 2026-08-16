@@ -19,7 +19,8 @@ Bible Compass is a static-first Next.js app with no database and no secrets.
 
 GitHub: https://github.com/devramos/bible-compass
 
-**Review surface (Preview):** https://bible-compass-39elm4g42-devonte-amos-projects.vercel.app  
+**Review surface (Preview):** https://bible-compass-4ohye1914-devonte-amos-projects.vercel.app  
+(earlier hashed URLs remain valid for older builds)
 Health: `/health`
 
 Vercel Authentication is on for hashed Preview URLs. Open it signed in to the Vercel team.
@@ -39,3 +40,5 @@ Leave it up unless the founder asks to take it down. Do not use it as the review
 `GET /health` returns `{ ok: true, product: "bible-compass" }`.
 
 Preview deployments stay `noindex`. Production indexing is gated until the founder promotes a named Preview.
+
+Release UI and the share card must use Nexus brand colours (`refinery-brand`: cream, ink, copper). Do not invent a palette.
