@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Breadcrumb } from "@/components/Breadcrumb";
 import { howToUse } from "@/content/how-to-use";
 
 export const metadata: Metadata = {
@@ -12,13 +13,7 @@ export const metadata: Metadata = {
 export default function HowToUsePage() {
   return (
     <article>
-      <p className="mb-5 flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
-        <Link href="/" className="text-foreground no-underline">
-          <span aria-hidden="true">📖</span> Bible Compass
-        </Link>
-        <span aria-hidden="true">/</span>
-        <span>How to use</span>
-      </p>
+      <Breadcrumb current="How to use" />
       <header className="mb-5">
         <h1 className="bc-title m-0 mb-2 text-[1.85rem] leading-tight sm:text-[2.15rem]">
           {howToUse.title}
@@ -26,7 +21,7 @@ export default function HowToUsePage() {
         <p className="m-0 leading-7 text-muted-foreground">{howToUse.summary}</p>
       </header>
 
-      <section className="mb-6 rounded-2xl bg-grace p-5">
+      <section className="bc-callout">
         <strong>{howToUse.graceTitle}</strong>
         <p className="mt-2 mb-0 text-muted-foreground">{howToUse.graceBody}</p>
       </section>
@@ -53,7 +48,7 @@ export default function HowToUsePage() {
       <div className="mt-8 flex flex-wrap gap-2.5">
         <Link
           href="/"
-          className="inline-flex min-h-11 items-center rounded-full bg-foreground px-4 text-sm font-medium text-background no-underline"
+          className="bc-btn"
         >
           Explore the Compass
         </Link>

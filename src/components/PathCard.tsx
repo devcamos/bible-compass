@@ -1,11 +1,11 @@
 import Link from "next/link";
 import type { TopicTone } from "@/content/types";
 
-const toneClass: Record<TopicTone, string> = {
-  peace: "bg-peace",
-  courage: "bg-courage",
-  faith: "bg-faith",
-  bible: "bg-bible",
+const toneBar: Record<TopicTone, string> = {
+  peace: "border-l-moss",
+  courage: "border-l-gold",
+  faith: "border-l-sage",
+  bible: "border-l-copper",
 };
 
 type PathCardProps = {
@@ -20,7 +20,7 @@ export function PathCard({ href, icon, title, summary, tone }: PathCardProps) {
   return (
     <Link
       href={href}
-      className={`flex min-h-24 flex-col items-start justify-start rounded-2xl p-4 text-left no-underline ${toneClass[tone]}`}
+      className={`flex min-h-24 flex-col items-start justify-start rounded-2xl border-l-4 bg-card p-4 text-left no-underline ${toneBar[tone]}`}
     >
       <strong className="text-base font-medium text-foreground">
         <span aria-hidden="true">{icon}</span> {title}

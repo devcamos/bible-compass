@@ -17,6 +17,8 @@ Public static-first reader. Notion is private editorial source, never a runtime 
 - Do not publish live Notion URLs in the reader. Import named topics into `src/content/`.
 - Do not walk personal Notion trees. v0.1 source is the named routes on the Nexus Products item.
 - **Grace is not earned through effort.** Every topic must keep a `graceGuardrail`. Jesus and the Gospel stays the foundational route.
-- Do not restyle away from the Slack UI concept (Notion DNA: calm paper, soft callouts, simple icons).
+- Keep Slack / Notion DNA (calm paper, soft callouts, simple icons). Colours on the reader and the share card must come from the Nexus kit (`refinery-brand`). Do not invent a palette on release.
+- Do not restyle away from that DNA in layout or chrome.
 - Verify with `npm run verify`. Local URL: http://localhost:3003
+- After completing work in this chat, include http://localhost:3003 in the reply. Preview does not replace localhost.
 

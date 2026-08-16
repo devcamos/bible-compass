@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Breadcrumb } from "@/components/Breadcrumb";
 import type { Topic } from "@/content/types";
 
 type TopicViewProps = {
@@ -8,13 +9,7 @@ type TopicViewProps = {
 export function TopicView({ topic }: TopicViewProps) {
   return (
     <article>
-      <p className="mb-5 flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
-        <Link href="/" className="text-foreground no-underline">
-          <span aria-hidden="true">📖</span> Bible Compass
-        </Link>
-        <span aria-hidden="true">/</span>
-        <span>{topic.title}</span>
-      </p>
+      <Breadcrumb current={topic.title} />
 
       <header className="mb-5">
         <h1 className="bc-title m-0 mb-2 text-[1.85rem] leading-tight sm:text-[2.15rem]">
@@ -23,7 +18,7 @@ export function TopicView({ topic }: TopicViewProps) {
         <p className="m-0 text-[1.02rem] leading-7 text-muted-foreground">{topic.summary}</p>
       </header>
 
-      <section className="mb-5 rounded-2xl bg-grace p-5" aria-label="Theological guardrail">
+      <section className="bc-callout" aria-label="Theological guardrail">
         <p className="m-0 text-[0.98rem] leading-7">{topic.graceGuardrail}</p>
       </section>
 
@@ -74,7 +69,7 @@ export function TopicView({ topic }: TopicViewProps) {
                 <strong className="mb-1.5 block">{step.verse}</strong>
                 <p className="m-0 leading-7 text-muted-foreground">{step.explanation}</p>
                 {step.action ? (
-                  <p className="mt-2 mb-0 rounded-full bg-peace/70 px-3 py-2 text-sm">
+                  <p className="mt-2 mb-0 rounded-full border-l-4 border-l-moss bg-card px-3 py-2 text-sm">
                     <span className="font-medium">60-second action</span>
                     <span className="text-muted-foreground"> — {step.action}</span>
                   </p>
@@ -156,7 +151,7 @@ export function TopicView({ topic }: TopicViewProps) {
       ) : null}
 
       {topic.safetyNote ? (
-        <aside className="mt-7 rounded-2xl bg-bible p-4 text-sm leading-6">
+        <aside className="mt-7 rounded-2xl border-l-4 border-l-moss bg-paper-2 p-4 text-sm leading-6">
           {topic.safetyNote}
         </aside>
       ) : null}
@@ -175,7 +170,7 @@ export function TopicView({ topic }: TopicViewProps) {
           ))}
           <Link
             href="/"
-            className="inline-flex min-h-11 items-center rounded-full bg-foreground px-4 text-sm font-medium text-background no-underline"
+            className="bc-btn"
           >
             Back to Compass
           </Link>

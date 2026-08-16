@@ -27,18 +27,12 @@ export default function HomePage() {
         </Link>
       </p>
 
-      <section
-        className="mb-6 rounded-2xl bg-grace p-5"
-        aria-labelledby="foundation-heading"
-      >
+      <section className="bc-callout" aria-labelledby="foundation-heading">
         <h2 id="foundation-heading" className="bc-title m-0 mb-2 text-lg">
           {homeCopy.foundationTitle}
         </h2>
         <p className="m-0 mb-3 leading-7 text-muted-foreground">{homeCopy.foundationBody}</p>
-        <Link
-          href="/topics/jesus-and-the-gospel"
-          className="inline-flex min-h-11 items-center rounded-full bg-foreground px-4 text-sm font-medium text-background no-underline"
-        >
+        <Link href="/topics/jesus-and-the-gospel" className="bc-btn">
           Jesus and the Gospel
         </Link>
       </section>
