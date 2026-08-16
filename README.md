@@ -2,11 +2,16 @@
 
 Public, static-first reader for Scripture-backed paths. Notion stays the private editorial workspace. Readers never need a Notion account.
 
+## Operating runbook
+
+**Checklist (live):** [Bible Compass Web App v0.1](https://app.notion.com/p/3be7233a96ec81ac85cfe0fe538094b9)  
+Tick boxes on Notion. Do not copy the checklist into git.
+
 **Local:** http://localhost:3003  
 **GitHub:** https://github.com/devcamos/bible-compass  
-**Preview:** hashed Vercel Preview (SSO) — Git wraps https://github.com/devcamos/bible-compass; `main` does not auto-deploy Production  
-**Backlog:** [Bible Compass Web App v0.1](https://app.notion.com/p/3be7233a96ec81ac85cfe0fe538094b9)  
-**Surface:** local + Vercel Preview. Production is founder-gated.
+**Git Preview (SSO):** https://bible-compass-git-chore-vercel-git-wrap-devonte-amos-projects.vercel.app  
+**Verify:** `npm run verify` · **Health:** `/health`  
+**Surface:** local + Vercel Preview. Production still waits on GO. Template: [Released app runbook](https://app.notion.com/p/3be7233a96ec8100bf7ed4d7ce997fb1).
 
 ## Public routes
 

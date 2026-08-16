@@ -21,6 +21,8 @@ GitHub: https://github.com/devcamos/bible-compass
 Vercel project: `bible-compass` on team `devonte-amos-projects` — Git is connected to that repo.
 
 **Review surface (hashed CLI Preview, still valid):** https://bible-compass-4ohye1914-devonte-amos-projects.vercel.app  
+**Git Preview (SSO, this wrap):** https://bible-compass-git-chore-vercel-git-wrap-devonte-amos-projects.vercel.app  
+**Live checklist:** https://app.notion.com/p/3be7233a96ec81ac85cfe0fe538094b9  
 Git Previews come from non-`main` branches after the Git wrap. Health: `/health`
 
 Vercel Authentication is on for hashed Preview URLs. Open it signed in to the Vercel team.
