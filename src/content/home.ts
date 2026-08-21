@@ -72,6 +72,7 @@ export const lifeAreas: LifeArea[] = [
     topicSlugs: [
       "fear",
       "anxiety",
+      "letting-go",
       "courage",
       "trust",
       "faith",

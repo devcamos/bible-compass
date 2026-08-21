@@ -15,6 +15,7 @@ import { hardWork } from "./topics/hard-work";
 import { howToReadTheBible } from "./topics/how-to-read-the-bible";
 import { husband } from "./topics/husband";
 import { jesusAndTheGospel } from "./topics/jesus-and-the-gospel";
+import { lettingGo } from "./topics/letting-go";
 import { loneliness } from "./topics/loneliness";
 import { motivationalMen } from "./topics/motivational-men";
 import { motivationalWomen } from "./topics/motivational-women";
@@ -35,6 +36,7 @@ export const topics: Topic[] = [
   loneliness,
   fear,
   anxiety,
+  lettingGo,
   courage,
   trust,
   faith,
