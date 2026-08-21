@@ -73,6 +73,7 @@ export const lifeAreas: LifeArea[] = [
       "fear",
       "anxiety",
       "letting-go",
+      "being-present",
       "courage",
       "trust",
       "faith",

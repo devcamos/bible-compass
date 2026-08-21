@@ -1,0 +1,79 @@
+{
+  "slug": "being-present",
+  "title": "Being present",
+  "icon": "🕊️",
+  "summary": "Being present is returning your attention to this moment with God, instead of living in yesterday's regret or tomorrow's fear.",
+  "tone": "peace",
+  "kind": "reset",
+  "graceGuardrail": "Presence is a gift of God's nearness, not a medal for emptying your mind well enough.",
+  "stateChange": { "from": "Scattered", "to": "Present" },
+  "resetName": "H.E.R.E.",
+  "framing": "This is a short reset for when your body is here but your mind is racing through what already happened or what might happen next.",
+  "why": "Worry pulls you into the future. Rehearsal pulls you into the past. Scripture calls you to notice God's nearness now, receive today as enough, and take one faithful step in this hour.",
+  "steps": [
+    {
+      "letter": "H",
+      "title": "Halt the spiral",
+      "verse": "Psalm 46:10",
+      "explanation": "Stillness is not emptiness. It is stopping long enough to know that God is God in this moment.",
+      "action": "Pause. Breathe in 4, out 6, twice. Say: “Be still. God is here.”"
+    },
+    {
+      "letter": "E",
+      "title": "Enter this moment honestly",
+      "verse": "Matthew 6:34",
+      "explanation": "Today has enough trouble of its own. Name what is actually in front of you, not the whole imagined week.",
+      "action": "Write one line: “Right now I am with ___.” Keep it to this hour."
+    },
+    {
+      "letter": "R",
+      "title": "Receive God's nearness",
+      "verse": "Psalm 16:8",
+      "explanation": "Presence grows when you set the Lord before you. He is at your right hand — you are not improvising alone.",
+      "action": "Say: “You are with me now. I set You before me.”"
+    },
+    {
+      "letter": "E",
+      "title": "Engage one next thing",
+      "verse": "Colossians 3:23",
+      "explanation": "Presence becomes concrete when you give the next task to God and do it with a whole heart — not while half-living elsewhere.",
+      "action": "Ask: “What is mine to do in the next ten minutes?” Do only that."
+    }
+  ],
+  "whenToUse": [
+    "Your mind keeps leaving the conversation you are in",
+    "You are scrolling, planning, or replaying while a real task waits",
+    "Anxiety about tomorrow steals today's peace",
+    "You feel numb or detached and want to return gently"
+  ],
+  "sixtySecond": [
+    "Breathe in 4, out 6, twice. Say: “Be still. God is here.” (Psalm 46:10)",
+    "Name one thing that is actually in this hour. (Matthew 6:34)",
+    "Do the next ten-minute faithful action only."
+  ],
+  "prayer": "Lord, my mind is elsewhere. Help me be still and know You are God. Keep me present to You and to what You have given me in this hour. Amen.",
+  "scripture": [
+    {
+      "ref": "Psalm 46:10",
+      "insight": "Stillness makes room to recognise God's rule in the present."
+    },
+    {
+      "ref": "Matthew 6:34",
+      "insight": "Tomorrow is not yours to live in advance."
+    },
+    {
+      "ref": "Psalm 16:8",
+      "insight": "Setting the Lord before you anchors attention in His nearness."
+    },
+    {
+      "ref": "Lamentations 3:22–23",
+      "insight": "Mercy arrives new each morning — for today, not for every imagined future."
+    }
+  ],
+  "safetyNote": "If dissociation, trauma flashbacks, or panic make presence feel unsafe, slow down and seek wise pastoral and professional support. Being present is not forcing yourself to stay in a triggering situation.",
+  "readNext": [
+    { "href": "/topics/letting-go", "title": "Letting go" },
+    { "href": "/topics/anxiety", "title": "Anxiety" },
+    { "href": "/topics/jesus-and-the-gospel", "title": "Jesus and the Gospel" }
+  ]
+}

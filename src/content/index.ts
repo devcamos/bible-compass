@@ -1,5 +1,6 @@
 import type { Topic } from "./types";
 import { anxiety } from "./topics/anxiety";
+import { beingPresent } from "./topics/being-present";
 import { bibleTimeline } from "./topics/bible-timeline";
 import { booksDescribed } from "./topics/books-described";
 import { characterOfGod } from "./topics/character-of-god";
@@ -37,6 +38,7 @@ export const topics: Topic[] = [
   fear,
   anxiety,
   lettingGo,
+  beingPresent,
   courage,
   trust,
   faith,
