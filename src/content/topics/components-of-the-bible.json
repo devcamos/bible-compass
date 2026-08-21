@@ -31,12 +31,76 @@
       "paragraphs": [
         "These books tell how God made the world, chose a family, rescued them, and kept promising a Saviour."
       ],
-      "bullets": [
-        "Law — beginnings and God's good ways (Genesis to Deuteronomy)",
-        "History — real people making real choices with God",
-        "Wisdom and poetry — songs, prayers, and wise words for everyday life",
-        "Major prophets — longer books that call people back to God",
-        "Minor prophets — shorter books with the same kind of message"
+      "items": [
+        {
+          "label": "Law",
+          "detail": "beginnings and God's good ways",
+          "children": [
+            "Genesis",
+            "Exodus",
+            "Leviticus",
+            "Numbers",
+            "Deuteronomy"
+          ]
+        },
+        {
+          "label": "History",
+          "detail": "real people making real choices with God",
+          "children": [
+            "Joshua",
+            "Judges",
+            "Ruth",
+            "1 Samuel",
+            "2 Samuel",
+            "1 Kings",
+            "2 Kings",
+            "1 Chronicles",
+            "2 Chronicles",
+            "Ezra",
+            "Nehemiah",
+            "Esther"
+          ]
+        },
+        {
+          "label": "Wisdom and poetry",
+          "detail": "songs, prayers, and wise words for everyday life",
+          "children": [
+            "Job",
+            "Psalms",
+            "Proverbs",
+            "Ecclesiastes",
+            "Song of Songs"
+          ]
+        },
+        {
+          "label": "Major prophets",
+          "detail": "longer books that call people back to God",
+          "children": [
+            "Isaiah",
+            "Jeremiah",
+            "Lamentations",
+            "Ezekiel",
+            "Daniel"
+          ]
+        },
+        {
+          "label": "Minor prophets",
+          "detail": "shorter books with the same kind of message",
+          "children": [
+            "Hosea",
+            "Joel",
+            "Amos",
+            "Obadiah",
+            "Jonah",
+            "Micah",
+            "Nahum",
+            "Habakkuk",
+            "Zephaniah",
+            "Haggai",
+            "Zechariah",
+            "Malachi"
+          ]
+        }
       ]
     },
     {
@@ -44,11 +108,49 @@
       "paragraphs": [
         "These books show Jesus arriving, dying, rising, and sending His friends to share the good news."
       ],
-      "bullets": [
-        "Gospels — four books about Jesus' life, death, and rising again",
-        "Acts — how the good news spread and the first churches began",
-        "Letters (epistles) — notes to churches and friends about living with Jesus",
-        "Revelation — a hope-filled ending that uses big picture language"
+      "items": [
+        {
+          "label": "Gospels",
+          "detail": "four books about Jesus' life, death, and rising again",
+          "children": ["Matthew", "Mark", "Luke", "John"]
+        },
+        {
+          "label": "Acts",
+          "detail": "how the good news spread and the first churches began",
+          "children": ["Acts"]
+        },
+        {
+          "label": "Letters (epistles)",
+          "detail": "notes to churches and friends about living with Jesus",
+          "children": [
+            "Romans",
+            "1 Corinthians",
+            "2 Corinthians",
+            "Galatians",
+            "Ephesians",
+            "Philippians",
+            "Colossians",
+            "1 Thessalonians",
+            "2 Thessalonians",
+            "1 Timothy",
+            "2 Timothy",
+            "Titus",
+            "Philemon",
+            "Hebrews",
+            "James",
+            "1 Peter",
+            "2 Peter",
+            "1 John",
+            "2 John",
+            "3 John",
+            "Jude"
+          ]
+        },
+        {
+          "label": "Revelation",
+          "detail": "a hope-filled ending that uses big picture language",
+          "children": ["Revelation"]
+        }
       ]
     },
     {

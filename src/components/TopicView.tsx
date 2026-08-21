@@ -119,6 +119,33 @@ export function TopicView({ topic }: TopicViewProps) {
               ))}
             </ul>
           ) : null}
+          {section.items ? (
+            <ul className="my-0 list-none space-y-2.5 p-0">
+              {section.items.map((item) => (
+                <li
+                  key={item.label}
+                  className="rounded-2xl border border-border bg-card px-4 py-3 text-[1.02rem] leading-7"
+                >
+                  <strong className="text-foreground">{item.label}</strong>
+                  {item.detail ? (
+                    <span className="text-muted-foreground">
+                      {" — "}
+                      {item.detail}
+                    </span>
+                  ) : null}
+                  {item.children?.length ? (
+                    <ul className="mt-2 mb-0 list-disc space-y-1 pl-5 text-[0.98rem] leading-6 text-muted-foreground">
+                      {item.children.map((child) => (
+                        <li key={child} className="pl-0.5">
+                          {child}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
+                </li>
+              ))}
+            </ul>
+          ) : null}
         </section>
       ))}
 
