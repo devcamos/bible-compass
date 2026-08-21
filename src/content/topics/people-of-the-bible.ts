@@ -5,42 +5,67 @@ export const peopleOfTheBible: Topic = {
   title: "People of the Bible",
   icon: "🧑‍🤝‍🧑",
   summary:
-    "A starter index of major lives in Scripture, with the books where their stories are told.",
+    "The Bible is full of real people — brave, messy, scared, and loved. Their stories help us see what God is like.",
   tone: "bible",
   kind: "foundation",
   graceGuardrail:
-    "These lives reveal God's character. They are not a hall of fame you must match in order to be loved.",
+    "These people show God's kindness and patience. They are not a scoreboard you must beat to be loved.",
   framing:
-    "For each person, notice the time and setting, what their life highlights about God, and both the wisdom to repeat and the warning to avoid.",
+    "You do not need to copy every hero. Notice God in the story. Ask what to follow and what to leave behind.",
+  why: "When you meet people in Scripture, you meet a God who stays with ordinary families, leaders, and friends — even when they get things wrong.",
   sections: [
     {
-      heading: "Major people — starter list",
-      paragraphs: ["Begin here, then read the surrounding books in a trusted translation:"],
-      bullets: [
-        "Abraham: Genesis 12–25",
-        "Moses: Exodus–Deuteronomy",
-        "Joshua: Joshua",
-        "David: 1 Samuel, 2 Samuel, parts of 1 Chronicles",
-        "Solomon: 1 Kings 1–11, 2 Chronicles 1–9",
-        "Isaiah: Isaiah",
-        "Jeremiah: Jeremiah",
-        "Peter: Gospels, Acts, 1–2 Peter",
-        "Paul: Acts 9, 13–28 and Paul's letters",
+      heading: "Why meet these people?",
+      paragraphs: [
+        "The Bible is not a comic book of perfect heroes.",
+        "It is a true story of people who trusted God, failed, got back up, and learned that God keeps His promises.",
       ],
     },
     {
-      heading: "How to study a life",
-      paragraphs: ["Keep four notes:"],
+      heading: "Friends from the Old Testament",
+      paragraphs: [
+        "Start with a few names. Read a little. Ask, “What is God doing here?”",
+      ],
       bullets: [
-        "Context: time period and main setting",
-        "What their life highlights about God's character",
-        "Human patterns you recognize in yourself",
-        "Warnings and wisdom: what to repeat and what to avoid",
+        "Abraham — God called him to go, and promised a big family (Genesis 12–25)",
+        "Moses — God used him to free people and teach them how to live (Exodus–Deuteronomy)",
+        "Joshua — God helped him lead the people into the land (Joshua)",
+        "David — a shepherd who became king; he loved God and also needed forgiveness (1–2 Samuel)",
+        "Solomon — a wise king who asked God for wisdom, then sometimes forgot (1 Kings 1–11)",
+        "Isaiah — a prophet who spoke hope about a coming Saviour (Isaiah)",
+        "Jeremiah — a prophet who kept speaking God's words even when it was hard (Jeremiah)",
+      ],
+    },
+    {
+      heading: "Friends from the New Testament",
+      paragraphs: [
+        "These friends walked with Jesus, or told others about Him after He rose.",
+      ],
+      bullets: [
+        "Peter — a fisherman who followed Jesus, stumbled, and was restored (Gospels, Acts, 1–2 Peter)",
+        "Paul — Jesus changed his life; he planted churches and wrote letters (Acts 9, 13–28 and Paul's letters)",
+      ],
+    },
+    {
+      heading: "How to read a person's story",
+      paragraphs: [
+        "Keep four small notes. Short answers are enough.",
+      ],
+      bullets: [
+        "Where? — When and where is this happening?",
+        "God? — What does this story show about God's heart?",
+        "Me? — What feelings or choices do I recognise?",
+        "Next? — What is wise to copy, and what is a warning to avoid?",
       ],
     },
   ],
+  sixtySecond: [
+    "Pick one person from the list (try David or Peter).",
+    "Say one thing God did in their story.",
+    "Ask God to help you notice Him the same way in your day.",
+  ],
   prayer:
-    "Lord, teach me from these lives without turning them into a scorecard. Show me Your character. Amen.",
+    "Lord, thank You for these real people. Teach me from their lives without turning them into a test. Show me Your kind heart. Amen.",
   readNext: [
     { href: "/topics/motivational-men", title: "Motivational men" },
     { href: "/topics/motivational-women", title: "Motivational women" },
