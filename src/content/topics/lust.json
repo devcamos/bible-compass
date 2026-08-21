@@ -1,0 +1,85 @@
+{
+  "slug": "lust",
+  "title": "Lust",
+  "icon": "🔥",
+  "summary": "When desire pulls your eyes and heart off course — return to Jesus with honesty, not self-punishment.",
+  "tone": "faith",
+  "kind": "reset",
+  "graceGuardrail": "Resisting lust does not earn God's love. Jesus meets you in honesty. Holiness is fruit of grace, not a ladder you climb first.",
+  "stateChange": { "from": "Pulled", "to": "Faithful" },
+  "resetName": "T.U.R.N.",
+  "framing": "Desire is not the enemy. Misdirected desire is. This reset helps you tell the truth, receive mercy, and take one faithful step.",
+  "why": "Lust narrows the world to appetite. Scripture invites you to honour God with your body and heart — and to turn from what steals love, not to shame yourself into looking holy.",
+  "steps": [
+    {
+      "letter": "T",
+      "title": "Tell the truth",
+      "verse": "Psalm 139:23–24",
+      "explanation": "Bring the pull into the light before God. Hiding feeds it. Honesty is the start of freedom, not the end of belonging.",
+      "action": "Say one honest sentence: “Lord, I am being pulled toward ___.” Do not dress it up."
+    },
+    {
+      "letter": "U",
+      "title": "Under Jesus' mercy",
+      "verse": "Hebrews 4:15–16",
+      "explanation": "Jesus sympathises with weakness. Draw near for mercy and help — before you try to fix yourself.",
+      "action": "Breathe slowly twice. Say: “Grace first. I come to Jesus for mercy, not to earn Him.”"
+    },
+    {
+      "letter": "R",
+      "title": "Remove the path",
+      "verse": "1 Corinthians 6:18; 2 Timothy 2:22",
+      "explanation": "Scripture says flee sexual immorality and youthful passions. Leaving the trigger is wisdom, not weakness.",
+      "action": "Take one exit now: close the tab, put the phone down, change rooms, or stop the conversation that feeds the pull."
+    },
+    {
+      "letter": "N",
+      "title": "Nourish holy desire",
+      "verse": "Galatians 5:16; Philippians 4:8",
+      "explanation": "Walk by the Spirit. Fill the space lust emptied — with prayer, good thought, real friendship, and honour for people as image-bearers.",
+      "action": "Choose one replace: a short prayer, a walk, a Scripture verse, or a message to a trusted mature friend."
+    }
+  ],
+  "whenToUse": [
+    "Your eyes or thoughts keep returning to someone or something that is not yours to claim",
+    "A screen, feed, or late-night habit keeps pulling you back",
+    "Shame after a fall makes you want to hide from God",
+    "You want desire to serve love and faithfulness, not appetite alone"
+  ],
+  "sixtySecond": [
+    "Name the pull in one honest sentence before God.",
+    "Say: “Grace first. Jesus, I need Your mercy.” (Hebrews 4:16)",
+    "Exit one trigger immediately — close, leave, or stop.",
+    "Replace with one holy step: prayer, walk, or ask a trusted person to walk with you."
+  ],
+  "prayer": "Jesus, You see my heart. Thank You that mercy is near. Help me flee what harms love, honour people made in Your image, and walk by Your Spirit. Form desire that is faithful. Amen.",
+  "scripture": [
+    {
+      "ref": "Matthew 5:27–28",
+      "insight": "Jesus guards the heart, not only outward acts — and He speaks to restore, not to crush."
+    },
+    {
+      "ref": "1 Corinthians 6:18–20",
+      "insight": "Your body is for the Lord. Flee immorality; you are bought with a price."
+    },
+    {
+      "ref": "1 Thessalonians 4:3–5",
+      "insight": "God's will includes holiness: learning to control your own body in honour."
+    }
+  ],
+  "safetyNote": "If lust is tangled with compulsion, porn addiction, abuse, or harm toward others, seek wise pastoral care and appropriate professional help. Prayer and Scripture walk with healing — they do not replace it. If you are in danger, get safe help now.",
+  "readNext": [
+    {
+      "href": "/topics/temptation-and-character",
+      "title": "Temptation and character"
+    },
+    {
+      "href": "/topics/jesus-and-the-gospel",
+      "title": "Jesus and the Gospel"
+    },
+    {
+      "href": "/topics/failure",
+      "title": "Failure"
+    }
+  ]
+}

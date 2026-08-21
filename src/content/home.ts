@@ -94,6 +94,13 @@ export const lifeAreas: LifeArea[] = [
     topicSlugs: ["husband", "wife", "children", "parents"],
   },
   {
+    icon: "🪞",
+    title: "Temptation and character",
+    summary:
+      "When desire, appetite, or ego pull you off course — return to Jesus, not a self-fix ladder.",
+    topicSlugs: ["temptation-and-character", "lust"],
+  },
+  {
     icon: "📖",
     title: "Understand the Bible — foundations",
     summary: "How Scripture fits together, and how to read it with Jesus at the centre.",

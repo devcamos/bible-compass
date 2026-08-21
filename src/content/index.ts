@@ -18,6 +18,7 @@ import { husband } from "./topics/husband";
 import { jesusAndTheGospel } from "./topics/jesus-and-the-gospel";
 import { lettingGo } from "./topics/letting-go";
 import { loneliness } from "./topics/loneliness";
+import { lust } from "./topics/lust";
 import { motivationalMen } from "./topics/motivational-men";
 import { motivationalWomen } from "./topics/motivational-women";
 import { parents } from "./topics/parents";
@@ -28,6 +29,7 @@ import { promisesVsCommands } from "./topics/promises-vs-commands";
 import { safetyAndGodsProtection } from "./topics/safety-and-gods-protection";
 import { success } from "./topics/success";
 import { teachings } from "./topics/teachings";
+import { temptationAndCharacter } from "./topics/temptation-and-character";
 import { themes } from "./topics/themes";
 import { trust } from "./topics/trust";
 import { wife } from "./topics/wife";
@@ -52,6 +54,8 @@ export const topics: Topic[] = [
   wife,
   children,
   parents,
+  temptationAndCharacter,
+  lust,
   howToReadTheBible,
   componentsOfTheBible,
   bibleTimeline,

@@ -50,6 +50,8 @@ const requiredHubSlugs = [
   "wife",
   "children",
   "parents",
+  "temptation-and-character",
+  "lust",
   "how-to-read-the-bible",
   "components-of-the-bible",
   "bible-timeline",
