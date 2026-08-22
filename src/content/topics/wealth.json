@@ -1,0 +1,74 @@
+{
+  "slug": "wealth",
+  "title": "Wealth",
+  "icon": "🌾",
+  "summary": "When money, provision, or wanting more fills your mind — hold wealth as a steward under God, with open hands and quiet trust.",
+  "tone": "faith",
+  "kind": "reset",
+  "graceGuardrail": "Wealth is not proof of blessing, and lack is not proof of God's absence. You are not loved more when you have more. Stewardship is fruit of grace, not a wage.",
+  "stateChange": { "from": "Grasping", "to": "Stewarding" },
+  "resetName": "S.E.E.D.",
+  "framing": "Wealth includes money, skill, time, and opportunity. This reset helps you see provision as God's, release fear-driven grasping, and take one faithful stewardship step.",
+  "why": "Scripture warns that love of money competes with love of God — and also teaches diligence, generosity, and contentment. Faithful wealth is worship with open hands.",
+  "steps": [
+    {
+      "letter": "S",
+      "title": "See wealth as God's",
+      "verse": "Deuteronomy 8:17–18; Psalm 24:1",
+      "explanation": "The earth is the Lord's. Ability to produce wealth is gift, not self-made glory.",
+      "action": "Say: “Everything I have is Yours. I am a steward today.”"
+    },
+    {
+      "letter": "E",
+      "title": "Entrust the Provider",
+      "verse": "Matthew 6:25–33",
+      "explanation": "Seek first the kingdom. Anxiety about tomorrow is not the same as wise planning.",
+      "action": "Name one money fear. Cast it: “I trust You with ___.”"
+    },
+    {
+      "letter": "E",
+      "title": "Exercise faithful management",
+      "verse": "Proverbs 21:5; Luke 16:10–11",
+      "explanation": "Diligent plans and faithfulness in little things matter. Stewardship is concrete: budget, work, honesty, debt wisdom.",
+      "action": "Choose one management step: review spending, plan giving, or ask wise counsel."
+    },
+    {
+      "letter": "D",
+      "title": "Disperse with generosity and contentment",
+      "verse": "1 Timothy 6:6–10, 17–19",
+      "explanation": "Godliness with contentment is great gain. The wealthy are to be rich in good works — hopeful in God, not in riches.",
+      "action": "Practice one open-hand act: give, share, or thank God for three provisions you already have."
+    }
+  ],
+  "whenToUse": [
+    "Money stress or money pride is steering your peace",
+    "You want to grow wealth without worshipping it",
+    "Giving feels scary, or spending feels uncontrolled",
+    "You need a gospel frame for provision, work, and generosity"
+  ],
+  "sixtySecond": [
+    "Say: “I am a steward, not the owner.”",
+    "Cast one money fear to God.",
+    "Take one stewardship step — review, give, or seek counsel."
+  ],
+  "prayer": "Father, all I have is Yours. Free me from grasping and from shame. Teach me to trust You, manage faithfully, and walk in generosity and contentment. Amen.",
+  "scripture": [
+    {
+      "ref": "Matthew 6:24",
+      "insight": "You cannot serve God and money — choose who leads."
+    },
+    {
+      "ref": "1 Timothy 6:17–19",
+      "insight": "Hope in God, not in riches; be rich in good works."
+    },
+    {
+      "ref": "Proverbs 11:28",
+      "insight": "Trust in riches fails; the righteous flourish like a green leaf."
+    }
+  ],
+  "readNext": [
+    { "href": "/topics/greed", "title": "Greed" },
+    { "href": "/topics/success", "title": "Success" },
+    { "href": "/topics/hard-work", "title": "Hard work" }
+  ]
+}

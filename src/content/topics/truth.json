@@ -1,0 +1,83 @@
+{
+  "slug": "truth",
+  "title": "Truth",
+  "icon": "🕯️",
+  "summary": "Truth is not a weapon to win with — it is light from God. Jesus is the Truth; Scripture steadies the mind; honest living follows grace.",
+  "tone": "bible",
+  "kind": "foundation",
+  "graceGuardrail": "Knowing truth does not earn God's love. Jesus is the Truth who came for you first. Honesty is fruit of grace, not a ladder into belonging.",
+  "framing": "Come here when you need clarity about who God is, what Scripture says, or how to live without hiding. Start with Jesus — then walk in the light.",
+  "why": "Lies shrink the soul. Confusion multiplies fear. Scripture invites you to know the Truth who sets people free, and to speak and live honestly as a response to mercy.",
+  "sections": [
+    {
+      "heading": "Jesus is the Truth",
+      "paragraphs": [
+        "Truth is personal before it is a list of facts. Jesus said, “I am the way, and the truth, and the life.” Knowing truth means knowing Him."
+      ],
+      "bullets": [
+        "John 14:6 — Jesus is the Truth",
+        "John 8:31–32 — abiding in His word; the truth sets free",
+        "John 1:14 — the Word became flesh, full of grace and truth"
+      ]
+    },
+    {
+      "heading": "God's Word steadies the mind",
+      "paragraphs": [
+        "Scripture is not a tool for winning arguments. It is light for the path — read in context, with Jesus at the centre."
+      ],
+      "bullets": [
+        "John 17:17 — sanctify them in the truth; Your word is truth",
+        "Psalm 119:105 — Your word is a lamp to my feet",
+        "2 Timothy 3:16–17 — Scripture equips for every good work"
+      ]
+    },
+    {
+      "heading": "Walk in the light",
+      "paragraphs": [
+        "Living truthfully means dropping the mask — before God and, where wise, before people. Truth-telling is love; cruelty dressed as “honesty” is not."
+      ],
+      "bullets": [
+        "Ephesians 4:15 — speak the truth in love",
+        "Ephesians 4:25 — put away falsehood; speak truth with your neighbour",
+        "1 John 1:5–7 — walk in the light; fellowship grows there",
+        "Proverbs 12:22 — lying lips are an abomination; those who act faithfully delight the Lord"
+      ]
+    },
+    {
+      "heading": "When truth feels costly",
+      "paragraphs": [
+        "Sometimes truth means confession. Sometimes it means a hard conversation. Sometimes it means refusing a convenient lie. Grace holds you while you take the next honest step."
+      ],
+      "bullets": [
+        "Name what you have been hiding — before God first",
+        "Ask: “What would love and truth do next?”",
+        "Seek wise counsel when the truth involves safety, justice, or deep harm"
+      ]
+    }
+  ],
+  "sixtySecond": [
+    "Say: “Jesus, You are the Truth. I need Your light today.”",
+    "Open one Gospel verse (start with John 14:6) and read it slowly.",
+    "Take one honest step — a confession, a clear word, or a refusal to pretend."
+  ],
+  "prayer": "Jesus, You are the Truth. Free me from hiding and from using truth as a weapon. Teach me to love what is real, to trust Your Word, and to walk in the light with grace. Amen.",
+  "scripture": [
+    {
+      "ref": "John 14:6",
+      "insight": "Truth is found in a Person — Jesus — not only in ideas."
+    },
+    {
+      "ref": "John 8:32",
+      "insight": "Truth sets free; it does not crush those who come to the light."
+    },
+    {
+      "ref": "Ephesians 4:15",
+      "insight": "Truth and love belong together."
+    }
+  ],
+  "readNext": [
+    { "href": "/topics/jesus-and-the-gospel", "title": "Jesus and the Gospel" },
+    { "href": "/topics/how-to-read-the-bible", "title": "How to read the Bible" },
+    { "href": "/topics/character-of-god", "title": "Character of God" }
+  ]
+}

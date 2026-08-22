@@ -8,10 +8,13 @@
   --copper: #b85a2a;
   --copper-2: #8a3d18;
   --moss: #2f5a43;
+  --moss-2: #173628;
   --mute: #6d6254;
   --cream: #fffaf1;
   --gold: #e8c07a;
   --sage: #9dcea8;
+  --surface: #241c16;
+  --surface-edge: #3a3026;
   --background: var(--cream);
   --foreground: var(--ink);
   --muted-foreground: var(--mute);
@@ -20,6 +23,15 @@
   --link: var(--copper);
   --focus: var(--copper-2);
   color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --background: var(--ink);
+  --foreground: var(--paper);
+  --muted-foreground: var(--rule);
+  --card: var(--surface);
+  --border: var(--surface-edge);
+  color-scheme: dark;
 }
 
 @theme inline {
@@ -112,7 +124,7 @@ body {
   margin-bottom: 1.5rem;
   border-radius: 1rem;
   border-left: 4px solid var(--copper);
-  background: var(--paper);
+  background: var(--card);
   padding: 1.25rem;
 }
 

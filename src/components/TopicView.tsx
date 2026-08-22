@@ -180,7 +180,7 @@ export function TopicView({ topic }: TopicViewProps) {
       {topic.prayer ? (
         <section className="mt-8">
           <h2 className="bc-title mb-3 text-xl">A short prayer</h2>
-          <p className="m-0 rounded-2xl border-l-4 border-l-copper bg-paper-2 px-4 py-3 text-[1.02rem] leading-8 whitespace-pre-wrap">
+          <p className="m-0 rounded-2xl border-l-4 border-l-copper bg-card px-4 py-3 text-[1.02rem] leading-8 whitespace-pre-wrap">
             {topic.prayer}
           </p>
         </section>
@@ -204,7 +204,7 @@ export function TopicView({ topic }: TopicViewProps) {
       ) : null}
 
       {topic.safetyNote ? (
-        <aside className="mt-8 rounded-2xl border-l-4 border-l-moss bg-paper-2 p-4 text-sm leading-6">
+        <aside className="mt-8 rounded-2xl border-l-4 border-l-moss bg-card p-4 text-sm leading-6">
           {topic.safetyNote}
         </aside>
       ) : null}

@@ -1,0 +1,74 @@
+{
+  "slug": "greed",
+  "title": "Greed",
+  "icon": "💰",
+  "summary": "When money or more starts owning your peace — return to Jesus with open hands, not guilt-driven giving.",
+  "tone": "faith",
+  "kind": "reset",
+  "graceGuardrail": "Stewardship does not purchase God's love. Generosity is fruit of grace, not the price of being accepted.",
+  "stateChange": { "from": "Grasping", "to": "Content" },
+  "resetName": "S.T.E.W.",
+  "framing": "Greed is not only obvious greed. It can look like restless wanting, fear about tomorrow, or measuring worth by what you have. This reset helps you hold money with open hands.",
+  "why": "Scripture warns that love of money competes with love of God. Faithful stewardship is about trust and generosity — not earning blessing through performance.",
+  "steps": [
+    {
+      "letter": "S",
+      "title": "See what owns you",
+      "verse": "Luke 12:15; Hebrews 13:5",
+      "explanation": "Notice where wanting more, hoarding, or anxiety about money is steering your heart.",
+      "action": "Ask: “What am I afraid to lose?” Write one honest sentence before God."
+    },
+    {
+      "letter": "T",
+      "title": "Trust the Provider",
+      "verse": "Matthew 6:25–33",
+      "explanation": "Your Father knows what you need. Seek first His kingdom — not first your safety through accumulation.",
+      "action": "Say: “Grace first. My worth is not my net worth.”"
+    },
+    {
+      "letter": "E",
+      "title": "Entrust one step",
+      "verse": "2 Corinthians 9:7; Proverbs 11:25",
+      "explanation": "Stewardship turns grasping toward generosity: a budget line, a gift, a debt plan, or honest counsel about money.",
+      "action": "Choose one faithful money step: review spending, give something, or ask a wise person for help."
+    },
+    {
+      "letter": "W",
+      "title": "Walk in contentment",
+      "verse": "1 Timothy 6:6–10",
+      "explanation": "Godliness with contentment is great gain. Contentment is not laziness — it is trust while you work faithfully.",
+      "action": "Name three gifts you already have. Thank God for one out loud."
+    }
+  ],
+  "whenToUse": [
+    "You keep checking balances, deals, or what others own",
+    "Fear about the future pushes you to hoard or cut corners",
+    "You feel ashamed about debt, spending, or lack",
+    "You want money to serve love, not run your heart"
+  ],
+  "sixtySecond": [
+    "Name one money fear or want honestly before God.",
+    "Say: “Seek first the kingdom.” (Matthew 6:33)",
+    "Take one stewardship step: review, give, or ask for wise help."
+  ],
+  "prayer": "Father, You provide for Your children. Loosen what grips my heart about money. Teach me contentment, faithful work, and generous hands. Amen.",
+  "scripture": [
+    {
+      "ref": "1 Timothy 6:10",
+      "insight": "Love of money is a root of many evils — naming it is wisdom, not condemnation."
+    },
+    {
+      "ref": "Matthew 6:24",
+      "insight": "You cannot serve God and money. Choose who leads."
+    },
+    {
+      "ref": "Luke 12:34",
+      "insight": "Where your treasure is, your heart follows — treasure can be redirected."
+    }
+  ],
+  "readNext": [
+    { "href": "/topics/envy", "title": "Envy" },
+    { "href": "/topics/success", "title": "Success" },
+    { "href": "/topics/jesus-and-the-gospel", "title": "Jesus and the Gospel" }
+  ]
+}

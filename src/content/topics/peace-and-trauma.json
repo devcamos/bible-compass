@@ -1,0 +1,79 @@
+{
+  "slug": "peace-and-trauma",
+  "title": "Peace and trauma",
+  "icon": "🤍",
+  "summary": "When past harm still shakes the present — come to Jesus for nearness and peace, without pretending the wound never happened.",
+  "tone": "peace",
+  "kind": "reset",
+  "graceGuardrail": "Peace after trauma is not a test of faith. Jesus meets the wounded. Healing is not a ladder you climb before God will hold you.",
+  "stateChange": { "from": "Shaken", "to": "Held" },
+  "resetName": "H.E.A.L.",
+  "framing": "Trauma can leave the body alert long after the danger has passed. This reset helps you tell the truth, draw near to God, ask for wise help, and take one safe next step — without rushing what needs time.",
+  "why": "Trauma narrows the world to survival. Scripture does not deny the wound. It names a God near to the brokenhearted, and a peace that can guard you while healing unfolds — often with people and professional care beside prayer.",
+  "steps": [
+    {
+      "letter": "H",
+      "title": "Honour the wound",
+      "verse": "Psalm 34:18",
+      "explanation": "The Lord is near to the brokenhearted. Honesty is not weakness. Naming what still hurts is the start of being held, not a failure of faith.",
+      "action": "Write one honest line: “What still shakes me is ___.” Keep it true, not tidy."
+    },
+    {
+      "letter": "E",
+      "title": "Enter God's nearness",
+      "verse": "Psalm 23:4; Isaiah 41:10",
+      "explanation": "Even in the valley, God is with you. Peace begins with presence — not with forcing yourself to feel fine.",
+      "action": "Breathe in 4, out 6, twice. Say: “You are with me. I am not alone in this.”"
+    },
+    {
+      "letter": "A",
+      "title": "Ask for wise help",
+      "verse": "Galatians 6:2; Proverbs 11:14",
+      "explanation": "Bear one another's burdens. Trauma often needs more than private grit — a trusted friend, pastor, counsellor, or clinician can walk with you.",
+      "action": "Name one safe person or professional you can contact. If you cannot yet, write: “Help I need: ___.”"
+    },
+    {
+      "letter": "L",
+      "title": "Live one safe next step",
+      "verse": "Philippians 4:6–7",
+      "explanation": "Present the request. Let the peace of God guard heart and mind. Then take only the next safe step — rest, boundary, appointment, or prayer — not the whole healing journey today.",
+      "action": "Ask: “What is the safest faithful next step?” Do only that."
+    }
+  ],
+  "whenToUse": [
+    "A memory, sound, or place suddenly makes your body feel unsafe",
+    "You want God's peace but feel ashamed that the wound still affects you",
+    "You are tempted to spiritualise pain and skip real help",
+    "You need a gentle path back to trust without denying what happened"
+  ],
+  "sixtySecond": [
+    "Name what still shakes you in one honest sentence. (Psalm 34:18)",
+    "Say: “You are with me.” (Psalm 23:4)",
+    "Take one safe next step only — rest, boundary, or ask for help."
+  ],
+  "prayer": "Father, You see the wound I carry. Thank You that You are near to the brokenhearted. Hold me in Your peace. Give me courage to ask for wise help, and one safe next step for today. Amen.",
+  "scripture": [
+    {
+      "ref": "Psalm 34:18",
+      "insight": "God's nearness meets the brokenhearted — honesty is welcome."
+    },
+    {
+      "ref": "Psalm 147:3",
+      "insight": "He heals the brokenhearted and binds up their wounds — healing is God's work over time."
+    },
+    {
+      "ref": "John 14:27",
+      "insight": "Jesus gives His peace — not as the world gives, and not as a demand to feel fine."
+    },
+    {
+      "ref": "Philippians 4:6–7",
+      "insight": "Peace can guard the mind after the request is presented, even while healing continues."
+    }
+  ],
+  "safetyNote": "Trauma, flashbacks, dissociation, abuse, or ongoing danger need wise pastoral care and appropriate professional help. Prayer and Scripture walk with healing — they do not replace it. If you are in immediate danger, get emergency help and trusted people now. Forgiveness never requires unsafe access or staying in harm.",
+  "readNext": [
+    { "href": "/topics/anxiety", "title": "Anxiety" },
+    { "href": "/topics/letting-go", "title": "Letting go" },
+    { "href": "/topics/safety-and-gods-protection", "title": "Safety and God's protection" }
+  ]
+}

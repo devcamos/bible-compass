@@ -1,0 +1,74 @@
+{
+  "slug": "friendship",
+  "title": "Friendship",
+  "icon": "🤝",
+  "summary": "When you need loyal, wise companionship — learn to be a friend and to receive friendship under God's love.",
+  "tone": "faith",
+  "kind": "reset",
+  "graceGuardrail": "Having friends does not prove you are loved by God — and lacking them does not mean He has left you. Belonging in Christ is the centre; friendship is a gift to steward.",
+  "stateChange": { "from": "Isolated", "to": "Accompanying" },
+  "resetName": "B.O.N.D.",
+  "framing": "Friendship is more than convenience. Scripture pictures loyalty, truth-telling, and shared burdens — the kind of nearness that reflects God's care.",
+  "why": "Loneliness grows when we only consume company or only perform for it. Faithful friendship is mutual: show up, speak truth in love, and receive help without shame.",
+  "steps": [
+    {
+      "letter": "B",
+      "title": "Begin by noticing who is near",
+      "verse": "Proverbs 18:24",
+      "explanation": "A friend sticks closer than a brother. Start by noticing who already shows care — or where God may be inviting you to take a small step toward someone.",
+      "action": "Write one name: someone to thank, check on, or gently approach."
+    },
+    {
+      "letter": "O",
+      "title": "Offer one faithful gesture",
+      "verse": "Proverbs 17:17",
+      "explanation": "A friend loves at all times. Friendship grows through small, consistent presence — not grand speeches.",
+      "action": "Send one message, make one plan, or offer one practical help today."
+    },
+    {
+      "letter": "N",
+      "title": "Name truth and share burdens",
+      "verse": "Proverbs 27:6; Galatians 6:2",
+      "explanation": "Faithful are the wounds of a friend. Bear one another's burdens. Real friendship includes honesty and mutual help.",
+      "action": "Ask or share one true thing — not gossip, not performance."
+    },
+    {
+      "letter": "D",
+      "title": "Discern wise limits",
+      "verse": "1 Corinthians 15:33; Proverbs 13:20",
+      "explanation": "Walk with the wise. Friendship needs discernment: loyalty without enabling harm, closeness without losing your walk with God.",
+      "action": "Name one wise boundary or one wise investment in a good friendship."
+    }
+  ],
+  "whenToUse": [
+    "You feel lonely even in a crowd",
+    "You want deeper friendship but do not know how to start",
+    "A friendship needs repair, honesty, or clearer boundaries",
+    "You are choosing companions who shape your walk with God"
+  ],
+  "sixtySecond": [
+    "Name one person to thank or check on.",
+    "Send one faithful gesture now.",
+    "Ask God for wisdom in who you walk with."
+  ],
+  "prayer": "Lord, thank You that You call us friends in Christ. Teach me to be loyal, honest, and wise. Lead me into friendships that honour You and carry burdens together. Amen.",
+  "scripture": [
+    {
+      "ref": "Proverbs 17:17",
+      "insight": "Friendship loves through ordinary days, not only crises."
+    },
+    {
+      "ref": "John 15:13–15",
+      "insight": "Jesus models friendship that lays down life and tells the truth."
+    },
+    {
+      "ref": "Ecclesiastes 4:9–10",
+      "insight": "Two are better than one — help rises when someone falls."
+    }
+  ],
+  "readNext": [
+    { "href": "/topics/loneliness", "title": "Loneliness" },
+    { "href": "/topics/forgiveness", "title": "Forgiveness" },
+    { "href": "/topics/teachings", "title": "Teachings" }
+  ]
+}

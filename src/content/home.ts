@@ -72,6 +72,9 @@ export const lifeAreas: LifeArea[] = [
     topicSlugs: [
       "fear",
       "anxiety",
+      "peace-and-trauma",
+      "grief-and-loss",
+      "forgiveness",
       "letting-go",
       "being-present",
       "courage",
@@ -85,20 +88,20 @@ export const lifeAreas: LifeArea[] = [
     icon: "🌱",
     title: "Work, growth and perseverance",
     summary: "Patience, discipline, failure, and faithful effort — without earning God.",
-    topicSlugs: ["hard-work", "diligence", "patience", "failure", "success"],
+    topicSlugs: ["hard-work", "diligence", "patience", "failure", "success", "wealth"],
   },
   {
     icon: "🤍",
     title: "Family and relationships",
     summary: "Wisdom for loving, leading, forgiving, and building a healthy home.",
-    topicSlugs: ["husband", "wife", "children", "parents"],
+    topicSlugs: ["husband", "wife", "children", "parents", "friendship"],
   },
   {
     icon: "🪞",
     title: "Temptation and character",
     summary:
       "When desire, appetite, or ego pull you off course — return to Jesus, not a self-fix ladder.",
-    topicSlugs: ["temptation-and-character", "lust"],
+    topicSlugs: ["lust", "pride", "greed", "envy", "self-control"],
   },
   {
     icon: "📖",
@@ -119,6 +122,7 @@ export const lifeAreas: LifeArea[] = [
     topicSlugs: [
       "people-of-the-bible",
       "themes",
+      "truth",
       "promises-vs-commands",
       "character-of-god",
       "prayer-and-worship",

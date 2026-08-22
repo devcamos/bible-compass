@@ -9,9 +9,14 @@ import { componentsOfTheBible } from "./topics/components-of-the-bible";
 import { courage } from "./topics/courage";
 import { destinyOfTheWorld } from "./topics/destiny-of-the-world";
 import { diligence } from "./topics/diligence";
+import { envy } from "./topics/envy";
 import { failure } from "./topics/failure";
 import { faith } from "./topics/faith";
 import { fear } from "./topics/fear";
+import { forgiveness } from "./topics/forgiveness";
+import { friendship } from "./topics/friendship";
+import { greed } from "./topics/greed";
+import { griefAndLoss } from "./topics/grief-and-loss";
 import { hardWork } from "./topics/hard-work";
 import { howToReadTheBible } from "./topics/how-to-read-the-bible";
 import { husband } from "./topics/husband";
@@ -23,15 +28,20 @@ import { motivationalMen } from "./topics/motivational-men";
 import { motivationalWomen } from "./topics/motivational-women";
 import { parents } from "./topics/parents";
 import { patience } from "./topics/patience";
+import { peaceAndTrauma } from "./topics/peace-and-trauma";
 import { peopleOfTheBible } from "./topics/people-of-the-bible";
 import { prayerAndWorship } from "./topics/prayer-and-worship";
+import { pride } from "./topics/pride";
 import { promisesVsCommands } from "./topics/promises-vs-commands";
 import { safetyAndGodsProtection } from "./topics/safety-and-gods-protection";
+import { selfControl } from "./topics/self-control";
 import { success } from "./topics/success";
 import { teachings } from "./topics/teachings";
 import { temptationAndCharacter } from "./topics/temptation-and-character";
 import { themes } from "./topics/themes";
 import { trust } from "./topics/trust";
+import { truth } from "./topics/truth";
+import { wealth } from "./topics/wealth";
 import { wife } from "./topics/wife";
 
 export const topics: Topic[] = [
@@ -39,6 +49,9 @@ export const topics: Topic[] = [
   loneliness,
   fear,
   anxiety,
+  peaceAndTrauma,
+  griefAndLoss,
+  forgiveness,
   lettingGo,
   beingPresent,
   courage,
@@ -50,18 +63,25 @@ export const topics: Topic[] = [
   patience,
   failure,
   success,
+  wealth,
   husband,
   wife,
   children,
   parents,
+  friendship,
   temptationAndCharacter,
   lust,
+  pride,
+  greed,
+  envy,
+  selfControl,
   howToReadTheBible,
   componentsOfTheBible,
   bibleTimeline,
   booksDescribed,
   peopleOfTheBible,
   themes,
+  truth,
   promisesVsCommands,
   characterOfGod,
   prayerAndWorship,
