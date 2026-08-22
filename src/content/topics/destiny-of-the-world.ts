@@ -5,7 +5,7 @@ export const destinyOfTheWorld: Topic = {
   title: "The destiny of the world",
   icon: "🌍",
   summary:
-    "The world is not ending in chaos. It is moving toward restoration. Lift your eyes to what God promised.",
+    "Chaos and judgment are not the last word. Scripture ends with a new heaven and a new earth — God making all things new.",
   tone: "bible",
   kind: "reset",
   graceGuardrail:
@@ -13,22 +13,24 @@ export const destinyOfTheWorld: Topic = {
   stateChange: { from: "Despair", to: "Hope" },
   resetName: "N.E.W.",
   framing:
-    "When you focus only on the present world, decay can feel final. Scripture teaches that creation is groaning, and God is working toward renewal.",
-  why: "Hope becomes practical when you name the brokenness honestly, expect restoration, and take one hopeful action today.",
+    "When you focus only on the present age, decay and conflict can feel final. Revelation shows this world order passing away under God's judgment — and then God dwelling with His people in a renewed creation. Hope does not deny the hard middle; it refuses to stop before the ending.",
+  why: "Hope becomes practical when you name the brokenness honestly, trust that Christ has the last word, and take one faithful step today.",
   steps: [
     {
       letter: "N",
       title: "Name the brokenness honestly",
       verse: "Romans 8:19–21",
-      explanation: "Creation waits to be set free from its bondage to decay.",
+      explanation:
+        "Creation waits to be set free from its bondage to decay. Groaning is real — and it is not the whole story.",
       action: "Write: “What feels broken right now?”",
     },
     {
       letter: "E",
-      title: "Expect restoration",
-      verse: "Revelation 21:4",
-      explanation: "He will wipe away every tear. Death shall be no more.",
-      action: "Say slowly: “God will make this new.”",
+      title: "Expect God's new creation",
+      verse: "Revelation 21:1–5",
+      explanation:
+        "The first heaven and earth pass away. God will wipe every tear; death shall be no more. He makes all things new — after judgment, not instead of it.",
+      action: "Say slowly: “Jesus has the last word. God will make this new.”",
     },
     {
       letter: "W",
@@ -45,15 +47,19 @@ export const destinyOfTheWorld: Topic = {
     "You need hope beyond circumstances",
   ],
   sixtySecond: [
-    "Say: “Decay is not the end.” (Romans 8:19–21)",
-    "Say: “God will wipe every tear.” (Revelation 21:4)",
+    "Say: “Groaning is not the last word.” (Romans 8:19–21)",
+    "Say: “God will make all things new.” (Revelation 21:1–5)",
     "Do one hopeful action.",
   ],
   prayer:
-    "God of hope, lift my eyes. Fill me with joy and peace. Help me live with eternal perspective. Amen.",
+    "God of hope, lift my eyes. You see the brokenness and You will judge evil. Fill me with joy and peace as I wait for Your new creation. Help me live today with eternal perspective. Amen.",
   scripture: [
     { ref: "Romans 8:19–21", insight: "Groaning is not the last word." },
-    { ref: "Revelation 21:4", insight: "Tears are named, then wiped." },
+    {
+      ref: "Revelation 21:1",
+      insight: "A new heaven and new earth — the present order is not forever.",
+    },
+    { ref: "Revelation 21:4–5", insight: "Tears are named, then wiped; He makes all things new." },
   ],
   readNext: [
     { href: "/topics/trust", title: "Trust" },
