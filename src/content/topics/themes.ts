@@ -22,6 +22,7 @@ export const themes: Topic = {
         "Suffering, leadership, money and generosity",
         "Speech and self-control, forgiveness",
         "Pride and humility, identity in Christ",
+        "Temptation and character (see that life-area hub for the growing map)",
       ],
     },
     {

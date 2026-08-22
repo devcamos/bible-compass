@@ -1,9 +1,8 @@
 import assert from "node:assert/strict";
-import { readFileSync, readdirSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
-
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const src = join(root, "src");
 
@@ -27,13 +26,21 @@ const topicFiles = readdirSync(topicDir)
 const indexSource = read(join(src, "content/index.ts"));
 const homeSource = read(join(src, "content/home.ts"));
 const declaredSlugs = topicFiles.map((slug) => {
-  const match = read(join(topicDir, `${slug}.ts`)).match(/slug:\s*"([^"]+)"/);
-  return match?.[1] ?? "";
+  const ts = read(join(topicDir, `${slug}.ts`));
+  const fromTs = ts.match(/slug:\s*"([^"]+)"/)?.[1];
+  if (fromTs) return fromTs;
+  const jsonPath = join(topicDir, `${slug}.json`);
+  if (existsSync(jsonPath)) {
+    return read(jsonPath).match(/"slug"\s*:\s*"([^"]+)"/)?.[1] ?? "";
+  }
+  return "";
 });
 
 const allowedHrefs = new Set(["/", "/how-to-use", ...topicFiles.map((slug) => `/topics/${slug}`)]);
 
 const requiredHubSlugs = [
+  "letting-go",
+  "being-present",
   "trust",
   "faith",
   "safety-and-gods-protection",
@@ -43,6 +50,8 @@ const requiredHubSlugs = [
   "wife",
   "children",
   "parents",
+  "temptation-and-character",
+  "lust",
   "how-to-read-the-bible",
   "components-of-the-bible",
   "bible-timeline",
@@ -86,8 +95,14 @@ test("home links to how-to-use", () => {
 });
 
 test("topics keep the grace guardrail", () => {
-  for (const path of walk(join(src, "content/topics"))) {
-    assert.match(read(path), /graceGuardrail/, `${path} missing graceGuardrail`);
+  for (const slug of topicFiles) {
+    const tsPath = join(topicDir, `${slug}.ts`);
+    const jsonPath = join(topicDir, `${slug}.json`);
+    if (existsSync(jsonPath)) {
+      assert.match(read(jsonPath), /"graceGuardrail"/, `${jsonPath} missing graceGuardrail`);
+    } else {
+      assert.match(read(tsPath), /graceGuardrail/, `${tsPath} missing graceGuardrail`);
+    }
   }
 });
 
@@ -101,6 +116,11 @@ test("content hrefs stay on published routes", () => {
   for (const path of walk(join(src, "content"))) {
     for (const match of read(path).matchAll(/href:\s*"([^"]+)"/g)) {
       assert.ok(allowedHrefs.has(match[1]), `${path} has out-of-scope href ${match[1]}`);
+    }
+    if (path.endsWith(".json")) {
+      for (const match of read(path).matchAll(/"href"\s*:\s*"([^"]+)"/g)) {
+        assert.ok(allowedHrefs.has(match[1]), `${path} has out-of-scope href ${match[1]}`);
+      }
     }
   }
 });

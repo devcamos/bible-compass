@@ -13,6 +13,22 @@ export type ResetStep = {
 
 export type TopicTone = "peace" | "courage" | "faith" | "bible";
 
+/** Nested shelf item: label, short kid-friendly detail, optional book list. */
+export type SectionItem = {
+  label: string;
+  detail?: string;
+  children?: string[];
+};
+
+export type TopicSection = {
+  heading: string;
+  paragraphs: string[];
+  /** Simple one-line bullets (label — detail). */
+  bullets?: string[];
+  /** Cards with optional nested book lists. */
+  items?: SectionItem[];
+};
+
 export type Topic = {
   slug: string;
   title: string;
@@ -32,6 +48,6 @@ export type Topic = {
   prayer?: string;
   scripture?: { ref: string; insight: string }[];
   safetyNote?: string;
-  sections?: { heading: string; paragraphs: string[]; bullets?: string[] }[];
+  sections?: TopicSection[];
   readNext: NextLink[];
 };

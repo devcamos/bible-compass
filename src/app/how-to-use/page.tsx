@@ -15,10 +15,13 @@ export default function HowToUsePage() {
     <article>
       <Breadcrumb current="How to use" />
       <header className="mb-5">
+        <p className="bc-kicker mb-2">Guide</p>
         <h1 className="bc-title m-0 mb-2 text-[1.85rem] leading-tight sm:text-[2.15rem]">
-          {howToUse.title}
+          <span aria-hidden="true">🧭</span> {howToUse.title}
         </h1>
-        <p className="m-0 leading-7 text-muted-foreground">{howToUse.summary}</p>
+        <p className="m-0 text-[1.02rem] leading-7 text-muted-foreground">
+          {howToUse.summary}
+        </p>
       </header>
 
       <section className="bc-callout">

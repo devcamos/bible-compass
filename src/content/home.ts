@@ -72,6 +72,8 @@ export const lifeAreas: LifeArea[] = [
     topicSlugs: [
       "fear",
       "anxiety",
+      "letting-go",
+      "being-present",
       "courage",
       "trust",
       "faith",
@@ -90,6 +92,13 @@ export const lifeAreas: LifeArea[] = [
     title: "Family and relationships",
     summary: "Wisdom for loving, leading, forgiving, and building a healthy home.",
     topicSlugs: ["husband", "wife", "children", "parents"],
+  },
+  {
+    icon: "🪞",
+    title: "Temptation and character",
+    summary:
+      "When desire, appetite, or ego pull you off course — return to Jesus, not a self-fix ladder.",
+    topicSlugs: ["temptation-and-character", "lust"],
   },
   {
     icon: "📖",

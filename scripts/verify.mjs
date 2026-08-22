@@ -16,6 +16,8 @@ function run(command, args) {
 }
 
 run(process.execPath, ["--test", join(root, "scripts/content-contract.mjs")]);
+// Typed routes (LayoutProps / PageProps) live in .next/types — generate before tsc.
+run("npx", ["next", "typegen"]);
 run("npx", ["tsc", "--noEmit"]);
 run("npx", ["eslint", ".", "--max-warnings=0"]);
 run("npx", ["next", "build"]);

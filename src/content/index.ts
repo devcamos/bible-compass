@@ -1,5 +1,6 @@
 import type { Topic } from "./types";
 import { anxiety } from "./topics/anxiety";
+import { beingPresent } from "./topics/being-present";
 import { bibleTimeline } from "./topics/bible-timeline";
 import { booksDescribed } from "./topics/books-described";
 import { characterOfGod } from "./topics/character-of-god";
@@ -15,7 +16,9 @@ import { hardWork } from "./topics/hard-work";
 import { howToReadTheBible } from "./topics/how-to-read-the-bible";
 import { husband } from "./topics/husband";
 import { jesusAndTheGospel } from "./topics/jesus-and-the-gospel";
+import { lettingGo } from "./topics/letting-go";
 import { loneliness } from "./topics/loneliness";
+import { lust } from "./topics/lust";
 import { motivationalMen } from "./topics/motivational-men";
 import { motivationalWomen } from "./topics/motivational-women";
 import { parents } from "./topics/parents";
@@ -26,6 +29,7 @@ import { promisesVsCommands } from "./topics/promises-vs-commands";
 import { safetyAndGodsProtection } from "./topics/safety-and-gods-protection";
 import { success } from "./topics/success";
 import { teachings } from "./topics/teachings";
+import { temptationAndCharacter } from "./topics/temptation-and-character";
 import { themes } from "./topics/themes";
 import { trust } from "./topics/trust";
 import { wife } from "./topics/wife";
@@ -35,6 +39,8 @@ export const topics: Topic[] = [
   loneliness,
   fear,
   anxiety,
+  lettingGo,
+  beingPresent,
   courage,
   trust,
   faith,
@@ -48,6 +54,8 @@ export const topics: Topic[] = [
   wife,
   children,
   parents,
+  temptationAndCharacter,
+  lust,
   howToReadTheBible,
   componentsOfTheBible,
   bibleTimeline,

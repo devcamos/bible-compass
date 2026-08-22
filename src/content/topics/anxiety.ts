@@ -73,8 +73,8 @@ export const anxiety: Topic = {
   safetyNote:
     "Ongoing, intense anxiety that disrupts sleep, work, or safety is also a health signal. Seek appropriate professional care. Spiritual practice does not replace clinical support.",
   readNext: [
+    { href: "/topics/letting-go", title: "Letting go" },
     { href: "/topics/fear", title: "Fear" },
-    { href: "/topics/loneliness", title: "Loneliness" },
     { href: "/topics/jesus-and-the-gospel", title: "Jesus and the Gospel" },
   ],
 };

@@ -6,6 +6,25 @@ type TopicViewProps = {
   topic: Topic;
 };
 
+function BulletText({ bullet }: { bullet: string }) {
+  const separator = " — ";
+  const index = bullet.indexOf(separator);
+  if (index === -1) {
+    return <>{bullet}</>;
+  }
+  const label = bullet.slice(0, index);
+  const detail = bullet.slice(index + separator.length);
+  return (
+    <>
+      <strong className="text-foreground">{label}</strong>
+      <span className="text-muted-foreground">
+        {separator}
+        {detail}
+      </span>
+    </>
+  );
+}
+
 export function TopicView({ topic }: TopicViewProps) {
   return (
     <article>
@@ -81,18 +100,48 @@ export function TopicView({ topic }: TopicViewProps) {
       ) : null}
 
       {topic.sections?.map((section) => (
-        <section key={section.heading} className="mt-7">
+        <section key={section.heading} className="mt-8">
           <h2 className="bc-title mb-3 text-xl">{section.heading}</h2>
           {section.paragraphs.map((paragraph) => (
-            <p key={paragraph} className="mb-3 leading-7">
+            <p key={paragraph} className="mb-3 text-[1.02rem] leading-8">
               {paragraph}
             </p>
           ))}
           {section.bullets ? (
-            <ul className="my-0 pl-6">
+            <ul className="my-0 list-none space-y-2.5 p-0">
               {section.bullets.map((bullet) => (
-                <li key={bullet} className="py-1.5 leading-7">
-                  {bullet}
+                <li
+                  key={bullet}
+                  className="rounded-2xl border border-border bg-card px-4 py-3 text-[1.02rem] leading-7"
+                >
+                  <BulletText bullet={bullet} />
+                </li>
+              ))}
+            </ul>
+          ) : null}
+          {section.items ? (
+            <ul className="my-0 list-none space-y-2.5 p-0">
+              {section.items.map((item) => (
+                <li
+                  key={item.label}
+                  className="rounded-2xl border border-border bg-card px-4 py-3 text-[1.02rem] leading-7"
+                >
+                  <strong className="text-foreground">{item.label}</strong>
+                  {item.detail ? (
+                    <span className="text-muted-foreground">
+                      {" — "}
+                      {item.detail}
+                    </span>
+                  ) : null}
+                  {item.children?.length ? (
+                    <ul className="mt-2 mb-0 list-disc space-y-1 pl-5 text-[0.98rem] leading-6 text-muted-foreground">
+                      {item.children.map((child) => (
+                        <li key={child} className="pl-0.5">
+                          {child}
+                        </li>
+                      ))}
+                    </ul>
+                  ) : null}
                 </li>
               ))}
             </ul>
@@ -101,7 +150,7 @@ export function TopicView({ topic }: TopicViewProps) {
       ))}
 
       {topic.whenToUse?.length ? (
-        <section className="mt-7">
+        <section className="mt-8">
           <h2 className="bc-title mb-3 text-xl">When to use this</h2>
           <ul className="my-0 pl-6">
             {topic.whenToUse.map((item) => (
@@ -114,11 +163,13 @@ export function TopicView({ topic }: TopicViewProps) {
       ) : null}
 
       {topic.sixtySecond?.length ? (
-        <section className="mt-7 rounded-2xl border border-border bg-card p-5">
-          <h2 className="bc-title mt-0 mb-3 text-xl">60-second reset</h2>
-          <ol className="my-0 pl-5">
+        <section className="mt-8 rounded-2xl border border-border bg-card p-5">
+          <h2 className="bc-title mt-0 mb-3 text-xl">
+            {topic.kind === "foundation" ? "Try this" : "60-second reset"}
+          </h2>
+          <ol className="my-0 space-y-2 pl-5">
             {topic.sixtySecond.map((item) => (
-              <li key={item} className="py-1.5 leading-7">
+              <li key={item} className="py-0.5 text-[1.02rem] leading-7">
                 {item}
               </li>
             ))}
@@ -127,14 +178,16 @@ export function TopicView({ topic }: TopicViewProps) {
       ) : null}
 
       {topic.prayer ? (
-        <section className="mt-7">
+        <section className="mt-8">
           <h2 className="bc-title mb-3 text-xl">A short prayer</h2>
-          <p className="m-0 leading-7 whitespace-pre-wrap">{topic.prayer}</p>
+          <p className="m-0 rounded-2xl border-l-4 border-l-copper bg-paper-2 px-4 py-3 text-[1.02rem] leading-8 whitespace-pre-wrap">
+            {topic.prayer}
+          </p>
         </section>
       ) : null}
 
       {topic.scripture?.length ? (
-        <section className="mt-7">
+        <section className="mt-8">
           <h2 className="bc-title mb-3 text-xl">Scripture in context</h2>
           <ul className="my-0 pl-6">
             {topic.scripture.map((item) => (
@@ -151,7 +204,7 @@ export function TopicView({ topic }: TopicViewProps) {
       ) : null}
 
       {topic.safetyNote ? (
-        <aside className="mt-7 rounded-2xl border-l-4 border-l-moss bg-paper-2 p-4 text-sm leading-6">
+        <aside className="mt-8 rounded-2xl border-l-4 border-l-moss bg-paper-2 p-4 text-sm leading-6">
           {topic.safetyNote}
         </aside>
       ) : null}
@@ -168,10 +221,7 @@ export function TopicView({ topic }: TopicViewProps) {
               {item.title}
             </Link>
           ))}
-          <Link
-            href="/"
-            className="bc-btn"
-          >
+          <Link href="/" className="bc-btn">
             Back to Compass
           </Link>
         </div>
