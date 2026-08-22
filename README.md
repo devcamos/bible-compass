@@ -5,7 +5,8 @@ Public, static-first reader for Scripture-backed paths. Notion stays the private
 **Local:** http://localhost:3003  
 **GitHub:** https://github.com/devcamos/bible-compass  
 **Surface:** local + Vercel **Preview** from PR branches.  
-**Production:** founder-gated — merges to `main` do **not** auto-deploy Production (`git.deploymentEnabled.main: false` in `vercel.json`). See [DEPLOYMENT.md](./DEPLOYMENT.md).
+**Production:** founder GO received 2026-08-22 — `main` auto-deploys Production (`git.deploymentEnabled.main: true`). See [DEPLOYMENT.md](./DEPLOYMENT.md).  
+**Live:** https://bible-compass-three.vercel.app  
 
 **Backlog:** [Bible Compass Web App v0.1](https://app.notion.com/p/3be7233a96ec81ac85cfe0fe538094b9)
 
