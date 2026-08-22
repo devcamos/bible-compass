@@ -1,0 +1,67 @@
+{
+  "slug": "pride",
+  "title": "Pride",
+  "icon": "👑",
+  "summary": "When you need to be right, seen, or above others — return to Jesus with humility, not self-crushing.",
+  "tone": "faith",
+  "kind": "reset",
+  "graceGuardrail": "Humility does not earn God's love. Jesus already welcomes the proud when they turn honestly. Character grows as fruit of grace, not as a ladder you climb first.",
+  "stateChange": { "from": "Elevated", "to": "Humble" },
+  "resetName": "L.O.W.",
+  "framing": "Pride is not only loud arrogance. It can look like needing to win, needing to be admired, or refusing to be wrong. This reset helps you come low before God without pretending you are nothing.",
+  "why": "Pride lifts self above God and neighbour. Scripture invites you to see yourself clearly — loved, limited, and called to serve — not to perform humility to impress anyone.",
+  "steps": [
+    {
+      "letter": "L",
+      "title": "Look at your heart",
+      "verse": "Psalm 139:23–24",
+      "explanation": "Ask God to show where pride is hiding: comparison, control, image, or the need to be right.",
+      "action": "Write one honest line: “Lord, I notice I want ___.” No dressing it up."
+    },
+    {
+      "letter": "O",
+      "title": "Open to mercy",
+      "verse": "James 4:6; 1 Peter 5:5",
+      "explanation": "God resists the proud but gives grace to the humble. Mercy meets you before you fix your posture.",
+      "action": "Say: “Grace first. I do not have to perform humility to belong to Jesus.”"
+    },
+    {
+      "letter": "W",
+      "title": "Walk in low service",
+      "verse": "Philippians 2:3–5; Mark 10:43–45",
+      "explanation": "Jesus came to serve. One small act of honouring another person — listening, thanking, or yielding — turns pride toward love.",
+      "action": "Do one low step today: listen without correcting, thank someone, or ask for help."
+    }
+  ],
+  "whenToUse": [
+    "You need to win an argument or prove you are right",
+    "Someone else's success makes you feel smaller or angry",
+    "You are performing goodness to be admired",
+    "You resist correction, counsel, or admitting you were wrong"
+  ],
+  "sixtySecond": [
+    "Name one pride pattern honestly before God.",
+    "Say: “God resists the proud and gives grace to the humble.” (James 4:6)",
+    "Take one low step: listen, thank, or ask for help."
+  ],
+  "prayer": "Father, You see where I lift myself up. Thank You that Jesus welcomes me in honesty. Teach me humility that serves others and rests in Your love. Amen.",
+  "scripture": [
+    {
+      "ref": "Proverbs 16:18",
+      "insight": "Pride goes before a fall — Scripture warns so you can turn, not so you can despair."
+    },
+    {
+      "ref": "James 4:6",
+      "insight": "Grace is given to the humble. You can come low without earning belonging."
+    },
+    {
+      "ref": "Philippians 2:5–8",
+      "insight": "Jesus models humility — not self-hatred, but willing service."
+    }
+  ],
+  "readNext": [
+    { "href": "/topics/envy", "title": "Envy" },
+    { "href": "/topics/jesus-and-the-gospel", "title": "Jesus and the Gospel" },
+    { "href": "/topics/failure", "title": "Failure" }
+  ]
+}

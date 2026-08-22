@@ -1,0 +1,81 @@
+{
+  "slug": "self-control",
+  "title": "Self-control",
+  "icon": "🧭",
+  "summary": "When appetite, impulse, or excess runs ahead of wisdom — return to Jesus and take one Spirit-led pause.",
+  "tone": "faith",
+  "kind": "reset",
+  "graceGuardrail": "Self-control does not earn God's love. It is fruit of the Spirit, not a ladder you climb before you belong.",
+  "stateChange": { "from": "Impulse", "to": "Steady" },
+  "resetName": "P.A.U.S.E.",
+  "framing": "Self-control is not cold willpower alone. It is Spirit-formed strength to wait, choose, and honour God with body and desire.",
+  "why": "Impulse promises relief now and often costs peace later. Scripture invites you to walk by the Spirit — one pause, one wise choice, one faithful habit.",
+  "steps": [
+    {
+      "letter": "P",
+      "title": "Pause before the next pull",
+      "verse": "Proverbs 25:28",
+      "explanation": "A person without self-control is like a city broken into. The first victory is often a pause.",
+      "action": "Stop for ten seconds. Breathe in 4, out 6. Do not decide yet."
+    },
+    {
+      "letter": "A",
+      "title": "Ask the Spirit for strength",
+      "verse": "Galatians 5:22–23",
+      "explanation": "Self-control is fruit of the Spirit. Ask before you grit your teeth alone.",
+      "action": "Say: “Holy Spirit, form self-control in me for this next minute.”"
+    },
+    {
+      "letter": "U",
+      "title": "Unmask the real want",
+      "verse": "James 1:14–15",
+      "explanation": "Desire grows when it is fed. Name what you are reaching for — comfort, escape, status, or hunger.",
+      "action": "Write: “Under this impulse I want ___.”"
+    },
+    {
+      "letter": "S",
+      "title": "Swap for a wise step",
+      "verse": "1 Corinthians 10:13; Titus 2:11–12",
+      "explanation": "Grace trains us to say no to ungodliness. Replace the pull with one good action.",
+      "action": "Choose one swap: walk, water, prayer, message a friend, or leave the room."
+    },
+    {
+      "letter": "E",
+      "title": "Engage the next faithful habit",
+      "verse": "2 Timothy 1:7",
+      "explanation": "God has given a spirit of power, love, and self-control. Build the next small habit while mercy holds you.",
+      "action": "Set one tiny guard for today — a time limit, a boundary, or a bedtime."
+    }
+  ],
+  "whenToUse": [
+    "You keep saying yes to what you later regret",
+    "Screens, food, spending, or words run ahead of your values",
+    "You feel powerless in the moment of temptation",
+    "You want Spirit-led strength, not harsher self-talk"
+  ],
+  "sixtySecond": [
+    "Pause and breathe twice.",
+    "Ask the Spirit for self-control.",
+    "Swap one impulse for one wise step."
+  ],
+  "prayer": "Lord, form self-control in me by Your Spirit. Help me pause, tell the truth about my wants, and choose the next wise step under grace. Amen.",
+  "scripture": [
+    {
+      "ref": "Galatians 5:22–23",
+      "insight": "Self-control is fruit — received and grown, not purchased by shame."
+    },
+    {
+      "ref": "Proverbs 25:28",
+      "insight": "Without self-control, life is open to whatever rushes in."
+    },
+    {
+      "ref": "2 Timothy 1:7",
+      "insight": "God gives power, love, and a sound mind — not a spirit of fear."
+    }
+  ],
+  "readNext": [
+    { "href": "/topics/lust", "title": "Lust" },
+    { "href": "/topics/greed", "title": "Greed" },
+    { "href": "/topics/jesus-and-the-gospel", "title": "Jesus and the Gospel" }
+  ]
+}

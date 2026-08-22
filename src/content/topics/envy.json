@@ -1,0 +1,82 @@
+{
+  "slug": "envy",
+  "title": "Envy",
+  "icon": "🌿",
+  "summary": "When someone else's life stings — return to Jesus with honest heart-work, not comparison or bitterness.",
+  "tone": "faith",
+  "kind": "reset",
+  "graceGuardrail": "Letting go of envy does not earn God's love. You are not behind His grace because someone else seems ahead.",
+  "stateChange": { "from": "Bitter", "to": "Content" },
+  "resetName": "G.R.A.C.E.",
+  "framing": "Envy compares and resents. It shrinks gratitude and poisons joy. This reset helps you tell the truth, receive mercy, and bless instead of bite.",
+  "why": "Scripture names envy as a work of the flesh and invites contentment in Christ. Your story is not cancelled because someone else's looks brighter today.",
+  "steps": [
+    {
+      "letter": "G",
+      "title": "Grieve honestly",
+      "verse": "Psalm 73:2–3",
+      "explanation": "The psalmist admits envy almost made him stumble. Honesty before God is safer than smiling while your heart sours.",
+      "action": "Say: “Lord, I feel sting when I see ___.” Do not pretend you are fine."
+    },
+    {
+      "letter": "R",
+      "title": "Remember God's nearness",
+      "verse": "Psalm 73:23–26",
+      "explanation": "Envy fades when you remember: God is with you. He is your portion — not their house, job, or timeline.",
+      "action": "Say: “You are with me. You are enough for today.”"
+    },
+    {
+      "letter": "A",
+      "title": "Ask for a renewed mind",
+      "verse": "Romans 12:15; Galatians 5:26",
+      "explanation": "Rejoice with those who rejoice. Envy is conquered by Spirit-formed love, not by forcing fake happiness.",
+      "action": "Send one genuine blessing: a message of congratulations, thanks, or prayer for someone you compared yourself to."
+    },
+    {
+      "letter": "C",
+      "title": "Choose gratitude",
+      "verse": "1 Thessalonians 5:18; Philippians 4:11–12",
+      "explanation": "Contentment learns to give thanks in your lane. Gratitude does not deny pain — it anchors you in what God has given.",
+      "action": "Write three gifts in your life today. Thank God for one aloud."
+    },
+    {
+      "letter": "E",
+      "title": "Engage your calling",
+      "verse": "Galatians 6:4–5",
+      "explanation": "Each person bears their own load. Compare yourself to faithfulness, not to someone else's highlight reel.",
+      "action": "Name one faithful next step in your own lane — not theirs."
+    }
+  ],
+  "whenToUse": [
+    "Social media or news about others leaves you sour or small",
+    "A friend's promotion, relationship, or blessing stings more than it should",
+    "You resent people who seem to have an easier path",
+    "Comparison is stealing your gratitude and peace"
+  ],
+  "sixtySecond": [
+    "Admit the sting honestly before God.",
+    "Say: “You are with me; You are my portion.” (Psalm 73:23–26)",
+    "Bless one person you compared yourself to — message, prayer, or thanks.",
+    "Name one faithful step in your own lane."
+  ],
+  "prayer": "Lord, You see the comparison in my heart. Free me from envy and teach me contentment in Christ. Help me rejoice with others and walk faithfully in my own calling. Amen.",
+  "scripture": [
+    {
+      "ref": "Proverbs 14:30",
+      "insight": "A heart at peace gives life; envy rots the bones."
+    },
+    {
+      "ref": "James 3:16",
+      "insight": "Where envy lives, disorder follows — naming it is the start of freedom."
+    },
+    {
+      "ref": "Psalm 73:26",
+      "insight": "God is the strength of your heart and your portion forever."
+    }
+  ],
+  "readNext": [
+    { "href": "/topics/pride", "title": "Pride" },
+    { "href": "/topics/greed", "title": "Greed" },
+    { "href": "/topics/jesus-and-the-gospel", "title": "Jesus and the Gospel" }
+  ]
+}

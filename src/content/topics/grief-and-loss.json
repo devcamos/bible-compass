@@ -1,0 +1,75 @@
+{
+  "slug": "grief-and-loss",
+  "title": "Grief and loss",
+  "icon": "🌧️",
+  "summary": "When someone or something is gone — bring the sorrow to God without rushing yourself to feel fine.",
+  "tone": "peace",
+  "kind": "reset",
+  "graceGuardrail": "Grief is not a lack of faith. Jesus wept. Tears do not disqualify you from God's love, and hurried cheerfulness is not holiness.",
+  "stateChange": { "from": "Aching", "to": "Accompanied" },
+  "resetName": "W.E.E.P.",
+  "framing": "Loss rearranges the world. This reset helps you tell the truth about the ache, receive God's nearness, invite wise company, and take one gentle next step.",
+  "why": "Grief is love with nowhere to go. Scripture does not erase sorrow; it gives a God who is near to the brokenhearted and a hope that death and loss do not have the last word.",
+  "steps": [
+    {
+      "letter": "W",
+      "title": "Welcome the tears",
+      "verse": "John 11:35; Psalm 56:8",
+      "explanation": "Jesus wept. God counts tears. You do not have to perform strength before you are allowed to mourn.",
+      "action": "Name the loss in one sentence: “I miss ___” or “I lost ___.”"
+    },
+    {
+      "letter": "E",
+      "title": "Enter God's nearness",
+      "verse": "Psalm 34:18",
+      "explanation": "The Lord is near to the brokenhearted. Presence comes before explanation.",
+      "action": "Say: “You are near. Hold me in this ache.”"
+    },
+    {
+      "letter": "E",
+      "title": "Enlist wise company",
+      "verse": "Romans 12:15; Galatians 6:2",
+      "explanation": "Weep with those who weep. Grief is lighter when someone sits with you — friend, pastor, counsellor.",
+      "action": "Name one safe person to tell, or write a message you can send later."
+    },
+    {
+      "letter": "P",
+      "title": "Practice one gentle next step",
+      "verse": "Matthew 5:4; 1 Thessalonians 4:13–14",
+      "explanation": "Blessed are those who mourn. Hope does not cancel grief; it keeps you from grieving as those without hope. Take only the next gentle step.",
+      "action": "Choose one gentle act: rest, a walk, a meal, a prayer, or a memory you honour out loud."
+    }
+  ],
+  "whenToUse": [
+    "Someone you love has died",
+    "A relationship, job, dream, or season has ended",
+    "People expect you to “move on” before you are ready",
+    "Sorrow and faith feel hard to hold together"
+  ],
+  "sixtySecond": [
+    "Name the loss honestly before God.",
+    "Say: “You are near to the brokenhearted.”",
+    "Take one gentle step — rest, tell someone, or honour a memory."
+  ],
+  "prayer": "Father, You see this loss. Thank You that Jesus knows tears. Hold me close, give me wise company, and walk with me one gentle step at a time. Amen.",
+  "scripture": [
+    {
+      "ref": "Psalm 34:18",
+      "insight": "God's nearness meets the brokenhearted."
+    },
+    {
+      "ref": "Matthew 5:4",
+      "insight": "Mourning is not a spiritual failure — comfort is promised."
+    },
+    {
+      "ref": "1 Thessalonians 4:13–14",
+      "insight": "Hope shapes grief; it does not forbid it."
+    }
+  ],
+  "safetyNote": "If grief turns into inability to function, thoughts of self-harm, or prolonged despair, seek pastoral and professional help promptly. If you are in crisis, get emergency support now.",
+  "readNext": [
+    { "href": "/topics/peace-and-trauma", "title": "Peace and trauma" },
+    { "href": "/topics/letting-go", "title": "Letting go" },
+    { "href": "/topics/loneliness", "title": "Loneliness" }
+  ]
+}

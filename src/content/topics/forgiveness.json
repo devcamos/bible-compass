@@ -1,0 +1,75 @@
+{
+  "slug": "forgiveness",
+  "title": "Forgiveness",
+  "icon": "🕊️",
+  "summary": "When resentment still holds you — release vengeance to God without pretending the wound never happened.",
+  "tone": "peace",
+  "kind": "reset",
+  "graceGuardrail": "Forgiving others does not earn God's love. You forgive because you have been forgiven in Christ. Forgiveness never requires unsafe access or instant reconciliation.",
+  "stateChange": { "from": "Wounded", "to": "Free" },
+  "resetName": "F.R.E.E.",
+  "framing": "Forgiveness is a heart posture before God. It is not denial, and it is not the same as trust, access, or reconciliation.",
+  "why": "Bitterness keeps the injury in your hands. Scripture invites you to release revenge to God, receive mercy again, and take wise next steps — including boundaries when harm continues.",
+  "steps": [
+    {
+      "letter": "F",
+      "title": "Face the wound honestly",
+      "verse": "Psalm 139:23–24",
+      "explanation": "Name what hurt. Forgiveness starts with truth, not with pretending it was fine.",
+      "action": "Write one line: “What still hurts is ___.” Keep it specific."
+    },
+    {
+      "letter": "R",
+      "title": "Receive God's mercy again",
+      "verse": "Ephesians 4:32; Colossians 3:13",
+      "explanation": "You forgive as the Lord forgave you. Grace first — then the open hand.",
+      "action": "Say: “Father, I have received mercy. Help me release revenge to You.”"
+    },
+    {
+      "letter": "E",
+      "title": "Entrust justice to God",
+      "verse": "Romans 12:17–19",
+      "explanation": "Do not repay evil for evil. Leave room for God's justice. Forgiveness hands the verdict over.",
+      "action": "Pray: “I release repayment to You. I will not carry vengeance today.”"
+    },
+    {
+      "letter": "E",
+      "title": "Establish wise next steps",
+      "verse": "Luke 17:3–4; Matthew 18:15–17",
+      "explanation": "Forgiveness can be immediate; reconciliation needs truth, repentance, and fruit. Boundaries can be love.",
+      "action": "Choose one wise step: pray, set a boundary, seek counsel, or take no contact if unsafe."
+    }
+  ],
+  "whenToUse": [
+    "A past hurt keeps looping and souring your peace",
+    "You confuse forgiveness with staying in harm",
+    "You want to release bitterness but do not know how",
+    "Someone apologised, but trust is not rebuilt yet"
+  ],
+  "sixtySecond": [
+    "Name the wound in one honest sentence.",
+    "Say: “I forgive as I have been forgiven — and I leave justice with You.”",
+    "Choose one wise step: boundary, prayer, or counsel."
+  ],
+  "prayer": "Father, You see the wound. Thank You for mercy in Jesus. Help me release vengeance to You, keep wise boundaries, and walk free without pretending the harm never mattered. Amen.",
+  "scripture": [
+    {
+      "ref": "Ephesians 4:31–32",
+      "insight": "Put away bitterness; forgive as God in Christ forgave you."
+    },
+    {
+      "ref": "Matthew 18:21–35",
+      "insight": "Mercy received is meant to shape mercy given."
+    },
+    {
+      "ref": "Romans 12:19",
+      "insight": "Leave room for God's justice — forgiveness is not denial of wrong."
+    }
+  ],
+  "safetyNote": "Forgiveness never requires staying in abuse, restoring access, or pretending trust is rebuilt. If you are in danger, get safe help now. Seek wise pastoral and professional support when harm is severe.",
+  "readNext": [
+    { "href": "/topics/peace-and-trauma", "title": "Peace and trauma" },
+    { "href": "/topics/teachings", "title": "Teachings" },
+    { "href": "/topics/jesus-and-the-gospel", "title": "Jesus and the Gospel" }
+  ]
+}

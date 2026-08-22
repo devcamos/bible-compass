@@ -69,17 +69,8 @@
   ],
   "safetyNote": "If lust is tangled with compulsion, porn addiction, abuse, or harm toward others, seek wise pastoral care and appropriate professional help. Prayer and Scripture walk with healing — they do not replace it. If you are in danger, get safe help now.",
   "readNext": [
-    {
-      "href": "/topics/temptation-and-character",
-      "title": "Temptation and character"
-    },
-    {
-      "href": "/topics/jesus-and-the-gospel",
-      "title": "Jesus and the Gospel"
-    },
-    {
-      "href": "/topics/failure",
-      "title": "Failure"
-    }
+    { "href": "/topics/pride", "title": "Pride" },
+    { "href": "/topics/greed", "title": "Greed" },
+    { "href": "/topics/jesus-and-the-gospel", "title": "Jesus and the Gospel" }
   ]
 }
