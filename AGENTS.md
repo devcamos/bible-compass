@@ -13,7 +13,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 Public static-first reader. Notion is private editorial source, never a runtime dependency.
 
 - Do not add accounts, comments, payments, a database, AI chat, newsletter sending, or a native app in v0.1.
-- No direct pushes to Production or Preview. All changes go through Git (`gh pr merge`). Do not `vercel deploy`, `vercel --prod`, `vercel promote`, or first-deploy `--yes`. Preview only from GitHub → Vercel Git wrap until founder GO through git. Keep `git.deploymentEnabled.main: false`. Git → GitHub → pipeline → Preview: `nexus-preview-spine`.
+- No direct pushes to Production or Preview. All changes go through Git (`gh pr merge`). Do not `vercel deploy`, `vercel --prod`, `vercel promote`, or first-deploy `--yes`. Preview from GitHub → Vercel Git wrap. Founder GO 2026-08-22 enabled `git.deploymentEnabled.main: true` so Production tracks `main` via Git only. Do not flip that flag without a new founder ask. Git → GitHub → pipeline → Preview/Production: `nexus-preview-spine` / `sync-repo`.
 - Do not publish live Notion URLs in the reader. Import named topics into `src/content/`.
 - Do not walk personal Notion trees. v0.1 source is the named routes on the Nexus Products item.
 - **Grace is not earned through effort.** Every topic must keep a `graceGuardrail`. Jesus and the Gospel stays the foundational route.
