@@ -3,10 +3,11 @@
 Public, static-first reader for Scripture-backed paths. Notion stays the private editorial workspace. Readers never need a Notion account.
 
 **Local:** http://localhost:3003  
-**GitHub:** https://github.com/devramos/bible-compass  
-**Preview:** https://bible-compass-39elm4g42-devonte-amos-projects.vercel.app  
-**Backlog:** [Bible Compass Web App v0.1](https://app.notion.com/p/3be7233a96ec81ac85cfe0fe538094b9)  
-**Surface:** local + Vercel Preview. Production is founder-gated.
+**GitHub:** https://github.com/devcamos/bible-compass  
+**Surface:** local + Vercel **Preview** from PR branches.  
+**Production:** founder-gated — merges to `main` do **not** auto-deploy Production (`git.deploymentEnabled.main: false` in `vercel.json`). See [DEPLOYMENT.md](./DEPLOYMENT.md).
+
+**Backlog:** [Bible Compass Web App v0.1](https://app.notion.com/p/3be7233a96ec81ac85cfe0fe538094b9)
 
 ## Public routes
 
@@ -35,4 +36,4 @@ Theological guardrail: **grace is not earned through effort.** Every topic carri
 
 ## Out of scope
 
-Accounts, comments, payments, database, AI chat, native app, newsletter sending, and Production release.
+Accounts, comments, payments, database, AI chat, native app, newsletter sending, and unattended Production release.
