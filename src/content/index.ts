@@ -43,12 +43,14 @@ import { trust } from "./topics/trust";
 import { truth } from "./topics/truth";
 import { wealth } from "./topics/wealth";
 import { wife } from "./topics/wife";
+import { worry } from "./topics/worry";
 
 export const topics: Topic[] = [
   jesusAndTheGospel,
   loneliness,
   fear,
   anxiety,
+  worry,
   peaceAndTrauma,
   griefAndLoss,
   forgiveness,

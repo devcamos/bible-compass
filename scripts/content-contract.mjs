@@ -39,6 +39,7 @@ const declaredSlugs = topicFiles.map((slug) => {
 const allowedHrefs = new Set(["/", "/how-to-use", ...topicFiles.map((slug) => `/topics/${slug}`)]);
 
 const requiredHubSlugs = [
+  "worry",
   "letting-go",
   "being-present",
   "peace-and-trauma",
