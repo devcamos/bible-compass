@@ -128,6 +128,69 @@ body {
   padding: 1.25rem;
 }
 
+.bc-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 38%, var(--paper) 0%, transparent 70%),
+    var(--cream);
+  color: var(--ink);
+  opacity: 1;
+  transition: opacity 0.42s ease;
+  pointer-events: none;
+}
+
+[data-theme="dark"] .bc-splash {
+  background:
+    radial-gradient(ellipse 70% 50% at 50% 38%, var(--surface) 0%, transparent 70%),
+    var(--ink);
+  color: var(--paper);
+}
+
+html.splash-seen .bc-splash {
+  display: none;
+}
+
+.bc-splash--fade {
+  opacity: 0;
+}
+
+.bc-splash__mark {
+  font-size: 2.35rem;
+  line-height: 1;
+  animation: bc-splash-rise 0.7s ease both;
+}
+
+.bc-splash__title {
+  margin: 0;
+  font-size: 1.65rem;
+  letter-spacing: -0.02em;
+  color: var(--copper);
+  animation: bc-splash-rise 0.7s ease 0.08s both;
+}
+
+.bc-splash__kicker {
+  margin: 0;
+  animation: bc-splash-rise 0.7s ease 0.14s both;
+}
+
+@keyframes bc-splash-rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 details > summary {
   display: flex;
   align-items: center;

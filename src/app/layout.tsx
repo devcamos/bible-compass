@@ -3,6 +3,7 @@ import { Geist, Source_Serif_4 } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteChrome";
+import { SplashScreen } from "@/components/SplashScreen";
 import { SITE_DESCRIPTION, SITE_NAME, getSiteUrl, isPreviewDeployment } from "@/lib/site";
 import "./globals.css";
 
@@ -22,6 +23,8 @@ const sourceSerif = Source_Serif_4({
 const siteUrl = getSiteUrl();
 
 const themeBootstrap = `(function(){try{var k='bible-compass-theme';var t=localStorage.getItem(k);if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();`;
+
+const splashBootstrap = `(function(){try{if(sessionStorage.getItem('bible-compass-splash-seen')==='1'){document.documentElement.classList.add('splash-seen');}}catch(e){}})();`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -63,6 +66,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
+        <script dangerouslySetInnerHTML={{ __html: splashBootstrap }} />
       </head>
       <body className="flex min-h-full flex-col">
         <script
@@ -77,6 +81,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             }),
           }}
         />
+        <SplashScreen />
         <a className="skip-link" href="#main">
           Skip to content
         </a>
