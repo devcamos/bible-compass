@@ -143,7 +143,7 @@ body {
   color: var(--ink);
   opacity: 1;
   transition: opacity 0.42s ease;
-  pointer-events: none;
+  pointer-events: auto;
 }
 
 [data-theme="dark"] .bc-splash {

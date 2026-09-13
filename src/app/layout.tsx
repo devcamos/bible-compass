@@ -3,7 +3,7 @@ import { Geist, Source_Serif_4 } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteChrome";
-import { SplashScreen } from "@/components/SplashScreen";
+import { SplashController } from "@/components/SplashScreen";
 import { SITE_DESCRIPTION, SITE_NAME, getSiteUrl, isPreviewDeployment } from "@/lib/site";
 import "./globals.css";
 
@@ -24,7 +24,7 @@ const siteUrl = getSiteUrl();
 
 const themeBootstrap = `(function(){try{var k='bible-compass-theme';var t=localStorage.getItem(k);if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();`;
 
-const splashBootstrap = `(function(){try{if(sessionStorage.getItem('bible-compass-splash-seen')==='1'){document.documentElement.classList.add('splash-seen');}}catch(e){}})();`;
+const splashBootstrap = `(function(){try{var seen=sessionStorage.getItem('bible-compass-splash-seen')==='1';var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;if(seen||reduce){document.documentElement.classList.add('splash-seen');if(reduce&&!seen){try{sessionStorage.setItem('bible-compass-splash-seen','1');}catch(e2){}}}}catch(e){}})();`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -81,7 +81,20 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             }),
           }}
         />
-        <SplashScreen />
+        <div
+          id="bc-splash"
+          className="bc-splash"
+          role="status"
+          aria-live="polite"
+          aria-busy="true"
+        >
+          <div className="bc-splash__mark" aria-hidden="true">
+            📖
+          </div>
+          <p className="bc-splash__title bc-title">{SITE_NAME}</p>
+          <p className="bc-splash__kicker bc-kicker">A quiet start</p>
+        </div>
+        <SplashController />
         <a className="skip-link" href="#main">
           Skip to content
         </a>
