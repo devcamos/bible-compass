@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useSyncExternalStore } from "react";
 import { SITE_NAME } from "@/lib/site";
 
 const SPLASH_KEY = "bible-compass-splash-seen";
@@ -28,41 +28,51 @@ function markSeen() {
   }
 }
 
+function subscribeSplashGate() {
+  return () => {};
+}
+
+function getSplashGateSnapshot(): boolean {
+  return alreadySeen();
+}
+
+function getSplashGateServerSnapshot(): boolean {
+  return false;
+}
+
 export function SplashScreen() {
+  const seen = useSyncExternalStore(
+    subscribeSplashGate,
+    getSplashGateSnapshot,
+    getSplashGateServerSnapshot,
+  );
   const [phase, setPhase] = useState<Phase>("show");
 
   useEffect(() => {
-    if (alreadySeen()) {
-      setPhase("gone");
-      return;
-    }
+    if (seen) return;
 
     const reduceMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
-
-    if (reduceMotion) {
-      markSeen();
-      setPhase("gone");
-      return;
-    }
+    const hold = reduceMotion ? 0 : HOLD_MS;
+    const fade = reduceMotion ? 0 : FADE_MS;
 
     const fadeTimer = window.setTimeout(() => {
-      setPhase("fade");
-    }, HOLD_MS);
+      if (!reduceMotion) setPhase("fade");
+    }, hold);
 
     const goneTimer = window.setTimeout(() => {
       markSeen();
       setPhase("gone");
-    }, HOLD_MS + FADE_MS);
+    }, hold + fade);
 
     return () => {
       window.clearTimeout(fadeTimer);
       window.clearTimeout(goneTimer);
     };
-  }, []);
+  }, [seen]);
 
-  if (phase === "gone") return null;
+  if (seen || phase === "gone") return null;
 
   return (
     <div
