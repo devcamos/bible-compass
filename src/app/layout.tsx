@@ -4,6 +4,7 @@ import { Analytics } from "@vercel/analytics/next";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteChrome";
 import { SplashController } from "@/components/SplashScreen";
+import { SHELL_CRITICAL_CSS } from "@/lib/shell-critical-css";
 import { SITE_DESCRIPTION, SITE_NAME, getSiteUrl, isPreviewDeployment } from "@/lib/site";
 import "./globals.css";
 
@@ -24,7 +25,7 @@ const siteUrl = getSiteUrl();
 
 const themeBootstrap = `(function(){try{var k='bible-compass-theme';var t=localStorage.getItem(k);if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();`;
 
-const splashBootstrap = `(function(){try{var seen=sessionStorage.getItem('bible-compass-splash-seen')==='1';var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;if(seen||reduce){document.documentElement.classList.add('splash-seen');if(reduce&&!seen){try{sessionStorage.setItem('bible-compass-splash-seen','1');}catch(e2){}}}}catch(e){}})();`;
+const splashBootstrap = `(function(){try{var seen=sessionStorage.getItem('bible-compass-splash-seen')==='1';var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;if(seen||reduce){document.documentElement.classList.add('splash-seen');if(reduce&&!seen){try{sessionStorage.setItem('bible-compass-splash-seen','1');}catch(e2){}}}}catch(e){}window.addEventListener('error',function(e){var t=e&&e.target;if(!t||!t.tagName)return;if(t.tagName==='SCRIPT'||t.tagName==='LINK'){document.documentElement.classList.add('shell-fault');document.documentElement.classList.remove('splash-seen');}},true);})();`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -65,6 +66,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       suppressHydrationWarning
     >
       <head>
+        <style dangerouslySetInnerHTML={{ __html: SHELL_CRITICAL_CSS }} />
         <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
         <script dangerouslySetInnerHTML={{ __html: splashBootstrap }} />
       </head>
@@ -93,8 +95,26 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           </div>
           <p className="bc-splash__title bc-title">{SITE_NAME}</p>
           <p className="bc-splash__kicker bc-kicker">A quiet start</p>
+          <div className="bc-splash__recover">
+            <p data-splash-recover-copy>
+              Something needed for this page did not finish loading. Check your
+              connection, then try again.
+            </p>
+            <button type="button" className="bc-splash__retry" data-splash-retry>
+              Try again
+            </button>
+          </div>
         </div>
         <SplashController />
+        <noscript>
+          <div className="mx-auto max-w-[40rem] px-4 py-8">
+            <p className="bc-title text-xl">Bible Compass</p>
+            <p>
+              JavaScript is off, so the splash and interactive chrome stay
+              quiet. The reader content below still works.
+            </p>
+          </div>
+        </noscript>
         <a className="skip-link" href="#main">
           Skip to content
         </a>
