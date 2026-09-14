@@ -2,13 +2,12 @@
 
 import { SHELL_CRITICAL_CSS } from "@/lib/shell-critical-css";
 
-export default function GlobalError({
-  error,
-  retry,
-}: {
+type GlobalRouteErrorProps = Readonly<{
   error: Error & { digest?: string };
   retry: () => void;
-}) {
+}>;
+
+export default function GlobalRouteError({ error, retry }: GlobalRouteErrorProps) {
   return (
     <html lang="en">
       <head>

@@ -9,7 +9,7 @@ const FADE_MS = 420;
 const READY_WAIT_MS = 8000;
 
 function markSeen() {
-  document.documentElement.setAttribute("data-splash", "seen");
+  document.documentElement.dataset.splash = "seen";
   try {
     sessionStorage.setItem(SPLASH_KEY, "1");
   } catch {
@@ -18,7 +18,7 @@ function markSeen() {
 }
 
 function clearShellFault() {
-  document.documentElement.removeAttribute("data-shell");
+  delete document.documentElement.dataset.shell;
 }
 
 function getSplashEl() {
@@ -32,8 +32,8 @@ function shellHasContent(): boolean {
 
 function showShellFault(message: string) {
   const root = document.documentElement;
-  root.setAttribute("data-shell", "fault");
-  root.removeAttribute("data-splash");
+  root.dataset.shell = "fault";
+  delete root.dataset.splash;
   const el = getSplashEl();
   if (!el) return;
   el.classList.remove("bc-splash--fade");
@@ -45,7 +45,7 @@ function showShellFault(message: string) {
 }
 
 function finishSplash(el: HTMLElement, reduceMotion: boolean) {
-  if (document.documentElement.getAttribute("data-shell") === "fault") return;
+  if (document.documentElement.dataset.shell === "fault") return;
 
   el.setAttribute("aria-busy", "false");
 
@@ -56,7 +56,7 @@ function finishSplash(el: HTMLElement, reduceMotion: boolean) {
 
   el.classList.add("bc-splash--fade");
   window.setTimeout(() => {
-    if (document.documentElement.getAttribute("data-shell") === "fault") {
+    if (document.documentElement.dataset.shell === "fault") {
       el.classList.remove("bc-splash--fade");
       return;
     }
@@ -90,7 +90,7 @@ export function SplashController() {
 
     const tryFinish = () => {
       if (finished) return;
-      if (document.documentElement.getAttribute("data-shell") === "fault") return;
+      if (document.documentElement.dataset.shell === "fault") return;
       if (!shellHasContent()) return;
       if (document.readyState === "loading") return;
       finished = true;
@@ -111,10 +111,7 @@ export function SplashController() {
     };
 
     const onOffline = () => {
-      if (
-        finished &&
-        document.documentElement.getAttribute("data-splash") === "seen"
-      ) {
+      if (finished && document.documentElement.dataset.splash === "seen") {
         return;
       }
       showShellFault(
@@ -126,7 +123,7 @@ export function SplashController() {
     window.addEventListener("offline", onOffline);
     document.addEventListener("readystatechange", tryFinish);
 
-    if (document.documentElement.getAttribute("data-splash") === "seen") {
+    if (document.documentElement.dataset.splash === "seen") {
       finished = true;
     } else {
       holdTimer = window.setTimeout(tryFinish, HOLD_MS);

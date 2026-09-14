@@ -2,13 +2,12 @@
 
 import Link from "next/link";
 
-export default function Error({
-  error,
-  retry,
-}: {
+type RouteErrorProps = Readonly<{
   error: Error & { digest?: string };
   retry: () => void;
-}) {
+}>;
+
+export default function RouteError({ error, retry }: RouteErrorProps) {
   return (
     <section className="bc-shell-fallback" aria-labelledby="shell-error-title">
       <p className="bc-kicker m-0 mb-2">A quiet pause</p>
