@@ -9,12 +9,16 @@ const FADE_MS = 420;
 const READY_WAIT_MS = 8000;
 
 function markSeen() {
-  document.documentElement.classList.add("splash-seen");
+  document.documentElement.setAttribute("data-splash", "seen");
   try {
     sessionStorage.setItem(SPLASH_KEY, "1");
   } catch {
     /* ignore private-mode storage failures */
   }
+}
+
+function clearShellFault() {
+  document.documentElement.removeAttribute("data-shell");
 }
 
 function getSplashEl() {
@@ -28,8 +32,8 @@ function shellHasContent(): boolean {
 
 function showShellFault(message: string) {
   const root = document.documentElement;
-  root.classList.add("shell-fault");
-  root.classList.remove("splash-seen");
+  root.setAttribute("data-shell", "fault");
+  root.removeAttribute("data-splash");
   const el = getSplashEl();
   if (!el) return;
   el.classList.remove("bc-splash--fade");
@@ -41,7 +45,7 @@ function showShellFault(message: string) {
 }
 
 function finishSplash(el: HTMLElement, reduceMotion: boolean) {
-  if (document.documentElement.classList.contains("shell-fault")) return;
+  if (document.documentElement.getAttribute("data-shell") === "fault") return;
 
   el.setAttribute("aria-busy", "false");
 
@@ -52,7 +56,7 @@ function finishSplash(el: HTMLElement, reduceMotion: boolean) {
 
   el.classList.add("bc-splash--fade");
   window.setTimeout(() => {
-    if (document.documentElement.classList.contains("shell-fault")) {
+    if (document.documentElement.getAttribute("data-shell") === "fault") {
       el.classList.remove("bc-splash--fade");
       return;
     }
@@ -62,7 +66,7 @@ function finishSplash(el: HTMLElement, reduceMotion: boolean) {
 
 /**
  * Hides the static #bc-splash node only after the app shell looks ready.
- * Keeps the node in the DOM so a later asset/network fault can reopen branded recovery.
+ * Uses data-* attributes (not className) so React hydration cannot wipe shell state.
  */
 export function SplashController() {
   useEffect(() => {
@@ -86,11 +90,12 @@ export function SplashController() {
 
     const tryFinish = () => {
       if (finished) return;
-      if (document.documentElement.classList.contains("shell-fault")) return;
+      if (document.documentElement.getAttribute("data-shell") === "fault") return;
       if (!shellHasContent()) return;
       if (document.readyState === "loading") return;
       finished = true;
       window.clearTimeout(faultTimer);
+      clearShellFault();
       finishSplash(el, reduceMotion);
     };
 
@@ -106,7 +111,10 @@ export function SplashController() {
     };
 
     const onOffline = () => {
-      if (finished && document.documentElement.classList.contains("splash-seen")) {
+      if (
+        finished &&
+        document.documentElement.getAttribute("data-splash") === "seen"
+      ) {
         return;
       }
       showShellFault(
@@ -118,8 +126,7 @@ export function SplashController() {
     window.addEventListener("offline", onOffline);
     document.addEventListener("readystatechange", tryFinish);
 
-    if (document.documentElement.classList.contains("splash-seen")) {
-      // Revisit: CSS already hides splash; still watch for asset faults.
+    if (document.documentElement.getAttribute("data-splash") === "seen") {
       finished = true;
     } else {
       holdTimer = window.setTimeout(tryFinish, HOLD_MS);

@@ -212,12 +212,12 @@ body {
   color: var(--paper);
 }
 
-html.splash-seen:not(.shell-fault) .bc-splash {
+html[data-splash="seen"]:not([data-shell="fault"]) .bc-splash {
   display: none;
 }
 
-html.shell-fault .bc-splash,
-html.shell-fault .bc-splash.bc-splash--fade {
+html[data-shell="fault"] .bc-splash,
+html[data-shell="fault"] .bc-splash.bc-splash--fade {
   display: flex !important;
   opacity: 1 !important;
   pointer-events: auto;
@@ -253,7 +253,7 @@ html.shell-fault .bc-splash.bc-splash--fade {
   text-align: center;
 }
 
-html.shell-fault .bc-splash__recover {
+html[data-shell="fault"] .bc-splash__recover {
   display: block;
 }
 

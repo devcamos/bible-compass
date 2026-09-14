@@ -25,7 +25,7 @@ const siteUrl = getSiteUrl();
 
 const themeBootstrap = `(function(){try{var k='bible-compass-theme';var t=localStorage.getItem(k);if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();`;
 
-const splashBootstrap = `(function(){try{var seen=sessionStorage.getItem('bible-compass-splash-seen')==='1';var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;if(seen||reduce){document.documentElement.classList.add('splash-seen');if(reduce&&!seen){try{sessionStorage.setItem('bible-compass-splash-seen','1');}catch(e2){}}}}catch(e){}window.addEventListener('error',function(e){var t=e&&e.target;if(!t||!t.tagName)return;if(t.tagName==='SCRIPT'||t.tagName==='LINK'){document.documentElement.classList.add('shell-fault');document.documentElement.classList.remove('splash-seen');}},true);})();`;
+const splashBootstrap = `(function(){try{var root=document.documentElement;var seen=sessionStorage.getItem('bible-compass-splash-seen')==='1';var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;if(seen||reduce){root.setAttribute('data-splash','seen');if(reduce&&!seen){try{sessionStorage.setItem('bible-compass-splash-seen','1');}catch(e2){}}}}catch(e){}window.addEventListener('error',function(e){var t=e&&e.target;if(!t||!t.tagName)return;if(t.tagName==='SCRIPT'||t.tagName==='LINK'){document.documentElement.setAttribute('data-shell','fault');document.documentElement.removeAttribute('data-splash');}},true);})();`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
