@@ -34,7 +34,7 @@ export const homeCopy = {
 
 export const entryPaths: EntryPath[] = [
   {
-    href: "/topics/anxiety",
+    href: "/topics/peace",
     icon: "🕊️",
     title: "I need peace",
     summary: "When your mind feels heavy, uncertain, or afraid.",
@@ -73,6 +73,7 @@ export const lifeAreas: LifeArea[] = [
       "fear",
       "anxiety",
       "worry",
+      "peace",
       "peace-and-trauma",
       "grief-and-loss",
       "forgiveness",
