@@ -14,6 +14,12 @@ export const motivationalMen: Topic = {
     "Read each story in its books. Notice God's character, not only human grit.",
   sections: [
     {
+      heading: "Jesus — love and sacrifice",
+      paragraphs: [
+        "“Greater love has no one than this: to lay down one’s life for one’s friends.” (John 15:13) The model of perfect love. Everyone else on this page points here.",
+      ],
+    },
+    {
       heading: "Abraham — faith in the unknown",
       paragraphs: [
         "“Against all hope, Abraham in hope believed.” (Romans 4:18) He left what was familiar to follow God's call without knowing the whole road.",
@@ -47,12 +53,6 @@ export const motivationalMen: Topic = {
       heading: "Paul — transformed purpose",
       paragraphs: [
         "“I have fought the good fight… I have kept the faith.” (2 Timothy 4:7) From persecutor to preacher by mercy, not résumé.",
-      ],
-    },
-    {
-      heading: "Jesus — love and sacrifice",
-      paragraphs: [
-        "“Greater love has no one than this: to lay down one’s life for one’s friends.” (John 15:13) The model of perfect love. Everyone else on this page points here.",
       ],
     },
   ],
