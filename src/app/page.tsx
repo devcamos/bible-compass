@@ -2,15 +2,24 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { PathCard } from "@/components/PathCard";
 import { LifeAreaList } from "@/components/LifeAreaList";
+import { VerseOfTheDay } from "@/components/VerseOfTheDay";
 import { entryPaths, homeCopy, lifeAreas } from "@/content/home";
+import { getVerseOfTheDay } from "@/lib/verse-of-the-day";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
 };
 
+/** Revalidate at most once per UTC day so Preview/Production pick up the new verse on schedule. */
+export const revalidate = 86_400;
+
 export default function HomePage() {
+  const verse = getVerseOfTheDay();
+
   return (
     <div>
+      <VerseOfTheDay verse={verse} />
+
       <section className="mb-6 rounded-2xl border border-border bg-card p-[22px]">
         <h1 className="bc-title m-0 mb-2 text-[1.85rem] leading-tight sm:text-[2.2rem]">
           {homeCopy.welcomeTitle}

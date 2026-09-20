@@ -1,0 +1,176 @@
+import type { VerseOfTheDayEntry } from "./types";
+
+/**
+ * Curated rotation list (imported editorial source — not fetched at runtime).
+ * Indexed by UTC calendar day from the anchor in `getVerseOfTheDay`.
+ */
+export const verseOfTheDayList: VerseOfTheDayEntry[] = [
+  {
+    reference: "Psalm 9:1",
+    translation: "NIV",
+    text: "I will give thanks to you, Lord, with all my heart; I will tell of all your wonderful deeds.",
+    topicSlug: "faith",
+  },
+  {
+    reference: "Psalm 37:4",
+    translation: "NIV",
+    text: "Take delight in the Lord, and he will give you the desires of your heart.",
+    topicSlug: "trust",
+  },
+  {
+    reference: "Romans 8:6",
+    translation: "NIV",
+    text: "The mind governed by the flesh is death, but the mind governed by the Spirit is life and peace.",
+    topicSlug: "self-control",
+  },
+  {
+    reference: "Psalm 121:2",
+    translation: "NIV",
+    text: "My help comes from the Lord, the Maker of heaven and earth.",
+    topicSlug: "safety-and-gods-protection",
+  },
+  {
+    reference: "Luke 16:10",
+    translation: "NIV",
+    text: "Whoever can be trusted with very little can also be trusted with much, and whoever is dishonest with very little will also be dishonest with much.",
+    topicSlug: "diligence",
+  },
+  {
+    reference: "Galatians 2:20",
+    translation: "NIV",
+    text: "I have been crucified with Christ and I no longer live, but Christ lives in me. The life I now live in the body, I live by faith in the Son of God, who loved me and gave himself for me.",
+    topicSlug: "jesus-and-the-gospel",
+  },
+  {
+    reference: "1 John 3:18",
+    translation: "NIV",
+    text: "Dear children, let us not love with words or speech but with actions and in truth.",
+    topicSlug: "friendship",
+  },
+  {
+    reference: "Jeremiah 29:13",
+    translation: "NIV",
+    text: "You will seek me and find me when you seek me with all your heart.",
+    topicSlug: "faith",
+  },
+  {
+    reference: "Philippians 4:6–7",
+    translation: "NIV",
+    text: "Do not be anxious about anything, but in every situation, by prayer and petition, with thanksgiving, present your requests to God. And the peace of God, which transcends all understanding, will guard your hearts and your minds in Christ Jesus.",
+    topicSlug: "anxiety",
+  },
+  {
+    reference: "Isaiah 41:10",
+    translation: "NIV",
+    text: "So do not fear, for I am with you; do not be dismayed, for I am your God. I will strengthen you and help you; I will uphold you with my righteous right hand.",
+    topicSlug: "fear",
+  },
+  {
+    reference: "Joshua 1:9",
+    translation: "NIV",
+    text: "Have I not commanded you? Be strong and courageous. Do not be afraid; do not be discouraged, for the Lord your God will be with you wherever you go.",
+    topicSlug: "courage",
+  },
+  {
+    reference: "Proverbs 3:5",
+    translation: "NIV",
+    text: "Trust in the Lord with all your heart and lean not on your own understanding.",
+    topicSlug: "trust",
+  },
+  {
+    reference: "Psalm 46:10",
+    translation: "NIV",
+    text: "Be still, and know that I am God; I will be exalted among the nations, I will be exalted in the earth.",
+    topicSlug: "being-present",
+  },
+  {
+    reference: "Matthew 11:28–30",
+    translation: "NIV",
+    text: "Come to me, all you who are weary and burdened, and I will give you rest. Take my yoke upon you and learn from me, for I am gentle and humble in heart, and you will find rest for your souls.",
+    topicSlug: "letting-go",
+  },
+  {
+    reference: "Romans 8:28",
+    translation: "NIV",
+    text: "And we know that in all things God works for the good of those who love him, who have been called according to his purpose.",
+    topicSlug: "failure",
+  },
+  {
+    reference: "2 Corinthians 5:7",
+    translation: "NIV",
+    text: "For we live by faith, not by sight.",
+    topicSlug: "faith",
+  },
+  {
+    reference: "Hebrews 11:1",
+    translation: "NIV",
+    text: "Now faith is confidence in what we hope for and assurance about what we do not see.",
+    topicSlug: "faith",
+  },
+  {
+    reference: "Colossians 3:23",
+    translation: "NIV",
+    text: "Whatever you do, work at it with all your heart, as working for the Lord, not for human masters.",
+    topicSlug: "hard-work",
+  },
+  {
+    reference: "Galatians 6:9",
+    translation: "NIV",
+    text: "Let us not become weary in doing good, for at the proper time we will reap a harvest if we do not give up.",
+    topicSlug: "patience",
+  },
+  {
+    reference: "Psalm 23:1",
+    translation: "NIV",
+    text: "The Lord is my shepherd, I lack nothing.",
+    topicSlug: "peace-and-trauma",
+  },
+  {
+    reference: "1 Peter 5:7",
+    translation: "NIV",
+    text: "Cast all your anxiety on him because he cares for you.",
+    topicSlug: "worry",
+  },
+  {
+    reference: "Ephesians 4:32",
+    translation: "NIV",
+    text: "Be kind and compassionate to one another, forgiving each other, just as in Christ God forgave you.",
+    topicSlug: "forgiveness",
+  },
+  {
+    reference: "James 1:22",
+    translation: "NIV",
+    text: "Do not merely listen to the word, and so deceive yourselves. Do what it says.",
+    topicSlug: "courage",
+  },
+  {
+    reference: "Micah 6:8",
+    translation: "NIV",
+    text: "He has shown you, O mortal, what is good. And what does the Lord require of you? To act justly and to love mercy and to walk humbly with your God.",
+    topicSlug: "teachings",
+  },
+  {
+    reference: "Lamentations 3:22–23",
+    translation: "NIV",
+    text: "Because of the Lord’s great love we are not consumed, for his compassions never fail. They are new every morning; great is your faithfulness.",
+    topicSlug: "character-of-god",
+  },
+  {
+    reference: "John 14:6",
+    translation: "NIV",
+    text: "Jesus answered, “I am the way and the truth and the life. No one comes to the Father except through me.”",
+    topicSlug: "jesus-and-the-gospel",
+  },
+  {
+    reference: "Psalm 34:18",
+    translation: "NIV",
+    text: "The Lord is close to the brokenhearted and saves those who are crushed in spirit.",
+    topicSlug: "grief-and-loss",
+  },
+  {
+    reference: "Proverbs 16:3",
+    translation: "NIV",
+    text: "Commit to the Lord whatever you do, and he will establish your plans.",
+    topicSlug: "success",
+  },
+];
