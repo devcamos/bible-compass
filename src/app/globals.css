@@ -187,6 +187,34 @@ body {
   padding: 1.25rem;
 }
 
+.bc-votd {
+  border-radius: 1rem;
+  border: 1px solid var(--border);
+  padding: 1.35rem 1.25rem;
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--moss) 18%, var(--card)) 0%,
+      var(--card) 55%,
+      color-mix(in srgb, var(--copper) 8%, var(--card)) 100%
+    );
+}
+
+.bc-votd__quote {
+  border-left: 3px solid var(--copper);
+  padding-left: 1rem;
+}
+
+[data-theme="dark"] .bc-votd {
+  background:
+    linear-gradient(
+      145deg,
+      color-mix(in srgb, var(--moss-2) 35%, var(--card)) 0%,
+      var(--card) 60%,
+      color-mix(in srgb, var(--copper) 12%, var(--surface)) 100%
+    );
+}
+
 .bc-splash {
   position: fixed;
   inset: 0;

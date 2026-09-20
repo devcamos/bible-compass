@@ -139,3 +139,31 @@ test("Jesus page keeps the grace-before-effort language", () => {
   const jesus = read(join(src, "content/topics/jesus-and-the-gospel.ts"));
   assert.ok(/grace through faith/i.test(jesus) || /not the price of being accepted/i.test(jesus));
 });
+
+test("verse of the day list is curated and topic links stay in scope", () => {
+  const dbPath = join(src, "content/verse-of-the-day/verse-db.json");
+  const rows = JSON.parse(read(dbPath));
+  assert.ok(Array.isArray(rows) && rows.length >= 7, "verse rotation list should cover at least a week");
+  const references = rows.map((row) => row.reference);
+  assert.equal(new Set(references).size, references.length, "duplicate references in VOTD list");
+  for (const row of rows) {
+    assert.ok(typeof row.text === "string" && row.text.trim().length >= 12, "VOTD entry missing verse text");
+    assert.ok(typeof row.topicSlug === "string", "VOTD entry missing topicSlug");
+    assert.ok(topicFiles.includes(row.topicSlug), `VOTD topicSlug not in reader: ${row.topicSlug}`);
+  }
+  assert.match(read(join(src, "content/verse-of-the-day/verses.ts")), /VerseOfTheDay\.fromDraft/);
+});
+
+test("verse of the day schedule uses UTC calendar days", () => {
+  const MS_PER_DAY = 86_400_000;
+  const epoch = Date.UTC(2026, 0, 1);
+  const dayIndex = (date) => {
+    const utcMidnight = Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate());
+    return Math.floor((utcMidnight - epoch) / MS_PER_DAY);
+  };
+  const morning = new Date(Date.UTC(2026, 8, 20, 8, 15));
+  const evening = new Date(Date.UTC(2026, 8, 20, 22, 45));
+  const nextDay = new Date(Date.UTC(2026, 8, 21, 0, 5));
+  assert.equal(dayIndex(morning), dayIndex(evening));
+  assert.equal(dayIndex(nextDay), dayIndex(morning) + 1);
+});
