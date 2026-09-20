@@ -26,7 +26,7 @@ export function VerseOfTheDay({ verse }: VerseOfTheDayProps) {
             href={`/topics/${verse.topicSlug}`}
             className="text-sm font-medium text-link no-underline"
           >
-            Explore this path in Bible Compass
+            Explore further
           </Link>
         </p>
       ) : null}
