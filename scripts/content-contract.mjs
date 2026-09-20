@@ -141,18 +141,17 @@ test("Jesus page keeps the grace-before-effort language", () => {
 });
 
 test("verse of the day list is curated and topic links stay in scope", () => {
-  const versesPath = join(src, "content/verse-of-the-day/verses.ts");
-  const versesSource = read(versesPath);
-  const references = [...versesSource.matchAll(/reference:\s*"([^"]+)"/g)].map((m) => m[1]);
-  assert.ok(references.length >= 7, "verse rotation list should cover at least a week");
+  const dbPath = join(src, "content/verse-of-the-day/verse-db.json");
+  const rows = JSON.parse(read(dbPath));
+  assert.ok(Array.isArray(rows) && rows.length >= 7, "verse rotation list should cover at least a week");
+  const references = rows.map((row) => row.reference);
   assert.equal(new Set(references).size, references.length, "duplicate references in VOTD list");
-  for (const match of versesSource.matchAll(/topicSlug:\s*"([^"]+)"/g)) {
-    const slug = match[1];
-    assert.ok(topicFiles.includes(slug), `VOTD topicSlug not in reader: ${slug}`);
+  for (const row of rows) {
+    assert.ok(typeof row.text === "string" && row.text.trim().length >= 12, "VOTD entry missing verse text");
+    assert.ok(typeof row.topicSlug === "string", "VOTD entry missing topicSlug");
+    assert.ok(topicFiles.includes(row.topicSlug), `VOTD topicSlug not in reader: ${row.topicSlug}`);
   }
-  for (const match of versesSource.matchAll(/text:\s*"([^"]{12,})"/g)) {
-    assert.ok(match[1].trim().length >= 12, "VOTD entry missing verse text");
-  }
+  assert.match(read(join(src, "content/verse-of-the-day/verses.ts")), /VerseOfTheDay\.fromDraft/);
 });
 
 test("verse of the day schedule uses UTC calendar days", () => {

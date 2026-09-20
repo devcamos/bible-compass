@@ -1,9 +1,9 @@
 import Link from "next/link";
 import type { VerseOfTheDayEntry } from "@/content/verse-of-the-day/types";
 
-type VerseOfTheDayProps = {
+type VerseOfTheDayProps = Readonly<{
   verse: VerseOfTheDayEntry;
-};
+}>;
 
 export function VerseOfTheDay({ verse }: VerseOfTheDayProps) {
   return (
