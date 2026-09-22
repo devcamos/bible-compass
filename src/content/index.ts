@@ -28,6 +28,7 @@ import { motivationalMen } from "./topics/motivational-men";
 import { motivationalWomen } from "./topics/motivational-women";
 import { parents } from "./topics/parents";
 import { patience } from "./topics/patience";
+import { peace } from "./topics/peace";
 import { peaceAndTrauma } from "./topics/peace-and-trauma";
 import { peopleOfTheBible } from "./topics/people-of-the-bible";
 import { prayerAndWorship } from "./topics/prayer-and-worship";
@@ -51,6 +52,7 @@ export const topics: Topic[] = [
   fear,
   anxiety,
   worry,
+  peace,
   peaceAndTrauma,
   griefAndLoss,
   forgiveness,

@@ -75,8 +75,8 @@ export const worry: Topic = {
   safetyNote:
     "Constant worry that disrupts sleep, appetite, or daily life is also a health signal. Seek appropriate professional care. Spiritual practice does not replace clinical support.",
   readNext: [
+    { href: "/topics/peace", title: "Peace" },
     { href: "/topics/anxiety", title: "Anxiety" },
     { href: "/topics/letting-go", title: "Letting go" },
-    { href: "/topics/jesus-and-the-gospel", title: "Jesus and the Gospel" },
   ],
 };
