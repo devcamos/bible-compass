@@ -24,7 +24,7 @@ Raising the PR is not done. Own the remote gate until it is green **and the PR i
    - Cloud Agent: `ManagePullRequest` with `action: update_pr`, `branch_name` (or `pr_url`), and **`draft: false`**.
    - CLI: `gh pr ready <n>`.
    - Do not seek human review while the PR is still draft.
-4. Green + open → continue with `nexus-pr-review` handoff (Preview URL, confirm table, localhost last).
+4. Green + open → continue with `nexus-pr-review` handoff. **Cloud Agent:** Preview URL for UI proof and handoff — do not start `npm run dev`. **Local founder session:** Preview for reviewers, localhost last in the confirm block.
 5. Red → `fix-broken-pipeline`, fix, push, restart from step 1 with the new head SHA.
 
 ## Done only when
