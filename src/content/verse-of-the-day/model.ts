@@ -1,4 +1,5 @@
 import type { VerseOfTheDayEntry } from "./types";
+import { wrapVerseInQuotes } from "@/lib/verse-quote";
 
 export type VerseOfTheDayDraft = {
   reference: string;
@@ -27,7 +28,7 @@ export class VerseOfTheDay implements VerseOfTheDayEntry {
     return new VerseOfTheDay({
       reference: draft.reference,
       translation: draft.translation ?? DEFAULT_TRANSLATION,
-      text: draft.text,
+      text: wrapVerseInQuotes(draft.text),
       topicSlug: draft.topicSlug,
     });
   }
