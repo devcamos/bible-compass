@@ -19,7 +19,7 @@ export function LifeAreaList({
   return (
     <details
       className="border-b border-border py-3"
-      open={defaultOpen}
+      {...(defaultOpen ? { open: true } : {})}
     >
       <summary className="cursor-pointer py-2 text-[1.02rem] font-medium">
         <span className="summary-label">
