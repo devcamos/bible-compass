@@ -35,6 +35,10 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   applicationName: SITE_NAME,
+  appleWebApp: {
+    capable: true,
+    title: SITE_NAME,
+  },
   openGraph: {
     type: "website",
     locale: "en_GB",
