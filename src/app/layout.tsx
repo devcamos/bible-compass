@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { Geist, Source_Serif_4 } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteChrome";
@@ -7,19 +6,6 @@ import { SplashController } from "@/components/SplashScreen";
 import { SHELL_CRITICAL_CSS } from "@/lib/shell-critical-css";
 import { SITE_DESCRIPTION, SITE_NAME, getSiteUrl, isPreviewDeployment } from "@/lib/site";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const sourceSerif = Source_Serif_4({
-  variable: "--font-source-serif",
-  subsets: ["latin"],
-  display: "swap",
-  weight: ["400", "600"],
-});
 
 const siteUrl = getSiteUrl();
 
@@ -62,7 +48,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${sourceSerif.variable} h-full antialiased`}
+      className="h-full antialiased"
       suppressHydrationWarning
     >
       <head>
