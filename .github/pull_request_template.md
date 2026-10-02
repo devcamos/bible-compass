@@ -3,7 +3,7 @@
 
 - Product: Bible Compass
 - Backlog / issue: https://app.notion.com/p/3be7233a96ec81ac85cfe0fe538094b9
-- Surface: local / Preview / Production (Production only if explicitly requested)
+- Surface: local / Preview / Production (Production only after founder approval)
 
 ## Planned Change
 - Intent:
@@ -14,7 +14,9 @@
 ## Test plan
 - [ ] DoR was met before implementation
 - [ ] Product verify command passed (`npm run verify`)
+- [ ] Runtime smoke test passed for `/` and `/health`
 - [ ] E2E journey from `products/agent-onboarding/E2E.md` clicked on local
+- [ ] Vercel Preview status is green
 - [ ] Preview URL checked (PR review surface — not localhost)
 - [ ] Nexus brand colours on UI + share/Open Graph card (`refinery-brand`; no invented palette)
 - [ ] Tests updated; new code covered (target ≥90% where coverage is measured — currently **Not measured**)
@@ -24,6 +26,12 @@
 - [ ] Auth-scoped data access unchanged or reviewed
 - [ ] Docs / backlog updated
 - [ ] How-to / Preview / practice / Nexus ops change: Notion + `#reality-orbit` card + products `agent-onboarding/HOW-TO-UPDATES.md` (not Slack-only)
+
+## Release boundary
+- [ ] Agent has **not** merged this PR
+- [ ] Auto-merge is disabled
+- [ ] Founder approval is required before merge
+- [ ] Green means **ready for founder review**, not permission to release
 
 ## Risk
 <!-- Remaining risk. What you did not test. -->
