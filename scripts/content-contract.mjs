@@ -40,6 +40,7 @@ const allowedHrefs = new Set(["/", "/how-to-use", ...topicFiles.map((slug) => `/
 
 const requiredHubSlugs = [
   "worry",
+  "peace",
   "letting-go",
   "being-present",
   "peace-and-trauma",
