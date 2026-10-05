@@ -33,7 +33,7 @@ export function TopicView({ topic }: TopicViewProps) {
       <Breadcrumb current={topic.title} />
 
       <header className="mb-5">
-        <h1 className="bc-title m-0 mb-2 text-[1.85rem] leading-tight sm:text-[2.15rem]">
+        <h1 className="bc-title bc-heading m-0 mb-2 leading-tight">
           <span aria-hidden="true">{topic.icon}</span> {topic.title}
         </h1>
         <p className="m-0 text-[1.02rem] leading-7 text-muted-foreground">{topic.summary}</p>
@@ -72,7 +72,7 @@ export function TopicView({ topic }: TopicViewProps) {
 
       {topic.kind === "reset" && topic.steps ? (
         <section aria-labelledby="reset-heading">
-          <h2 id="reset-heading" className="bc-title mb-3 text-xl">
+          <h2 id="reset-heading" className="bc-title bc-heading mb-3">
             The {topic.resetName} reset
           </h2>
           {topic.steps.map((step, index) => (
@@ -103,7 +103,7 @@ export function TopicView({ topic }: TopicViewProps) {
 
       {topic.sections?.map((section) => (
         <section key={section.heading} className="mt-8">
-          <h2 className="bc-title mb-3 text-xl">{section.heading}</h2>
+          <h2 className="bc-title bc-heading mb-3">{section.heading}</h2>
           {section.paragraphs.map((paragraph) => (
             <p key={paragraph} className="mb-3 text-[1.02rem] leading-8">
               {paragraph}
@@ -153,7 +153,7 @@ export function TopicView({ topic }: TopicViewProps) {
 
       {topic.whenToUse?.length ? (
         <section className="mt-8">
-          <h2 className="bc-title mb-3 text-xl">When to use this</h2>
+          <h2 className="bc-title bc-heading mb-3">When to use this</h2>
           <ul className="my-0 pl-6">
             {topic.whenToUse.map((item) => (
               <li key={item} className="py-1.5 leading-7">
@@ -166,7 +166,7 @@ export function TopicView({ topic }: TopicViewProps) {
 
       {topic.sixtySecond?.length ? (
         <section className="mt-8 rounded-2xl border border-border bg-card p-5">
-          <h2 className="bc-title mt-0 mb-3 text-xl">
+          <h2 className="bc-title bc-heading mt-0 mb-3">
             {topic.kind === "foundation" ? "Try this" : "60-second reset"}
           </h2>
           <ol className="my-0 space-y-2 pl-5">
@@ -181,7 +181,7 @@ export function TopicView({ topic }: TopicViewProps) {
 
       {topic.prayer ? (
         <section className="mt-8">
-          <h2 className="bc-title mb-3 text-xl">A short prayer</h2>
+          <h2 className="bc-title bc-heading mb-3">A short prayer</h2>
           <p className="m-0 rounded-2xl border-l-4 border-l-copper bg-card px-4 py-3 text-[1.02rem] leading-8 whitespace-pre-wrap">
             {topic.prayer}
           </p>
@@ -190,7 +190,7 @@ export function TopicView({ topic }: TopicViewProps) {
 
       {topic.scripture?.length ? (
         <section className="mt-8">
-          <h2 className="bc-title mb-3 text-xl">Scripture in context</h2>
+          <h2 className="bc-title bc-heading mb-3">Scripture in context</h2>
           <ul className="my-0 pl-6">
             {topic.scripture.map((item) => (
               <li key={item.ref} className="py-1.5 leading-7">
@@ -212,12 +212,12 @@ export function TopicView({ topic }: TopicViewProps) {
       ) : null}
 
       {concepts.length ? <nav className="mt-8" aria-label="Related biblical concepts">
-        <h2 className="bc-title mb-3 text-xl">Related concepts</h2>
+        <h2 className="bc-title bc-heading mb-3">Related concepts</h2>
         <div className="flex flex-wrap gap-2.5">{concepts.map((concept) => <Link key={concept.id} href={`/concepts/${concept.slug}`} className="bc-btn bc-btn--quiet">{concept.title}</Link>)}</div>
       </nav> : null}
 
       <nav className="mt-8" aria-label="Read next">
-        <h2 className="bc-title mb-3 text-xl">Read next</h2>
+        <h2 className="bc-title bc-heading mb-3">Read next</h2>
         <div className="flex flex-wrap gap-2.5">
           {topic.readNext.map((item) => (
             <Link

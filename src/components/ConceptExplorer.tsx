@@ -83,7 +83,7 @@ export function ConceptExplorer({ entries, categories, types, domains, lifeAreas
         <ul className="m-0 list-none space-y-3 p-0">
           {filtered.map((entry) => (
             <li key={entry.id} className="rounded-2xl border border-border bg-card p-5">
-              <h2 className="bc-title mt-0 mb-2 text-xl"><Link href={`/concepts/${entry.slug}`} className="text-link">{entry.title}</Link></h2>
+              <h2 className="bc-title bc-heading mt-0 mb-2"><Link href={`/concepts/${entry.slug}`} className="text-link">{entry.title}</Link></h2>
               <p className="leading-7 text-muted-foreground">{entry.summary}</p>
               <dl className="space-y-2 text-sm">
                 {[['Family', label(categories, [entry.categoryId])], ['Type', label(types, entry.typeIds)], ['Domain', label(domains, entry.domainIds)], ['Life area', label(lifeAreas, entry.lifeAreaIds)]].map(([name, value]) => <div key={name}><dt className="inline font-medium">{name}: </dt><dd className="m-0 inline text-muted-foreground">{value}</dd></div>)}

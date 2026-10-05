@@ -17,7 +17,7 @@ export default function HowToUsePage() {
       <Breadcrumb current="How to use" />
       <header className="mb-5">
         <p className="bc-kicker mb-2">Guide</p>
-        <h1 className="bc-title m-0 mb-2 text-[1.85rem] leading-tight sm:text-[2.15rem]">
+        <h1 className="bc-title bc-heading m-0 mb-2 leading-tight">
           <span aria-hidden="true">🧭</span> {howToUse.title}
         </h1>
         <p className="m-0 text-[1.02rem] leading-7 text-muted-foreground">
@@ -26,7 +26,7 @@ export default function HowToUsePage() {
       </header>
 
       <section className="bc-callout" aria-labelledby="foundation-heading">
-        <h2 id="foundation-heading" className="bc-title mt-0 mb-2 text-lg">{homeCopy.foundationTitle}</h2>
+        <h2 id="foundation-heading" className="bc-title bc-heading mt-0 mb-2">{homeCopy.foundationTitle}</h2>
         <p className="text-muted-foreground">{homeCopy.foundationBody}</p>
         <Link href="/topics/jesus-and-the-gospel" className="bc-btn">Jesus and the Gospel</Link>
       </section>

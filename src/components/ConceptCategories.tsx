@@ -4,7 +4,7 @@ import { concepts, ontology } from "@/content/concepts";
 export function ConceptCategories() {
   return (
     <section className="mt-8" aria-labelledby="concepts-heading">
-      <h2 id="concepts-heading" className="bc-title mb-2 text-[1.2rem]">Concepts</h2>
+      <h2 id="concepts-heading" className="bc-title bc-heading mb-2">Concepts</h2>
       <p className="text-muted-foreground">Explore beliefs, practices and themes, and see how they connect.</p>
       {ontology.categories.map((category) => (
         <details key={category.id} className="border-b border-border py-3">

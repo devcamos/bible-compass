@@ -22,7 +22,7 @@ export default function HomePage() {
       <VerseOfTheDay verse={verse} />
 
       <section className="mb-6 rounded-2xl border border-border bg-card p-[22px]">
-        <h1 className="bc-title m-0 mb-2 text-[1.85rem] leading-tight sm:text-[2.2rem]">
+        <h1 className="bc-title bc-heading m-0 mb-2 leading-tight">
           {homeCopy.welcomeTitle}
         </h1>
         <p className="m-0 leading-7 text-muted-foreground">{homeCopy.welcomeBody}</p>
@@ -37,7 +37,7 @@ export default function HomePage() {
         </Link>
       </p>
 
-      <h2 className="bc-title mb-3 text-[1.35rem]">{homeCopy.carryingTitle}</h2>
+      <h2 className="bc-title bc-heading mb-3">{homeCopy.carryingTitle}</h2>
       <div className="mb-7 grid gap-3 sm:grid-cols-2">
         {entryPaths.map((path) => (
           <PathCard key={`${path.title}-${path.href}`} {...path} />
@@ -51,7 +51,7 @@ export default function HomePage() {
         <p className="mt-1 mb-0 text-muted-foreground">{homeCopy.rhythmBody}</p>
       </section>
 
-      <h2 className="bc-title mb-2 text-[1.2rem]">{homeCopy.lifeAreaTitle}</h2>
+      <h2 className="bc-title bc-heading mb-2">{homeCopy.lifeAreaTitle}</h2>
       {lifeAreas.map((area) => (
         <LifeAreaList key={area.title} {...area} />
       ))}

@@ -14,7 +14,7 @@ export default function ConceptsPage() {
   return (
     <article>
       <Breadcrumb current="Concepts" />
-      <h1 className="bc-title mb-2 text-[2rem]">Concepts</h1>
+      <h1 className="bc-title bc-heading mb-2">Concepts</h1>
       <p className="mb-6 leading-7 text-muted-foreground">Explore biblical beliefs, frameworks, practices, principles and themes. See the passages behind them and the connections between them.</p>
       <ConceptExplorer
         entries={concepts.map(({ id, slug, title, summary, aliases, categoryId, typeIds, domainIds, lifeAreaIds, topicSlugs, scripture }) => ({ id, slug, title, summary, aliases, categoryId, typeIds, domainIds, lifeAreaIds, topicCount: topicSlugs.length, passageCount: scripture.length }))}
