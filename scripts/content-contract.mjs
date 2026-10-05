@@ -170,7 +170,7 @@ test("verse of the day schedule uses UTC calendar days", () => {
 });
 
 test("concept ontology has unique identifiers and valid independent facets", () => {
-  assert.equal(ontology.schemaVersion, "1.0.0");
+  assert.equal(ontology.schemaVersion, "1.1.0");
   const unique = (rows) => assert.equal(new Set(rows.map((row) => row.id)).size, rows.length);
   for (const rows of [ontology.categories, ontology.types, ontology.domains, ontology.concepts, ontology.relations]) unique(rows);
   assert.equal(ontology.categories.length, 5);
@@ -216,4 +216,32 @@ test("directed concept relationships are traceable to their source passages", ()
   assert.ok(triples.has("armour-of-god:illustrates:spiritual-warfare"));
   assert.ok(triples.has("judgment:expresses:justice"));
   assert.ok(concepts.get("repentance").typeIds.includes("doctrine") && concepts.get("repentance").typeIds.includes("practice"));
+});
+
+test("every concept has a key verse, explanation and traceable living guidance", () => {
+  for (const concept of ontology.concepts) {
+    const passages = new Map(concept.scripture.map((passage) => [passage.id, passage]));
+    const key = concept.keyVerse;
+    assert.ok(key && key.text.trim().length > 0, `${concept.id} missing key verse`);
+    assert.equal(key.translation, "NIV");
+    assert.equal(typeof key.isExcerpt, "boolean");
+    const source = passages.get(key.passageId);
+    assert.ok(source, `${concept.id} key verse has no source passage`);
+    assert.ok(Number.isInteger(key.verseStart) && Number.isInteger(key.verseEnd));
+    assert.ok(key.verseStart >= source.verseStart && key.verseEnd <= source.verseEnd && key.verseEnd >= key.verseStart);
+    assert.ok(concept.explanation.length > 0 && concept.explanation.every((paragraph) => paragraph.trim()));
+    assert.ok(concept.livingGuidance.length > 0, `${concept.id} missing living guidance`);
+    assert.equal(new Set(concept.livingGuidance.map((action) => action.id)).size, concept.livingGuidance.length);
+    for (const action of concept.livingGuidance) {
+      assert.ok(action.title && action.detail && action.scriptureIds.length > 0);
+      for (const id of action.scriptureIds) assert.ok(passages.has(id), `${action.id} has untraceable guidance`);
+    }
+  }
+  const judgment = ontology.concepts.find((concept) => concept.id === "judgment");
+  const source = judgment.scripture.find((passage) => passage.id === judgment.keyVerse.passageId);
+  assert.equal(source.book, "Matthew");
+  assert.equal(source.chapter, 7);
+  assert.equal(judgment.keyVerse.verseStart, 1);
+  assert.ok(source.verseEnd >= 5, "Judgement key verse must retain the surrounding teaching");
+  assert.ok(judgment.scripture.some((passage) => passage.book === "John" && passage.chapter === 7 && passage.verseStart === 24));
 });

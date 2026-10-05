@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.0.0",
+  "schemaVersion": "1.1.0",
   "title": "Bible Compass Concepts",
   "classificationNote": "Categories organise browsing. Types, domains and life areas are independent, many-to-many facets. Classifications and relationships are editorial study mappings, not claims that Scripture defines this taxonomy. Counts describe this curated catalogue, not the whole Bible.",
   "categories": [
@@ -93,9 +93,9 @@
     {
       "id": "judgment",
       "slug": "judgment",
-      "title": "Judgment",
+      "title": "Judgement",
       "aliases": [
-        "Judgement",
+        "Judgment",
         "Final Judgment",
         "Final Judgement"
       ],
@@ -115,7 +115,7 @@
         "destiny-of-the-world",
         "teachings"
       ],
-      "summary": "God judges evil and holds people accountable with justice. Final judgment is one expression of this wider biblical concept.",
+      "summary": "How we assess others, and God's ultimate judgment. Jesus calls for humility, self-examination and fair discernment.",
       "graceGuardrail": "God's grace in Jesus is a gift. Learning or practising this concept does not earn God's love.",
       "scripture": [
         {
@@ -133,6 +133,68 @@
           "verseStart": 31,
           "verseEnd": 46,
           "insight": "Jesus describes the Son of Man judging the nations."
+        },
+        {
+          "id": "judgment:passage:3",
+          "book": "Matthew",
+          "chapter": 7,
+          "verseStart": 1,
+          "verseEnd": 5,
+          "insight": "Jesus warns against hypocritical judgment, calls for self-examination, and describes helping others with clearer vision."
+        },
+        {
+          "id": "judgment:passage:4",
+          "book": "Matthew",
+          "chapter": 7,
+          "verseStart": 1,
+          "verseEnd": 5,
+          "insight": "Before correcting someone, acknowledge your own mistakes and motives."
+        },
+        {
+          "id": "judgment:passage:5",
+          "book": "John",
+          "chapter": 7,
+          "verseStart": 24,
+          "verseEnd": 24,
+          "insight": "Seek the facts and consider the person's situation instead of deciding from appearances."
+        }
+      ],
+      "keyVerse": {
+        "passageId": "judgment:passage:3",
+        "verseStart": 1,
+        "verseEnd": 1,
+        "text": "Do not judge, or you too will be judged.",
+        "translation": "NIV",
+        "isExcerpt": false
+      },
+      "explanation": [
+        "Judgment includes how we assess other people and God's ultimate accountability for human actions. These are related, but they are not the same kind of judgment.",
+        "In Matthew 7:1-5, Jesus warns against hypocritical judgment: noticing someone else's faults while ignoring our own. He calls us to examine ourselves first, then help others with clearer vision. John 7:24 also calls for right judgment, rather than decisions based on appearances."
+      ],
+      "livingGuidance": [
+        {
+          "id": "judgment:action:1",
+          "title": "Examine yourself first",
+          "detail": "Before correcting someone, acknowledge your own mistakes and motives.",
+          "scriptureIds": [
+            "judgment:passage:4"
+          ]
+        },
+        {
+          "id": "judgment:action:2",
+          "title": "Judge fairly",
+          "detail": "Seek the facts and consider the person's situation instead of deciding from appearances.",
+          "scriptureIds": [
+            "judgment:passage:5"
+          ]
+        },
+        {
+          "id": "judgment:action:3",
+          "title": "Help with humility",
+          "detail": "If correction is needed, approach it honestly and constructively after dealing with your own faults.",
+          "scriptureIds": [
+            "judgment:passage:4"
+          ]
         }
       ]
     },
@@ -166,6 +228,44 @@
           "verseStart": 1,
           "verseEnd": 10,
           "insight": "Salvation is God's gift through faith, with good works as its fruit."
+        }
+      ],
+      "keyVerse": {
+        "passageId": "salvation:passage:1",
+        "verseStart": 8,
+        "verseEnd": 8,
+        "text": "For it is by grace you have been saved, through faith",
+        "translation": "NIV",
+        "isExcerpt": true
+      },
+      "explanation": [
+        "Salvation is God rescuing people from sin and bringing them into life with him through Jesus.",
+        "Ephesians 2 presents salvation as a gift, received through faith. Good works follow that gift; they are not the price of being accepted by God."
+      ],
+      "livingGuidance": [
+        {
+          "id": "salvation:action:1",
+          "title": "Receive the gift",
+          "detail": "Trust God's grace in Jesus rather than treating achievement as a way to earn acceptance.",
+          "scriptureIds": [
+            "salvation:passage:1"
+          ]
+        },
+        {
+          "id": "salvation:action:2",
+          "title": "Let faith shape action",
+          "detail": "Respond through the good works God calls believers to do.",
+          "scriptureIds": [
+            "salvation:passage:1"
+          ]
+        },
+        {
+          "id": "salvation:action:3",
+          "title": "Release boasting",
+          "detail": "Remember that salvation is received, so approach others without spiritual superiority.",
+          "scriptureIds": [
+            "salvation:passage:1"
+          ]
         }
       ]
     },
@@ -201,6 +301,52 @@
           "verseStart": 12,
           "verseEnd": 28,
           "insight": "Paul connects the resurrection of Jesus with the future resurrection of those who belong to him."
+        },
+        {
+          "id": "resurrection:passage:2",
+          "book": "John",
+          "chapter": 11,
+          "verseStart": 25,
+          "verseEnd": 25,
+          "insight": "Read this key verse alongside the surrounding passage."
+        }
+      ],
+      "keyVerse": {
+        "passageId": "resurrection:passage:2",
+        "verseStart": 25,
+        "verseEnd": 25,
+        "text": "I am the resurrection and the life.",
+        "translation": "NIV",
+        "isExcerpt": true
+      },
+      "explanation": [
+        "Resurrection means being raised from the dead. Christianity centres on Jesus' resurrection and the hope of future resurrection for those who belong to him.",
+        "In John 11, Jesus speaks into Martha's grief about Lazarus. Paul connects the resurrection of Jesus with the hope of believers in 1 Corinthians 15. This hope does not require pretending that death and grief are painless."
+      ],
+      "livingGuidance": [
+        {
+          "id": "resurrection:action:1",
+          "title": "Bring grief to Jesus",
+          "detail": "Be honest about loss while holding the hope Jesus offers.",
+          "scriptureIds": [
+            "resurrection:passage:2"
+          ]
+        },
+        {
+          "id": "resurrection:action:2",
+          "title": "Ground hope in Christ",
+          "detail": "Read Paul's argument about Christ's resurrection and its significance for believers.",
+          "scriptureIds": [
+            "resurrection:passage:1"
+          ]
+        },
+        {
+          "id": "resurrection:action:3",
+          "title": "Remember the future hope",
+          "detail": "Let the promised defeat of death shape how you understand loss and the future.",
+          "scriptureIds": [
+            "resurrection:passage:1"
+          ]
         }
       ]
     },
@@ -243,6 +389,44 @@
           "verseEnd": 14,
           "insight": "Paul brings together the grace of Jesus, the love of God and the fellowship of the Holy Spirit."
         }
+      ],
+      "keyVerse": {
+        "passageId": "trinity:passage:1",
+        "verseStart": 19,
+        "verseEnd": 19,
+        "text": "baptizing them in the name of the Father and of the Son and of the Holy Spirit",
+        "translation": "NIV",
+        "isExcerpt": true
+      },
+      "explanation": [
+        "The Trinity is historic Christian teaching that the one God is Father, Son and Holy Spirit. It does not mean three separate gods.",
+        "The word Trinity is a theological term used to summarise a reading of Scripture. Matthew 28 names Father, Son and Holy Spirit together, while 2 Corinthians 13:14 brings together Christ's grace, God's love and the Spirit's fellowship."
+      ],
+      "livingGuidance": [
+        {
+          "id": "trinity:action:1",
+          "title": "Learn through Jesus",
+          "detail": "Let Jesus' teaching shape your understanding of God and discipleship.",
+          "scriptureIds": [
+            "trinity:passage:1"
+          ]
+        },
+        {
+          "id": "trinity:action:2",
+          "title": "Receive grace and love",
+          "detail": "Reflect on Christ's grace and God's love as the foundation for your response.",
+          "scriptureIds": [
+            "trinity:passage:2"
+          ]
+        },
+        {
+          "id": "trinity:action:3",
+          "title": "Attend to the Spirit",
+          "detail": "Seek a life of fellowship with the Holy Spirit and with other believers.",
+          "scriptureIds": [
+            "trinity:passage:2"
+          ]
+        }
       ]
     },
     {
@@ -275,6 +459,44 @@
           "verseStart": 1,
           "verseEnd": 2,
           "insight": "Paul links justification through faith with peace with God through Jesus."
+        }
+      ],
+      "keyVerse": {
+        "passageId": "justification:passage:1",
+        "verseStart": 1,
+        "verseEnd": 1,
+        "text": "Therefore, since we have been justified through faith, we have peace with God through our Lord Jesus Christ",
+        "translation": "NIV",
+        "isExcerpt": true
+      },
+      "explanation": [
+        "Justification concerns being put right with God through Jesus. Romans 5 connects it with faith and peace with God.",
+        "Christians differ in how they explain some aspects of justification. The focus here is Paul's invitation to recognise the peace and access to grace that come through Christ."
+      ],
+      "livingGuidance": [
+        {
+          "id": "justification:action:1",
+          "title": "Rest in peace with God",
+          "detail": "Return to the peace Paul describes through Jesus instead of treating every failure as the end of your relationship with God.",
+          "scriptureIds": [
+            "justification:passage:1"
+          ]
+        },
+        {
+          "id": "justification:action:2",
+          "title": "Receive grace through faith",
+          "detail": "Respond to God in trust, rather than imagining that acceptance is purchased by performance.",
+          "scriptureIds": [
+            "justification:passage:1"
+          ]
+        },
+        {
+          "id": "justification:action:3",
+          "title": "Hold hope",
+          "detail": "Let the hope of sharing in God's glory steady how you face the future.",
+          "scriptureIds": [
+            "justification:passage:1"
+          ]
         }
       ]
     },
@@ -310,6 +532,44 @@
           "verseStart": 8,
           "verseEnd": 10,
           "insight": "God's gift precedes the good works believers are created to do."
+        }
+      ],
+      "keyVerse": {
+        "passageId": "grace:passage:1",
+        "verseStart": 8,
+        "verseEnd": 8,
+        "text": "and this is not from yourselves, it is the gift of God",
+        "translation": "NIV",
+        "isExcerpt": true
+      },
+      "explanation": [
+        "Grace is God's freely given favour and help. It is received rather than earned.",
+        "Ephesians 2 places God's gift before our good works. Grace gives a foundation for faithful living without turning faith into a competition for God's approval."
+      ],
+      "livingGuidance": [
+        {
+          "id": "grace:action:1",
+          "title": "Receive before striving",
+          "detail": "Start from God's gift rather than trying to prove that you deserve his love.",
+          "scriptureIds": [
+            "grace:passage:1"
+          ]
+        },
+        {
+          "id": "grace:action:2",
+          "title": "Act from gratitude",
+          "detail": "Let gratitude for grace move you towards good works.",
+          "scriptureIds": [
+            "grace:passage:1"
+          ]
+        },
+        {
+          "id": "grace:action:3",
+          "title": "Release superiority",
+          "detail": "Avoid boasting about spiritual achievement; the gift is not self-made.",
+          "scriptureIds": [
+            "grace:passage:1"
+          ]
         }
       ]
     },
@@ -353,6 +613,44 @@
           "verseEnd": 18,
           "insight": "The struggle is not against flesh and blood. Stand in God's strength and pray; this is not permission to treat people as enemies."
         }
+      ],
+      "keyVerse": {
+        "passageId": "armour-of-god:passage:1",
+        "verseStart": 11,
+        "verseEnd": 11,
+        "text": "Put on the full armor of God, so that you can take your stand against the devil’s schemes.",
+        "translation": "NIV",
+        "isExcerpt": false
+      },
+      "explanation": [
+        "The Armour of God is Paul's metaphor for standing firm through truth, righteousness, the gospel of peace, faith, salvation and God's word, with prayer.",
+        "The strength comes from the Lord. Ephesians 6 says the struggle is not against people, so this framework is not permission to treat a colleague, neighbour or family member as a spiritual enemy."
+      ],
+      "livingGuidance": [
+        {
+          "id": "armour-of-god:action:1",
+          "title": "Stand in God's strength",
+          "detail": "Begin with dependence on the Lord rather than confidence in your own force or control.",
+          "scriptureIds": [
+            "armour-of-god:passage:1"
+          ]
+        },
+        {
+          "id": "armour-of-god:action:2",
+          "title": "Practise truth and peace",
+          "detail": "Choose honesty, right action and the gospel of peace when responding to pressure.",
+          "scriptureIds": [
+            "armour-of-god:passage:1"
+          ]
+        },
+        {
+          "id": "armour-of-god:action:3",
+          "title": "Pray and stay alert",
+          "detail": "Bring the situation to God and pray for others while holding to faith and Scripture.",
+          "scriptureIds": [
+            "armour-of-god:passage:1"
+          ]
+        }
       ]
     },
     {
@@ -388,6 +686,44 @@
           "verseEnd": 26,
           "insight": "The fruit belongs to a life led by the Spirit, rather than a scorecard for earning acceptance."
         }
+      ],
+      "keyVerse": {
+        "passageId": "fruit-of-the-spirit:passage:1",
+        "verseStart": 22,
+        "verseEnd": 23,
+        "text": "But the fruit of the Spirit is love, joy, peace, forbearance, kindness, goodness, faithfulness, gentleness and self-control.",
+        "translation": "NIV",
+        "isExcerpt": true
+      },
+      "explanation": [
+        "The Fruit of the Spirit describes the character the Holy Spirit grows in believers. The image is about life producing fruit, not scoring enough points to earn God's love.",
+        "Galatians 5 places this character within a life led by the Spirit. It also warns against conceit, provoking one another and envy."
+      ],
+      "livingGuidance": [
+        {
+          "id": "fruit-of-the-spirit:action:1",
+          "title": "Walk with the Spirit",
+          "detail": "Ask God to shape your choices and follow the Spirit's direction in everyday conduct.",
+          "scriptureIds": [
+            "fruit-of-the-spirit:passage:1"
+          ]
+        },
+        {
+          "id": "fruit-of-the-spirit:action:2",
+          "title": "Practise the fruit in relationships",
+          "detail": "Respond with patience, gentleness and self-control in a real interaction today.",
+          "scriptureIds": [
+            "fruit-of-the-spirit:passage:1"
+          ]
+        },
+        {
+          "id": "fruit-of-the-spirit:action:3",
+          "title": "Release rivalry",
+          "detail": "Resist conceit, provoking others and envy.",
+          "scriptureIds": [
+            "fruit-of-the-spirit:passage:1"
+          ]
+        }
       ]
     },
     {
@@ -422,6 +758,44 @@
           "verseStart": 1,
           "verseEnd": 12,
           "insight": "Jesus opens the Sermon on the Mount by describing those who are blessed."
+        }
+      ],
+      "keyVerse": {
+        "passageId": "beatitudes:passage:1",
+        "verseStart": 9,
+        "verseEnd": 9,
+        "text": "Blessed are the peacemakers, for they will be called children of God.",
+        "translation": "NIV",
+        "isExcerpt": false
+      },
+      "explanation": [
+        "The Beatitudes are Jesus' blessings at the opening of the Sermon on the Mount. They describe life under God's reign, including mercy, peacemaking and longing for righteousness.",
+        "Jesus honours people the world can overlook, including those who mourn and those persecuted for righteousness. These blessings are not a promise that faithful living removes every difficulty."
+      ],
+      "livingGuidance": [
+        {
+          "id": "beatitudes:action:1",
+          "title": "Make peace",
+          "detail": "Work towards honest reconciliation rather than feeding conflict.",
+          "scriptureIds": [
+            "beatitudes:passage:1"
+          ]
+        },
+        {
+          "id": "beatitudes:action:2",
+          "title": "Show mercy",
+          "detail": "Respond to another person's need with compassion.",
+          "scriptureIds": [
+            "beatitudes:passage:1"
+          ]
+        },
+        {
+          "id": "beatitudes:action:3",
+          "title": "Seek righteousness",
+          "detail": "Choose what is right even when it costs approval or comfort.",
+          "scriptureIds": [
+            "beatitudes:passage:1"
+          ]
         }
       ]
     },
@@ -459,6 +833,44 @@
           "verseEnd": 23,
           "insight": "Read the parable alongside Jesus' explanation of the soils."
         }
+      ],
+      "keyVerse": {
+        "passageId": "parable-of-the-sower:passage:1",
+        "verseStart": 23,
+        "verseEnd": 23,
+        "text": "But the seed falling on good soil refers to someone who hears the word and understands it.",
+        "translation": "NIV",
+        "isExcerpt": true
+      },
+      "explanation": [
+        "Jesus uses seed and soils to describe different responses to the word of the kingdom. The seed is received differently depending on the hearer's response.",
+        "His explanation names shallow roots, pressure, worries and the attraction of wealth as obstacles. Good soil represents hearing and understanding that bears fruit."
+      ],
+      "livingGuidance": [
+        {
+          "id": "parable-of-the-sower:action:1",
+          "title": "Listen for understanding",
+          "detail": "Read carefully and seek the meaning of the passage in context.",
+          "scriptureIds": [
+            "parable-of-the-sower:passage:1"
+          ]
+        },
+        {
+          "id": "parable-of-the-sower:action:2",
+          "title": "Notice what crowds the word out",
+          "detail": "Reflect on whether worry or the pursuit of wealth is dominating your attention.",
+          "scriptureIds": [
+            "parable-of-the-sower:passage:1"
+          ]
+        },
+        {
+          "id": "parable-of-the-sower:action:3",
+          "title": "Let understanding bear fruit",
+          "detail": "Take a faithful action that follows from what you have understood.",
+          "scriptureIds": [
+            "parable-of-the-sower:passage:1"
+          ]
+        }
       ]
     },
     {
@@ -491,6 +903,52 @@
           "verseStart": 5,
           "verseEnd": 13,
           "insight": "Jesus teaches sincere prayer and gives a pattern centred on the Father, his kingdom and daily dependence."
+        },
+        {
+          "id": "prayer:passage:2",
+          "book": "1 Thessalonians",
+          "chapter": 5,
+          "verseStart": 17,
+          "verseEnd": 17,
+          "insight": "Read this key verse alongside the surrounding passage."
+        }
+      ],
+      "keyVerse": {
+        "passageId": "prayer:passage:2",
+        "verseStart": 17,
+        "verseEnd": 17,
+        "text": "pray continually",
+        "translation": "NIV",
+        "isExcerpt": false
+      },
+      "explanation": [
+        "Prayer is turning to God in praise, confession, gratitude and requests. It is a relationship of dependence, not a technique for controlling outcomes.",
+        "Jesus' prayer pattern in Matthew 6 centres on the Father, his kingdom, daily provision, forgiveness and deliverance. Paul's call to pray continually invites an ongoing habit of turning to God."
+      ],
+      "livingGuidance": [
+        {
+          "id": "prayer:action:1",
+          "title": "Pray honestly",
+          "detail": "Speak to God sincerely rather than performing for an audience.",
+          "scriptureIds": [
+            "prayer:passage:1"
+          ]
+        },
+        {
+          "id": "prayer:action:2",
+          "title": "Use Jesus' pattern",
+          "detail": "Bring God's kingdom, your daily needs, forgiveness and temptation into prayer.",
+          "scriptureIds": [
+            "prayer:passage:1"
+          ]
+        },
+        {
+          "id": "prayer:action:3",
+          "title": "Return throughout the day",
+          "detail": "Turn ordinary moments of need or gratitude into prayer.",
+          "scriptureIds": [
+            "prayer:passage:2"
+          ]
         }
       ]
     },
@@ -524,6 +982,44 @@
           "verseStart": 16,
           "verseEnd": 18,
           "insight": "Jesus teaches fasting without seeking public admiration."
+        }
+      ],
+      "keyVerse": {
+        "passageId": "fasting:passage:1",
+        "verseStart": 17,
+        "verseEnd": 17,
+        "text": "But when you fast, put oil on your head and wash your face",
+        "translation": "NIV",
+        "isExcerpt": true
+      },
+      "explanation": [
+        "Biblical fasting involves voluntarily abstaining from food for a time as a spiritual response to God.",
+        "In Matthew 6, Jesus addresses the motive and manner of fasting. He teaches sincerity before the Father rather than using religious practice to gain admiration."
+      ],
+      "livingGuidance": [
+        {
+          "id": "fasting:action:1",
+          "title": "Examine your motive",
+          "detail": "Consider whether your intention is to respond to God or to impress other people.",
+          "scriptureIds": [
+            "fasting:passage:1"
+          ]
+        },
+        {
+          "id": "fasting:action:2",
+          "title": "Avoid making a display",
+          "detail": "Keep the practice directed towards God rather than public religious status.",
+          "scriptureIds": [
+            "fasting:passage:1"
+          ]
+        },
+        {
+          "id": "fasting:action:3",
+          "title": "Keep daily dignity",
+          "detail": "Jesus' instruction to wash and care for appearance challenges the performance of visible suffering.",
+          "scriptureIds": [
+            "fasting:passage:1"
+          ]
         }
       ]
     },
@@ -559,6 +1055,44 @@
           "verseStart": 14,
           "verseEnd": 15,
           "insight": "Jesus calls people to repent and believe the good news."
+        }
+      ],
+      "keyVerse": {
+        "passageId": "repentance:passage:1",
+        "verseStart": 15,
+        "verseEnd": 15,
+        "text": "Repent and believe the good news!",
+        "translation": "NIV",
+        "isExcerpt": true
+      },
+      "explanation": [
+        "Repentance means turning from sin towards God. It includes a change of mind and a change of direction.",
+        "Jesus joins repentance with believing the good news. Returning to God is a response to his call, not a way to purchase grace through self-punishment."
+      ],
+      "livingGuidance": [
+        {
+          "id": "repentance:action:1",
+          "title": "Face what needs to change",
+          "detail": "Name the wrong honestly instead of defending or excusing it.",
+          "scriptureIds": [
+            "repentance:passage:1"
+          ]
+        },
+        {
+          "id": "repentance:action:2",
+          "title": "Turn towards God",
+          "detail": "Choose a concrete change of direction that responds to Jesus' call.",
+          "scriptureIds": [
+            "repentance:passage:1"
+          ]
+        },
+        {
+          "id": "repentance:action:3",
+          "title": "Believe the good news",
+          "detail": "Hold repentance together with faith rather than remaining in self-condemnation.",
+          "scriptureIds": [
+            "repentance:passage:1"
+          ]
         }
       ]
     },
@@ -602,6 +1136,44 @@
           "verseEnd": 2,
           "insight": "Paul connects worship with offering our lives to God and a renewed mind."
         }
+      ],
+      "keyVerse": {
+        "passageId": "worship:passage:1",
+        "verseStart": 24,
+        "verseEnd": 24,
+        "text": "God is spirit, and his worshipers must worship in the Spirit and in truth.",
+        "translation": "NIV",
+        "isExcerpt": false
+      },
+      "explanation": [
+        "Worship means honouring God with our hearts, words and lives. It includes praise, but it reaches beyond music or a church gathering.",
+        "Jesus speaks of worship in Spirit and truth. Romans 12 connects worship with offering our lives to God and allowing our minds to be renewed."
+      ],
+      "livingGuidance": [
+        {
+          "id": "worship:action:1",
+          "title": "Worship sincerely",
+          "detail": "Bring honesty before God rather than performing an outward religious role.",
+          "scriptureIds": [
+            "worship:passage:1"
+          ]
+        },
+        {
+          "id": "worship:action:2",
+          "title": "Offer your daily life",
+          "detail": "Treat ordinary choices and responsibilities as part of your response to God.",
+          "scriptureIds": [
+            "worship:passage:2"
+          ]
+        },
+        {
+          "id": "worship:action:3",
+          "title": "Renew your mind",
+          "detail": "Let God's truth reshape how you think and discern what is good.",
+          "scriptureIds": [
+            "worship:passage:2"
+          ]
+        }
       ]
     },
     {
@@ -634,6 +1206,44 @@
           "verseStart": 10,
           "verseEnd": 11,
           "insight": "Use received gifts to serve others as stewards of God's grace."
+        }
+      ],
+      "keyVerse": {
+        "passageId": "stewardship:passage:1",
+        "verseStart": 10,
+        "verseEnd": 10,
+        "text": "Each of you should use whatever gift you have received to serve others",
+        "translation": "NIV",
+        "isExcerpt": true
+      },
+      "explanation": [
+        "Stewardship is caring faithfully for gifts and responsibilities entrusted to us. In 1 Peter 4, the emphasis is on using received gifts to serve others.",
+        "This principle can inform how we handle time, skills and resources. That wider application should remain rooted in service and gratitude, rather than treating gifts as proof of personal superiority."
+      ],
+      "livingGuidance": [
+        {
+          "id": "stewardship:action:1",
+          "title": "Recognise what you have received",
+          "detail": "Identify a gift or ability you can use in service.",
+          "scriptureIds": [
+            "stewardship:passage:1"
+          ]
+        },
+        {
+          "id": "stewardship:action:2",
+          "title": "Serve someone",
+          "detail": "Use that gift to meet a real need rather than only building your own status.",
+          "scriptureIds": [
+            "stewardship:passage:1"
+          ]
+        },
+        {
+          "id": "stewardship:action:3",
+          "title": "Depend on God's provision",
+          "detail": "Serve with the strength God provides and direct the honour towards him.",
+          "scriptureIds": [
+            "stewardship:passage:1"
+          ]
         }
       ]
     },
@@ -671,6 +1281,44 @@
           "verseEnd": 32,
           "insight": "Paul connects forgiving one another with God's forgiveness in Christ."
         }
+      ],
+      "keyVerse": {
+        "passageId": "forgiveness:passage:1",
+        "verseStart": 32,
+        "verseEnd": 32,
+        "text": "Be kind and compassionate to one another, forgiving each other, just as in Christ God forgave you.",
+        "translation": "NIV",
+        "isExcerpt": false
+      },
+      "explanation": [
+        "Forgiveness includes God forgiving sin and calling people to forgive others. Ephesians 4 connects our response with the forgiveness received in Christ.",
+        "Forgiving does not mean calling wrongdoing good or pretending it never happened. It can coexist with truthful correction, boundaries and accountability."
+      ],
+      "livingGuidance": [
+        {
+          "id": "forgiveness:action:1",
+          "title": "Remember received forgiveness",
+          "detail": "Reflect on God's forgiveness in Christ as the starting point for your response.",
+          "scriptureIds": [
+            "forgiveness:passage:1"
+          ]
+        },
+        {
+          "id": "forgiveness:action:2",
+          "title": "Release bitterness",
+          "detail": "Bring resentment to God and choose a response that does not feed malice.",
+          "scriptureIds": [
+            "forgiveness:passage:1"
+          ]
+        },
+        {
+          "id": "forgiveness:action:3",
+          "title": "Practise kindness",
+          "detail": "Look for a compassionate response while remaining truthful about what happened.",
+          "scriptureIds": [
+            "forgiveness:passage:1"
+          ]
+        }
       ]
     },
     {
@@ -706,6 +1354,44 @@
           "verseEnd": 8,
           "insight": "The prophet joins justice, mercy and humble walking with God."
         }
+      ],
+      "keyVerse": {
+        "passageId": "justice:passage:1",
+        "verseStart": 8,
+        "verseEnd": 8,
+        "text": "To act justly and to love mercy and to walk humbly with your God.",
+        "translation": "NIV",
+        "isExcerpt": true
+      },
+      "explanation": [
+        "Justice means acting rightly and fairly, reflecting God's concern for truth and those who are vulnerable.",
+        "Micah 6 holds justice together with mercy and humility. Justice is not a licence for cruelty or pride; the passage calls for a whole way of walking with God."
+      ],
+      "livingGuidance": [
+        {
+          "id": "justice:action:1",
+          "title": "Act fairly",
+          "detail": "Choose an honest and fair response in a decision that affects another person.",
+          "scriptureIds": [
+            "justice:passage:1"
+          ]
+        },
+        {
+          "id": "justice:action:2",
+          "title": "Keep mercy alongside justice",
+          "detail": "Consider the person's need and dignity as you address what is wrong.",
+          "scriptureIds": [
+            "justice:passage:1"
+          ]
+        },
+        {
+          "id": "justice:action:3",
+          "title": "Walk humbly",
+          "detail": "Examine your motives and remain willing to be corrected.",
+          "scriptureIds": [
+            "justice:passage:1"
+          ]
+        }
       ]
     },
     {
@@ -739,6 +1425,44 @@
           "verseStart": 3,
           "verseEnd": 11,
           "insight": "Paul points to Jesus as the pattern for humble service."
+        }
+      ],
+      "keyVerse": {
+        "passageId": "humility:passage:1",
+        "verseStart": 3,
+        "verseEnd": 3,
+        "text": "Do nothing out of selfish ambition or vain conceit. Rather, in humility value others above yourselves",
+        "translation": "NIV",
+        "isExcerpt": true
+      },
+      "explanation": [
+        "Humility is an honest posture before God and a willingness to consider the needs of others. It does not require pretending that gifts or responsibilities do not exist.",
+        "Philippians 2 points to Jesus' self-giving service as the pattern. The focus is on resisting conceit and looking beyond our own interests."
+      ],
+      "livingGuidance": [
+        {
+          "id": "humility:action:1",
+          "title": "Check ambition",
+          "detail": "Ask whether your next action is driven by service or by a need to appear superior.",
+          "scriptureIds": [
+            "humility:passage:1"
+          ]
+        },
+        {
+          "id": "humility:action:2",
+          "title": "Consider another person's interests",
+          "detail": "Make room for their needs and perspective when deciding.",
+          "scriptureIds": [
+            "humility:passage:1"
+          ]
+        },
+        {
+          "id": "humility:action:3",
+          "title": "Learn from Jesus' service",
+          "detail": "Use influence and ability in a way that serves others.",
+          "scriptureIds": [
+            "humility:passage:1"
+          ]
         }
       ]
     },
@@ -781,6 +1505,44 @@
           "verseStart": 19,
           "verseEnd": 20,
           "insight": "Jesus speaks of the new covenant in his blood."
+        }
+      ],
+      "keyVerse": {
+        "passageId": "covenant:passage:2",
+        "verseStart": 20,
+        "verseEnd": 20,
+        "text": "This cup is the new covenant in my blood, which is poured out for you.",
+        "translation": "NIV",
+        "isExcerpt": true
+      },
+      "explanation": [
+        "A covenant is a committed relationship established by God, with promises and responsibilities that shape the biblical story.",
+        "Scripture describes different covenants, including God's covenant with Abraham and the new covenant Jesus names at the Last Supper. Their contexts matter; they should not be reduced to a personal guarantee of every desired outcome."
+      ],
+      "livingGuidance": [
+        {
+          "id": "covenant:action:1",
+          "title": "Read promises in context",
+          "detail": "Study who God is addressing and what he promises in the passage.",
+          "scriptureIds": [
+            "covenant:passage:1"
+          ]
+        },
+        {
+          "id": "covenant:action:2",
+          "title": "Remember Jesus' gift",
+          "detail": "Let the new covenant draw your attention to Jesus' self-giving love.",
+          "scriptureIds": [
+            "covenant:passage:2"
+          ]
+        },
+        {
+          "id": "covenant:action:3",
+          "title": "Respond faithfully",
+          "detail": "Reflect on how a committed relationship with God shapes your conduct.",
+          "scriptureIds": [
+            "covenant:passage:1"
+          ]
         }
       ]
     },
@@ -825,6 +1587,52 @@
           "verseStart": 9,
           "verseEnd": 10,
           "insight": "Jesus teaches his followers to pray for God's kingdom to come."
+        },
+        {
+          "id": "kingdom-of-god:passage:3",
+          "book": "Matthew",
+          "chapter": 6,
+          "verseStart": 33,
+          "verseEnd": 33,
+          "insight": "Read this key verse alongside the surrounding passage."
+        }
+      ],
+      "keyVerse": {
+        "passageId": "kingdom-of-god:passage:3",
+        "verseStart": 33,
+        "verseEnd": 33,
+        "text": "But seek first his kingdom and his righteousness",
+        "translation": "NIV",
+        "isExcerpt": true
+      },
+      "explanation": [
+        "The Kingdom of God concerns God's reign. Jesus announces its arrival, and Christians await its future fulfilment.",
+        "Seeking the kingdom means giving God's rule and righteousness priority. In Matthew 6, Jesus speaks into anxiety about daily needs and calls his followers to trust the Father."
+      ],
+      "livingGuidance": [
+        {
+          "id": "kingdom-of-god:action:1",
+          "title": "Seek God's priorities",
+          "detail": "Ask what a faithful and righteous response would look like in today's decision.",
+          "scriptureIds": [
+            "kingdom-of-god:passage:3"
+          ]
+        },
+        {
+          "id": "kingdom-of-god:action:2",
+          "title": "Pray for the kingdom",
+          "detail": "Bring God's will and reign into your prayer, alongside your own needs.",
+          "scriptureIds": [
+            "kingdom-of-god:passage:2"
+          ]
+        },
+        {
+          "id": "kingdom-of-god:action:3",
+          "title": "Respond to Jesus' announcement",
+          "detail": "Hold repentance and faith together as a response to the good news.",
+          "scriptureIds": [
+            "kingdom-of-god:passage:1"
+          ]
         }
       ]
     },
@@ -861,6 +1669,44 @@
           "verseEnd": 10,
           "insight": "Paul connects redemption in Christ with forgiveness and God's purpose."
         }
+      ],
+      "keyVerse": {
+        "passageId": "redemption:passage:1",
+        "verseStart": 7,
+        "verseEnd": 7,
+        "text": "In him we have redemption through his blood, the forgiveness of sins",
+        "translation": "NIV",
+        "isExcerpt": true
+      },
+      "explanation": [
+        "Redemption describes being set free through Jesus. Ephesians 1 connects it with the forgiveness of sins and the riches of God's grace.",
+        "The focus is on what Christ has done and God's purpose, rather than a claim that people can rescue themselves through achievement."
+      ],
+      "livingGuidance": [
+        {
+          "id": "redemption:action:1",
+          "title": "Remember the source of freedom",
+          "detail": "Look to Christ's gift rather than your own achievement as the basis of redemption.",
+          "scriptureIds": [
+            "redemption:passage:1"
+          ]
+        },
+        {
+          "id": "redemption:action:2",
+          "title": "Receive forgiveness",
+          "detail": "Bring sin honestly before God and respond to his grace.",
+          "scriptureIds": [
+            "redemption:passage:1"
+          ]
+        },
+        {
+          "id": "redemption:action:3",
+          "title": "Live with restored purpose",
+          "detail": "Reflect on how belonging to Christ can shape your next faithful choice.",
+          "scriptureIds": [
+            "redemption:passage:1"
+          ]
+        }
       ]
     },
     {
@@ -893,6 +1739,44 @@
           "verseStart": 10,
           "verseEnd": 18,
           "insight": "Paul directs believers to stand firm in the Lord rather than fight against people."
+        }
+      ],
+      "keyVerse": {
+        "passageId": "spiritual-warfare:passage:1",
+        "verseStart": 12,
+        "verseEnd": 12,
+        "text": "For our struggle is not against flesh and blood",
+        "translation": "NIV",
+        "isExcerpt": true
+      },
+      "explanation": [
+        "Spiritual warfare concerns resisting spiritual evil through dependence on God, faithfulness and prayer.",
+        "Ephesians 6 directs believers to stand firm in the Lord. It explicitly says the struggle is not against flesh and blood, so other people must not become targets of spiritual hostility."
+      ],
+      "livingGuidance": [
+        {
+          "id": "spiritual-warfare:action:1",
+          "title": "Remember who is not the enemy",
+          "detail": "Keep another person's dignity in view, including during disagreement.",
+          "scriptureIds": [
+            "spiritual-warfare:passage:1"
+          ]
+        },
+        {
+          "id": "spiritual-warfare:action:2",
+          "title": "Stand in truth and faith",
+          "detail": "Choose honesty, right conduct and trust in God under pressure.",
+          "scriptureIds": [
+            "spiritual-warfare:passage:1"
+          ]
+        },
+        {
+          "id": "spiritual-warfare:action:3",
+          "title": "Pray for others",
+          "detail": "Remain alert and bring the needs of other believers to God.",
+          "scriptureIds": [
+            "spiritual-warfare:passage:1"
+          ]
         }
       ]
     }

@@ -2,11 +2,19 @@
 
 The Concepts catalogue sits below Explore by life area. Start here now lives on How to use; Jesus and the Gospel remains the foundational route.
 
+## Reader format
+
+Every concept page leads with Key Bible Verse, Concept Explained, then How the Bible Suggests Living With This [concept family]. Short NIV excerpts are labelled, with links to the exact verse and its surrounding context. Every suggested action has Scripture references. Classification, additional Scripture, related concepts and topic mappings remain under Read More and Explore Mappings.
+
+Judgement leads with Matthew 7:1 and links to Matthew 7:1-5. Its explanation distinguishes hypocritical judgment, fair discernment in John 7:24, and God's judgment.
+
 ## Data model
 
 `src/content/concepts/ontology.json` is the curated, versioned source. IDs are stable kebab-case identifiers. A concept has one browsing family, multiple concept types, theological domains and life areas, and mappings to existing topics and canonical Scripture ranges. Family is a navigation choice, not a statement that other classifications are invalid. For example, repentance is both a practice and a doctrine.
 
-Relationships are directed triples (`sourceId`, `predicate`, `targetId`). Every relationship includes an editorial explanation and Scripture IDs from its source concept. The UI shows both incoming and outgoing relationships. Scripture summaries and classifications are editorial study aids, not quotations or a definitive theological taxonomy.
+Relationships are directed triples (`sourceId`, `predicate`, `targetId`). Every relationship includes an editorial explanation and Scripture IDs from its source concept. The UI shows both incoming and outgoing relationships. Scripture summaries, living guidance and classifications are editorial study aids. They are distinct from the labelled key-verse quotation.
+
+Schema 1.1.0 adds `keyVerse`, `explanation` and `livingGuidance` to every concept. A key verse references an existing canonical passage ID and a contained verse range. Living guidance contains stable action IDs and references to that concept's passages. Existing concept and relationship IDs are preserved.
 
 `GET /concepts/data` downloads JSON with the catalogue, relationships, life-area registry and topic registry. No user data is included. Use IDs to join records, and explode array fields into separate rows for many-to-many analysis. `schemaVersion` tracks the export shape. Preserve existing IDs when changing wording; introduce a new schema version for incompatible shape changes.
 
