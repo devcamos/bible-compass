@@ -36,7 +36,8 @@ const declaredSlugs = topicFiles.map((slug) => {
   return "";
 });
 
-const allowedHrefs = new Set(["/", "/how-to-use", ...topicFiles.map((slug) => `/topics/${slug}`)]);
+const ontology = JSON.parse(read(join(src, "content/concepts/ontology.json")));
+const allowedHrefs = new Set(["/", "/how-to-use", "/concepts", ...topicFiles.map((slug) => `/topics/${slug}`), ...ontology.concepts.map((concept) => `/concepts/${concept.slug}`)]);
 
 const requiredHubSlugs = [
   "worry",
@@ -166,4 +167,53 @@ test("verse of the day schedule uses UTC calendar days", () => {
   const nextDay = new Date(Date.UTC(2026, 8, 21, 0, 5));
   assert.equal(dayIndex(morning), dayIndex(evening));
   assert.equal(dayIndex(nextDay), dayIndex(morning) + 1);
+});
+
+test("concept ontology has unique identifiers and valid independent facets", () => {
+  assert.equal(ontology.schemaVersion, "1.0.0");
+  const unique = (rows) => assert.equal(new Set(rows.map((row) => row.id)).size, rows.length);
+  for (const rows of [ontology.categories, ontology.types, ontology.domains, ontology.concepts, ontology.relations]) unique(rows);
+  assert.equal(ontology.categories.length, 5);
+  const lifeAreaIds = new Set([...homeSource.matchAll(/id:\s*"([^"]+)"/g)].map((match) => match[1]));
+  const ids = (rows) => new Set(rows.map((row) => row.id));
+  const categories = ids(ontology.categories), types = ids(ontology.types), domains = ids(ontology.domains);
+  for (const concept of ontology.concepts) {
+    assert.match(concept.id, /^[a-z]+(?:-[a-z]+)*$/);
+    assert.equal(concept.slug, concept.id);
+    assert.notEqual(concept.slug, "data", "data is a reserved export route");
+    assert.ok(categories.has(concept.categoryId));
+    assert.ok(concept.title && concept.summary && concept.graceGuardrail);
+    for (const [values, allowed] of [[concept.typeIds, types], [concept.domainIds, domains], [concept.lifeAreaIds, lifeAreaIds], [concept.topicSlugs, new Set(topicFiles)]]) {
+      assert.ok(values.length > 0);
+      assert.equal(new Set(values).size, values.length);
+      for (const value of values) assert.ok(allowed.has(value), `${concept.id} has invalid mapping ${value}`);
+    }
+    assert.ok(concept.scripture.length > 0);
+    unique(concept.scripture);
+    for (const passage of concept.scripture) {
+      assert.ok(passage.book && passage.insight);
+      for (const value of [passage.chapter, passage.verseStart, passage.verseEnd]) assert.ok(Number.isInteger(value) && value > 0);
+      assert.ok(passage.verseEnd >= passage.verseStart);
+    }
+  }
+});
+
+test("directed concept relationships are traceable to their source passages", () => {
+  const concepts = new Map(ontology.concepts.map((concept) => [concept.id, concept]));
+  const triples = new Set();
+  for (const relation of ontology.relations) {
+    assert.ok(concepts.has(relation.sourceId) && concepts.has(relation.targetId));
+    assert.notEqual(relation.sourceId, relation.targetId);
+    const triple = [relation.sourceId, relation.predicate, relation.targetId].join(":");
+    assert.ok(!triples.has(triple), `duplicate relation ${triple}`);
+    triples.add(triple);
+    assert.equal(relation.id, triple);
+    assert.ok(relation.note && relation.predicate && relation.scriptureIds.length > 0);
+    assert.equal(relation.basis, "editorial-scripture-mapping");
+    const sourcePassages = new Set(concepts.get(relation.sourceId).scripture.map((passage) => passage.id));
+    for (const id of relation.scriptureIds) assert.ok(sourcePassages.has(id), `untraceable relation ${relation.id}`);
+  }
+  assert.ok(triples.has("armour-of-god:illustrates:spiritual-warfare"));
+  assert.ok(triples.has("judgment:expresses:justice"));
+  assert.ok(concepts.get("repentance").typeIds.includes("doctrine") && concepts.get("repentance").typeIds.includes("practice"));
 });

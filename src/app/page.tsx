@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { PathCard } from "@/components/PathCard";
 import { LifeAreaList } from "@/components/LifeAreaList";
 import { VerseOfTheDay } from "@/components/VerseOfTheDay";
+import { ConceptCategories } from "@/components/ConceptCategories";
 import { entryPaths, homeCopy, lifeAreas } from "@/content/home";
 import { getVerseOfTheDay } from "@/lib/verse-of-the-day";
 
@@ -36,16 +37,6 @@ export default function HomePage() {
         </Link>
       </p>
 
-      <section className="bc-callout" aria-labelledby="foundation-heading">
-        <h2 id="foundation-heading" className="bc-title m-0 mb-2 text-lg">
-          {homeCopy.foundationTitle}
-        </h2>
-        <p className="m-0 mb-3 leading-7 text-muted-foreground">{homeCopy.foundationBody}</p>
-        <Link href="/topics/jesus-and-the-gospel" className="bc-btn">
-          Jesus and the Gospel
-        </Link>
-      </section>
-
       <h2 className="bc-title mb-3 text-[1.35rem]">{homeCopy.carryingTitle}</h2>
       <div className="mb-7 grid gap-3 sm:grid-cols-2">
         {entryPaths.map((path) => (
@@ -64,6 +55,7 @@ export default function HomePage() {
       {lifeAreas.map((area) => (
         <LifeAreaList key={area.title} {...area} />
       ))}
+      <ConceptCategories />
     </div>
   );
 }

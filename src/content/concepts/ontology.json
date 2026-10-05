@@ -1,0 +1,1067 @@
+{
+  "schemaVersion": "1.0.0",
+  "title": "Bible Compass Concepts",
+  "classificationNote": "Categories organise browsing. Types, domains and life areas are independent, many-to-many facets. Classifications and relationships are editorial study mappings, not claims that Scripture defines this taxonomy. Counts describe this curated catalogue, not the whole Bible.",
+  "categories": [
+    {
+      "id": "doctrines",
+      "title": "Doctrines",
+      "summary": "Beliefs about God, salvation and our future."
+    },
+    {
+      "id": "frameworks",
+      "title": "Biblical Frameworks",
+      "summary": "Patterns and metaphors that help us understand and respond."
+    },
+    {
+      "id": "practices",
+      "title": "Spiritual Practices",
+      "summary": "Ways of responding to God in daily life."
+    },
+    {
+      "id": "principles",
+      "title": "Principles",
+      "summary": "Truths that guide our choices and character."
+    },
+    {
+      "id": "themes",
+      "title": "Biblical Themes",
+      "summary": "Threads that connect passages across Scripture."
+    }
+  ],
+  "types": [
+    {
+      "id": "doctrine",
+      "title": "Doctrine"
+    },
+    {
+      "id": "metaphor",
+      "title": "Metaphor"
+    },
+    {
+      "id": "teaching",
+      "title": "Teaching"
+    },
+    {
+      "id": "parable",
+      "title": "Parable"
+    },
+    {
+      "id": "practice",
+      "title": "Spiritual Practice"
+    },
+    {
+      "id": "principle",
+      "title": "Principle"
+    },
+    {
+      "id": "theme",
+      "title": "Theme"
+    }
+  ],
+  "domains": [
+    {
+      "id": "nature-of-god",
+      "title": "Nature of God"
+    },
+    {
+      "id": "salvation",
+      "title": "Salvation"
+    },
+    {
+      "id": "spiritual-formation",
+      "title": "Spiritual Formation"
+    },
+    {
+      "id": "spiritual-warfare",
+      "title": "Spiritual Warfare"
+    },
+    {
+      "id": "eschatology",
+      "title": "Eschatology (Last Things)"
+    },
+    {
+      "id": "wisdom-and-ethics",
+      "title": "Wisdom and Ethics"
+    },
+    {
+      "id": "kingdom-and-covenant",
+      "title": "Kingdom and Covenant"
+    }
+  ],
+  "concepts": [
+    {
+      "id": "judgment",
+      "slug": "judgment",
+      "title": "Judgment",
+      "aliases": [
+        "Judgement",
+        "Final Judgment",
+        "Final Judgement"
+      ],
+      "categoryId": "doctrines",
+      "typeIds": [
+        "doctrine"
+      ],
+      "domainIds": [
+        "eschatology",
+        "wisdom-and-ethics"
+      ],
+      "lifeAreaIds": [
+        "doctrine",
+        "character"
+      ],
+      "topicSlugs": [
+        "destiny-of-the-world",
+        "teachings"
+      ],
+      "summary": "God judges evil and holds people accountable with justice. Final judgment is one expression of this wider biblical concept.",
+      "graceGuardrail": "God's grace in Jesus is a gift. Learning or practising this concept does not earn God's love.",
+      "scripture": [
+        {
+          "id": "judgment:passage:1",
+          "book": "Romans",
+          "chapter": 2,
+          "verseStart": 5,
+          "verseEnd": 11,
+          "insight": "Paul describes God judging impartially."
+        },
+        {
+          "id": "judgment:passage:2",
+          "book": "Matthew",
+          "chapter": 25,
+          "verseStart": 31,
+          "verseEnd": 46,
+          "insight": "Jesus describes the Son of Man judging the nations."
+        }
+      ]
+    },
+    {
+      "id": "salvation",
+      "slug": "salvation",
+      "title": "Salvation",
+      "aliases": [],
+      "categoryId": "doctrines",
+      "typeIds": [
+        "doctrine"
+      ],
+      "domainIds": [
+        "salvation"
+      ],
+      "lifeAreaIds": [
+        "foundations",
+        "peace"
+      ],
+      "topicSlugs": [
+        "jesus-and-the-gospel",
+        "faith"
+      ],
+      "summary": "God rescues people from sin and brings them into life with him through Jesus.",
+      "graceGuardrail": "God's grace in Jesus is a gift. Learning or practising this concept does not earn God's love.",
+      "scripture": [
+        {
+          "id": "salvation:passage:1",
+          "book": "Ephesians",
+          "chapter": 2,
+          "verseStart": 1,
+          "verseEnd": 10,
+          "insight": "Salvation is God's gift through faith, with good works as its fruit."
+        }
+      ]
+    },
+    {
+      "id": "resurrection",
+      "slug": "resurrection",
+      "title": "Resurrection",
+      "aliases": [],
+      "categoryId": "doctrines",
+      "typeIds": [
+        "doctrine"
+      ],
+      "domainIds": [
+        "eschatology",
+        "salvation"
+      ],
+      "lifeAreaIds": [
+        "foundations",
+        "peace"
+      ],
+      "topicSlugs": [
+        "jesus-and-the-gospel",
+        "grief-and-loss",
+        "destiny-of-the-world"
+      ],
+      "summary": "Jesus rose from the dead; Christian hope includes the resurrection of the dead.",
+      "graceGuardrail": "God's grace in Jesus is a gift. Learning or practising this concept does not earn God's love.",
+      "scripture": [
+        {
+          "id": "resurrection:passage:1",
+          "book": "1 Corinthians",
+          "chapter": 15,
+          "verseStart": 12,
+          "verseEnd": 28,
+          "insight": "Paul connects the resurrection of Jesus with the future resurrection of those who belong to him."
+        }
+      ]
+    },
+    {
+      "id": "trinity",
+      "slug": "trinity",
+      "title": "Trinity",
+      "aliases": [],
+      "categoryId": "doctrines",
+      "typeIds": [
+        "doctrine"
+      ],
+      "domainIds": [
+        "nature-of-god"
+      ],
+      "lifeAreaIds": [
+        "foundations",
+        "doctrine"
+      ],
+      "topicSlugs": [
+        "character-of-god",
+        "jesus-and-the-gospel"
+      ],
+      "summary": "Historic Christian teaching that the one God is Father, Son and Holy Spirit. The term summarises a reading of Scripture rather than naming a word used in it.",
+      "graceGuardrail": "God's grace in Jesus is a gift. Learning or practising this concept does not earn God's love.",
+      "scripture": [
+        {
+          "id": "trinity:passage:1",
+          "book": "Matthew",
+          "chapter": 28,
+          "verseStart": 18,
+          "verseEnd": 20,
+          "insight": "Jesus commands baptism in the name of the Father, Son and Holy Spirit."
+        },
+        {
+          "id": "trinity:passage:2",
+          "book": "2 Corinthians",
+          "chapter": 13,
+          "verseStart": 14,
+          "verseEnd": 14,
+          "insight": "Paul brings together the grace of Jesus, the love of God and the fellowship of the Holy Spirit."
+        }
+      ]
+    },
+    {
+      "id": "justification",
+      "slug": "justification",
+      "title": "Justification",
+      "aliases": [],
+      "categoryId": "doctrines",
+      "typeIds": [
+        "doctrine"
+      ],
+      "domainIds": [
+        "salvation"
+      ],
+      "lifeAreaIds": [
+        "foundations",
+        "doctrine"
+      ],
+      "topicSlugs": [
+        "jesus-and-the-gospel",
+        "faith"
+      ],
+      "summary": "Being put right with God through Jesus. Christian traditions differ in how they explain aspects of justification.",
+      "graceGuardrail": "God's grace in Jesus is a gift. Learning or practising this concept does not earn God's love.",
+      "scripture": [
+        {
+          "id": "justification:passage:1",
+          "book": "Romans",
+          "chapter": 5,
+          "verseStart": 1,
+          "verseEnd": 2,
+          "insight": "Paul links justification through faith with peace with God through Jesus."
+        }
+      ]
+    },
+    {
+      "id": "grace",
+      "slug": "grace",
+      "title": "Grace",
+      "aliases": [],
+      "categoryId": "doctrines",
+      "typeIds": [
+        "doctrine",
+        "theme"
+      ],
+      "domainIds": [
+        "salvation",
+        "nature-of-god"
+      ],
+      "lifeAreaIds": [
+        "foundations",
+        "work"
+      ],
+      "topicSlugs": [
+        "jesus-and-the-gospel",
+        "failure"
+      ],
+      "summary": "God's freely given favour and help, received rather than earned.",
+      "graceGuardrail": "God's grace in Jesus is a gift. Learning or practising this concept does not earn God's love.",
+      "scripture": [
+        {
+          "id": "grace:passage:1",
+          "book": "Ephesians",
+          "chapter": 2,
+          "verseStart": 8,
+          "verseEnd": 10,
+          "insight": "God's gift precedes the good works believers are created to do."
+        }
+      ]
+    },
+    {
+      "id": "armour-of-god",
+      "slug": "armour-of-god",
+      "title": "Full Armour of God",
+      "aliases": [
+        "Armour of God",
+        "Armor of God",
+        "Full Armor of God",
+        "Full armour of Christ"
+      ],
+      "categoryId": "frameworks",
+      "typeIds": [
+        "metaphor",
+        "teaching"
+      ],
+      "domainIds": [
+        "spiritual-warfare",
+        "spiritual-formation"
+      ],
+      "lifeAreaIds": [
+        "peace",
+        "character"
+      ],
+      "topicSlugs": [
+        "courage",
+        "truth",
+        "faith",
+        "safety-and-gods-protection"
+      ],
+      "summary": "Paul's armour metaphor describes standing firm in God's strength through truth, righteousness, the gospel of peace, faith, salvation and God's word, with prayer.",
+      "graceGuardrail": "God's grace in Jesus is a gift. Learning or practising this concept does not earn God's love.",
+      "scripture": [
+        {
+          "id": "armour-of-god:passage:1",
+          "book": "Ephesians",
+          "chapter": 6,
+          "verseStart": 10,
+          "verseEnd": 18,
+          "insight": "The struggle is not against flesh and blood. Stand in God's strength and pray; this is not permission to treat people as enemies."
+        }
+      ]
+    },
+    {
+      "id": "fruit-of-the-spirit",
+      "slug": "fruit-of-the-spirit",
+      "title": "Fruit of the Spirit",
+      "aliases": [],
+      "categoryId": "frameworks",
+      "typeIds": [
+        "metaphor",
+        "teaching"
+      ],
+      "domainIds": [
+        "spiritual-formation"
+      ],
+      "lifeAreaIds": [
+        "character",
+        "family"
+      ],
+      "topicSlugs": [
+        "self-control",
+        "patience",
+        "friendship"
+      ],
+      "summary": "A picture of the character the Holy Spirit grows in believers, including love, peace, patience and self-control.",
+      "graceGuardrail": "God's grace in Jesus is a gift. Learning or practising this concept does not earn God's love.",
+      "scripture": [
+        {
+          "id": "fruit-of-the-spirit:passage:1",
+          "book": "Galatians",
+          "chapter": 5,
+          "verseStart": 16,
+          "verseEnd": 26,
+          "insight": "The fruit belongs to a life led by the Spirit, rather than a scorecard for earning acceptance."
+        }
+      ]
+    },
+    {
+      "id": "beatitudes",
+      "slug": "beatitudes",
+      "title": "Beatitudes",
+      "aliases": [],
+      "categoryId": "frameworks",
+      "typeIds": [
+        "teaching"
+      ],
+      "domainIds": [
+        "kingdom-and-covenant",
+        "wisdom-and-ethics"
+      ],
+      "lifeAreaIds": [
+        "peace",
+        "character"
+      ],
+      "topicSlugs": [
+        "teachings",
+        "courage",
+        "peace-and-trauma"
+      ],
+      "summary": "Jesus' blessings describe the people and character of his kingdom, including the merciful, peacemakers and those who hunger for righteousness.",
+      "graceGuardrail": "God's grace in Jesus is a gift. Learning or practising this concept does not earn God's love.",
+      "scripture": [
+        {
+          "id": "beatitudes:passage:1",
+          "book": "Matthew",
+          "chapter": 5,
+          "verseStart": 1,
+          "verseEnd": 12,
+          "insight": "Jesus opens the Sermon on the Mount by describing those who are blessed."
+        }
+      ]
+    },
+    {
+      "id": "parable-of-the-sower",
+      "slug": "parable-of-the-sower",
+      "title": "Parable of the Sower",
+      "aliases": [],
+      "categoryId": "frameworks",
+      "typeIds": [
+        "parable",
+        "metaphor",
+        "teaching"
+      ],
+      "domainIds": [
+        "kingdom-and-covenant",
+        "spiritual-formation"
+      ],
+      "lifeAreaIds": [
+        "foundations",
+        "work"
+      ],
+      "topicSlugs": [
+        "how-to-read-the-bible",
+        "faith"
+      ],
+      "summary": "Jesus uses seed and soils to describe different responses to the word of the kingdom.",
+      "graceGuardrail": "God's grace in Jesus is a gift. Learning or practising this concept does not earn God's love.",
+      "scripture": [
+        {
+          "id": "parable-of-the-sower:passage:1",
+          "book": "Matthew",
+          "chapter": 13,
+          "verseStart": 1,
+          "verseEnd": 23,
+          "insight": "Read the parable alongside Jesus' explanation of the soils."
+        }
+      ]
+    },
+    {
+      "id": "prayer",
+      "slug": "prayer",
+      "title": "Prayer",
+      "aliases": [],
+      "categoryId": "practices",
+      "typeIds": [
+        "practice"
+      ],
+      "domainIds": [
+        "spiritual-formation"
+      ],
+      "lifeAreaIds": [
+        "peace",
+        "doctrine"
+      ],
+      "topicSlugs": [
+        "prayer-and-worship",
+        "anxiety"
+      ],
+      "summary": "Turning to God in praise, confession, gratitude and requests, trusting his wisdom.",
+      "graceGuardrail": "God's grace in Jesus is a gift. Learning or practising this concept does not earn God's love.",
+      "scripture": [
+        {
+          "id": "prayer:passage:1",
+          "book": "Matthew",
+          "chapter": 6,
+          "verseStart": 5,
+          "verseEnd": 13,
+          "insight": "Jesus teaches sincere prayer and gives a pattern centred on the Father, his kingdom and daily dependence."
+        }
+      ]
+    },
+    {
+      "id": "fasting",
+      "slug": "fasting",
+      "title": "Fasting",
+      "aliases": [],
+      "categoryId": "practices",
+      "typeIds": [
+        "practice"
+      ],
+      "domainIds": [
+        "spiritual-formation"
+      ],
+      "lifeAreaIds": [
+        "character",
+        "doctrine"
+      ],
+      "topicSlugs": [
+        "prayer-and-worship",
+        "self-control"
+      ],
+      "summary": "Voluntarily abstaining from food for a time as a spiritual response to God, rather than a display of religious status.",
+      "graceGuardrail": "God's grace in Jesus is a gift. Learning or practising this concept does not earn God's love.",
+      "scripture": [
+        {
+          "id": "fasting:passage:1",
+          "book": "Matthew",
+          "chapter": 6,
+          "verseStart": 16,
+          "verseEnd": 18,
+          "insight": "Jesus teaches fasting without seeking public admiration."
+        }
+      ]
+    },
+    {
+      "id": "repentance",
+      "slug": "repentance",
+      "title": "Repentance",
+      "aliases": [],
+      "categoryId": "practices",
+      "typeIds": [
+        "practice",
+        "doctrine"
+      ],
+      "domainIds": [
+        "salvation",
+        "spiritual-formation"
+      ],
+      "lifeAreaIds": [
+        "character",
+        "foundations"
+      ],
+      "topicSlugs": [
+        "temptation-and-character",
+        "jesus-and-the-gospel"
+      ],
+      "summary": "Turning from sin towards God, involving a change of mind and direction.",
+      "graceGuardrail": "God's grace in Jesus is a gift. Learning or practising this concept does not earn God's love.",
+      "scripture": [
+        {
+          "id": "repentance:passage:1",
+          "book": "Mark",
+          "chapter": 1,
+          "verseStart": 14,
+          "verseEnd": 15,
+          "insight": "Jesus calls people to repent and believe the good news."
+        }
+      ]
+    },
+    {
+      "id": "worship",
+      "slug": "worship",
+      "title": "Worship",
+      "aliases": [],
+      "categoryId": "practices",
+      "typeIds": [
+        "practice"
+      ],
+      "domainIds": [
+        "nature-of-god",
+        "spiritual-formation"
+      ],
+      "lifeAreaIds": [
+        "doctrine",
+        "foundations"
+      ],
+      "topicSlugs": [
+        "prayer-and-worship",
+        "character-of-god"
+      ],
+      "summary": "Honouring God with our hearts, words and lives.",
+      "graceGuardrail": "God's grace in Jesus is a gift. Learning or practising this concept does not earn God's love.",
+      "scripture": [
+        {
+          "id": "worship:passage:1",
+          "book": "John",
+          "chapter": 4,
+          "verseStart": 23,
+          "verseEnd": 24,
+          "insight": "Jesus speaks of worshipping the Father in Spirit and truth."
+        },
+        {
+          "id": "worship:passage:2",
+          "book": "Romans",
+          "chapter": 12,
+          "verseStart": 1,
+          "verseEnd": 2,
+          "insight": "Paul connects worship with offering our lives to God and a renewed mind."
+        }
+      ]
+    },
+    {
+      "id": "stewardship",
+      "slug": "stewardship",
+      "title": "Stewardship",
+      "aliases": [],
+      "categoryId": "principles",
+      "typeIds": [
+        "principle"
+      ],
+      "domainIds": [
+        "wisdom-and-ethics"
+      ],
+      "lifeAreaIds": [
+        "work",
+        "family"
+      ],
+      "topicSlugs": [
+        "wealth",
+        "hard-work"
+      ],
+      "summary": "Caring faithfully for resources and responsibilities entrusted to us.",
+      "graceGuardrail": "God's grace in Jesus is a gift. Learning or practising this concept does not earn God's love.",
+      "scripture": [
+        {
+          "id": "stewardship:passage:1",
+          "book": "1 Peter",
+          "chapter": 4,
+          "verseStart": 10,
+          "verseEnd": 11,
+          "insight": "Use received gifts to serve others as stewards of God's grace."
+        }
+      ]
+    },
+    {
+      "id": "forgiveness",
+      "slug": "forgiveness",
+      "title": "Forgiveness",
+      "aliases": [],
+      "categoryId": "principles",
+      "typeIds": [
+        "principle",
+        "practice",
+        "doctrine"
+      ],
+      "domainIds": [
+        "salvation",
+        "wisdom-and-ethics"
+      ],
+      "lifeAreaIds": [
+        "family",
+        "peace"
+      ],
+      "topicSlugs": [
+        "forgiveness",
+        "letting-go"
+      ],
+      "summary": "God forgives sin, and calls people to forgive others. Forgiveness does not remove the need for truth, boundaries or accountability.",
+      "graceGuardrail": "God's grace in Jesus is a gift. Learning or practising this concept does not earn God's love.",
+      "scripture": [
+        {
+          "id": "forgiveness:passage:1",
+          "book": "Ephesians",
+          "chapter": 4,
+          "verseStart": 31,
+          "verseEnd": 32,
+          "insight": "Paul connects forgiving one another with God's forgiveness in Christ."
+        }
+      ]
+    },
+    {
+      "id": "justice",
+      "slug": "justice",
+      "title": "Justice",
+      "aliases": [],
+      "categoryId": "principles",
+      "typeIds": [
+        "principle",
+        "theme"
+      ],
+      "domainIds": [
+        "wisdom-and-ethics",
+        "nature-of-god"
+      ],
+      "lifeAreaIds": [
+        "family",
+        "character"
+      ],
+      "topicSlugs": [
+        "teachings",
+        "character-of-god"
+      ],
+      "summary": "Acting rightly and fairly, reflecting God's concern for truth and the vulnerable.",
+      "graceGuardrail": "God's grace in Jesus is a gift. Learning or practising this concept does not earn God's love.",
+      "scripture": [
+        {
+          "id": "justice:passage:1",
+          "book": "Micah",
+          "chapter": 6,
+          "verseStart": 8,
+          "verseEnd": 8,
+          "insight": "The prophet joins justice, mercy and humble walking with God."
+        }
+      ]
+    },
+    {
+      "id": "humility",
+      "slug": "humility",
+      "title": "Humility",
+      "aliases": [],
+      "categoryId": "principles",
+      "typeIds": [
+        "principle"
+      ],
+      "domainIds": [
+        "wisdom-and-ethics",
+        "spiritual-formation"
+      ],
+      "lifeAreaIds": [
+        "character",
+        "family"
+      ],
+      "topicSlugs": [
+        "pride",
+        "teachings"
+      ],
+      "summary": "Receiving our place before God honestly and considering the needs of others.",
+      "graceGuardrail": "God's grace in Jesus is a gift. Learning or practising this concept does not earn God's love.",
+      "scripture": [
+        {
+          "id": "humility:passage:1",
+          "book": "Philippians",
+          "chapter": 2,
+          "verseStart": 3,
+          "verseEnd": 11,
+          "insight": "Paul points to Jesus as the pattern for humble service."
+        }
+      ]
+    },
+    {
+      "id": "covenant",
+      "slug": "covenant",
+      "title": "Covenant",
+      "aliases": [],
+      "categoryId": "themes",
+      "typeIds": [
+        "theme",
+        "doctrine"
+      ],
+      "domainIds": [
+        "kingdom-and-covenant"
+      ],
+      "lifeAreaIds": [
+        "foundations",
+        "doctrine"
+      ],
+      "topicSlugs": [
+        "themes",
+        "bible-timeline"
+      ],
+      "summary": "A committed relationship established by God, with promises and responsibilities that shape the biblical story.",
+      "graceGuardrail": "God's grace in Jesus is a gift. Learning or practising this concept does not earn God's love.",
+      "scripture": [
+        {
+          "id": "covenant:passage:1",
+          "book": "Genesis",
+          "chapter": 17,
+          "verseStart": 1,
+          "verseEnd": 8,
+          "insight": "God establishes his covenant with Abraham."
+        },
+        {
+          "id": "covenant:passage:2",
+          "book": "Luke",
+          "chapter": 22,
+          "verseStart": 19,
+          "verseEnd": 20,
+          "insight": "Jesus speaks of the new covenant in his blood."
+        }
+      ]
+    },
+    {
+      "id": "kingdom-of-god",
+      "slug": "kingdom-of-god",
+      "title": "Kingdom of God",
+      "aliases": [],
+      "categoryId": "themes",
+      "typeIds": [
+        "theme",
+        "doctrine"
+      ],
+      "domainIds": [
+        "kingdom-and-covenant",
+        "eschatology"
+      ],
+      "lifeAreaIds": [
+        "foundations",
+        "doctrine"
+      ],
+      "topicSlugs": [
+        "themes",
+        "jesus-and-the-gospel",
+        "destiny-of-the-world"
+      ],
+      "summary": "God's reign, announced and embodied by Jesus, with a future fulfilment Christians await.",
+      "graceGuardrail": "God's grace in Jesus is a gift. Learning or practising this concept does not earn God's love.",
+      "scripture": [
+        {
+          "id": "kingdom-of-god:passage:1",
+          "book": "Mark",
+          "chapter": 1,
+          "verseStart": 14,
+          "verseEnd": 15,
+          "insight": "Jesus announces the arrival of God's kingdom."
+        },
+        {
+          "id": "kingdom-of-god:passage:2",
+          "book": "Matthew",
+          "chapter": 6,
+          "verseStart": 9,
+          "verseEnd": 10,
+          "insight": "Jesus teaches his followers to pray for God's kingdom to come."
+        }
+      ]
+    },
+    {
+      "id": "redemption",
+      "slug": "redemption",
+      "title": "Redemption",
+      "aliases": [],
+      "categoryId": "themes",
+      "typeIds": [
+        "theme",
+        "doctrine"
+      ],
+      "domainIds": [
+        "salvation"
+      ],
+      "lifeAreaIds": [
+        "foundations",
+        "peace"
+      ],
+      "topicSlugs": [
+        "themes",
+        "jesus-and-the-gospel",
+        "failure"
+      ],
+      "summary": "God sets people free through Jesus, bringing forgiveness and restoration.",
+      "graceGuardrail": "God's grace in Jesus is a gift. Learning or practising this concept does not earn God's love.",
+      "scripture": [
+        {
+          "id": "redemption:passage:1",
+          "book": "Ephesians",
+          "chapter": 1,
+          "verseStart": 7,
+          "verseEnd": 10,
+          "insight": "Paul connects redemption in Christ with forgiveness and God's purpose."
+        }
+      ]
+    },
+    {
+      "id": "spiritual-warfare",
+      "slug": "spiritual-warfare",
+      "title": "Spiritual Warfare",
+      "aliases": [],
+      "categoryId": "themes",
+      "typeIds": [
+        "theme"
+      ],
+      "domainIds": [
+        "spiritual-warfare"
+      ],
+      "lifeAreaIds": [
+        "peace",
+        "character"
+      ],
+      "topicSlugs": [
+        "temptation-and-character",
+        "courage"
+      ],
+      "summary": "Resisting spiritual evil through dependence on God, faithfulness and prayer. People are not the enemy.",
+      "graceGuardrail": "God's grace in Jesus is a gift. Learning or practising this concept does not earn God's love.",
+      "scripture": [
+        {
+          "id": "spiritual-warfare:passage:1",
+          "book": "Ephesians",
+          "chapter": 6,
+          "verseStart": 10,
+          "verseEnd": 18,
+          "insight": "Paul directs believers to stand firm in the Lord rather than fight against people."
+        }
+      ]
+    }
+  ],
+  "relations": [
+    {
+      "id": "armour-of-god:illustrates:spiritual-warfare",
+      "sourceId": "armour-of-god",
+      "predicate": "illustrates",
+      "targetId": "spiritual-warfare",
+      "scriptureIds": [
+        "armour-of-god:passage:1"
+      ],
+      "note": "Paul uses the armour metaphor to describe standing firm in spiritual conflict.",
+      "basis": "editorial-scripture-mapping"
+    },
+    {
+      "id": "armour-of-god:includes:salvation",
+      "sourceId": "armour-of-god",
+      "predicate": "includes",
+      "targetId": "salvation",
+      "scriptureIds": [
+        "armour-of-god:passage:1"
+      ],
+      "note": "Salvation is pictured as a helmet within Paul's armour metaphor.",
+      "basis": "editorial-scripture-mapping"
+    },
+    {
+      "id": "armour-of-god:accompanied-by:prayer",
+      "sourceId": "armour-of-god",
+      "predicate": "accompanied-by",
+      "targetId": "prayer",
+      "scriptureIds": [
+        "armour-of-god:passage:1"
+      ],
+      "note": "Paul follows the armour imagery with a call to pray in the Spirit.",
+      "basis": "editorial-scripture-mapping"
+    },
+    {
+      "id": "salvation:received-through:grace",
+      "sourceId": "salvation",
+      "predicate": "received-through",
+      "targetId": "grace",
+      "scriptureIds": [
+        "salvation:passage:1"
+      ],
+      "note": "Paul describes salvation as a gift of grace through faith.",
+      "basis": "editorial-scripture-mapping"
+    },
+    {
+      "id": "grace:leads-to:stewardship",
+      "sourceId": "grace",
+      "predicate": "leads-to",
+      "targetId": "stewardship",
+      "scriptureIds": [
+        "grace:passage:1"
+      ],
+      "note": "Good works follow grace; caring for entrusted gifts is one editorial application.",
+      "basis": "editorial-scripture-mapping"
+    },
+    {
+      "id": "resurrection:grounds:salvation",
+      "sourceId": "resurrection",
+      "predicate": "grounds",
+      "targetId": "salvation",
+      "scriptureIds": [
+        "resurrection:passage:1"
+      ],
+      "note": "Paul connects the saving Christian hope with Christ's resurrection.",
+      "basis": "editorial-scripture-mapping"
+    },
+    {
+      "id": "judgment:expresses:justice",
+      "sourceId": "judgment",
+      "predicate": "expresses",
+      "targetId": "justice",
+      "scriptureIds": [
+        "judgment:passage:1"
+      ],
+      "note": "Paul describes God's judgment as impartial.",
+      "basis": "editorial-scripture-mapping"
+    },
+    {
+      "id": "beatitudes:describes:kingdom-of-god",
+      "sourceId": "beatitudes",
+      "predicate": "describes",
+      "targetId": "kingdom-of-god",
+      "scriptureIds": [
+        "beatitudes:passage:1"
+      ],
+      "note": "Jesus places the Beatitudes in the context of the kingdom of heaven.",
+      "basis": "editorial-scripture-mapping"
+    },
+    {
+      "id": "parable-of-the-sower:illustrates:kingdom-of-god",
+      "sourceId": "parable-of-the-sower",
+      "predicate": "illustrates",
+      "targetId": "kingdom-of-god",
+      "scriptureIds": [
+        "parable-of-the-sower:passage:1"
+      ],
+      "note": "Jesus explains the seed in relation to the word of the kingdom.",
+      "basis": "editorial-scripture-mapping"
+    },
+    {
+      "id": "prayer:seeks:kingdom-of-god",
+      "sourceId": "prayer",
+      "predicate": "seeks",
+      "targetId": "kingdom-of-god",
+      "scriptureIds": [
+        "prayer:passage:1"
+      ],
+      "note": "The Lord's Prayer includes asking for God's kingdom to come.",
+      "basis": "editorial-scripture-mapping"
+    },
+    {
+      "id": "forgiveness:reflects:grace",
+      "sourceId": "forgiveness",
+      "predicate": "reflects",
+      "targetId": "grace",
+      "scriptureIds": [
+        "forgiveness:passage:1"
+      ],
+      "note": "Forgiving others responds to the forgiveness received in Christ.",
+      "basis": "editorial-scripture-mapping"
+    },
+    {
+      "id": "justice:accompanied-by:humility",
+      "sourceId": "justice",
+      "predicate": "accompanied-by",
+      "targetId": "humility",
+      "scriptureIds": [
+        "justice:passage:1"
+      ],
+      "note": "Micah joins doing justice with walking humbly with God.",
+      "basis": "editorial-scripture-mapping"
+    },
+    {
+      "id": "redemption:includes:forgiveness",
+      "sourceId": "redemption",
+      "predicate": "includes",
+      "targetId": "forgiveness",
+      "scriptureIds": [
+        "redemption:passage:1"
+      ],
+      "note": "Paul connects redemption with the forgiveness of sins.",
+      "basis": "editorial-scripture-mapping"
+    },
+    {
+      "id": "repentance:responds-to:kingdom-of-god",
+      "sourceId": "repentance",
+      "predicate": "responds-to",
+      "targetId": "kingdom-of-god",
+      "scriptureIds": [
+        "repentance:passage:1"
+      ],
+      "note": "Jesus joins the announcement of the kingdom with a call to repentance and faith.",
+      "basis": "editorial-scripture-mapping"
+    },
+    {
+      "id": "worship:expresses:humility",
+      "sourceId": "worship",
+      "predicate": "expresses",
+      "targetId": "humility",
+      "scriptureIds": [
+        "worship:passage:2"
+      ],
+      "note": "Offering a life to God is an editorial connection to humble dependence.",
+      "basis": "editorial-scripture-mapping"
+    }
+  ]
+}

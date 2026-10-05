@@ -48,6 +48,13 @@ jobs:
           cat /tmp/health.json
           node -e 'const fs = require("fs"); const health = JSON.parse(fs.readFileSync("/tmp/health.json", "utf8")); if (health.ok !== true || health.product !== "bible-compass") process.exit(1)'
           curl --fail --silent --show-error http://127.0.0.1:3003/ > /dev/null
+          curl --fail --silent --show-error http://127.0.0.1:3003/how-to-use > /dev/null
+          curl --fail --silent --show-error http://127.0.0.1:3003/concepts > /dev/null
+          curl --fail --silent --show-error http://127.0.0.1:3003/concepts/data > /tmp/concepts.json
+          node -e 'const fs = require("fs"); const data = JSON.parse(fs.readFileSync("/tmp/concepts.json", "utf8")); const source = JSON.parse(fs.readFileSync("src/content/concepts/ontology.json", "utf8")); if (data.schemaVersion !== source.schemaVersion || JSON.stringify(data.concepts) !== JSON.stringify(source.concepts) || JSON.stringify(data.relations) !== JSON.stringify(source.relations) || !data.lifeAreas.length || !data.topics.length) process.exit(1)'
+          while read -r slug; do
+            curl --fail --silent --show-error "http://127.0.0.1:3003/concepts/$slug" > /dev/null
+          done < <(node -e 'const fs = require("fs"); const data = JSON.parse(fs.readFileSync("src/content/concepts/ontology.json", "utf8")); console.log(data.concepts.map(c => c.slug).join("\n"))')
 
   production-proof:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'

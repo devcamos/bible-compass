@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { howToUse } from "@/content/how-to-use";
+import { homeCopy } from "@/content/home";
 
 export const metadata: Metadata = {
   title: "How to use",
@@ -23,6 +24,12 @@ export default function HowToUsePage() {
           {howToUse.summary}
         </p>
       </header>
+
+      <section className="bc-callout" aria-labelledby="foundation-heading">
+        <h2 id="foundation-heading" className="bc-title mt-0 mb-2 text-lg">{homeCopy.foundationTitle}</h2>
+        <p className="text-muted-foreground">{homeCopy.foundationBody}</p>
+        <Link href="/topics/jesus-and-the-gospel" className="bc-btn">Jesus and the Gospel</Link>
+      </section>
 
       <section className="bc-callout">
         <strong>{howToUse.graceTitle}</strong>

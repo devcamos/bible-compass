@@ -43,6 +43,12 @@ export const howToUse = {
       body: "Use it when you need deeper understanding or a related path. You do not have to finish every page in one sitting.",
     },
     {
+      title: "Explore concepts and their connections",
+      body: "Browse biblical concepts by type, theological domain or life area. Open a concept to see its passages and related topics. The mappings are study aids; read Scripture in context.",
+      href: "/concepts",
+      linkLabel: "Explore concepts",
+    },
+    {
       title: "Return as life changes",
       body: "Bible Compass is a guide for the journey, not a one-time answer.",
     },

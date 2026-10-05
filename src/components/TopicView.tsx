@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import type { Topic } from "@/content/types";
+import { conceptsForTopic } from "@/content/concepts";
 
 type TopicViewProps = {
   topic: Topic;
@@ -26,6 +27,7 @@ function BulletText({ bullet }: { bullet: string }) {
 }
 
 export function TopicView({ topic }: TopicViewProps) {
+  const concepts = conceptsForTopic(topic.slug);
   return (
     <article>
       <Breadcrumb current={topic.title} />
@@ -208,6 +210,11 @@ export function TopicView({ topic }: TopicViewProps) {
           {topic.safetyNote}
         </aside>
       ) : null}
+
+      {concepts.length ? <nav className="mt-8" aria-label="Related biblical concepts">
+        <h2 className="bc-title mb-3 text-xl">Related concepts</h2>
+        <div className="flex flex-wrap gap-2.5">{concepts.map((concept) => <Link key={concept.id} href={`/concepts/${concept.slug}`} className="bc-btn bc-btn--quiet">{concept.title}</Link>)}</div>
+      </nav> : null}
 
       <nav className="mt-8" aria-label="Read next">
         <h2 className="bc-title mb-3 text-xl">Read next</h2>
