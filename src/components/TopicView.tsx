@@ -1,7 +1,9 @@
 import Link from "next/link";
 import { Breadcrumb } from "@/components/Breadcrumb";
+import { ProphetBookList } from "@/components/ProphetBookList";
 import type { Topic } from "@/content/types";
 import { conceptsForTopic } from "@/content/concepts";
+import { getProphetBooks } from "@/content/prophets";
 
 type TopicViewProps = {
   topic: Topic;
@@ -135,7 +137,9 @@ export function TopicView({ topic }: TopicViewProps) {
                       {item.detail}
                     </span>
                   ) : null}
-                  {item.children?.length ? (
+                  {item.bookSummaryGroup ? (
+                    <ProphetBookList books={getProphetBooks(item.bookSummaryGroup)} />
+                  ) : item.children?.length ? (
                     <ul className="mt-2 mb-0 list-disc space-y-1 pl-5 text-[0.98rem] leading-6 text-muted-foreground">
                       {item.children.map((child) => (
                         <li key={child} className="pl-0.5">

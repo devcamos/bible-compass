@@ -3,6 +3,7 @@ import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
+import { resolveScriptureReferences, scriptureReference, scriptureUrl } from "../src/lib/scripture-mapping.mjs";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const src = join(root, "src");
 
@@ -170,7 +171,7 @@ test("verse of the day schedule uses UTC calendar days", () => {
 });
 
 test("concept ontology has unique identifiers and valid independent facets", () => {
-  assert.equal(ontology.schemaVersion, "1.1.0");
+  assert.equal(ontology.schemaVersion, "1.2.0");
   const unique = (rows) => assert.equal(new Set(rows.map((row) => row.id)).size, rows.length);
   for (const rows of [ontology.categories, ontology.types, ontology.domains, ontology.concepts, ontology.relations]) unique(rows);
   assert.equal(ontology.categories.length, 5);
@@ -235,6 +236,10 @@ test("every concept has a key verse, explanation and traceable living guidance",
     for (const action of concept.livingGuidance) {
       assert.ok(action.title && action.detail && action.scriptureIds.length > 0);
       for (const id of action.scriptureIds) assert.ok(passages.has(id), `${action.id} has untraceable guidance`);
+      assert.ok(Array.isArray(action.scriptureReferences) && action.scriptureReferences.length > 0, `${action.id} missing specific verse mappings`);
+      assert.deepEqual(new Set(action.scriptureReferences.map((reference) => reference.passageId)), new Set(action.scriptureIds), `${action.id} has inconsistent source references`);
+      const resolved = resolveScriptureReferences(concept.scripture.filter((passage) => action.scriptureIds.includes(passage.id)), action.scriptureReferences);
+      assert.equal(resolved.length, action.scriptureReferences.length);
     }
   }
   const judgment = ontology.concepts.find((concept) => concept.id === "judgment");
@@ -244,4 +249,73 @@ test("every concept has a key verse, explanation and traceable living guidance",
   assert.equal(judgment.keyVerse.verseStart, 1);
   assert.ok(source.verseEnd >= 5, "Judgement key verse must retain the surrounding teaching");
   assert.ok(judgment.scripture.some((passage) => passage.book === "John" && passage.chapter === 7 && passage.verseStart === 24));
+});
+
+test("Scripture engine resolves precise ranges without mutating their context", () => {
+  const context = Object.freeze({ id: "context", book: "Galatians", chapter: 5, verseStart: 16, verseEnd: 26 });
+  const references = [
+    { passageId: "context", verseStart: 16, verseEnd: 16 },
+    { passageId: "context", verseStart: 22, verseEnd: 23 },
+  ];
+  assert.deepEqual(resolveScriptureReferences([context], references), [
+    { ...context, verseStart: 16, verseEnd: 16 },
+    { ...context, verseStart: 22, verseEnd: 23 },
+  ]);
+  assert.equal(context.verseStart, 16);
+  assert.equal(context.verseEnd, 26);
+});
+
+test("Scripture engine rejects missing, unknown, invalid and duplicate mappings", () => {
+  const context = { id: "context", verseStart: 16, verseEnd: 26 };
+  const reference = { passageId: "context", verseStart: 22, verseEnd: 23 };
+  for (const references of [
+    undefined,
+    [],
+    [{ ...reference, passageId: "missing" }],
+    [{ ...reference, verseStart: 15 }],
+    [{ ...reference, verseEnd: 27 }],
+    [{ ...reference, verseStart: 24 }],
+    [{ ...reference, verseStart: 22.5 }],
+    [{ ...reference, verseEnd: "23" }],
+    [reference, reference],
+  ]) {
+    assert.throws(() => resolveScriptureReferences([context], references));
+  }
+});
+
+test("shared Scripture links preserve book names and exact verse ranges", () => {
+  for (const [passage, expected] of [
+    [{ book: "Galatians", chapter: 5, verseStart: 16, verseEnd: 16 }, "Galatians 5:16"],
+    [{ book: "1 Peter", chapter: 1, verseStart: 18, verseEnd: 19 }, "1 Peter 1:18-19"],
+  ]) {
+    assert.equal(scriptureReference(passage), expected);
+    const url = new URL(scriptureUrl(passage));
+    assert.equal(url.hostname, "www.biblegateway.com");
+    assert.equal(url.searchParams.get("search"), expected);
+    assert.equal(url.searchParams.get("version"), "NIV");
+  }
+});
+
+test("prophetic summaries cover every listed Major and Minor Prophet book", () => {
+  const books = JSON.parse(read(join(src, "content/prophets/books.json")));
+  const topic = JSON.parse(read(join(topicDir, "components-of-the-bible.json")));
+  const groups = topic.sections.flatMap((section) => section.items ?? []).filter((item) => item.bookSummaryGroup);
+  assert.equal(books.length, 17);
+  assert.equal(new Set(books.map((book) => book.id)).size, books.length);
+  assert.deepEqual(groups.map((item) => item.bookSummaryGroup), ["major-prophets", "minor-prophets"]);
+  for (const group of groups) {
+    const summaries = books.filter((book) => book.group === group.bookSummaryGroup);
+    assert.equal(summaries.length, group.bookSummaryGroup === "major-prophets" ? 5 : 12);
+    assert.deepEqual(summaries.map((book) => book.title), group.children);
+  }
+  for (const book of books) {
+    assert.ok(book.summary.trim().length >= 100 && book.takeaway.trim().length > 0, `${book.title} needs a summary and takeaway`);
+    assert.equal(book.themes.length, 3);
+    assert.equal(new Set(book.themes).size, book.themes.length);
+    assert.ok(book.themes.every((theme) => theme.trim()));
+    assert.equal(book.passage.book, book.title);
+    for (const value of [book.passage.chapter, book.passage.verseStart, book.passage.verseEnd]) assert.ok(Number.isInteger(value) && value > 0);
+    assert.ok(book.passage.verseEnd >= book.passage.verseStart);
+    assert.equal(book.sourceUrl, `https://bibleproject.com/guides/book-of-${book.id}/`);
+  }
 });

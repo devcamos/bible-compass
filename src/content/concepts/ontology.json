@@ -1,5 +1,5 @@
 {
-  "schemaVersion": "1.1.0",
+  "schemaVersion": "1.2.0",
   "title": "Bible Compass Concepts",
   "classificationNote": "Categories organise browsing. Types, domains and life areas are independent, many-to-many facets. Classifications and relationships are editorial study mappings, not claims that Scripture defines this taxonomy. Counts describe this curated catalogue, not the whole Bible.",
   "categories": [
@@ -178,6 +178,13 @@
           "detail": "Before correcting someone, acknowledge your own mistakes and motives.",
           "scriptureIds": [
             "judgment:passage:4"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "judgment:passage:4",
+              "verseStart": 3,
+              "verseEnd": 4
+            }
           ]
         },
         {
@@ -186,6 +193,13 @@
           "detail": "Seek the facts and consider the person's situation instead of deciding from appearances.",
           "scriptureIds": [
             "judgment:passage:5"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "judgment:passage:5",
+              "verseStart": 24,
+              "verseEnd": 24
+            }
           ]
         },
         {
@@ -194,6 +208,13 @@
           "detail": "If correction is needed, approach it honestly and constructively after dealing with your own faults.",
           "scriptureIds": [
             "judgment:passage:4"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "judgment:passage:4",
+              "verseStart": 5,
+              "verseEnd": 5
+            }
           ]
         }
       ]
@@ -249,6 +270,13 @@
           "detail": "Trust God's grace in Jesus rather than treating achievement as a way to earn acceptance.",
           "scriptureIds": [
             "salvation:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "salvation:passage:1",
+              "verseStart": 8,
+              "verseEnd": 8
+            }
           ]
         },
         {
@@ -257,6 +285,13 @@
           "detail": "Respond through the good works God calls believers to do.",
           "scriptureIds": [
             "salvation:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "salvation:passage:1",
+              "verseStart": 10,
+              "verseEnd": 10
+            }
           ]
         },
         {
@@ -265,6 +300,13 @@
           "detail": "Remember that salvation is received, so approach others without spiritual superiority.",
           "scriptureIds": [
             "salvation:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "salvation:passage:1",
+              "verseStart": 9,
+              "verseEnd": 9
+            }
           ]
         }
       ]
@@ -330,6 +372,13 @@
           "detail": "Be honest about loss while holding the hope Jesus offers.",
           "scriptureIds": [
             "resurrection:passage:2"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "resurrection:passage:2",
+              "verseStart": 25,
+              "verseEnd": 25
+            }
           ]
         },
         {
@@ -338,6 +387,13 @@
           "detail": "Read Paul's argument about Christ's resurrection and its significance for believers.",
           "scriptureIds": [
             "resurrection:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "resurrection:passage:1",
+              "verseStart": 17,
+              "verseEnd": 20
+            }
           ]
         },
         {
@@ -346,6 +402,13 @@
           "detail": "Let the promised defeat of death shape how you understand loss and the future.",
           "scriptureIds": [
             "resurrection:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "resurrection:passage:1",
+              "verseStart": 26,
+              "verseEnd": 26
+            }
           ]
         }
       ]
@@ -388,6 +451,14 @@
           "verseStart": 14,
           "verseEnd": 14,
           "insight": "Paul brings together the grace of Jesus, the love of God and the fellowship of the Holy Spirit."
+        },
+        {
+          "id": "trinity:passage:3",
+          "book": "Philippians",
+          "chapter": 2,
+          "verseStart": 1,
+          "verseEnd": 2,
+          "insight": "Paul describes sharing in the Spirit and calls believers to unity and common love."
         }
       ],
       "keyVerse": {
@@ -409,6 +480,13 @@
           "detail": "Let Jesus' teaching shape your understanding of God and discipleship.",
           "scriptureIds": [
             "trinity:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "trinity:passage:1",
+              "verseStart": 20,
+              "verseEnd": 20
+            }
           ]
         },
         {
@@ -417,6 +495,13 @@
           "detail": "Reflect on Christ's grace and God's love as the foundation for your response.",
           "scriptureIds": [
             "trinity:passage:2"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "trinity:passage:2",
+              "verseStart": 14,
+              "verseEnd": 14
+            }
           ]
         },
         {
@@ -424,7 +509,14 @@
           "title": "Attend to the Spirit",
           "detail": "Seek a life of fellowship with the Holy Spirit and with other believers.",
           "scriptureIds": [
-            "trinity:passage:2"
+            "trinity:passage:3"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "trinity:passage:3",
+              "verseStart": 1,
+              "verseEnd": 2
+            }
           ]
         }
       ]
@@ -459,6 +551,14 @@
           "verseStart": 1,
           "verseEnd": 2,
           "insight": "Paul links justification through faith with peace with God through Jesus."
+        },
+        {
+          "id": "justification:passage:2",
+          "book": "Romans",
+          "chapter": 3,
+          "verseStart": 22,
+          "verseEnd": 24,
+          "insight": "Righteousness comes through faith in Jesus, and justification is freely received by grace."
         }
       ],
       "keyVerse": {
@@ -480,6 +580,13 @@
           "detail": "Return to the peace Paul describes through Jesus instead of treating every failure as the end of your relationship with God.",
           "scriptureIds": [
             "justification:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "justification:passage:1",
+              "verseStart": 1,
+              "verseEnd": 1
+            }
           ]
         },
         {
@@ -487,7 +594,14 @@
           "title": "Receive grace through faith",
           "detail": "Respond to God in trust, rather than imagining that acceptance is purchased by performance.",
           "scriptureIds": [
-            "justification:passage:1"
+            "justification:passage:2"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "justification:passage:2",
+              "verseStart": 22,
+              "verseEnd": 24
+            }
           ]
         },
         {
@@ -496,6 +610,13 @@
           "detail": "Let the hope of sharing in God's glory steady how you face the future.",
           "scriptureIds": [
             "justification:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "justification:passage:1",
+              "verseStart": 2,
+              "verseEnd": 2
+            }
           ]
         }
       ]
@@ -553,6 +674,13 @@
           "detail": "Start from God's gift rather than trying to prove that you deserve his love.",
           "scriptureIds": [
             "grace:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "grace:passage:1",
+              "verseStart": 8,
+              "verseEnd": 8
+            }
           ]
         },
         {
@@ -561,6 +689,13 @@
           "detail": "Let gratitude for grace move you towards good works.",
           "scriptureIds": [
             "grace:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "grace:passage:1",
+              "verseStart": 10,
+              "verseEnd": 10
+            }
           ]
         },
         {
@@ -569,6 +704,13 @@
           "detail": "Avoid boasting about spiritual achievement; the gift is not self-made.",
           "scriptureIds": [
             "grace:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "grace:passage:1",
+              "verseStart": 9,
+              "verseEnd": 9
+            }
           ]
         }
       ]
@@ -633,6 +775,13 @@
           "detail": "Begin with dependence on the Lord rather than confidence in your own force or control.",
           "scriptureIds": [
             "armour-of-god:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "armour-of-god:passage:1",
+              "verseStart": 10,
+              "verseEnd": 10
+            }
           ]
         },
         {
@@ -641,6 +790,13 @@
           "detail": "Choose honesty, right action and the gospel of peace when responding to pressure.",
           "scriptureIds": [
             "armour-of-god:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "armour-of-god:passage:1",
+              "verseStart": 14,
+              "verseEnd": 15
+            }
           ]
         },
         {
@@ -649,6 +805,13 @@
           "detail": "Bring the situation to God and pray for others while holding to faith and Scripture.",
           "scriptureIds": [
             "armour-of-god:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "armour-of-god:passage:1",
+              "verseStart": 18,
+              "verseEnd": 18
+            }
           ]
         }
       ]
@@ -730,6 +893,13 @@
           "detail": "Ask God to shape your choices and follow the Spirit's direction in everyday conduct.",
           "scriptureIds": [
             "fruit-of-the-spirit:passage:2"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "fruit-of-the-spirit:passage:2",
+              "verseStart": 16,
+              "verseEnd": 16
+            }
           ]
         },
         {
@@ -738,6 +908,13 @@
           "detail": "Respond with patience, gentleness and self-control in a real interaction today.",
           "scriptureIds": [
             "fruit-of-the-spirit:passage:3"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "fruit-of-the-spirit:passage:3",
+              "verseStart": 22,
+              "verseEnd": 23
+            }
           ]
         },
         {
@@ -746,6 +923,13 @@
           "detail": "Resist conceit, provoking others and envy.",
           "scriptureIds": [
             "fruit-of-the-spirit:passage:4"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "fruit-of-the-spirit:passage:4",
+              "verseStart": 26,
+              "verseEnd": 26
+            }
           ]
         }
       ]
@@ -803,6 +987,13 @@
           "detail": "Work towards honest reconciliation rather than feeding conflict.",
           "scriptureIds": [
             "beatitudes:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "beatitudes:passage:1",
+              "verseStart": 9,
+              "verseEnd": 9
+            }
           ]
         },
         {
@@ -811,6 +1002,13 @@
           "detail": "Respond to another person's need with compassion.",
           "scriptureIds": [
             "beatitudes:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "beatitudes:passage:1",
+              "verseStart": 7,
+              "verseEnd": 7
+            }
           ]
         },
         {
@@ -819,6 +1017,13 @@
           "detail": "Choose what is right even when it costs approval or comfort.",
           "scriptureIds": [
             "beatitudes:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "beatitudes:passage:1",
+              "verseStart": 10,
+              "verseEnd": 10
+            }
           ]
         }
       ]
@@ -877,6 +1082,13 @@
           "detail": "Read carefully and seek the meaning of the passage in context.",
           "scriptureIds": [
             "parable-of-the-sower:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "parable-of-the-sower:passage:1",
+              "verseStart": 18,
+              "verseEnd": 19
+            }
           ]
         },
         {
@@ -885,6 +1097,13 @@
           "detail": "Reflect on whether worry or the pursuit of wealth is dominating your attention.",
           "scriptureIds": [
             "parable-of-the-sower:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "parable-of-the-sower:passage:1",
+              "verseStart": 22,
+              "verseEnd": 22
+            }
           ]
         },
         {
@@ -893,6 +1112,13 @@
           "detail": "Take a faithful action that follows from what you have understood.",
           "scriptureIds": [
             "parable-of-the-sower:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "parable-of-the-sower:passage:1",
+              "verseStart": 23,
+              "verseEnd": 23
+            }
           ]
         }
       ]
@@ -956,6 +1182,13 @@
           "detail": "Speak to God sincerely rather than performing for an audience.",
           "scriptureIds": [
             "prayer:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "prayer:passage:1",
+              "verseStart": 5,
+              "verseEnd": 6
+            }
           ]
         },
         {
@@ -964,6 +1197,13 @@
           "detail": "Bring God's kingdom, your daily needs, forgiveness and temptation into prayer.",
           "scriptureIds": [
             "prayer:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "prayer:passage:1",
+              "verseStart": 9,
+              "verseEnd": 13
+            }
           ]
         },
         {
@@ -972,6 +1212,13 @@
           "detail": "Turn ordinary moments of need or gratitude into prayer.",
           "scriptureIds": [
             "prayer:passage:2"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "prayer:passage:2",
+              "verseStart": 17,
+              "verseEnd": 17
+            }
           ]
         }
       ]
@@ -1027,6 +1274,13 @@
           "detail": "Consider whether your intention is to respond to God or to impress other people.",
           "scriptureIds": [
             "fasting:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "fasting:passage:1",
+              "verseStart": 16,
+              "verseEnd": 16
+            }
           ]
         },
         {
@@ -1035,6 +1289,13 @@
           "detail": "Keep the practice directed towards God rather than public religious status.",
           "scriptureIds": [
             "fasting:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "fasting:passage:1",
+              "verseStart": 18,
+              "verseEnd": 18
+            }
           ]
         },
         {
@@ -1043,6 +1304,13 @@
           "detail": "Jesus' instruction to wash and care for appearance challenges the performance of visible suffering.",
           "scriptureIds": [
             "fasting:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "fasting:passage:1",
+              "verseStart": 17,
+              "verseEnd": 17
+            }
           ]
         }
       ]
@@ -1079,6 +1347,22 @@
           "verseStart": 14,
           "verseEnd": 15,
           "insight": "Jesus calls people to repent and believe the good news."
+        },
+        {
+          "id": "repentance:passage:2",
+          "book": "Psalm",
+          "chapter": 32,
+          "verseStart": 5,
+          "verseEnd": 5,
+          "insight": "The psalmist acknowledges sin without concealing it and receives forgiveness."
+        },
+        {
+          "id": "repentance:passage:3",
+          "book": "Luke",
+          "chapter": 3,
+          "verseStart": 8,
+          "verseEnd": 8,
+          "insight": "John calls for conduct that bears fruit in keeping with repentance."
         }
       ],
       "keyVerse": {
@@ -1099,7 +1383,14 @@
           "title": "Face what needs to change",
           "detail": "Name the wrong honestly instead of defending or excusing it.",
           "scriptureIds": [
-            "repentance:passage:1"
+            "repentance:passage:2"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "repentance:passage:2",
+              "verseStart": 5,
+              "verseEnd": 5
+            }
           ]
         },
         {
@@ -1107,7 +1398,14 @@
           "title": "Turn towards God",
           "detail": "Choose a concrete change of direction that responds to Jesus' call.",
           "scriptureIds": [
-            "repentance:passage:1"
+            "repentance:passage:3"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "repentance:passage:3",
+              "verseStart": 8,
+              "verseEnd": 8
+            }
           ]
         },
         {
@@ -1116,6 +1414,13 @@
           "detail": "Hold repentance together with faith rather than remaining in self-condemnation.",
           "scriptureIds": [
             "repentance:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "repentance:passage:1",
+              "verseStart": 15,
+              "verseEnd": 15
+            }
           ]
         }
       ]
@@ -1180,6 +1485,13 @@
           "detail": "Bring honesty before God rather than performing an outward religious role.",
           "scriptureIds": [
             "worship:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "worship:passage:1",
+              "verseStart": 24,
+              "verseEnd": 24
+            }
           ]
         },
         {
@@ -1188,6 +1500,13 @@
           "detail": "Treat ordinary choices and responsibilities as part of your response to God.",
           "scriptureIds": [
             "worship:passage:2"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "worship:passage:2",
+              "verseStart": 1,
+              "verseEnd": 1
+            }
           ]
         },
         {
@@ -1196,6 +1515,13 @@
           "detail": "Let God's truth reshape how you think and discern what is good.",
           "scriptureIds": [
             "worship:passage:2"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "worship:passage:2",
+              "verseStart": 2,
+              "verseEnd": 2
+            }
           ]
         }
       ]
@@ -1230,6 +1556,14 @@
           "verseStart": 10,
           "verseEnd": 11,
           "insight": "Use received gifts to serve others as stewards of God's grace."
+        },
+        {
+          "id": "stewardship:passage:2",
+          "book": "Romans",
+          "chapter": 12,
+          "verseStart": 6,
+          "verseEnd": 6,
+          "insight": "Believers receive different gifts through grace and are called to use them."
         }
       ],
       "keyVerse": {
@@ -1250,7 +1584,14 @@
           "title": "Recognise what you have received",
           "detail": "Identify a gift or ability you can use in service.",
           "scriptureIds": [
-            "stewardship:passage:1"
+            "stewardship:passage:2"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "stewardship:passage:2",
+              "verseStart": 6,
+              "verseEnd": 6
+            }
           ]
         },
         {
@@ -1259,6 +1600,13 @@
           "detail": "Use that gift to meet a real need rather than only building your own status.",
           "scriptureIds": [
             "stewardship:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "stewardship:passage:1",
+              "verseStart": 10,
+              "verseEnd": 10
+            }
           ]
         },
         {
@@ -1267,6 +1615,13 @@
           "detail": "Serve with the strength God provides and direct the honour towards him.",
           "scriptureIds": [
             "stewardship:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "stewardship:passage:1",
+              "verseStart": 11,
+              "verseEnd": 11
+            }
           ]
         }
       ]
@@ -1304,6 +1659,14 @@
           "verseStart": 31,
           "verseEnd": 32,
           "insight": "Paul connects forgiving one another with God's forgiveness in Christ."
+        },
+        {
+          "id": "forgiveness:passage:2",
+          "book": "Colossians",
+          "chapter": 3,
+          "verseStart": 13,
+          "verseEnd": 13,
+          "insight": "Paul calls believers to forgive as the Lord has forgiven them."
         }
       ],
       "keyVerse": {
@@ -1324,7 +1687,14 @@
           "title": "Remember received forgiveness",
           "detail": "Reflect on God's forgiveness in Christ as the starting point for your response.",
           "scriptureIds": [
-            "forgiveness:passage:1"
+            "forgiveness:passage:2"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "forgiveness:passage:2",
+              "verseStart": 13,
+              "verseEnd": 13
+            }
           ]
         },
         {
@@ -1333,6 +1703,13 @@
           "detail": "Bring resentment to God and choose a response that does not feed malice.",
           "scriptureIds": [
             "forgiveness:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "forgiveness:passage:1",
+              "verseStart": 31,
+              "verseEnd": 31
+            }
           ]
         },
         {
@@ -1341,6 +1718,13 @@
           "detail": "Look for a compassionate response while remaining truthful about what happened.",
           "scriptureIds": [
             "forgiveness:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "forgiveness:passage:1",
+              "verseStart": 32,
+              "verseEnd": 32
+            }
           ]
         }
       ]
@@ -1377,6 +1761,22 @@
           "verseStart": 8,
           "verseEnd": 8,
           "insight": "The prophet joins justice, mercy and humble walking with God."
+        },
+        {
+          "id": "justice:passage:2",
+          "book": "Leviticus",
+          "chapter": 19,
+          "verseStart": 15,
+          "verseEnd": 15,
+          "insight": "Judge fairly without favouring either the powerful or the poor."
+        },
+        {
+          "id": "justice:passage:3",
+          "book": "Luke",
+          "chapter": 6,
+          "verseStart": 36,
+          "verseEnd": 36,
+          "insight": "Jesus calls his followers to show mercy as the Father is merciful."
         }
       ],
       "keyVerse": {
@@ -1397,7 +1797,14 @@
           "title": "Act fairly",
           "detail": "Choose an honest and fair response in a decision that affects another person.",
           "scriptureIds": [
-            "justice:passage:1"
+            "justice:passage:2"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "justice:passage:2",
+              "verseStart": 15,
+              "verseEnd": 15
+            }
           ]
         },
         {
@@ -1405,7 +1812,14 @@
           "title": "Keep mercy alongside justice",
           "detail": "Consider the person's need and dignity as you address what is wrong.",
           "scriptureIds": [
-            "justice:passage:1"
+            "justice:passage:3"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "justice:passage:3",
+              "verseStart": 36,
+              "verseEnd": 36
+            }
           ]
         },
         {
@@ -1414,6 +1828,13 @@
           "detail": "Examine your motives and remain willing to be corrected.",
           "scriptureIds": [
             "justice:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "justice:passage:1",
+              "verseStart": 8,
+              "verseEnd": 8
+            }
           ]
         }
       ]
@@ -1470,6 +1891,13 @@
           "detail": "Ask whether your next action is driven by service or by a need to appear superior.",
           "scriptureIds": [
             "humility:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "humility:passage:1",
+              "verseStart": 3,
+              "verseEnd": 3
+            }
           ]
         },
         {
@@ -1478,6 +1906,13 @@
           "detail": "Make room for their needs and perspective when deciding.",
           "scriptureIds": [
             "humility:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "humility:passage:1",
+              "verseStart": 4,
+              "verseEnd": 4
+            }
           ]
         },
         {
@@ -1486,6 +1921,13 @@
           "detail": "Use influence and ability in a way that serves others.",
           "scriptureIds": [
             "humility:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "humility:passage:1",
+              "verseStart": 5,
+              "verseEnd": 8
+            }
           ]
         }
       ]
@@ -1550,6 +1992,13 @@
           "detail": "Study who God is addressing and what he promises in the passage.",
           "scriptureIds": [
             "covenant:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "covenant:passage:1",
+              "verseStart": 7,
+              "verseEnd": 8
+            }
           ]
         },
         {
@@ -1558,6 +2007,13 @@
           "detail": "Let the new covenant draw your attention to Jesus' self-giving love.",
           "scriptureIds": [
             "covenant:passage:2"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "covenant:passage:2",
+              "verseStart": 20,
+              "verseEnd": 20
+            }
           ]
         },
         {
@@ -1566,6 +2022,13 @@
           "detail": "Reflect on how a committed relationship with God shapes your conduct.",
           "scriptureIds": [
             "covenant:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "covenant:passage:1",
+              "verseStart": 1,
+              "verseEnd": 1
+            }
           ]
         }
       ]
@@ -1640,6 +2103,13 @@
           "detail": "Ask what a faithful and righteous response would look like in today's decision.",
           "scriptureIds": [
             "kingdom-of-god:passage:3"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "kingdom-of-god:passage:3",
+              "verseStart": 33,
+              "verseEnd": 33
+            }
           ]
         },
         {
@@ -1648,6 +2118,13 @@
           "detail": "Bring God's will and reign into your prayer, alongside your own needs.",
           "scriptureIds": [
             "kingdom-of-god:passage:2"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "kingdom-of-god:passage:2",
+              "verseStart": 10,
+              "verseEnd": 10
+            }
           ]
         },
         {
@@ -1656,6 +2133,13 @@
           "detail": "Hold repentance and faith together as a response to the good news.",
           "scriptureIds": [
             "kingdom-of-god:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "kingdom-of-god:passage:1",
+              "verseStart": 15,
+              "verseEnd": 15
+            }
           ]
         }
       ]
@@ -1692,6 +2176,14 @@
           "verseStart": 7,
           "verseEnd": 10,
           "insight": "Paul connects redemption in Christ with forgiveness and God's purpose."
+        },
+        {
+          "id": "redemption:passage:2",
+          "book": "1 Peter",
+          "chapter": 1,
+          "verseStart": 18,
+          "verseEnd": 19,
+          "insight": "Redemption rests on Christ's precious blood rather than money or human achievement."
         }
       ],
       "keyVerse": {
@@ -1712,7 +2204,14 @@
           "title": "Remember the source of freedom",
           "detail": "Look to Christ's gift rather than your own achievement as the basis of redemption.",
           "scriptureIds": [
-            "redemption:passage:1"
+            "redemption:passage:2"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "redemption:passage:2",
+              "verseStart": 18,
+              "verseEnd": 19
+            }
           ]
         },
         {
@@ -1721,6 +2220,13 @@
           "detail": "Bring sin honestly before God and respond to his grace.",
           "scriptureIds": [
             "redemption:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "redemption:passage:1",
+              "verseStart": 7,
+              "verseEnd": 7
+            }
           ]
         },
         {
@@ -1729,6 +2235,13 @@
           "detail": "Reflect on how belonging to Christ can shape your next faithful choice.",
           "scriptureIds": [
             "redemption:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "redemption:passage:1",
+              "verseStart": 9,
+              "verseEnd": 10
+            }
           ]
         }
       ]
@@ -1784,6 +2297,13 @@
           "detail": "Keep another person's dignity in view, including during disagreement.",
           "scriptureIds": [
             "spiritual-warfare:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "spiritual-warfare:passage:1",
+              "verseStart": 12,
+              "verseEnd": 12
+            }
           ]
         },
         {
@@ -1792,6 +2312,13 @@
           "detail": "Choose honesty, right conduct and trust in God under pressure.",
           "scriptureIds": [
             "spiritual-warfare:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "spiritual-warfare:passage:1",
+              "verseStart": 14,
+              "verseEnd": 16
+            }
           ]
         },
         {
@@ -1800,6 +2327,13 @@
           "detail": "Remain alert and bring the needs of other believers to God.",
           "scriptureIds": [
             "spiritual-warfare:passage:1"
+          ],
+          "scriptureReferences": [
+            {
+              "passageId": "spiritual-warfare:passage:1",
+              "verseStart": 18,
+              "verseEnd": 18
+            }
           ]
         }
       ]

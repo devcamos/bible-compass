@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Breadcrumb } from "@/components/Breadcrumb";
-import { CONCEPT_SLUGS, getConcept, passageRef, passageUrl } from "@/content/concepts";
+import { CONCEPT_SLUGS, getConcept, guidancePassages, passageRef, passageUrl } from "@/content/concepts";
 import { capitaliseQuotation } from "@/lib/quotation";
 
 const conceptTypeLabels: Record<string, string> = {
@@ -65,7 +65,7 @@ export default async function ConceptPage({ params }: PageProps<"/concepts/[slug
             <li key={action.id} className="rounded-2xl border border-border bg-card p-5">
               <h3 className="bc-heading m-0 mb-3 leading-snug font-medium">{action.title}</h3>
               <p className="m-0 mb-4 leading-7 text-muted-foreground">{action.detail}</p>
-              <p className="m-0 text-sm leading-6">{concept.scripture.filter((passage) => action.scriptureIds.includes(passage.id)).map((passage, index) => <span key={passage.id}>{index ? ", " : ""}<a className="text-link" href={passageUrl(passage)} target="_blank" rel="noreferrer">{passageRef(passage)}</a></span>)}.</p>
+              <p className="m-0 text-sm leading-6">{guidancePassages(concept, action).map((passage, index) => <span key={`${passage.id}:${passage.verseStart}:${passage.verseEnd}`}>{index ? ", " : ""}<a className="text-link" href={passageUrl(passage)} target="_blank" rel="noreferrer">{passageRef(passage)}</a></span>)}.</p>
             </li>
           ))}
         </ul>

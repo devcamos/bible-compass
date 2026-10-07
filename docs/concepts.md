@@ -10,7 +10,7 @@ Judgement leads with Matthew 7:1 and links to Matthew 7:1-5. Its explanation dis
 
 Concept pages use explicit heading, paragraph and reference spacing, including on mobile. Quotation openings are capitalised for display; the original source text remains unchanged in the ontology and JSON export.
 
-Fruit of the Spirit guidance links to the passage that supports each action: walking by the Spirit (Galatians 5:16), practising the fruit in relationships (5:22-23), and releasing rivalry (5:26). The full 5:16-26 passage remains available as context for the key verse.
+Every action across all concepts has its own curated verse mapping. For example, Fruit of the Spirit links walking by the Spirit to Galatians 5:16, practising the fruit to 5:22-23, and releasing rivalry to 5:26. Full passages remain available as key-verse context.
 
 ## Data model
 
@@ -18,7 +18,15 @@ Fruit of the Spirit guidance links to the passage that supports each action: wal
 
 Relationships are directed triples (`sourceId`, `predicate`, `targetId`). Every relationship includes an editorial explanation and Scripture IDs from its source concept. The export retains both incoming and outgoing relationships for analysis. Scripture summaries, living guidance and classifications are editorial study aids. They are distinct from the labelled key-verse quotation.
 
-Schema 1.1.0 adds `keyVerse`, `explanation` and `livingGuidance` to every concept. A key verse references an existing canonical passage ID and a contained verse range. Living guidance contains stable action IDs and references to that concept's passages. Existing concept and relationship IDs are preserved.
+Schema 1.2.0 retains `keyVerse`, `explanation` and `livingGuidance`, and adds required `scriptureReferences` to every action. Each reference has a `passageId`, `verseStart` and `verseEnd`. `scriptureIds` remains available for joining to the source passages, and must match the IDs used by the precise references. Existing concept, action, passage and relationship IDs are preserved.
+
+## Scripture mapping engine
+
+`guidancePassages` delegates to the shared `resolveScriptureReferences` engine. It resolves the action's approved passage IDs and narrows them to the curated verse ranges. The reader uses those resolved ranges for both the displayed reference and Bible Gateway link. It does not fall back to displaying a whole context passage when an action has no specific mapping.
+
+When adding a concept or action, identify the verses that support the idea and add explicit references within the registered source ranges. Add a source passage if the supporting verse is not registered. Multiple verse references are supported when an idea needs them; select Scripture on its meaning, rather than inventing different verses just to make references unique. The wider context passage and key verse stay independent from the action reference.
+
+The engine rejects missing references, unknown source IDs, non-integer or reversed verse ranges, ranges outside their source passage, and duplicate references. Content validation applies this same engine to every action before build. Mappings remain editorial study interpretations; range validation checks structural integrity, not the theological meaning of a passage.
 
 `GET /concepts/data` downloads JSON with the catalogue, relationships, life-area registry and topic registry. No user data is included. Use IDs to join records, and explode array fields into separate rows for many-to-many analysis. `schemaVersion` tracks the export shape. Preserve existing IDs when changing wording; introduce a new schema version for incompatible shape changes.
 
@@ -30,4 +38,4 @@ Topic pages derive reverse concept links from the same mappings, rather than dup
 
 ## Verification
 
-`npm run verify` checks data integrity, topic and facet references, traceable relationships, types, lint and the production build. CI smoke-tests the home, guide, concept explorer, export and every concept route. Vercel Preview must be green before founder review. Merge and production release remain subject to founder approval.
+`npm run verify` checks data integrity, topic and facet references, traceable relationships, the shared reference engine, types, lint and the production build. CI smoke-tests the home, guide, concept explorer and export. `node scripts/concept-references-smoke.mjs` checks every rendered concept action against its precise reference data, including link text and the NIV destination. Vercel Preview must be green before founder review. Merge and production release remain subject to founder approval.

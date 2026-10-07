@@ -18,6 +18,7 @@ export type SectionItem = {
   label: string;
   detail?: string;
   children?: string[];
+  bookSummaryGroup?: "major-prophets" | "minor-prophets";
 };
 
 export type TopicSection = {

@@ -1,6 +1,8 @@
 import ontology from "./ontology.json";
+import { resolveScriptureReferences } from "@/lib/scripture-mapping.mjs";
 
 export { ontology };
+export { scriptureReference as passageRef, scriptureUrl as passageUrl } from "@/lib/scripture-mapping.mjs";
 export type Concept = (typeof ontology.concepts)[number];
 export type Passage = Concept["scripture"][number];
 export const concepts = ontology.concepts;
@@ -15,13 +17,9 @@ export function conceptsForTopic(slug: string) {
   return concepts.filter((concept) => concept.topicSlugs.includes(slug));
 }
 
-export function passageRef(passage: Passage) {
-  const end = passage.verseEnd === passage.verseStart ? "" : `-${passage.verseEnd}`;
-  return `${passage.book} ${passage.chapter}:${passage.verseStart}${end}`;
-}
-
-export function passageUrl(passage: Passage) {
-  return `https://www.biblegateway.com/passage/?search=${encodeURIComponent(passageRef(passage))}&version=NIV`;
+export function guidancePassages(concept: Concept, action: Concept["livingGuidance"][number]) {
+  const sources = concept.scripture.filter((passage) => action.scriptureIds.includes(passage.id));
+  return resolveScriptureReferences(sources, action.scriptureReferences);
 }
 
 export function relationsForConcept(id: string) {
