@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { VerseOfTheDayEntry } from "@/content/verse-of-the-day/types";
+import { capitaliseQuotation } from "@/lib/quotation";
 
 type VerseOfTheDayProps = Readonly<{
   verse: VerseOfTheDayEntry;
@@ -17,7 +18,7 @@ export function VerseOfTheDay({ verse }: VerseOfTheDayProps) {
       </p>
       <blockquote className="bc-votd__quote m-0">
         <p className="bc-title m-0 text-[1.35rem] leading-snug sm:text-[1.5rem]">
-          “{verse.text}”
+          “{capitaliseQuotation(verse.text)}”
         </p>
       </blockquote>
       {verse.topicSlug ? (
