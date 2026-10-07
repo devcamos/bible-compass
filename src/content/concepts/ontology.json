@@ -685,6 +685,30 @@
           "verseStart": 16,
           "verseEnd": 26,
           "insight": "The fruit belongs to a life led by the Spirit, rather than a scorecard for earning acceptance."
+        },
+        {
+          "id": "fruit-of-the-spirit:passage:2",
+          "book": "Galatians",
+          "chapter": 5,
+          "verseStart": 16,
+          "verseEnd": 16,
+          "insight": "Paul calls believers to walk by the Spirit rather than follow the desires of the flesh."
+        },
+        {
+          "id": "fruit-of-the-spirit:passage:3",
+          "book": "Galatians",
+          "chapter": 5,
+          "verseStart": 22,
+          "verseEnd": 23,
+          "insight": "The fruit of the Spirit includes forbearance, gentleness and self-control, shaping how believers relate to others."
+        },
+        {
+          "id": "fruit-of-the-spirit:passage:4",
+          "book": "Galatians",
+          "chapter": 5,
+          "verseStart": 26,
+          "verseEnd": 26,
+          "insight": "Paul warns against conceit, provoking one another and envy."
         }
       ],
       "keyVerse": {
@@ -705,7 +729,7 @@
           "title": "Walk with the Spirit",
           "detail": "Ask God to shape your choices and follow the Spirit's direction in everyday conduct.",
           "scriptureIds": [
-            "fruit-of-the-spirit:passage:1"
+            "fruit-of-the-spirit:passage:2"
           ]
         },
         {
@@ -713,7 +737,7 @@
           "title": "Practise the fruit in relationships",
           "detail": "Respond with patience, gentleness and self-control in a real interaction today.",
           "scriptureIds": [
-            "fruit-of-the-spirit:passage:1"
+            "fruit-of-the-spirit:passage:3"
           ]
         },
         {
@@ -721,7 +745,7 @@
           "title": "Release rivalry",
           "detail": "Resist conceit, provoking others and envy.",
           "scriptureIds": [
-            "fruit-of-the-spirit:passage:1"
+            "fruit-of-the-spirit:passage:4"
           ]
         }
       ]

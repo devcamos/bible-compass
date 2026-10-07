@@ -10,6 +10,8 @@ Judgement leads with Matthew 7:1 and links to Matthew 7:1-5. Its explanation dis
 
 Concept pages use explicit heading, paragraph and reference spacing, including on mobile. Quotation openings are capitalised for display; the original source text remains unchanged in the ontology and JSON export.
 
+Fruit of the Spirit guidance links to the passage that supports each action: walking by the Spirit (Galatians 5:16), practising the fruit in relationships (5:22-23), and releasing rivalry (5:26). The full 5:16-26 passage remains available as context for the key verse.
+
 ## Data model
 
 `src/content/concepts/ontology.json` is the curated, versioned source. IDs are stable kebab-case identifiers. A concept has one browsing family, multiple concept types, theological domains and life areas, and mappings to existing topics and canonical Scripture ranges. Family is a navigation choice, not a statement that other classifications are invalid. For example, repentance is both a practice and a doctrine.
