@@ -17,7 +17,7 @@ export function VerseOfTheDay({ verse }: VerseOfTheDayProps) {
       </p>
       <blockquote className="bc-votd__quote m-0">
         <p className="bc-title m-0 text-[1.35rem] leading-snug sm:text-[1.5rem]">
-          {verse.text}
+          “{verse.text}”
         </p>
       </blockquote>
       {verse.topicSlug ? (
