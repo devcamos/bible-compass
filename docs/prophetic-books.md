@@ -10,7 +10,9 @@ The two relevant section items in `components-of-the-bible.json` select their su
 
 ## Reader behaviour
 
-`TopicView` supplies the relevant local records to the small `ProphetBookList` client component. There is no runtime request to a content provider. The dialog has a labelled title, a Close button, native Escape and focus management, a scrollable body, and a backdrop close handler. Background scrolling is restored on close or unmount. With JavaScript disabled, expandable summaries remain available in a `noscript` fallback.
+`TopicView` supplies the relevant local records to the small `ProphetBookList` client component. There is no runtime request to a content provider. The dialog is capped at the dynamic viewport height with a one-rem margin. Its title and Close button remain outside a separate scrolling body, so readers can reach every section on a short screen. The content area supports touch, wheel and keyboard scrolling, contains overscroll and resets to the top when another book opens. Paragraphs, themes, the labelled everyday-life takeaway and references have consistent gaps and wrap within the available width.
+
+The dialog retains a labelled title, native Escape and focus management, and backdrop closing. Background scrolling is restored on close or unmount. With JavaScript disabled, expandable summaries remain available in a `noscript` fallback.
 
 Headings use the shared `bc-heading` size and colours use existing theme tokens. Scripture links reuse the same canonical reference and URL helpers as the concepts reader.
 
