@@ -80,7 +80,7 @@ export function TopicView({ topic }: TopicViewProps) {
           </h2>
           {topic.steps.map((step, index) => (
             <details
-              key={step.letter}
+              key={`${step.letter}-${index}`}
               className="border-b border-border py-3"
               open={index === 0}
             >
