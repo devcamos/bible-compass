@@ -22,6 +22,8 @@
   --border: var(--rule);
   --link: var(--copper);
   --focus: var(--copper-2);
+  --font-geist-sans: ui-sans-serif;
+  --font-source-serif: ui-serif;
   color-scheme: light;
 }
 

@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { ProphetBookList } from "@/components/ProphetBookList";
 import type { Topic } from "@/content/types";
+import { wrapVerseInQuotes } from "@/lib/verse-quote";
 import { conceptsForTopic } from "@/content/concepts";
 import { getProphetBooks } from "@/content/prophets";
 
@@ -89,7 +90,7 @@ export function TopicView({ topic }: TopicViewProps) {
                 </span>
               </summary>
               <div className="pt-3 pb-1">
-                <strong className="mb-1.5 block">{step.verse}</strong>
+                <strong className="mb-1.5 block">{wrapVerseInQuotes(step.verse)}</strong>
                 <p className="m-0 leading-7 text-muted-foreground">{step.explanation}</p>
                 {step.action ? (
                   <p className="mt-2 mb-0 rounded-full border-l-4 border-l-moss bg-card px-3 py-2 text-sm">
@@ -198,7 +199,7 @@ export function TopicView({ topic }: TopicViewProps) {
           <ul className="my-0 pl-6">
             {topic.scripture.map((item) => (
               <li key={item.ref} className="py-1.5 leading-7">
-                <strong>{item.ref}</strong> — {item.insight}
+                <strong>{wrapVerseInQuotes(item.ref)}</strong> — {item.insight}
               </li>
             ))}
           </ul>

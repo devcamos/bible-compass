@@ -70,7 +70,6 @@ export const lifeAreas: LifeArea[] = [
     id: "peace",
     title: "Peace, fear and inner strength",
     summary: "Come here when your mind feels heavy, uncertain, or afraid.",
-    defaultOpen: true,
     topicSlugs: [
       "fear",
       "anxiety",
