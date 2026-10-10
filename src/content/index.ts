@@ -1,4 +1,5 @@
 import type { Topic } from "./types";
+import { CONCEPT_SLUGS } from "./concepts";
 import { anxiety } from "./topics/anxiety";
 import { beingPresent } from "./topics/being-present";
 import { bibleTimeline } from "./topics/bible-timeline";
@@ -113,5 +114,8 @@ export const PUBLIC_ROUTES = [
   "/",
   "/how-to-use",
   "/health",
+  "/concepts",
+  "/concepts/data",
+  ...CONCEPT_SLUGS.map((slug) => `/concepts/${slug}`),
   ...TOPIC_SLUGS.map((slug) => `/topics/${slug}`),
 ] as const;

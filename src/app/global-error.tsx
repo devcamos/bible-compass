@@ -20,7 +20,7 @@ export default function GlobalRouteError({ error, retry }: GlobalRouteErrorProps
               .ge{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:1.5rem;font-family:ui-sans-serif,system-ui,sans-serif}
               .ge-card{max-width:24rem;width:100%}
               .ge-kicker{margin:0 0 .5rem;font-size:.72rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:#b85a2a}
-              .ge-title{margin:0 0 .5rem;font-family:ui-serif,Georgia,serif;font-size:1.65rem;font-weight:600;letter-spacing:-.02em;color:#1b1510}
+              .ge-title{margin:0 0 .5rem;font-family:ui-serif,Georgia,serif;font-size:1.35rem;font-weight:600;letter-spacing:-.02em;color:#1b1510}
               .ge-body{margin:0 0 1rem;line-height:1.55;color:#6d6254}
               .ge-btn{display:inline-flex;min-height:2.75rem;align-items:center;border:0;border-radius:999px;background:#b85a2a;color:#fffaf1;padding:0 1rem;font-size:.875rem;font-weight:500;cursor:pointer}
               .ge-ref{margin:1rem 0 0;font-size:.75rem;color:#6d6254}

@@ -1,0 +1,325 @@
+[
+  {
+    "id": "isaiah",
+    "title": "Isaiah",
+    "group": "major-prophets",
+    "summary": "Isaiah challenges idol worship, corrupt leadership and injustice in Judah. Alongside warnings of judgment, the book promises restoration, a righteous king and a servant who brings salvation. Its long view is a renewed people and creation under God's rule.",
+    "takeaway": "Notice how God's holiness joins justice with the hope of renewal.",
+    "themes": [
+      "Holiness",
+      "Justice",
+      "Restoration"
+    ],
+    "passage": {
+      "book": "Isaiah",
+      "chapter": 6,
+      "verseStart": 1,
+      "verseEnd": 8
+    },
+    "sourceUrl": "https://bibleproject.com/guides/book-of-isaiah/"
+  },
+  {
+    "id": "jeremiah",
+    "title": "Jeremiah",
+    "group": "major-prophets",
+    "summary": "Jeremiah warns Judah that breaking its covenant with God through idolatry and injustice will lead to exile. His life shows the cost of speaking an unwelcome truth. Beyond Jerusalem's fall, the book promises restoration and a new covenant written on people's hearts.",
+    "takeaway": "Listen honestly to correction while holding on to God's promise of renewal.",
+    "themes": [
+      "Covenant",
+      "Repentance",
+      "Hope"
+    ],
+    "passage": {
+      "book": "Jeremiah",
+      "chapter": 31,
+      "verseStart": 31,
+      "verseEnd": 34
+    },
+    "sourceUrl": "https://bibleproject.com/guides/book-of-jeremiah/"
+  },
+  {
+    "id": "lamentations",
+    "title": "Lamentations",
+    "group": "major-prophets",
+    "summary": "Five anonymous poems grieve the destruction of Jerusalem. They bring sorrow, anger, guilt and questions before God rather than rushing towards an easy answer. In the middle of the grief, the poems remember God's mercy and ask for restoration.",
+    "takeaway": "Bring grief to God honestly; faith can make room for lament.",
+    "themes": [
+      "Grief",
+      "Mercy",
+      "Faithfulness"
+    ],
+    "passage": {
+      "book": "Lamentations",
+      "chapter": 3,
+      "verseStart": 19,
+      "verseEnd": 26
+    },
+    "sourceUrl": "https://bibleproject.com/guides/book-of-lamentations/"
+  },
+  {
+    "id": "ezekiel",
+    "title": "Ezekiel",
+    "group": "major-prophets",
+    "summary": "Ezekiel speaks among people exiled to Babylon. Through visions and symbolic actions, he confronts Israel's unfaithfulness and shows that God is not confined to Jerusalem's temple. The later chapters promise a new heart, God's Spirit and renewed life for his people.",
+    "takeaway": "Look for God's presence and the possibility of renewal even in a displaced life.",
+    "themes": [
+      "God's Presence",
+      "Judgment",
+      "New Life"
+    ],
+    "passage": {
+      "book": "Ezekiel",
+      "chapter": 36,
+      "verseStart": 24,
+      "verseEnd": 28
+    },
+    "sourceUrl": "https://bibleproject.com/guides/book-of-ezekiel/"
+  },
+  {
+    "id": "daniel",
+    "title": "Daniel",
+    "group": "major-prophets",
+    "summary": "Daniel combines stories of faithfulness under foreign rulers with visions about empires and God's lasting kingdom. Daniel and his companions face pressure to abandon their devotion to God. The book encourages patient trust that earthly powers do not have the final word.",
+    "takeaway": "Practise faithfulness under pressure without treating powerful rulers as ultimate.",
+    "themes": [
+      "Faithfulness",
+      "Courage",
+      "God's Kingdom"
+    ],
+    "passage": {
+      "book": "Daniel",
+      "chapter": 6,
+      "verseStart": 10,
+      "verseEnd": 23
+    },
+    "sourceUrl": "https://bibleproject.com/guides/book-of-daniel/"
+  },
+  {
+    "id": "hosea",
+    "title": "Hosea",
+    "group": "minor-prophets",
+    "summary": "Hosea uses a broken marriage to picture Israel's unfaithfulness to God. The book confronts idol worship and the damage caused by turning away from the covenant. Warnings of judgment sit beside God's persistent love and an invitation to return and be healed.",
+    "takeaway": "Notice the call to return to God and receive his restoring love.",
+    "themes": [
+      "Faithful Love",
+      "Repentance",
+      "Restoration"
+    ],
+    "passage": {
+      "book": "Hosea",
+      "chapter": 14,
+      "verseStart": 1,
+      "verseEnd": 9
+    },
+    "sourceUrl": "https://bibleproject.com/guides/book-of-hosea/"
+  },
+  {
+    "id": "joel",
+    "title": "Joel",
+    "group": "minor-prophets",
+    "summary": "A devastating locust crisis becomes an occasion to reflect on the day of the Lord. Joel calls the people to return to God sincerely, trusting his mercy. The book looks forward to restoration and the pouring out of God's Spirit on all kinds of people.",
+    "takeaway": "Let an honest return to God matter more than an outward display.",
+    "themes": [
+      "Repentance",
+      "Mercy",
+      "God's Spirit"
+    ],
+    "passage": {
+      "book": "Joel",
+      "chapter": 2,
+      "verseStart": 12,
+      "verseEnd": 13
+    },
+    "sourceUrl": "https://bibleproject.com/guides/book-of-joel/"
+  },
+  {
+    "id": "amos",
+    "title": "Amos",
+    "group": "minor-prophets",
+    "summary": "Amos confronts a prosperous Israel whose wealth hides oppression of the poor. Religious ceremonies cannot excuse exploitation, dishonest dealings or indifference to others. The book announces judgment while ending with a vision of restoration and renewed life.",
+    "takeaway": "Ask whether worship and everyday treatment of people are moving together.",
+    "themes": [
+      "Justice",
+      "True Worship",
+      "Restoration"
+    ],
+    "passage": {
+      "book": "Amos",
+      "chapter": 5,
+      "verseStart": 21,
+      "verseEnd": 24
+    },
+    "sourceUrl": "https://bibleproject.com/guides/book-of-amos/"
+  },
+  {
+    "id": "obadiah",
+    "title": "Obadiah",
+    "group": "minor-prophets",
+    "summary": "Obadiah confronts Edom's pride and betrayal of Judah during Jerusalem's suffering. The book condemns taking advantage of another people's disaster and warns that violence will meet God's judgment. It closes with the hope of God's rule and restoration.",
+    "takeaway": "Refuse to profit from another person's suffering.",
+    "themes": [
+      "Pride",
+      "Betrayal",
+      "Justice"
+    ],
+    "passage": {
+      "book": "Obadiah",
+      "chapter": 1,
+      "verseStart": 10,
+      "verseEnd": 15
+    },
+    "sourceUrl": "https://bibleproject.com/guides/book-of-obadiah/"
+  },
+  {
+    "id": "jonah",
+    "title": "Jonah",
+    "group": "minor-prophets",
+    "summary": "Jonah tells the story of a prophet who runs from God's call to Nineveh and resents the mercy its people receive. Outsiders respond with humility while Jonah struggles with his own anger. The ending asks whether he will share God's concern for people he dislikes.",
+    "takeaway": "Notice where resentment makes it hard to welcome mercy for others.",
+    "themes": [
+      "Mercy",
+      "Repentance",
+      "Compassion"
+    ],
+    "passage": {
+      "book": "Jonah",
+      "chapter": 4,
+      "verseStart": 1,
+      "verseEnd": 11
+    },
+    "sourceUrl": "https://bibleproject.com/guides/book-of-jonah/"
+  },
+  {
+    "id": "micah",
+    "title": "Micah",
+    "group": "minor-prophets",
+    "summary": "Micah challenges corrupt leaders, false religious confidence and the exploitation of ordinary people. He warns of judgment but also promises restoration and a future ruler from Bethlehem. The book brings faithful living into focus through justice, mercy and walking humbly with God.",
+    "takeaway": "Keep justice, mercy and humility together in the way you live.",
+    "themes": [
+      "Justice",
+      "Mercy",
+      "Humility"
+    ],
+    "passage": {
+      "book": "Micah",
+      "chapter": 6,
+      "verseStart": 6,
+      "verseEnd": 8
+    },
+    "sourceUrl": "https://bibleproject.com/guides/book-of-micah/"
+  },
+  {
+    "id": "nahum",
+    "title": "Nahum",
+    "group": "minor-prophets",
+    "summary": "Nahum announces the fall of Nineveh, the centre of Assyria's violent empire. Its poetry confronts cruelty and the illusion that oppressive power can last forever. God's judgment on such violence is held alongside his goodness and care for those who seek refuge in him.",
+    "takeaway": "Remember that oppressive power is accountable to God.",
+    "themes": [
+      "Justice",
+      "Oppression",
+      "Refuge"
+    ],
+    "passage": {
+      "book": "Nahum",
+      "chapter": 1,
+      "verseStart": 2,
+      "verseEnd": 8
+    },
+    "sourceUrl": "https://bibleproject.com/guides/book-of-nahum/"
+  },
+  {
+    "id": "habakkuk",
+    "title": "Habakkuk",
+    "group": "minor-prophets",
+    "summary": "Habakkuk questions God about violence and injustice in Judah, then struggles with the use of Babylon as an instrument of judgment. The book is a conversation of complaint, response and waiting. It ends with a prayer of trust even when crops fail and life remains difficult.",
+    "takeaway": "Bring hard questions to God and practise trust while waiting.",
+    "themes": [
+      "Honest Questions",
+      "Justice",
+      "Trust"
+    ],
+    "passage": {
+      "book": "Habakkuk",
+      "chapter": 3,
+      "verseStart": 17,
+      "verseEnd": 19
+    },
+    "sourceUrl": "https://bibleproject.com/guides/book-of-habakkuk/"
+  },
+  {
+    "id": "zephaniah",
+    "title": "Zephaniah",
+    "group": "minor-prophets",
+    "summary": "Zephaniah warns Judah and the nations about the day of the Lord, confronting idolatry, pride and corruption. He calls people to seek humility and righteousness. The final movement promises a restored people, God's presence and joy after judgment.",
+    "takeaway": "Look for humility and renewal alongside the book's serious warnings.",
+    "themes": [
+      "Judgment",
+      "Humility",
+      "Restoration"
+    ],
+    "passage": {
+      "book": "Zephaniah",
+      "chapter": 3,
+      "verseStart": 14,
+      "verseEnd": 17
+    },
+    "sourceUrl": "https://bibleproject.com/guides/book-of-zephaniah/"
+  },
+  {
+    "id": "haggai",
+    "title": "Haggai",
+    "group": "minor-prophets",
+    "summary": "After the return from exile, Haggai challenges people who are rebuilding their own lives while leaving the temple neglected. His messages encourage the community to reconsider its priorities and resume the work. God promises his presence as they rebuild amid discouragement.",
+    "takeaway": "Consider what your priorities reveal and take a faithful next step.",
+    "themes": [
+      "Priorities",
+      "Faithfulness",
+      "God's Presence"
+    ],
+    "passage": {
+      "book": "Haggai",
+      "chapter": 1,
+      "verseStart": 2,
+      "verseEnd": 8
+    },
+    "sourceUrl": "https://bibleproject.com/guides/book-of-haggai/"
+  },
+  {
+    "id": "zechariah",
+    "title": "Zechariah",
+    "group": "minor-prophets",
+    "summary": "Zechariah encourages the community rebuilding after exile. Through visions and prophetic poetry, he calls for repentance, justice and trust in God's Spirit. The book looks beyond the unfinished temple towards a coming king, restored Jerusalem and God's rule among the nations.",
+    "takeaway": "Let hope in God's future support faithfulness in the present.",
+    "themes": [
+      "Restoration",
+      "God's Spirit",
+      "Coming King"
+    ],
+    "passage": {
+      "book": "Zechariah",
+      "chapter": 4,
+      "verseStart": 6,
+      "verseEnd": 10
+    },
+    "sourceUrl": "https://bibleproject.com/guides/book-of-zechariah/"
+  },
+  {
+    "id": "malachi",
+    "title": "Malachi",
+    "group": "minor-prophets",
+    "summary": "Malachi confronts a community whose worship and relationships have become careless after the return from exile. Through a series of disputes, the book challenges corrupt worship, unfaithfulness and injustice. It also announces a coming messenger and God's work of purification.",
+    "takeaway": "Bring integrity to worship, commitments and the way you treat people.",
+    "themes": [
+      "Faithfulness",
+      "True Worship",
+      "Justice"
+    ],
+    "passage": {
+      "book": "Malachi",
+      "chapter": 3,
+      "verseStart": 1,
+      "verseEnd": 5
+    },
+    "sourceUrl": "https://bibleproject.com/guides/book-of-malachi/"
+  }
+]
