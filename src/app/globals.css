@@ -101,6 +101,10 @@ body {
   letter-spacing: -0.02em;
 }
 
+.bc-heading {
+  font-size: 1.35rem;
+}
+
 .bc-kicker {
   font-size: 0.72rem;
   font-weight: 500;

@@ -9,6 +9,7 @@ export type EntryPath = {
 };
 
 export type LifeArea = {
+  id: string;
   icon: string;
   title: string;
   summary: string;
@@ -66,6 +67,7 @@ export const entryPaths: EntryPath[] = [
 export const lifeAreas: LifeArea[] = [
   {
     icon: "🕊️",
+    id: "peace",
     title: "Peace, fear and inner strength",
     summary: "Come here when your mind feels heavy, uncertain, or afraid.",
     topicSlugs: [
@@ -86,18 +88,21 @@ export const lifeAreas: LifeArea[] = [
   },
   {
     icon: "🌱",
+    id: "work",
     title: "Work, growth and perseverance",
     summary: "Patience, discipline, failure, and faithful effort — without earning God.",
     topicSlugs: ["hard-work", "diligence", "patience", "failure", "success", "wealth"],
   },
   {
     icon: "🤍",
+    id: "family",
     title: "Family and relationships",
     summary: "Wisdom for loving, leading, forgiving, and building a healthy home.",
     topicSlugs: ["husband", "wife", "children", "parents", "friendship"],
   },
   {
     icon: "🪞",
+    id: "character",
     title: "Temptation and character",
     summary:
       "When desire, appetite, or ego pull you off course — return to Jesus, not a self-fix ladder.",
@@ -105,6 +110,7 @@ export const lifeAreas: LifeArea[] = [
   },
   {
     icon: "📖",
+    id: "foundations",
     title: "Understand the Bible — foundations",
     summary: "How Scripture fits together, and how to read it with Jesus at the centre.",
     topicSlugs: [
@@ -117,6 +123,7 @@ export const lifeAreas: LifeArea[] = [
   },
   {
     icon: "✨",
+    id: "doctrine",
     title: "People, themes and doctrine",
     summary: "People, promises, themes, and truths that reveal God's character.",
     topicSlugs: [
@@ -131,12 +138,14 @@ export const lifeAreas: LifeArea[] = [
   },
   {
     icon: "🧭",
+    id: "principles",
     title: "Biblical laws and principles",
     summary: "Love, forgiveness, diligence, sowing and reaping, and wise boundaries.",
     topicSlugs: ["teachings"],
   },
   {
     icon: "👣",
+    id: "people",
     title: "People worth studying",
     summary: "Lives shaped by courage, obedience, failure, restoration, and faith.",
     topicSlugs: ["motivational-men", "motivational-women"],

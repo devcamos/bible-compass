@@ -74,18 +74,19 @@
         },
         {
           "label": "Major prophets",
-          "detail": "longer books that call people back to God",
+          "detail": "longer prophetic books; major describes length, not importance",
           "children": [
             "Isaiah",
             "Jeremiah",
             "Lamentations",
             "Ezekiel",
             "Daniel"
-          ]
+          ],
+          "bookSummaryGroup": "major-prophets"
         },
         {
           "label": "Minor prophets",
-          "detail": "shorter books with the same kind of message",
+          "detail": "shorter prophetic books with equally important messages",
           "children": [
             "Hosea",
             "Joel",
@@ -99,7 +100,8 @@
             "Haggai",
             "Zechariah",
             "Malachi"
-          ]
+          ],
+          "bookSummaryGroup": "minor-prophets"
         }
       ]
     },

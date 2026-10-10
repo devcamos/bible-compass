@@ -11,7 +11,7 @@ export default function RouteError({ error, retry }: RouteErrorProps) {
   return (
     <section className="bc-shell-fallback" aria-labelledby="shell-error-title">
       <p className="bc-kicker m-0 mb-2">A quiet pause</p>
-      <h1 id="shell-error-title" className="bc-title m-0 mb-2 text-[1.65rem]">
+      <h1 id="shell-error-title" className="bc-title bc-heading m-0 mb-2">
         This path did not finish loading
       </h1>
       <p className="m-0 mb-4 leading-7 text-muted-foreground">

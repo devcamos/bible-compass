@@ -2,61 +2,122 @@
 
 Bible Compass is a static-first Next.js app with no database and no secrets.
 
-## Production and `main` (founder GO)
+## Current release model
 
-**Founder GO for live latest:** 2026-08-22. [`vercel.json`](./vercel.json) now has:
+Bible Compass currently uses GitHub → Vercel Git integration.
 
-```json
-"git": {
-  "deploymentEnabled": {
-    "main": true
-  }
-}
-```
-
-| Event | What Vercel does |
+| Event | Expected behaviour |
 | --- | --- |
-| Push / PR on a **non-`main` branch** | Builds **Preview** (review surface) |
-| Merge / push to **`main`** | Builds **Production** and moves the Production aliases |
+| Push / PR on a non-`main` branch | Vercel builds Preview |
+| Pull request CI | GitHub verifies tests, types, lint, build and local runtime smoke tests |
+| Founder-approved merge to `main` | Vercel starts Production deployment |
+| Push to `main` | GitHub re-verifies the exact merged revision |
+| Production completion | GitHub proves the live `/health` endpoint reports the exact `main` commit |
 
-Still **never** use `vercel --prod`, `vercel promote`, or MCP deploy that bypasses Git. Hosted path stays GitHub → Vercel Git wrap.
+Agents must stop at a green pull request and provide the PR link. Agents do not merge, enable auto-merge, or approve their own release.
 
-### Current aliases
+## Release gates
+
+### Gate 1 — Engineering quality
+
+Required before review:
+
+- `npm ci`
+- content contract tests
+- generated Next route types
+- TypeScript
+- ESLint with zero warnings
+- `next build`
+- local runtime smoke test of `/` and `/health`
+
+### Gate 2 — Product approval
+
+Required before merge:
+
+- Vercel Preview deployment green
+- requested behaviour reviewed
+- no unexpected product/content changes
+- founder approval
+
+For Bible Compass today, founder approval to merge is also the release approval because Production tracks `main`.
+
+### Gate 3 — Release proof
+
+After an approved merge:
+
+1. GitHub runs the complete verification suite against the exact `main` revision.
+2. Vercel builds Production through its Git integration.
+3. GitHub polls `https://bible-compass-three.vercel.app/health`.
+4. The release is proven only when the health response is healthy **and** its `commit` equals the exact GitHub `main` SHA.
+5. If the expected SHA never becomes live, the release check fails visibly rather than accepting a stale Production alias.
+
+This protects against the failure mode where a previous Production deployment remains healthy while the new deployment has actually failed.
+
+## Reproducibility
+
+Vercel and GitHub both install dependencies with `npm ci`, using the committed lockfile. Do not replace this with `npm install` in CI/Production builds.
+
+Target principle: **build once, promote many**. The current Vercel Git flow still performs an environment build, so Bible Compass does not yet claim literal immutable-artifact promotion. Until that is introduced deliberately, deterministic installs, exact-revision verification and deployed-commit proof are mandatory controls.
+
+## Current aliases
 
 | Role | URL | Notes |
 | --- | --- | --- |
-| Production alias | https://bible-compass-three.vercel.app | Live latest after GO |
-| Team Production hostname | https://bible-compass-devonte-amos-projects.vercel.app | Same Production deployment |
-| GitHub | https://github.com/devcamos/bible-compass | Org **`devcamos`** (c) |
-| Local | http://localhost:3003 | In-dev only |
+| Production alias | https://bible-compass-three.vercel.app | Live alias |
+| Team Production hostname | https://bible-compass-devonte-amos-projects.vercel.app | Same Production project |
+| GitHub | https://github.com/devcamos/bible-compass | Repository |
+| Local | http://localhost:3003 | Local development |
 
-`bible-compass.vercel.app` may be occupied elsewhere — do not assume it is this project.
-
-### Pausing Production again
-
-If live auto-deploy must stop: PR that sets `git.deploymentEnabled.main` back to `false`, merge, confirm no new Production builds on later `main` merges.
+`bible-compass.vercel.app` may be occupied elsewhere. Do not assume it is this project.
 
 ## Allowed
 
-1. Local verify: `npm run verify` then `npm run dev` on http://localhost:3003
-2. Vercel **Preview** from a GitHub PR branch (Git wrap — no CLI required for Preview)
-3. Production from **`main`** after founder GO through git (current state)
+1. Feature branch changes
+2. GitHub pull request
+3. `npm run verify`
+4. GitHub Actions verification
+5. Vercel Preview from the PR
+6. Founder-approved merge
+7. Production through Vercel Git integration after that merge
 
 ## Forbidden
 
+- Direct push to `main`
+- Agent merge or auto-merge
 - `vercel --prod`
 - `vercel promote`
-- `vercel --yes` on a new empty project (can create an unreviewed Production alias)
-- Pointing Preview at any Production database or key (this app should have none)
+- direct MCP/CLI deployment bypassing Git
+- `vercel --yes` on a new empty project
+- silencing a failed test/check
+- claiming a release is healthy only because an old Production alias still returns 200
 
 ## Health
 
-`GET /health` returns `{ ok: true, product: "bible-compass" }`.
+`GET /health` returns release identity as well as liveness, including:
 
-Preview deployments stay `noindex`. Production indexing follows the live alias after GO.
+```json
+{
+  "ok": true,
+  "product": "bible-compass",
+  "version": "0.1.0",
+  "surface": "production",
+  "commit": "<VERCEL_GIT_COMMIT_SHA>"
+}
+```
 
-Release UI and the share card must use Nexus brand colours (`refinery-brand`: cream, ink, copper). Do not invent a palette.
+Local execution reports `surface: "local"` and `commit: "local"`.
 
-## Guardian residual
+## Recovery
 
-The first CLI deploy created the Production alias https://bible-compass-three.vercel.app. Founder GO now uses that alias as live latest via Git `main` deploys. Do not recreate Production with CLI.
+If a Production deployment fails:
+
+1. Do not merge another speculative fix.
+2. Capture the failed deployment ID and Vercel build logs.
+3. Confirm whether the failure is source, dependency/build, environment or Vercel/platform related.
+4. Repair on a new branch.
+5. Require GitHub verification and Vercel Preview green.
+6. Obtain founder approval.
+7. Merge only the reviewed repair.
+8. Confirm the exact merged SHA is reported by Production `/health`.
+
+Production is not considered recovered until the expected commit is serving successfully.

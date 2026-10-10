@@ -5,9 +5,17 @@ on:
   push:
     branches: [main]
 
+permissions:
+  contents: read
+
+concurrency:
+  group: verify-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   verify:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -16,3 +24,65 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run verify
+      - name: Smoke test built application
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          npm run start > /tmp/bible-compass.log 2>&1 &
+          APP_PID=$!
+          trap 'kill "$APP_PID" 2>/dev/null || true' EXIT
+
+          for attempt in {1..30}; do
+            if curl --fail --silent --show-error http://127.0.0.1:3003/health > /tmp/health.json; then
+              break
+            fi
+            sleep 1
+          done
+
+          if [ ! -s /tmp/health.json ]; then
+            cat /tmp/bible-compass.log
+            exit 1
+          fi
+
+          cat /tmp/health.json
+          node -e 'const fs = require("fs"); const health = JSON.parse(fs.readFileSync("/tmp/health.json", "utf8")); if (health.ok !== true || health.product !== "bible-compass") process.exit(1)'
+          curl --fail --silent --show-error http://127.0.0.1:3003/ > /dev/null
+          curl --fail --silent --show-error http://127.0.0.1:3003/how-to-use > /dev/null
+          curl --fail --silent --show-error http://127.0.0.1:3003/concepts > /dev/null
+          curl --fail --silent --show-error http://127.0.0.1:3003/concepts/data > /tmp/concepts.json
+          node -e 'const fs = require("fs"); const data = JSON.parse(fs.readFileSync("/tmp/concepts.json", "utf8")); const source = JSON.parse(fs.readFileSync("src/content/concepts/ontology.json", "utf8")); if (data.schemaVersion !== source.schemaVersion || JSON.stringify(data.concepts) !== JSON.stringify(source.concepts) || JSON.stringify(data.relations) !== JSON.stringify(source.relations) || !data.lifeAreas.length || !data.topics.length) process.exit(1)'
+          node scripts/concept-references-smoke.mjs
+          node scripts/prophet-summaries-smoke.mjs
+
+  production-proof:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: verify
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Prove production serves the exact main commit
+        env:
+          EXPECTED_SHA: ${{ github.sha }}
+          PROD_HEALTH_URL: https://bible-compass-three.vercel.app/health
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          for attempt in {1..60}; do
+            BODY="$(curl --fail --silent --show-error "$PROD_HEALTH_URL" || true)"
+
+            if [ -n "$BODY" ]; then
+              echo "Production health: $BODY"
+
+              if HEALTH_BODY="$BODY" node -e 'const health = JSON.parse(process.env.HEALTH_BODY); process.exit(health.ok === true && health.product === "bible-compass" && health.commit === process.env.EXPECTED_SHA ? 0 : 1)'; then
+                echo "Production is serving expected commit $EXPECTED_SHA"
+                exit 0
+              fi
+            fi
+
+            sleep 10
+          done
+
+          echo "Production did not serve expected commit $EXPECTED_SHA within the release window."
+          exit 1
