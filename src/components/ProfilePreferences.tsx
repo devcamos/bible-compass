@@ -87,24 +87,24 @@ export function ProfilePreferences() {
         aria-labelledby={titleId}
         className="fixed inset-0 m-auto max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-md overflow-y-auto overscroll-contain rounded-2xl border border-border bg-background p-0 text-foreground backdrop:bg-ink/50"
       >
-        <header className="flex items-center justify-between gap-3 border-b border-border px-5 py-4">
+        <header className="flex items-center justify-between gap-2 border-b border-border px-4 py-3">
           <h2 id={titleId} className="bc-title bc-heading m-0">Your Profile</h2>
           <button type="button" className="bc-btn bc-btn--quiet" onClick={() => dialogRef.current?.close()}>Close</button>
         </header>
-        <div className="space-y-6 p-5">
-          <p className="m-0 text-sm leading-6 text-muted-foreground">Choose how Bible Compass looks on this device.</p>
+        <div className="space-y-4 p-4">
+          <p className="m-0 text-sm leading-5 text-muted-foreground">Choose how Bible Compass looks on this device.</p>
           <fieldset className="m-0 min-w-0 border-0 p-0">
-            <legend className="mb-3 font-medium">Icon skin tone</legend>
+            <legend className="mb-2 font-medium">Icon skin tone</legend>
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
               {SKIN_TONES.map((option) => (
-                <label key={option.id} className={`flex min-h-16 cursor-pointer items-center gap-2 rounded-xl border bg-card px-3 py-2 text-sm focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-copper ${tone === option.id ? "border-copper" : "border-border"}`}>
+                <label key={option.id} className={`flex min-h-14 cursor-pointer items-center gap-2 rounded-xl border bg-card px-2.5 py-1.5 text-sm leading-tight focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-copper ${tone === option.id ? "border-copper" : "border-border"}`}>
                   <input type="radio" name={toneId} value={option.id} checked={tone === option.id} className="shrink-0 accent-copper" onChange={() => savePreference(SKIN_TONE_KEY, "data-skin-tone", option.id)} />
                   <span><span aria-hidden="true" className="block text-xl">{withSkinTone("🙏", option.id)}</span>{option.label}</span>
                 </label>
               ))}
             </div>
           </fieldset>
-          <label className="flex min-h-11 cursor-pointer items-center justify-between gap-3 rounded-xl border border-border bg-card p-4">
+          <label className="flex min-h-10 cursor-pointer items-center justify-between gap-3 rounded-xl border border-border bg-card p-3">
             <span className="font-medium">Dark mode</span>
             <input type="checkbox" checked={theme === "dark"} className="h-5 w-5 accent-copper" onChange={(event) => savePreference(THEME_KEY, "data-theme", event.target.checked ? "dark" : "light")} />
           </label>
