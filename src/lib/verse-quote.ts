@@ -1,20 +1,26 @@
 const OPEN = "\u201C";
 const CLOSE = "\u201D";
 
-/** Wrap passage text in curly quotes unless already fully quoted. */
+/** Use one outer quote pair and single quotes for speech within the passage. */
 export function wrapVerseInQuotes(text: string): string {
-  const trimmed = text.trim();
-  if (!trimmed) return trimmed;
+  let passage = text.trim();
+  if (!passage) return passage;
 
-  const first = trimmed[0];
-  const last = trimmed[trimmed.length - 1];
-  if (
-    (first === OPEN && last === CLOSE) ||
-    (first === '"' && last === '"') ||
-    (first === "'" && last === "'")
-  ) {
-    return trimmed;
+  while (passage.length >= 2) {
+    const first = passage[0];
+    const last = passage[passage.length - 1];
+    const isWrapped =
+      (first === OPEN && last === CLOSE) ||
+      (first === '"' && last === '"') ||
+      (first === "'" && last === "'") ||
+      (first === "‘" && last === "’");
+    if (!isWrapped) break;
+    passage = passage.slice(1, -1).trim();
   }
 
-  return `${OPEN}${trimmed}${CLOSE}`;
+  const nested = passage
+    .replace(/“/g, "‘")
+    .replace(/”/g, "’")
+    .replace(/"([^"]*)"/g, "‘$1’");
+  return nested ? `${OPEN}${nested}${CLOSE}` : nested;
 }
