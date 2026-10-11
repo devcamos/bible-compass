@@ -8,11 +8,17 @@ export function ConceptCategories() {
       <p className="text-muted-foreground">Explore beliefs, practices and themes, and see how they connect.</p>
       {ontology.categories.map((category) => (
         <details key={category.id} className="border-b border-border py-3">
-          <summary className="py-2 font-medium"><span className="summary-label">{category.title}</span></summary>
+          <summary className="cursor-pointer py-2 text-[1.02rem] font-medium">
+            <span className="summary-label">
+              <span aria-hidden="true">{category.icon}</span> {category.title}
+            </span>
+          </summary>
           <p className="m-0 pb-2 text-sm text-muted-foreground">{category.summary}</p>
           <div className="flex flex-wrap gap-2 py-3">
             {concepts.filter((concept) => concept.categoryId === category.id).map((concept) => (
-              <Link key={concept.id} href={`/concepts/${concept.slug}`} className="bc-btn bc-btn--quiet">{concept.title}</Link>
+              <Link key={concept.id} href={`/concepts/${concept.slug}`} className="bc-btn bc-btn--quiet gap-2">
+                <span aria-hidden="true">{concept.icon}</span> {concept.title}
+              </Link>
             ))}
           </div>
         </details>

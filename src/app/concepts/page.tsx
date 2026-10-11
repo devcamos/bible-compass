@@ -17,7 +17,7 @@ export default function ConceptsPage() {
       <h1 className="bc-title bc-heading mb-2">Concepts</h1>
       <p className="mb-6 leading-7 text-muted-foreground">Explore biblical beliefs, frameworks, practices, principles and themes. See the passages behind them and the connections between them.</p>
       <ConceptExplorer
-        entries={concepts.map(({ id, slug, title, summary, aliases, categoryId, typeIds, domainIds, lifeAreaIds, topicSlugs, scripture }) => ({ id, slug, title, summary, aliases, categoryId, typeIds, domainIds, lifeAreaIds, topicCount: topicSlugs.length, passageCount: scripture.length }))}
+        entries={concepts.map(({ id, slug, title, icon, summary, aliases, categoryId, typeIds, domainIds, lifeAreaIds, topicSlugs, scripture }) => ({ id, slug, title, icon, summary, aliases, categoryId, typeIds, domainIds, lifeAreaIds, topicCount: topicSlugs.length, passageCount: scripture.length }))}
         categories={ontology.categories} types={ontology.types} domains={ontology.domains}
         lifeAreas={lifeAreas.map(({ id, title }) => ({ id, title }))}
         relations={ontology.relations.map(({ sourceId, targetId }) => ({ sourceId, targetId }))}

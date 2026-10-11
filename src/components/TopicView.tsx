@@ -218,7 +218,13 @@ export function TopicView({ topic }: TopicViewProps) {
 
       {concepts.length ? <nav className="mt-8" aria-label="Related biblical concepts">
         <h2 className="bc-title bc-heading mb-3">Related concepts</h2>
-        <div className="flex flex-wrap gap-2.5">{concepts.map((concept) => <Link key={concept.id} href={`/concepts/${concept.slug}`} className="bc-btn bc-btn--quiet">{concept.title}</Link>)}</div>
+        <div className="flex flex-wrap gap-2.5">
+          {concepts.map((concept) => (
+            <Link key={concept.id} href={`/concepts/${concept.slug}`} className="bc-btn bc-btn--quiet gap-2">
+              <span aria-hidden="true">{concept.icon}</span> {concept.title}
+            </Link>
+          ))}
+        </div>
       </nav> : null}
 
       <nav className="mt-8" aria-label="Read next">
