@@ -3,6 +3,8 @@ import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
+import { runInNewContext } from "node:vm";
+import ts from "typescript";
 import { resolveScriptureReferences, scriptureReference, scriptureUrl } from "../src/lib/scripture-mapping.mjs";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const src = join(root, "src");
@@ -10,6 +12,52 @@ const src = join(root, "src");
 function read(path) {
   return readFileSync(path, "utf8");
 }
+
+const skinToneSource = ts.transpileModule(read(join(src, "lib/skin-tone.ts")), {
+  compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2020 },
+}).outputText;
+const { SKIN_TONES, SKIN_TONE_KEY, withSkinTone, skinToneBootstrap } = await import(
+  `data:text/javascript;base64,${Buffer.from(skinToneSource).toString("base64")}`
+);
+
+test("skin tone applies to human icons without changing symbols or adding duplicate modifiers", () => {
+  for (const icon of ["🙏", "🙌", "🤝"]) {
+    assert.equal(withSkinTone(icon, "light"), icon + "🏻");
+    assert.equal(withSkinTone(icon, "dark"), icon + "🏿");
+    assert.equal(withSkinTone(icon + "🏻", "dark"), icon + "🏿");
+    assert.equal(withSkinTone(icon + "🏿", "default"), icon);
+    for (const tone of SKIN_TONES) {
+      const modified = withSkinTone(icon, tone.id);
+      assert.equal(withSkinTone(modified, tone.id), modified);
+    }
+  }
+  for (const icon of ["📖", "🕊️", "🛡️", "🤍", "⚖️", "👣"]) {
+    for (const tone of SKIN_TONES) assert.equal(withSkinTone(icon, tone.id), icon);
+  }
+});
+
+test("skin preference restores before hydration and preserves the existing theme", () => {
+  for (const tone of SKIN_TONES) {
+    const attributes = new Map([["data-theme", "dark"]]);
+    runInNewContext(skinToneBootstrap, {
+      document: { documentElement: { setAttribute: (key, value) => attributes.set(key, value) } },
+      localStorage: { getItem: (key) => key === SKIN_TONE_KEY ? tone.id : null },
+    });
+    assert.equal(attributes.get("data-skin-tone"), tone.id);
+    assert.equal(attributes.get("data-theme"), "dark");
+  }
+});
+
+test("skin preference falls back safely for absent, invalid and unavailable storage", () => {
+  for (const getItem of [() => null, () => "unknown", () => { throw new Error("Storage unavailable"); }]) {
+    const attributes = new Map();
+    runInNewContext(skinToneBootstrap, {
+      document: { documentElement: { setAttribute: (key, value) => attributes.set(key, value) } },
+      localStorage: { getItem },
+    });
+    assert.equal(attributes.get("data-skin-tone"), "default");
+  }
+});
 
 function walk(dir) {
   return readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {

@@ -36,6 +36,15 @@
   color-scheme: dark;
 }
 
+.bc-emoji > [data-icon-tone] { display: none; }
+html:not([data-skin-tone]) .bc-emoji > [data-icon-tone="default"],
+html[data-skin-tone="default"] .bc-emoji > [data-icon-tone="default"],
+html[data-skin-tone="light"] .bc-emoji > [data-icon-tone="light"],
+html[data-skin-tone="medium-light"] .bc-emoji > [data-icon-tone="medium-light"],
+html[data-skin-tone="medium"] .bc-emoji > [data-icon-tone="medium"],
+html[data-skin-tone="medium-dark"] .bc-emoji > [data-icon-tone="medium-dark"],
+html[data-skin-tone="dark"] .bc-emoji > [data-icon-tone="dark"] { display: inline; }
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

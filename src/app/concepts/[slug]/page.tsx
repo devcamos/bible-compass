@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { EmojiIcon } from "@/components/EmojiIcon";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CONCEPT_SLUGS, getConcept, guidancePassages, passageRef, passageUrl } from "@/content/concepts";
 import { capitaliseQuotation } from "@/lib/quotation";
@@ -35,7 +36,7 @@ export default async function ConceptPage({ params }: PageProps<"/concepts/[slug
       <Link href="/concepts" className="text-sm text-link">All concepts</Link>
       <header className="mt-4 mb-8">
         <h1 className="bc-title bc-heading m-0 mb-2 leading-snug">
-          <span aria-hidden="true">{concept.icon}</span> {concept.title}
+          <EmojiIcon icon={concept.icon} /> {concept.title}
         </h1>
         <p className="m-0 text-sm leading-6 text-muted-foreground">{conceptType}</p>
       </header>

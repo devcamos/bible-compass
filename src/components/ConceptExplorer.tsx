@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { EmojiIcon } from "@/components/EmojiIcon";
 import { useState } from "react";
 
 type Facet = { id: string; title: string };
@@ -85,7 +86,7 @@ export function ConceptExplorer({ entries, categories, types, domains, lifeAreas
             <li key={entry.id} className="rounded-2xl border border-border bg-card p-5">
               <h2 className="bc-title bc-heading mt-0 mb-2">
                 <Link href={`/concepts/${entry.slug}`} className="text-link">
-                  <span aria-hidden="true">{entry.icon}</span> {entry.title}
+                  <EmojiIcon icon={entry.icon} /> {entry.title}
                 </Link>
               </h2>
               <p className="leading-7 text-muted-foreground">{entry.summary}</p>

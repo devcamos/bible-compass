@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { EmojiIcon } from "@/components/EmojiIcon";
 import { requireTopic } from "@/content";
 
 type LifeAreaListProps = {
@@ -23,7 +24,7 @@ export function LifeAreaList({
     >
       <summary className="cursor-pointer py-2 text-[1.02rem] font-medium">
         <span className="summary-label">
-          <span aria-hidden="true">{icon}</span> {title}
+          <EmojiIcon icon={icon} /> {title}
         </span>
       </summary>
       <p className="m-0 pb-2 text-sm text-muted-foreground">{summary}</p>

@@ -4,6 +4,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteChrome";
 import { SplashController } from "@/components/SplashScreen";
 import { SHELL_CRITICAL_CSS } from "@/lib/shell-critical-css";
+import { skinToneBootstrap } from "@/lib/skin-tone";
 import { SITE_DESCRIPTION, SITE_NAME, getSiteUrl, isPreviewDeployment } from "@/lib/site";
 import "./globals.css";
 
@@ -58,6 +59,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         <style dangerouslySetInnerHTML={{ __html: SHELL_CRITICAL_CSS }} />
         <script dangerouslySetInnerHTML={{ __html: themeBootstrap }} />
+        <script dangerouslySetInnerHTML={{ __html: skinToneBootstrap }} />
         <script dangerouslySetInnerHTML={{ __html: splashBootstrap }} />
       </head>
       <body className="flex min-h-full flex-col">

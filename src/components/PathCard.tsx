@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { EmojiIcon } from "@/components/EmojiIcon";
 import type { TopicTone } from "@/content/types";
 
 const toneBar: Record<TopicTone, string> = {
@@ -23,7 +24,7 @@ export function PathCard({ href, icon, title, summary, tone }: PathCardProps) {
       className={`flex min-h-24 flex-col items-start justify-start rounded-2xl border-l-4 bg-card p-4 text-left no-underline ${toneBar[tone]}`}
     >
       <strong className="text-base font-medium text-foreground">
-        <span aria-hidden="true">{icon}</span> {title}
+        <EmojiIcon icon={icon} /> {title}
       </strong>
       <span className="mt-1.5 text-sm leading-6 text-foreground/80">{summary}</span>
     </Link>

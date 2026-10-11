@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { EmojiIcon } from "@/components/EmojiIcon";
 import { concepts, ontology } from "@/content/concepts";
 
 export function ConceptCategories() {
@@ -10,14 +11,14 @@ export function ConceptCategories() {
         <details key={category.id} className="border-b border-border py-3">
           <summary className="cursor-pointer py-2 text-[1.02rem] font-medium">
             <span className="summary-label">
-              <span aria-hidden="true">{category.icon}</span> {category.title}
+              <EmojiIcon icon={category.icon} /> {category.title}
             </span>
           </summary>
           <p className="m-0 pb-2 text-sm text-muted-foreground">{category.summary}</p>
           <div className="flex flex-wrap gap-2 py-3">
             {concepts.filter((concept) => concept.categoryId === category.id).map((concept) => (
               <Link key={concept.id} href={`/concepts/${concept.slug}`} className="bc-btn bc-btn--quiet gap-2">
-                <span aria-hidden="true">{concept.icon}</span> {concept.title}
+                <EmojiIcon icon={concept.icon} /> {concept.title}
               </Link>
             ))}
           </div>
