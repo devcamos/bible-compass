@@ -59,7 +59,7 @@ export function ProphetBookList({ books }: { books: readonly ProphetBook[] }) {
       <ul className="m-0 flex list-none flex-wrap gap-2 p-0">
         {books.map((book) => (
           <li key={book.id}>
-            <button type="button" className="bc-btn bc-btn--quiet" aria-haspopup="dialog" onClick={() => setSelectedBook(book)}>
+            <button type="button" className="bc-btn bc-btn--quiet" aria-haspopup="dialog" data-prophet-summary-trigger onClick={() => setSelectedBook(book)}>
               {book.title}
             </button>
           </li>
@@ -68,6 +68,7 @@ export function ProphetBookList({ books }: { books: readonly ProphetBook[] }) {
       <dialog
         ref={dialogRef}
         aria-labelledby={titleId}
+        data-prophet-summary-dialog
         className="fixed inset-0 m-auto max-h-[calc(100dvh-2rem)] w-[calc(100%-2rem)] max-w-md overflow-hidden rounded-2xl border border-border bg-background p-0 text-foreground open:flex open:flex-col backdrop:bg-ink/50"
         onClose={() => setSelectedBook(null)}
         onPointerUp={(event) => {

@@ -8,9 +8,9 @@ const response = await fetch(`${origin}/topics/components-of-the-bible`);
 assert.equal(response.status, 200);
 const html = await response.text();
 const stripComments = (text) => text.replace(/<!--.*?-->/gs, "");
-const triggers = [...html.matchAll(/<button\b[^>]*aria-haspopup="dialog"[^>]*>(.*?)<\/button>/gs)].map((match) => stripComments(match[1]));
+const triggers = [...html.matchAll(/<button\b[^>]*data-prophet-summary-trigger[^>]*>(.*?)<\/button>/gs)].map((match) => stripComments(match[1]));
 assert.deepEqual(triggers, books.map((book) => book.title));
-const dialogs = [...html.matchAll(/<dialog\b[^>]*aria-labelledby="([^"]+)"[^>]*>(.*?)<\/dialog>/gs)];
+const dialogs = [...html.matchAll(/<dialog\b[^>]*aria-labelledby="([^"]+)"[^>]*data-prophet-summary-dialog[^>]*>(.*?)<\/dialog>/gs)];
 assert.equal(dialogs.length, 2);
 assert.notEqual(dialogs[0][1], dialogs[1][1]);
 for (const [, titleId, content] of dialogs) {
