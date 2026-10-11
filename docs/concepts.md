@@ -2,6 +2,8 @@
 
 The Concepts catalogue sits below Explore by life area. Start here now lives on How to use; Jesus and the Gospel remains the foundational route.
 
+Concept families and individual concepts carry local emoji icons, matching the Explore by life area style. The ontology supplies the same icon to home links, explorer cards, concept titles and related-concept links. Icons are decorative (`aria-hidden`) and the text labels remain the accessible names. The additive icon metadata does not change existing IDs, Scripture mappings or schema 1.2.0 compatibility.
+
 ## Reader format
 
 Every concept page leads with Key Bible Verse, Concept Explained, then How the Bible Suggests Living With This [concept family]. Short NIV excerpts are labelled, with links to the exact verse and its surrounding context. Every suggested action has Scripture references. Concept pages keep the reader focused on these three sections and the grace guardrail. Classification, relationship and topic mapping data remain in the ontology and JSON export for analysis; no mapping details section is shown on concept pages.

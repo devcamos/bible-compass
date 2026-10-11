@@ -3,6 +3,7 @@ import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { dirname, join } from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
+import { SKIN_TONES, isSkinTone, withSkinTone } from "../src/lib/skin-tone.ts";
 import { resolveScriptureReferences, scriptureReference, scriptureUrl } from "../src/lib/scripture-mapping.mjs";
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const src = join(root, "src");
@@ -10,6 +11,29 @@ const src = join(root, "src");
 function read(path) {
   return readFileSync(path, "utf8");
 }
+
+test("skin tone applies to human icons without changing symbols or adding duplicate modifiers", () => {
+  for (const icon of ["🙏", "🙌", "🤝"]) {
+    assert.equal(withSkinTone(icon, "light"), icon + "🏻");
+    assert.equal(withSkinTone(icon, "dark"), icon + "🏿");
+    assert.equal(withSkinTone(icon + "🏻", "dark"), icon + "🏿");
+    assert.equal(withSkinTone(icon + "🏿", "default"), icon);
+    for (const tone of SKIN_TONES) {
+      const modified = withSkinTone(icon, tone.id);
+      assert.equal(withSkinTone(modified, tone.id), modified);
+    }
+  }
+  for (const icon of ["📖", "🕊️", "🛡️", "🤍", "⚖️", "👣"]) {
+    for (const tone of SKIN_TONES) assert.equal(withSkinTone(icon, tone.id), icon);
+  }
+});
+
+test("skin preference accepts supported tones and rejects corrupt stored values", () => {
+  for (const tone of SKIN_TONES) assert.equal(isSkinTone(tone.id), true);
+  for (const value of [null, "", "unknown", "dark:medium", "<script>"]) {
+    assert.equal(isSkinTone(value), false);
+  }
+});
 
 function walk(dir) {
   return readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {

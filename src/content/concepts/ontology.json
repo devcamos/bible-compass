@@ -6,27 +6,32 @@
     {
       "id": "doctrines",
       "title": "Doctrines",
-      "summary": "Beliefs about God, salvation and our future."
+      "summary": "Beliefs about God, salvation and our future.",
+      "icon": "📖"
     },
     {
       "id": "frameworks",
       "title": "Biblical Frameworks",
-      "summary": "Patterns and metaphors that help us understand and respond."
+      "summary": "Patterns and metaphors that help us understand and respond.",
+      "icon": "🧩"
     },
     {
       "id": "practices",
       "title": "Spiritual Practices",
-      "summary": "Ways of responding to God in daily life."
+      "summary": "Ways of responding to God in daily life.",
+      "icon": "🙏"
     },
     {
       "id": "principles",
       "title": "Principles",
-      "summary": "Truths that guide our choices and character."
+      "summary": "Truths that guide our choices and character.",
+      "icon": "🧭"
     },
     {
       "id": "themes",
       "title": "Biblical Themes",
-      "summary": "Threads that connect passages across Scripture."
+      "summary": "Threads that connect passages across Scripture.",
+      "icon": "🧵"
     }
   ],
   "types": [
@@ -217,7 +222,8 @@
             }
           ]
         }
-      ]
+      ],
+      "icon": "⚖️"
     },
     {
       "id": "salvation",
@@ -309,7 +315,8 @@
             }
           ]
         }
-      ]
+      ],
+      "icon": "✝️"
     },
     {
       "id": "resurrection",
@@ -411,7 +418,8 @@
             }
           ]
         }
-      ]
+      ],
+      "icon": "🌅"
     },
     {
       "id": "trinity",
@@ -519,7 +527,8 @@
             }
           ]
         }
-      ]
+      ],
+      "icon": "🔺"
     },
     {
       "id": "justification",
@@ -619,7 +628,8 @@
             }
           ]
         }
-      ]
+      ],
+      "icon": "✅"
     },
     {
       "id": "grace",
@@ -713,7 +723,8 @@
             }
           ]
         }
-      ]
+      ],
+      "icon": "🎁"
     },
     {
       "id": "armour-of-god",
@@ -814,7 +825,8 @@
             }
           ]
         }
-      ]
+      ],
+      "icon": "🛡️"
     },
     {
       "id": "fruit-of-the-spirit",
@@ -932,7 +944,8 @@
             }
           ]
         }
-      ]
+      ],
+      "icon": "🍇"
     },
     {
       "id": "beatitudes",
@@ -1026,7 +1039,8 @@
             }
           ]
         }
-      ]
+      ],
+      "icon": "🕊️"
     },
     {
       "id": "parable-of-the-sower",
@@ -1121,7 +1135,8 @@
             }
           ]
         }
-      ]
+      ],
+      "icon": "🌱"
     },
     {
       "id": "prayer",
@@ -1221,7 +1236,8 @@
             }
           ]
         }
-      ]
+      ],
+      "icon": "🙏"
     },
     {
       "id": "fasting",
@@ -1313,7 +1329,8 @@
             }
           ]
         }
-      ]
+      ],
+      "icon": "🍽️"
     },
     {
       "id": "repentance",
@@ -1423,7 +1440,8 @@
             }
           ]
         }
-      ]
+      ],
+      "icon": "↩️"
     },
     {
       "id": "worship",
@@ -1524,7 +1542,8 @@
             }
           ]
         }
-      ]
+      ],
+      "icon": "🙌"
     },
     {
       "id": "stewardship",
@@ -1624,7 +1643,8 @@
             }
           ]
         }
-      ]
+      ],
+      "icon": "🪙"
     },
     {
       "id": "forgiveness",
@@ -1727,7 +1747,8 @@
             }
           ]
         }
-      ]
+      ],
+      "icon": "🤍"
     },
     {
       "id": "justice",
@@ -1837,7 +1858,8 @@
             }
           ]
         }
-      ]
+      ],
+      "icon": "⚖️"
     },
     {
       "id": "humility",
@@ -1930,7 +1952,8 @@
             }
           ]
         }
-      ]
+      ],
+      "icon": "🌿"
     },
     {
       "id": "covenant",
@@ -2031,7 +2054,8 @@
             }
           ]
         }
-      ]
+      ],
+      "icon": "🤝"
     },
     {
       "id": "kingdom-of-god",
@@ -2142,7 +2166,8 @@
             }
           ]
         }
-      ]
+      ],
+      "icon": "👑"
     },
     {
       "id": "redemption",
@@ -2244,7 +2269,8 @@
             }
           ]
         }
-      ]
+      ],
+      "icon": "🔓"
     },
     {
       "id": "spiritual-warfare",
@@ -2336,7 +2362,8 @@
             }
           ]
         }
-      ]
+      ],
+      "icon": "⚔️"
     },
     {
       "id": "integrity",
@@ -2449,7 +2476,8 @@
             }
           ]
         }
-      ]
+      ],
+      "icon": "💎"
     },
     {
       "id": "wisdom",
@@ -2564,7 +2592,8 @@
             }
           ]
         }
-      ]
+      ],
+      "icon": "💡"
     }
   ],
   "relations": [

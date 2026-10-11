@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { EmojiIcon } from "@/components/EmojiIcon";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { ProphetBookList } from "@/components/ProphetBookList";
 import type { Topic } from "@/content/types";
@@ -37,7 +38,7 @@ export function TopicView({ topic }: TopicViewProps) {
 
       <header className="mb-5">
         <h1 className="bc-title bc-heading m-0 mb-2 leading-tight">
-          <span aria-hidden="true">{topic.icon}</span> {topic.title}
+          <EmojiIcon icon={topic.icon} /> {topic.title}
         </h1>
         <p className="m-0 text-[1.02rem] leading-7 text-muted-foreground">{topic.summary}</p>
       </header>
@@ -218,7 +219,13 @@ export function TopicView({ topic }: TopicViewProps) {
 
       {concepts.length ? <nav className="mt-8" aria-label="Related biblical concepts">
         <h2 className="bc-title bc-heading mb-3">Related concepts</h2>
-        <div className="flex flex-wrap gap-2.5">{concepts.map((concept) => <Link key={concept.id} href={`/concepts/${concept.slug}`} className="bc-btn bc-btn--quiet">{concept.title}</Link>)}</div>
+        <div className="flex flex-wrap gap-2.5">
+          {concepts.map((concept) => (
+            <Link key={concept.id} href={`/concepts/${concept.slug}`} className="bc-btn bc-btn--quiet gap-2">
+              <EmojiIcon icon={concept.icon} /> {concept.title}
+            </Link>
+          ))}
+        </div>
       </nav> : null}
 
       <nav className="mt-8" aria-label="Read next">
