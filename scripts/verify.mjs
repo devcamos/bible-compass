@@ -15,9 +15,17 @@ function run(command, args) {
   }
 }
 
-run(process.execPath, ["--test", join(root, "scripts/content-contract.mjs")]);
+// Node 22.18+ strips types by default; older 22.x needs the experimental flag
+// so content-contract can import `src/**/*.ts` helpers.
+run(process.execPath, [
+  "--experimental-strip-types",
+  "--test",
+  join(root, "scripts/content-contract.mjs"),
+]);
+// Prefer local bins over `npx` (avoids broken host npm exec in some agent VMs).
 // Typed routes (LayoutProps / PageProps) live in .next/types — generate before tsc.
-run("npx", ["next", "typegen"]);
-run("npx", ["tsc", "--noEmit"]);
-run("npx", ["eslint", ".", "--max-warnings=0"]);
-run("npx", ["next", "build"]);
+const bin = join(root, "node_modules", ".bin");
+run(join(bin, "next"), ["typegen"]);
+run(join(bin, "tsc"), ["--noEmit"]);
+run(join(bin, "eslint"), [".", "--max-warnings=0"]);
+run(join(bin, "next"), ["build"]);

@@ -4,6 +4,7 @@ import { PathCard } from "@/components/PathCard";
 import { LifeAreaList } from "@/components/LifeAreaList";
 import { VerseOfTheDay } from "@/components/VerseOfTheDay";
 import { ConceptCategories } from "@/components/ConceptCategories";
+import { HomeSupportLine } from "@/components/HomeSupportLine";
 import { entryPaths, homeCopy, lifeAreas } from "@/content/home";
 import { getVerseOfTheDay } from "@/lib/verse-of-the-day";
 
@@ -56,6 +57,9 @@ export default function HomePage() {
         <LifeAreaList key={area.title} {...area} />
       ))}
       <ConceptCategories />
+
+      {/* Below every home section — never interleaved with compass content. */}
+      <HomeSupportLine />
     </div>
   );
 }

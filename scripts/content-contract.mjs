@@ -321,6 +321,72 @@ test("shared Scripture links preserve book names and exact verse ranges", () => 
   }
 });
 
+test("support URL defaults to Buy Me a Coffee and prefers NEXT_PUBLIC_SUPPORT_URL", async () => {
+  const sitePath = join(src, "lib/site.ts");
+  const siteSource = read(sitePath);
+  assert.match(siteSource, /DEFAULT_SUPPORT_URL\s*=\s*"https:\/\/buymeacoffee\.com\/devoamos"/);
+  assert.match(siteSource, /NEXT_PUBLIC_SUPPORT_URL/);
+  assert.match(siteSource, /export function getSupportUrl/);
+
+  const previous = process.env.NEXT_PUBLIC_SUPPORT_URL;
+  try {
+    delete process.env.NEXT_PUBLIC_SUPPORT_URL;
+    const { getSupportUrl, DEFAULT_SUPPORT_URL } = await import("../src/lib/site.ts");
+    assert.equal(DEFAULT_SUPPORT_URL, "https://buymeacoffee.com/devoamos");
+    assert.equal(getSupportUrl(), "https://buymeacoffee.com/devoamos");
+
+    process.env.NEXT_PUBLIC_SUPPORT_URL = "https://buymeacoffee.com/example/";
+    assert.equal(getSupportUrl(), "https://buymeacoffee.com/example");
+
+    process.env.NEXT_PUBLIC_SUPPORT_URL = "   ";
+    assert.equal(getSupportUrl(), "https://buymeacoffee.com/devoamos");
+  } finally {
+    if (previous === undefined) delete process.env.NEXT_PUBLIC_SUPPORT_URL;
+    else process.env.NEXT_PUBLIC_SUPPORT_URL = previous;
+  }
+});
+
+test("topic view ends with an optional support card after Read next", () => {
+  const topicView = read(join(src, "components/TopicView.tsx"));
+  const supportCard = read(join(src, "components/SupportCard.tsx"));
+  const supportLink = read(join(src, "components/SupportCoffeeLink.tsx"));
+
+  assert.match(topicView, /import \{ SupportCard \} from "@\/components\/SupportCard"/);
+  assert.match(topicView, /aria-label="Read next"/);
+  const readNextIndex = topicView.indexOf('aria-label="Read next"');
+  const supportIndex = topicView.indexOf("<SupportCard");
+  assert.ok(readNextIndex > 0 && supportIndex > readNextIndex, "SupportCard must follow Read next");
+
+  assert.match(supportCard, /Keep this free to find/);
+  assert.match(supportCard, /Get me a coffee/);
+  assert.match(supportCard, /gap-1\.5/);
+  assert.match(supportCard, /whitespace-nowrap/);
+  assert.match(supportCard, /SupportCoffeeLink/);
+  assert.match(supportLink, /getSupportUrl/);
+  assert.match(supportLink, /target="_blank"/);
+  assert.match(supportLink, /rel="noopener noreferrer"/);
+  assert.doesNotMatch(supportCard, /Nexus Motivus|Nexus Products|refinery-brand/i);
+  assert.doesNotMatch(supportCard, /guilt|must support|please donate|paywall/i);
+});
+
+test("home page ends with one quiet support line below all sections", () => {
+  const homePage = read(join(src, "app/page.tsx"));
+  const homeLine = read(join(src, "components/HomeSupportLine.tsx"));
+
+  assert.match(homePage, /import \{ HomeSupportLine \} from "@\/components\/HomeSupportLine"/);
+  assert.match(homePage, /<ConceptCategories \/>/);
+  const conceptsIndex = homePage.indexOf("<ConceptCategories");
+  const supportIndex = homePage.indexOf("<HomeSupportLine");
+  assert.ok(conceptsIndex > 0 && supportIndex > conceptsIndex, "HomeSupportLine must follow ConceptCategories");
+  assert.equal(homePage.indexOf("<HomeSupportLine"), homePage.lastIndexOf("<HomeSupportLine"));
+
+  assert.match(homeLine, /Find this useful\? Get me a coffee/);
+  assert.match(homeLine, /gap-1\.5/);
+  assert.match(homeLine, /whitespace-nowrap/);
+  assert.match(homeLine, /SupportCoffeeLink/);
+  assert.doesNotMatch(homeLine, /Nexus Motivus|Nexus Products|refinery-brand/i);
+});
+
 test("prophetic summaries cover every listed Major and Minor Prophet book", () => {
   const books = JSON.parse(read(join(src, "content/prophets/books.json")));
   const topic = JSON.parse(read(join(topicDir, "components-of-the-bible.json")));

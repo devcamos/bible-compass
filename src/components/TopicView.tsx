@@ -2,6 +2,7 @@ import Link from "next/link";
 import { EmojiIcon } from "@/components/EmojiIcon";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { ProphetBookList } from "@/components/ProphetBookList";
+import { SupportCard } from "@/components/SupportCard";
 import type { Topic } from "@/content/types";
 import { wrapVerseInQuotes } from "@/lib/verse-quote";
 import { conceptsForTopic } from "@/content/concepts";
@@ -245,6 +246,9 @@ export function TopicView({ topic }: TopicViewProps) {
           </Link>
         </div>
       </nav>
+
+      {/* After the reading and next-step links — never mid-passage. */}
+      <SupportCard />
     </article>
   );
 }
