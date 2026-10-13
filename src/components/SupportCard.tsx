@@ -1,12 +1,10 @@
-import { getSupportUrl } from "@/lib/site";
+import { SupportCoffeeLink } from "@/components/SupportCoffeeLink";
 
 /**
  * Quiet, optional support invite shown after a topic reading is finished.
  * Personal sole-trader link only — no company branding.
  */
 export function SupportCard() {
-  const href = getSupportUrl();
-
   return (
     <aside
       className="mt-10 rounded-2xl border border-border bg-card p-5"
@@ -19,15 +17,10 @@ export function SupportCard() {
         If this reading helped, you can get me a coffee. Totally optional; nothing here
         depends on it.
       </p>
-      <a
-        href={href}
+      <SupportCoffeeLink
+        label="Get me a coffee"
         className="bc-btn bc-btn--quiet gap-1.5 whitespace-nowrap"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <span>Get me a coffee</span>
-        <span aria-hidden="true">↗</span>
-      </a>
+      />
     </aside>
   );
 }

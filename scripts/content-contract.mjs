@@ -349,6 +349,7 @@ test("support URL defaults to Buy Me a Coffee and prefers NEXT_PUBLIC_SUPPORT_UR
 test("topic view ends with an optional support card after Read next", () => {
   const topicView = read(join(src, "components/TopicView.tsx"));
   const supportCard = read(join(src, "components/SupportCard.tsx"));
+  const supportLink = read(join(src, "components/SupportCoffeeLink.tsx"));
 
   assert.match(topicView, /import \{ SupportCard \} from "@\/components\/SupportCard"/);
   assert.match(topicView, /aria-label="Read next"/);
@@ -360,11 +361,30 @@ test("topic view ends with an optional support card after Read next", () => {
   assert.match(supportCard, /Get me a coffee/);
   assert.match(supportCard, /gap-1\.5/);
   assert.match(supportCard, /whitespace-nowrap/);
-  assert.match(supportCard, /target="_blank"/);
-  assert.match(supportCard, /rel="noopener noreferrer"/);
-  assert.match(supportCard, /getSupportUrl/);
+  assert.match(supportCard, /SupportCoffeeLink/);
+  assert.match(supportLink, /getSupportUrl/);
+  assert.match(supportLink, /target="_blank"/);
+  assert.match(supportLink, /rel="noopener noreferrer"/);
   assert.doesNotMatch(supportCard, /Nexus Motivus|Nexus Products|refinery-brand/i);
   assert.doesNotMatch(supportCard, /guilt|must support|please donate|paywall/i);
+});
+
+test("home page ends with one quiet support line below all sections", () => {
+  const homePage = read(join(src, "app/page.tsx"));
+  const homeLine = read(join(src, "components/HomeSupportLine.tsx"));
+
+  assert.match(homePage, /import \{ HomeSupportLine \} from "@\/components\/HomeSupportLine"/);
+  assert.match(homePage, /<ConceptCategories \/>/);
+  const conceptsIndex = homePage.indexOf("<ConceptCategories");
+  const supportIndex = homePage.indexOf("<HomeSupportLine");
+  assert.ok(conceptsIndex > 0 && supportIndex > conceptsIndex, "HomeSupportLine must follow ConceptCategories");
+  assert.equal(homePage.indexOf("<HomeSupportLine"), homePage.lastIndexOf("<HomeSupportLine"));
+
+  assert.match(homeLine, /Find this useful\? Get me a coffee/);
+  assert.match(homeLine, /gap-1\.5/);
+  assert.match(homeLine, /whitespace-nowrap/);
+  assert.match(homeLine, /SupportCoffeeLink/);
+  assert.doesNotMatch(homeLine, /Nexus Motivus|Nexus Products|refinery-brand/i);
 });
 
 test("prophetic summaries cover every listed Major and Minor Prophet book", () => {
