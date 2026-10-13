@@ -21,11 +21,12 @@ export function SupportCard() {
       </p>
       <a
         href={href}
-        className="bc-btn bc-btn--quiet"
+        className="bc-btn bc-btn--quiet gap-1.5 whitespace-nowrap"
         target="_blank"
         rel="noopener noreferrer"
       >
-        Get me a coffee <span aria-hidden="true">↗</span>
+        <span>Get me a coffee</span>
+        <span aria-hidden="true">↗</span>
       </a>
     </aside>
   );

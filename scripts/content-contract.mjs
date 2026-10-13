@@ -358,6 +358,8 @@ test("topic view ends with an optional support card after Read next", () => {
 
   assert.match(supportCard, /Keep this free to find/);
   assert.match(supportCard, /Get me a coffee/);
+  assert.match(supportCard, /gap-1\.5/);
+  assert.match(supportCard, /whitespace-nowrap/);
   assert.match(supportCard, /target="_blank"/);
   assert.match(supportCard, /rel="noopener noreferrer"/);
   assert.match(supportCard, /getSupportUrl/);
