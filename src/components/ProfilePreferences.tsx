@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useId, useRef, useSyncExternalStore } from "react";
+import { DailyVersePreferences } from "@/components/DailyVersePreferences";
 import { isSkinTone, SKIN_TONE_KEY, SKIN_TONES, withSkinTone, type SkinTone } from "@/lib/skin-tone";
 
 const THEME_KEY = "bible-compass-theme";
@@ -108,6 +109,7 @@ export function ProfilePreferences() {
             <span className="font-medium">Dark mode</span>
             <input type="checkbox" checked={theme === "dark"} className="h-5 w-5 accent-copper" onChange={(event) => savePreference(THEME_KEY, "data-theme", event.target.checked ? "dark" : "light")} />
           </label>
+          <DailyVersePreferences />
         </div>
       </dialog>
     </>

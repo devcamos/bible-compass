@@ -22,6 +22,7 @@ export function VerseOfTheDay({ verse }: VerseOfTheDayProps) {
           {wrapVerseInQuotes(capitaliseQuotation(verse.text))}
         </p>
       </blockquote>
+      <p className="mb-0 mt-4"><Link href="/verse-of-the-day" className="text-sm font-medium text-link no-underline">Daily verse & reminders</Link></p>
       {verse.topicSlug ? (
         <p className="mb-0 mt-4">
           <Link

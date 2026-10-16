@@ -37,4 +37,11 @@ Theological guardrail: **grace is not earned through effort.** Every topic carri
 
 ## Out of scope
 
-Accounts, comments, payments, database, AI chat, native app, newsletter sending, and unattended Production release.
+Accounts, comments, payments, AI chat, native app, newsletter sending, and unattended Production release.
+
+## Home Screen and reminders
+
+Bible Compass can be saved as a PWA with its book icon. Your Profile contains
+installation guidance and opt-in Verse of the Day reminders at 08:00 UTC.
+Reminders use a small, isolated notification database; reading remains static-first
+and needs no account or database. See [PWA architecture and operations](docs/pwa-notifications.md).

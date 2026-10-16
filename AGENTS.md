@@ -12,7 +12,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 Public static-first reader. Notion is private editorial source, never a runtime dependency.
 
-- Do not add accounts, comments, payments, a database, AI chat, newsletter sending, or a native app in v0.1.
+- Do not add accounts, comments, payments, AI chat, newsletter sending, or a native app in v0.1. Founder authorized PWA installation and opt-in daily verse push reminders on 2026-10-16, including a small notification-only database and scheduler. The reader remains static-first; no database dependency for reading.
 - No direct pushes to Production or Preview. Every change must use a feature branch and GitHub pull request.
 - **Agents must not merge pull requests, enable auto-merge, or bypass founder approval.** An agent may create a PR, repair failing checks, and report the PR only when required CI and Vercel checks are green. Founder approval is required before merge.
 - Founder GO 2026-08-22 enabled `git.deploymentEnabled.main: true`, so Bible Compass currently treats an approved merge to `main` as the Production release action. Do not change that release mapping without a new founder decision.

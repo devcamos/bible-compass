@@ -25,6 +25,7 @@ run(process.execPath, [
 // Prefer local bins over `npx` (avoids broken host npm exec in some agent VMs).
 // Typed routes (LayoutProps / PageProps) live in .next/types — generate before tsc.
 const bin = join(root, "node_modules", ".bin");
+run(process.execPath, ["--import", "tsx", "--test", join(root, "scripts/pwa-notifications.test.ts")]);
 run(join(bin, "next"), ["typegen"]);
 run(join(bin, "tsc"), ["--noEmit"]);
 run(join(bin, "eslint"), [".", "--max-warnings=0"]);

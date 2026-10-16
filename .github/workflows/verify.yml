@@ -49,6 +49,13 @@ jobs:
           node -e 'const fs = require("fs"); const health = JSON.parse(fs.readFileSync("/tmp/health.json", "utf8")); if (health.ok !== true || health.product !== "bible-compass") process.exit(1)'
           curl --fail --silent --show-error http://127.0.0.1:3003/ > /dev/null
           curl --fail --silent --show-error http://127.0.0.1:3003/how-to-use > /dev/null
+          curl --fail --silent --show-error http://127.0.0.1:3003/verse-of-the-day?date=2026-10-16 > /dev/null
+          curl --fail --silent --show-error http://127.0.0.1:3003/manifest.webmanifest > /tmp/manifest.json
+          node -e 'const m = JSON.parse(require("fs").readFileSync("/tmp/manifest.json")); if (m.display !== "standalone" || m.start_url !== "/" || m.icons.length < 2) process.exit(1)'
+          curl --fail --silent --show-error http://127.0.0.1:3003/pwa/icon-192.png > /dev/null
+          curl --fail --silent --show-error http://127.0.0.1:3003/pwa/icon-512.png > /dev/null
+          curl --fail --silent --show-error http://127.0.0.1:3003/sw.js > /dev/null
+          test "$(curl --silent -o /dev/null -w '%{http_code}' http://127.0.0.1:3003/api/cron/daily-verse)" = 401
           curl --fail --silent --show-error http://127.0.0.1:3003/concepts > /dev/null
           curl --fail --silent --show-error http://127.0.0.1:3003/concepts/data > /tmp/concepts.json
           node -e 'const fs = require("fs"); const data = JSON.parse(fs.readFileSync("/tmp/concepts.json", "utf8")); const source = JSON.parse(fs.readFileSync("src/content/concepts/ontology.json", "utf8")); if (data.schemaVersion !== source.schemaVersion || JSON.stringify(data.concepts) !== JSON.stringify(source.concepts) || JSON.stringify(data.relations) !== JSON.stringify(source.relations) || !data.lifeAreas.length || !data.topics.length) process.exit(1)'

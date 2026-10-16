@@ -1,6 +1,9 @@
 # Deployment
 
-Bible Compass is a static-first Next.js app with no database and no secrets.
+Bible Compass is a static-first Next.js reader. Optional daily verse push reminders
+use a notification-only database and server secrets; reader pages do not require
+them. See [PWA and notifications](docs/pwa-notifications.md) for schema, configuration,
+Preview isolation, delivery limits, and device checks before release.
 
 ## Current release model
 
