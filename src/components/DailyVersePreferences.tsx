@@ -130,17 +130,19 @@ export function DailyVersePreferences() {
   return (
     <>
       <section className="bc-reminders rounded-2xl border border-border p-4" aria-labelledby={headingId}>
-        <div className="flex items-start gap-3">
-          <span aria-hidden="true" className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border bg-background text-xl">☀</span>
-          <div className="min-w-0 flex-1"><p className="bc-kicker m-0 mb-1">Verse of the day</p><h3 id={headingId} className="bc-title m-0 text-xl">A daily moment</h3></div>
-          <span className={`rounded-full border px-2.5 py-1 text-xs font-medium ${subscription ? "border-moss text-foreground" : "border-border text-muted-foreground"}`}>{subscription ? "On" : "Off"}</span>
+        <div className="flex items-center justify-between gap-3">
+          <div><h3 id={headingId} className="m-0 text-sm font-semibold">Daily verse reminder</h3><p className="mb-0 mt-1 text-xs text-muted-foreground">{subscription ? "Enabled" : "Disabled"}</p></div>
+          <label className="relative flex min-h-11 min-w-11 cursor-pointer items-center">
+            <input type="checkbox" role="switch" aria-label="Daily verse reminder" checked={Boolean(subscription)} disabled={busy || (!subscription && (device !== "supported" || !config?.enabled || permission === "denied"))} onChange={(event) => { if (event.target.checked) void save(); else void disable(); }} className="peer sr-only" />
+            <span aria-hidden="true" className="h-6 w-11 rounded-full bg-border transition-colors peer-checked:bg-copper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-4 peer-focus-visible:outline-copper peer-disabled:opacity-50" />
+            <span aria-hidden="true" className="pointer-events-none absolute left-1 h-4 w-4 rounded-full bg-cream transition-transform peer-checked:translate-x-5 peer-disabled:opacity-50" />
+          </label>
         </div>
-        <p className="mb-4 mt-3 text-sm leading-6 text-muted-foreground">A little Scripture, at a time that suits you. Always an invitation, never a streak to keep.</p>
         {device === "loading" ? <p className="text-sm">Checking this device…</p> : null}
         {device === "install" ? <p className="rounded-xl border border-border bg-background p-3 text-sm leading-6">On iPhone or iPad (iOS/iPadOS 16.4+), choose Share → Add to Home Screen. Open the saved icon to enable reminders.</p> : null}
         {device === "unsupported" ? <p className="text-sm leading-6">This browser does not support reminders. Today’s verse is still here to read.</p> : null}
-        {device === "supported" ? <>
-          <fieldset disabled={busy || !config?.enabled} className="m-0 min-w-0 space-y-3 rounded-xl border border-border bg-background p-3">
+        {device === "supported" && subscription ? <>
+          <fieldset disabled={busy || !config?.enabled} className="m-0 mt-4 min-w-0 space-y-3 border-0 border-t border-border p-0 pt-4">
             <legend className="sr-only">Daily reminder schedule</legend>
             <div className="flex items-center justify-between gap-3">
               <label htmlFor={timeId} className="text-sm font-medium">Remind me at</label>
@@ -152,15 +154,13 @@ export function DailyVersePreferences() {
               </select>
             </div>
           </fieldset>
-          <p className="mb-4 mt-2 text-xs leading-5 text-muted-foreground">We’ll aim for your chosen time, following daylight saving in this timezone. Delivery can be delayed. Update the timezone here when you travel.</p>
-          {permission === "denied" ? <p className="text-sm leading-6">Notifications are blocked. Allow them in your browser or device settings to enable reminders.</p> : null}
-          <div className="flex flex-wrap items-center gap-2">
-            {config?.enabled ? <button type="button" className="bc-btn justify-center disabled:cursor-not-allowed disabled:opacity-50" disabled={busy || permission === "denied" || !schedule.reminderTime || Boolean(subscription && !changed)} onClick={() => void save()}>{busy ? "Saving…" : subscription ? (changed ? "Save reminder time" : "Time saved") : "Enable daily verse"}</button> : config ? <p className="text-sm">Reminders are not available yet.</p> : null}
-            {subscription ? <button type="button" className="bc-btn bc-btn--quiet disabled:opacity-50" disabled={busy} onClick={() => void disable()}>Turn off</button> : null}
-          </div>
+          <p className="mb-0 mt-2 text-xs leading-5 text-muted-foreground">Daily, in your selected timezone. Delivery may be delayed.</p>
+          {changed ? <button type="button" className="bc-btn mt-3 justify-center disabled:opacity-50" disabled={busy || !schedule.reminderTime || !config?.enabled} onClick={() => void save()}>{busy ? "Saving…" : "Save time"}</button> : null}
         </> : null}
+        {device === "supported" && permission === "denied" ? <p className="text-sm leading-6">Allow notifications in your browser or device settings to enable reminders.</p> : null}
+        {device === "supported" && config && !config.enabled ? <p className="text-sm">Reminders are not available yet.</p> : null}
         {message ? <p role="status" aria-live="polite" className={`mb-0 mt-3 rounded-xl border border-border bg-background p-3 text-sm leading-5 ${failed ? "text-link" : "text-muted-foreground"}`}>{message}</p> : null}
-        <Link href="/verse-of-the-day" className="mt-4 inline-flex min-h-11 items-center text-sm font-medium text-link no-underline">Read today’s verse <span aria-hidden="true" className="ml-2">→</span></Link>
+        <Link href="/verse-of-the-day" className="mt-2 inline-flex min-h-11 items-center text-sm font-medium text-link no-underline">Read today’s verse <span aria-hidden="true" className="ml-2">→</span></Link>
       </section>
       <div className="divide-y divide-border rounded-2xl border border-border bg-card px-4">
         <details className="text-sm"><summary className="min-h-14"><span className="summary-label">Save to your Home Screen</span></summary><p className="mt-0 pb-3 leading-6 text-muted-foreground">On iPhone or iPad: Share → Add to Home Screen. On Android or desktop: browser menu → Install app or Add to Home Screen, if offered. Open the saved icon for your own quiet reading window. An internet connection is still required.</p></details>

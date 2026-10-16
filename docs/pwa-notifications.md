@@ -11,7 +11,7 @@ reading. Installation still works independently of notification availability.
 
 ## User flow
 
-Open Your Profile → A daily moment → choose a time and timezone → Enable daily verse. Permission
+Open Your Profile → turn on Daily verse reminder → choose a time and timezone → Save time. Permission
 is requested only from that button. On iPhone/iPad, first save the app through
 Share → Add to Home Screen and open the icon; web push requires iOS/iPadOS 16.4+.
 Other supported browsers may allow push without installing first.
