@@ -66,6 +66,13 @@ Preview credentials to its feature branch. Preview cron calls always skip
 broadcasting; Vercel schedules cron only for Production. All deployments follow
 the repository's GitHub → Vercel flow and founder-approved merge boundary.
 
+For the initial rollout, notification storage is in Neon project
+`bible-compass-notifications` (`odd-union-85602248`). The feature Preview uses
+the empty isolated branch `preview/pwa-daily-verse` (`br-flat-hat-bao4fvg4`).
+Production uses the separate `production` branch; its configuration must be
+staged before the founder merges this PR. Never copy device subscriptions
+between these environments.
+
 ## Safety and operations
 
 - Only same-origin subscription mutations are accepted; JSON bodies are limited
