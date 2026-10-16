@@ -3,6 +3,17 @@ import { hash, parseSubscription, sameOrigin, validToken } from "@/lib/notificat
 
 export const runtime = "nodejs";
 
+export async function GET(request: Request) {
+  const id = new URL(request.url).searchParams.get("id");
+  const token = request.headers.get("authorization")?.replace(/^Bearer /, "");
+  if (!id || !/^[a-f0-9]{64}$/.test(id) || !validToken(token)) return Response.json({ error: "Unauthorized" }, { status: 401 });
+  try {
+    const result = await database().query<{ reminder_time: string; time_zone: string }>("SELECT reminder_time, time_zone FROM push_subscriptions WHERE id = $1 AND token_hash = $2", [id, hash(token)]);
+    if (!result.rowCount) return Response.json({ error: "Not found" }, { status: 404 });
+    return Response.json({ reminderTime: result.rows[0].reminder_time, timeZone: result.rows[0].time_zone }, { headers: { "Cache-Control": "no-store" } });
+  } catch { return Response.json({ error: "Could not load reminder time" }, { status: 503 }); }
+}
+
 async function readBody(request: Request): Promise<unknown> {
   if (!request.headers.get("content-type")?.startsWith("application/json")) throw new Error("JSON required");
   if (Number(request.headers.get("content-length")) > 4096) throw new Error("Body too large");
@@ -33,10 +44,14 @@ export async function POST(request: Request) {
     const bucket = hash(`${process.env.CRON_SECRET}:${ip}:${new Date().toISOString().slice(0, 10)}`);
     const rate = await db.query<{ count: number }>(`INSERT INTO push_rate_limits (bucket, expires_at) VALUES ($1, now() + interval '1 day') ON CONFLICT (bucket) DO UPDATE SET count = push_rate_limits.count + 1 RETURNING count`, [bucket]);
     if (rate.rows[0].count > 20) return Response.json({ error: "Please try again tomorrow" }, { status: 429 });
-    const saved = await db.query(`INSERT INTO push_subscriptions (id, endpoint, p256dh, auth, token_hash) VALUES ($1, $2, $3, $4, $5)
-      ON CONFLICT (endpoint) DO UPDATE SET p256dh = EXCLUDED.p256dh, auth = EXCLUDED.auth, updated_at = now()
+    const saved = await db.query(`INSERT INTO push_subscriptions (id, endpoint, p256dh, auth, token_hash, reminder_time, time_zone, next_send_at)
+      VALUES ($1, $2, $3, $4, $5, $6, $7, next_push_delivery($6, $7, now()))
+      ON CONFLICT (endpoint) DO UPDATE SET p256dh = EXCLUDED.p256dh, auth = EXCLUDED.auth,
+      reminder_time = EXCLUDED.reminder_time, time_zone = EXCLUDED.time_zone,
+      next_send_at = CASE WHEN push_subscriptions.reminder_time = EXCLUDED.reminder_time AND push_subscriptions.time_zone = EXCLUDED.time_zone THEN push_subscriptions.next_send_at ELSE EXCLUDED.next_send_at END,
+      updated_at = now()
       WHERE push_subscriptions.token_hash = EXCLUDED.token_hash RETURNING id`,
-    [hash(input.endpoint), input.endpoint, input.keys.p256dh, input.keys.auth, hash(input.token)]);
+    [hash(input.endpoint), input.endpoint, input.keys.p256dh, input.keys.auth, hash(input.token), input.reminderTime, input.timeZone]);
     if (!saved.rowCount) return Response.json({ error: "Turn reminders off on this device, then enable them again" }, { status: 409 });
     return Response.json({ ok: true }, { headers: { "Cache-Control": "no-store" } });
   } catch {

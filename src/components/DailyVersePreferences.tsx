@@ -1,28 +1,45 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useEffect, useId, useState } from "react";
 
 const TOKEN_KEY = "bible-compass-push-token";
 type Config = { enabled: boolean; publicKey: string | null };
+type Schedule = { reminderTime: string; timeZone: string };
 type Device = "loading" | "unsupported" | "install" | "supported";
 
 function applicationKey(value: string): Uint8Array<ArrayBuffer> {
-  const bytes = atob(value.replace(/-/g, "+").replace(/_/g, "/"));
-  return Uint8Array.from(bytes, (character) => character.charCodeAt(0));
+  return Uint8Array.from(atob(value.replace(/-/g, "+").replace(/_/g, "/")), (character) => character.charCodeAt(0));
+}
+
+async function subscriptionId(endpoint: string): Promise<string> {
+  const digest = await crypto.subtle.digest("SHA-256", new TextEncoder().encode(endpoint));
+  return Array.from(new Uint8Array(digest), (byte) => byte.toString(16).padStart(2, "0")).join("");
 }
 
 export function DailyVersePreferences() {
+  const headingId = useId();
+  const timeId = useId();
+  const zoneId = useId();
   const [device, setDevice] = useState<Device>("loading");
   const [config, setConfig] = useState<Config | null>(null);
   const [subscription, setSubscription] = useState<PushSubscription | null>(null);
   const [permission, setPermission] = useState<NotificationPermission>("default");
+  const [schedule, setSchedule] = useState<Schedule>({ reminderTime: "08:00", timeZone: "UTC" });
+  const [savedSchedule, setSavedSchedule] = useState<Schedule | null>(null);
+  const [zones, setZones] = useState<string[]>(["UTC"]);
   const [busy, setBusy] = useState(false);
   const [message, setMessage] = useState("");
+  const [failed, setFailed] = useState(false);
+  const changed = !savedSchedule || schedule.reminderTime !== savedSchedule.reminderTime || schedule.timeZone !== savedSchedule.timeZone;
 
   useEffect(() => {
     let cancelled = false;
     async function load() {
+      const zone = Intl.DateTimeFormat().resolvedOptions().timeZone || "UTC";
+      setSchedule({ reminderTime: "08:00", timeZone: zone });
+      const available = typeof Intl.supportedValuesOf === "function" ? Intl.supportedValuesOf("timeZone") : [];
+      setZones(Array.from(new Set([zone, "UTC", ...available])));
       const appleMobile = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
       const standalone = matchMedia("(display-mode: standalone)").matches || Boolean((navigator as Navigator & { standalone?: boolean }).standalone);
       if (appleMobile && !standalone) { setDevice("install"); return; }
@@ -34,40 +51,59 @@ export function DailyVersePreferences() {
         const [current, response] = await Promise.all([registration.pushManager.getSubscription(), fetch("/api/notifications/config", { cache: "no-store" })]);
         if (!response.ok) throw new Error();
         const settings: Config = await response.json();
-        if (!cancelled) { setSubscription(current); setConfig(settings); }
-      } catch { if (!cancelled) setMessage("Reminder settings could not load. Reopen your profile to try again."); }
+        if (cancelled) return;
+        setSubscription(current);
+        setConfig(settings);
+        const token = localStorage.getItem(TOKEN_KEY);
+        if (current && token) {
+          const result = await fetch(`/api/notifications/subscriptions?id=${await subscriptionId(current.endpoint)}`, { headers: { Authorization: `Bearer ${token}` }, cache: "no-store" });
+          if (result.ok && !cancelled) {
+            const stored: Schedule = await result.json();
+            setZones((previous) => Array.from(new Set([stored.timeZone, ...previous])));
+            setSchedule(stored);
+            setSavedSchedule(stored);
+          } else if (!cancelled) {
+            setFailed(true);
+            setMessage("Your saved time could not load. Choose a time and save it again, or turn reminders off.");
+          }
+        }
+      } catch {
+        if (!cancelled) { setFailed(true); setMessage("Reminder settings could not load. Refresh the page to try again."); }
+      }
     }
     void load();
     return () => { cancelled = true; };
   }, []);
 
-  async function enable() {
+  async function save() {
     if (!config?.publicKey) return;
     setBusy(true);
     setMessage("");
+    setFailed(false);
     let created: PushSubscription | null = null;
     try {
-      // Prepare ownership storage before prompting; never ask on page load.
       let token = localStorage.getItem(TOKEN_KEY);
       if (!token) {
         token = btoa(String.fromCharCode(...crypto.getRandomValues(new Uint8Array(32)))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
         localStorage.setItem(TOKEN_KEY, token);
       }
-      // Keep the permission request directly in the user's button gesture (iOS).
-      const allowed = await Notification.requestPermission();
+      // Permission must stay directly in the button gesture, particularly on iOS.
+      const allowed = Notification.permission === "granted" ? "granted" : await Notification.requestPermission();
       setPermission(allowed);
       if (allowed !== "granted") { setMessage("Reminders remain off. You can change permission in your browser or device settings."); return; }
       const registration = await navigator.serviceWorker.ready;
       const current = await registration.pushManager.getSubscription();
       const next = current ?? await registration.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: applicationKey(config.publicKey) });
       if (!current) created = next;
-      const response = await fetch("/api/notifications/subscriptions", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...next.toJSON(), token }) });
+      const response = await fetch("/api/notifications/subscriptions", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...next.toJSON(), token, ...schedule }) });
       if (!response.ok) throw new Error();
       setSubscription(next);
-      setMessage("Daily verse reminders are on for this device.");
+      setSavedSchedule({ ...schedule });
+      setMessage(`Saved. Your daily verse is set for ${schedule.reminderTime} in ${schedule.timeZone.replaceAll("_", " ")}.`);
     } catch {
       if (created) await created.unsubscribe().catch(() => false);
-      setMessage("Could not enable reminders. Check your connection and browser settings, then try again.");
+      setFailed(true);
+      setMessage("Could not save your reminder. Check your connection and browser settings, then try again.");
     } finally { setBusy(false); }
   }
 
@@ -75,40 +111,61 @@ export function DailyVersePreferences() {
     if (!subscription) return;
     setBusy(true);
     setMessage("");
+    setFailed(false);
     try {
       const previous = subscription;
       if (!await previous.unsubscribe()) throw new Error();
       setSubscription(null);
+      setSavedSchedule(null);
       const token = localStorage.getItem(TOKEN_KEY);
       if (token) {
         const response = await fetch("/api/notifications/subscriptions", { method: "DELETE", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ endpoint: previous.endpoint, token }) });
         if (!response.ok) { setMessage("Reminders are off on this device. Server cleanup will finish when the expired subscription is detected."); return; }
       }
-      setMessage("Daily verse reminders are off on this device.");
-    } catch { setMessage("Could not finish turning reminders off. Check notification permission in your device settings."); }
+      setMessage("Reminders are off. Your daily verse is always here when you need it.");
+    } catch { setFailed(true); setMessage("Could not turn reminders off. Check notification permission in your device settings."); }
     finally { setBusy(false); }
   }
 
   return (
-    <section className="rounded-xl border border-border bg-card p-3" aria-labelledby="daily-reminder-heading">
-      <h3 id="daily-reminder-heading" className="m-0 font-medium">Verse of the day reminders</h3>
-      <p className="mb-2 mt-1 text-sm text-muted-foreground">An optional verse at 08:00 UTC each day. Delivery may be delayed by your device. No account or streak required.</p>
-      <p className="text-sm"><Link href="/verse-of-the-day" className="text-link">Read today’s verse</Link></p>
-      {device === "loading" ? <p className="text-sm">Checking this device…</p> : null}
-      {device === "install" ? <p className="text-sm">On iPhone or iPad (iOS/iPadOS 16.4+), use Share → Add to Home Screen, then open Bible Compass from its icon to enable reminders.</p> : null}
-      {device === "unsupported" ? <p className="text-sm">This browser does not support reminders. You can still read the daily verse here.</p> : null}
-      {device === "supported" ? <>
-        {permission === "denied" ? <p className="text-sm">Notifications are blocked. Allow them in your browser or device settings to enable reminders.</p> : null}
-        {subscription ? <button type="button" className="bc-btn bc-btn--quiet" disabled={busy} onClick={() => void disable()}>{busy ? "Updating…" : "Turn reminders off"}</button> :
-          config?.enabled ? <button type="button" className="bc-btn" disabled={busy || permission === "denied"} onClick={() => void enable()}>{busy ? "Updating…" : "Enable daily verse"}</button> :
-          config ? <p className="text-sm">Reminders are not available yet. Today’s verse is ready to read.</p> : null}
-      </> : null}
-      <p role="status" aria-live="polite" className="mb-0 text-sm text-muted-foreground">{message}</p>
-      <details className="mt-3 text-sm">
-        <summary>Save Bible Compass to your Home Screen</summary>
-        <p>On iPhone or iPad, choose Share → Add to Home Screen. On Android or desktop, open your browser menu and choose Install app or Add to Home Screen, if offered. Open the saved icon to use Bible Compass in its own window. An internet connection is still required.</p>
-      </details>
-      <p className="mb-0 mt-3 text-xs text-muted-foreground">Enabling reminders stores this browser’s push address and encryption keys. Turning them off removes the saved subscription when connected. No name or email is collected. Your device may show verse text on its lock screen.</p>
-    </section>
+    <>
+      <section className="bc-reminders rounded-2xl border border-border p-4" aria-labelledby={headingId}>
+        <div className="flex items-start gap-3">
+          <span aria-hidden="true" className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border bg-background text-xl">☀</span>
+          <div className="min-w-0 flex-1"><p className="bc-kicker m-0 mb-1">Verse of the day</p><h3 id={headingId} className="bc-title m-0 text-xl">A daily moment</h3></div>
+          <span className={`rounded-full border px-2.5 py-1 text-xs font-medium ${subscription ? "border-moss text-foreground" : "border-border text-muted-foreground"}`}>{subscription ? "On" : "Off"}</span>
+        </div>
+        <p className="mb-4 mt-3 text-sm leading-6 text-muted-foreground">A little Scripture, at a time that suits you. Always an invitation, never a streak to keep.</p>
+        {device === "loading" ? <p className="text-sm">Checking this device…</p> : null}
+        {device === "install" ? <p className="rounded-xl border border-border bg-background p-3 text-sm leading-6">On iPhone or iPad (iOS/iPadOS 16.4+), choose Share → Add to Home Screen. Open the saved icon to enable reminders.</p> : null}
+        {device === "unsupported" ? <p className="text-sm leading-6">This browser does not support reminders. Today’s verse is still here to read.</p> : null}
+        {device === "supported" ? <>
+          <fieldset disabled={busy || !config?.enabled} className="m-0 min-w-0 space-y-3 rounded-xl border border-border bg-background p-3">
+            <legend className="sr-only">Daily reminder schedule</legend>
+            <div className="flex items-center justify-between gap-3">
+              <label htmlFor={timeId} className="text-sm font-medium">Remind me at</label>
+              <input id={timeId} type="time" required value={schedule.reminderTime} onChange={(event) => setSchedule({ ...schedule, reminderTime: event.target.value })} className="min-h-11 min-w-0 rounded-lg border border-border bg-card px-3 text-base font-medium text-foreground" />
+            </div>
+            <div><label htmlFor={zoneId} className="mb-1.5 block text-xs text-muted-foreground">Timezone</label>
+              <select id={zoneId} value={schedule.timeZone} onChange={(event) => setSchedule({ ...schedule, timeZone: event.target.value })} className="min-h-11 w-full min-w-0 rounded-lg border border-border bg-card px-2 text-sm text-foreground">
+                {zones.map((zone) => <option key={zone} value={zone}>{zone.replaceAll("_", " ")}</option>)}
+              </select>
+            </div>
+          </fieldset>
+          <p className="mb-4 mt-2 text-xs leading-5 text-muted-foreground">We’ll aim for your chosen time, following daylight saving in this timezone. Delivery can be delayed. Update the timezone here when you travel.</p>
+          {permission === "denied" ? <p className="text-sm leading-6">Notifications are blocked. Allow them in your browser or device settings to enable reminders.</p> : null}
+          <div className="flex flex-wrap items-center gap-2">
+            {config?.enabled ? <button type="button" className="bc-btn justify-center disabled:cursor-not-allowed disabled:opacity-50" disabled={busy || permission === "denied" || !schedule.reminderTime || Boolean(subscription && !changed)} onClick={() => void save()}>{busy ? "Saving…" : subscription ? (changed ? "Save reminder time" : "Time saved") : "Enable daily verse"}</button> : config ? <p className="text-sm">Reminders are not available yet.</p> : null}
+            {subscription ? <button type="button" className="bc-btn bc-btn--quiet disabled:opacity-50" disabled={busy} onClick={() => void disable()}>Turn off</button> : null}
+          </div>
+        </> : null}
+        {message ? <p role="status" aria-live="polite" className={`mb-0 mt-3 rounded-xl border border-border bg-background p-3 text-sm leading-5 ${failed ? "text-link" : "text-muted-foreground"}`}>{message}</p> : null}
+        <Link href="/verse-of-the-day" className="mt-4 inline-flex min-h-11 items-center text-sm font-medium text-link no-underline">Read today’s verse <span aria-hidden="true" className="ml-2">→</span></Link>
+      </section>
+      <div className="divide-y divide-border rounded-2xl border border-border bg-card px-4">
+        <details className="text-sm"><summary className="min-h-14"><span className="summary-label">Save to your Home Screen</span></summary><p className="mt-0 pb-3 leading-6 text-muted-foreground">On iPhone or iPad: Share → Add to Home Screen. On Android or desktop: browser menu → Install app or Add to Home Screen, if offered. Open the saved icon for your own quiet reading window. An internet connection is still required.</p></details>
+        <details className="text-sm"><summary className="min-h-14"><span className="summary-label">Your privacy & reminders</span></summary><p className="mt-0 pb-3 leading-6 text-muted-foreground">Reminders store this browser’s push address, encryption keys, time and timezone. No name, email, or reading history is collected. Turn them off here to remove the subscription when connected. Verse text may appear on your lock screen.</p></details>
+      </div>
+    </>
   );
 }

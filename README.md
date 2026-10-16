@@ -42,6 +42,7 @@ Accounts, comments, payments, AI chat, native app, newsletter sending, and unatt
 ## Home Screen and reminders
 
 Bible Compass can be saved as a PWA with its book icon. Your Profile contains
-installation guidance and opt-in Verse of the Day reminders at 08:00 UTC.
+installation guidance and opt-in Verse of the Day reminders at a chosen time
+and timezone (default: 08:00 in the device's timezone).
 Reminders use a small, isolated notification database; reading remains static-first
 and needs no account or database. See [PWA architecture and operations](docs/pwa-notifications.md).

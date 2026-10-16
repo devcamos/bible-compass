@@ -3,7 +3,6 @@
   "buildCommand": "npm run build",
   "installCommand": "npm ci",
   "devCommand": "npm run dev",
-  "crons": [{ "path": "/api/cron/daily-verse", "schedule": "0 8 * * *" }],
   "git": {
     "deploymentEnabled": {
       "main": true

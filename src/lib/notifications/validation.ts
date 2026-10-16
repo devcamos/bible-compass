@@ -5,7 +5,18 @@ export type SubscriptionInput = {
   endpoint: string;
   keys: { p256dh: string; auth: string };
   token: string;
+  reminderTime: string;
+  timeZone: string;
 };
+
+export function parseSchedule(value: { reminderTime?: unknown; timeZone?: unknown }): { reminderTime: string; timeZone: string } {
+  const reminderTime = value.reminderTime ?? "08:00";
+  const timeZone = value.timeZone ?? "UTC";
+  if (typeof reminderTime !== "string" || !/^([01]\d|2[0-3]):[0-5]\d$/.test(reminderTime)) throw new Error("Invalid reminder time");
+  if (typeof timeZone !== "string" || timeZone.length > 80 || !/^(UTC|[A-Za-z_]+(?:\/[A-Za-z0-9_+-]+)+)$/.test(timeZone)) throw new Error("Invalid timezone");
+  new Intl.DateTimeFormat("en", { timeZone }).format();
+  return { reminderTime, timeZone };
+}
 
 export function hash(value: string): string {
   return createHash("sha256").update(value).digest("hex");
@@ -28,7 +39,7 @@ export function parseSubscription(value: unknown): SubscriptionInput {
   if (!input.keys || typeof input.keys.p256dh !== "string" || typeof input.keys.auth !== "string") throw new Error("Invalid subscription keys");
   if (!/^[A-Za-z0-9_-]+={0,2}$/.test(input.keys.p256dh) || Buffer.from(input.keys.p256dh, "base64url").length !== 65 ||
       !/^[A-Za-z0-9_-]+={0,2}$/.test(input.keys.auth) || Buffer.from(input.keys.auth, "base64url").length !== 16) throw new Error("Invalid subscription keys");
-  return { endpoint: input.endpoint, keys: input.keys, token: input.token };
+  return { endpoint: input.endpoint, keys: input.keys, token: input.token, ...parseSchedule(input) };
 }
 
 export function sameOrigin(request: Request): boolean {

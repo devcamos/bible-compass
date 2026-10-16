@@ -2,14 +2,17 @@ import assert from "node:assert/strict";
 import { test } from "node:test";
 import { readFileSync } from "node:fs";
 import vm from "node:vm";
-import { parseSubscription, sameOrigin, secretEquals } from "../src/lib/notifications/validation";
+import { parseSchedule, parseSubscription, sameOrigin, secretEquals } from "../src/lib/notifications/validation";
 import { POST, DELETE } from "../src/app/api/notifications/subscriptions/route";
 import { GET as cron } from "../src/app/api/cron/daily-verse/route";
+import { generateKeyPair, SignJWT } from "jose";
+import { githubSchedulerAuthorized, SCHEDULER_AUDIENCE } from "../src/lib/notifications/scheduler-auth";
 
 const input = {
   endpoint: "https://fcm.googleapis.com/fcm/send/test",
   keys: { p256dh: Buffer.alloc(65, 4).toString("base64url"), auth: Buffer.alloc(16).toString("base64url") },
   token: Buffer.alloc(32).toString("base64url"),
+  reminderTime: "08:00", timeZone: "UTC",
 };
 
 test("subscriptions allow real push hosts and reject SSRF and malformed keys", () => {
@@ -21,6 +24,13 @@ test("subscriptions allow real push hosts and reject SSRF and malformed keys", (
   assert.throws(() => parseSubscription({ ...input, token: "guessable" }));
 });
 
+test("reminder schedules accept local times and IANA zones, rejecting invalid inputs", () => {
+  assert.deepEqual(parseSchedule({ reminderTime: "19:45", timeZone: "Europe/London" }), { reminderTime: "19:45", timeZone: "Europe/London" });
+  assert.deepEqual(parseSchedule({}), { reminderTime: "08:00", timeZone: "UTC" });
+  for (const reminderTime of ["24:00", "08:60", "8:00", "", "08:00:00"]) assert.throws(() => parseSchedule({ reminderTime }));
+  for (const timeZone of ["Fake/City", "+01:00", "", "Europe/London; DROP TABLE x"]) assert.throws(() => parseSchedule({ timeZone }));
+});
+
 test("subscription mutations require same-origin and cron fails closed without a secret", async () => {
   const crossOrigin = new Request("https://compass.test/api/notifications/subscriptions", { method: "POST", headers: { origin: "https://other.test" } });
   assert.equal(sameOrigin(crossOrigin), false);
@@ -29,6 +39,26 @@ test("subscription mutations require same-origin and cron fails closed without a
   assert.equal((await cron(new Request("https://compass.test/api/cron/daily-verse"))).status, 401);
   assert.equal(secretEquals("test", "test"), true);
   assert.equal(secretEquals("test", "different length"), false);
+});
+
+test("scheduler identity requires the exact main-branch workflow, audience and repository", async () => {
+  const { publicKey, privateKey } = await generateKeyPair("RS256");
+  const claims = {
+    repository: "devcamos/bible-compass", repository_id: "1335846005", ref: "refs/heads/main",
+    workflow_ref: "devcamos/bible-compass/.github/workflows/daily-verse.yml@refs/heads/main", event_name: "schedule",
+  };
+  const sign = (changes = {}, audience = SCHEDULER_AUDIENCE, expiration = "5m") => new SignJWT({ ...claims, ...changes })
+    .setProtectedHeader({ alg: "RS256" }).setIssuer("https://token.actions.githubusercontent.com")
+    .setAudience(audience).setSubject("repo:devcamos/bible-compass:ref:refs/heads/main")
+    .setIssuedAt().setExpirationTime(expiration).sign(privateKey);
+  const resolver = async () => publicKey;
+  assert.equal(await githubSchedulerAuthorized(await sign(), resolver), true);
+  for (const changes of [{ ref: "refs/heads/feature" }, { repository_id: "other" }, { workflow_ref: "devcamos/bible-compass/.github/workflows/other.yml@refs/heads/main" }, { event_name: "pull_request" }]) {
+    assert.equal(await githubSchedulerAuthorized(await sign(changes), resolver), false);
+  }
+  assert.equal(await githubSchedulerAuthorized(await sign({}, "other-app"), resolver), false);
+  assert.equal(await githubSchedulerAuthorized(await sign({}, SCHEDULER_AUDIENCE, "-2m"), resolver), false);
+  assert.equal(await githubSchedulerAuthorized("not-a-token", resolver), false);
 });
 
 test("service worker shows dated verse, handles malformed push, and never opens an external URL", async () => {
