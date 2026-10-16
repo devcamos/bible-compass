@@ -136,9 +136,18 @@ delivery and tap navigation. Headless browser checks cannot prove OS delivery.
 Run `PREVIEW_URL=https://… node scripts/preview-pwa-smoke.mjs` to check the
 profile, worker, manifest, date navigation, and actual isolated subscription and
 schedule persistence. Use an origin-scoped temporary `PREVIEW_BYPASS` if needed.
-`CHROMIUM_PATH` selects a system browser. In a managed proxy environment,
-`PROXY_CA_SPKI` can pin the configured proxy CA's public key; never disable TLS
-validation globally. Screenshots contain no credentials.
+`CHROMIUM_PATH` selects a system browser. The browser runs with its sandbox
+enabled. In a managed proxy environment, install the configured proxy CA in the
+browser's trust store; certificate validation stays enabled. Screenshots contain
+no credentials.
+
+## Dependency security
+
+Next.js and its ESLint configuration are pinned to 16.4.2. The Next ESLint plugin's
+directory-glob dependency is overridden with `tinyglobby` 0.2.17, which exposes
+the `globSync` / `onlyDirectories` interface used by the plugin. This removes the
+unpatched `braces` dependency without downgrading Next.js or disabling lint rules.
+Recheck this narrow override when upgrading the Next ESLint plugin.
 
 Founder-local development remains http://localhost:3003. Cloud agents use the
 Vercel Preview for browser validation and do not start the development server.

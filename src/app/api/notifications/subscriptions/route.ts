@@ -64,7 +64,7 @@ export async function DELETE(request: Request) {
   let input: { endpoint?: unknown; token?: unknown };
   try {
     input = await readBody(request) as typeof input;
-    if (!input || typeof input.endpoint !== "string" || input.endpoint.length > 2048 || !validToken(input.token)) throw new Error();
+    if (!input || typeof input.endpoint !== "string" || input.endpoint.length > 2048 || !validToken(input.token)) throw new Error("Invalid unsubscribe request");
   } catch { return Response.json({ error: "Invalid request" }, { status: 400 }); }
   try {
     await database().query("DELETE FROM push_subscriptions WHERE id = $1 AND token_hash = $2", [hash(input.endpoint as string), hash(input.token as string)]);

@@ -8,8 +8,30 @@ type Config = { enabled: boolean; publicKey: string | null };
 type Schedule = { reminderTime: string; timeZone: string };
 type Device = "loading" | "unsupported" | "install" | "supported";
 
+function notificationSupport(): Device {
+  const appleMobile = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  const standalone = matchMedia("(display-mode: standalone)").matches || Boolean((navigator as Navigator & { standalone?: boolean }).standalone);
+  if (appleMobile && !standalone) return "install";
+  if (!window.isSecureContext || !("serviceWorker" in navigator) || !("PushManager" in window) || !("Notification" in window)) return "unsupported";
+  return "supported";
+}
+
+function reminderDisabled(busy: boolean, subscribed: boolean, device: Device, enabled: boolean, permission: NotificationPermission): boolean {
+  if (busy) return true;
+  if (subscribed) return false;
+  return device !== "supported" || !enabled || permission === "denied";
+}
+
+async function readSavedSchedule(current: PushSubscription | null): Promise<Schedule | null> {
+  const token = localStorage.getItem(TOKEN_KEY);
+  if (!current || !token) return null;
+  const result = await fetch(`/api/notifications/subscriptions?id=${await subscriptionId(current.endpoint)}`, { headers: { Authorization: `Bearer ${token}` }, cache: "no-store" });
+  if (!result.ok) throw new Error("Could not restore reminder schedule");
+  return result.json();
+}
+
 function applicationKey(value: string): Uint8Array<ArrayBuffer> {
-  return Uint8Array.from(atob(value.replace(/-/g, "+").replace(/_/g, "/")), (character) => character.charCodeAt(0));
+  return Uint8Array.from(atob(value.replaceAll("-", "+").replaceAll("_", "/")), (character) => character.codePointAt(0)!);
 }
 
 async function subscriptionId(endpoint: string): Promise<string> {
@@ -40,32 +62,23 @@ export function DailyVersePreferences() {
       setSchedule({ reminderTime: "08:00", timeZone: zone });
       const available = typeof Intl.supportedValuesOf === "function" ? Intl.supportedValuesOf("timeZone") : [];
       setZones(Array.from(new Set([zone, "UTC", ...available])));
-      const appleMobile = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
-      const standalone = matchMedia("(display-mode: standalone)").matches || Boolean((navigator as Navigator & { standalone?: boolean }).standalone);
-      if (appleMobile && !standalone) { setDevice("install"); return; }
-      if (!window.isSecureContext || !("serviceWorker" in navigator) || !("PushManager" in window) || !("Notification" in window)) { setDevice("unsupported"); return; }
-      setDevice("supported");
+      const support = notificationSupport();
+      setDevice(support);
+      if (support !== "supported") return;
       setPermission(Notification.permission);
       try {
         const registration = await navigator.serviceWorker.register("/sw.js", { scope: "/", updateViaCache: "none" });
         const [current, response] = await Promise.all([registration.pushManager.getSubscription(), fetch("/api/notifications/config", { cache: "no-store" })]);
-        if (!response.ok) throw new Error();
+        if (!response.ok) throw new Error("Reminder configuration unavailable");
         const settings: Config = await response.json();
         if (cancelled) return;
         setSubscription(current);
         setConfig(settings);
-        const token = localStorage.getItem(TOKEN_KEY);
-        if (current && token) {
-          const result = await fetch(`/api/notifications/subscriptions?id=${await subscriptionId(current.endpoint)}`, { headers: { Authorization: `Bearer ${token}` }, cache: "no-store" });
-          if (result.ok && !cancelled) {
-            const stored: Schedule = await result.json();
-            setZones((previous) => Array.from(new Set([stored.timeZone, ...previous])));
-            setSchedule(stored);
-            setSavedSchedule(stored);
-          } else if (!cancelled) {
-            setFailed(true);
-            setMessage("Your saved time could not load. Choose a time and save it again, or turn reminders off.");
-          }
+        const stored = await readSavedSchedule(current);
+        if (stored && !cancelled) {
+          setZones((previous) => Array.from(new Set([stored.timeZone, ...previous])));
+          setSchedule(stored);
+          setSavedSchedule(stored);
         }
       } catch {
         if (!cancelled) { setFailed(true); setMessage("Reminder settings could not load. Refresh the page to try again."); }
@@ -84,7 +97,7 @@ export function DailyVersePreferences() {
     try {
       let token = localStorage.getItem(TOKEN_KEY);
       if (!token) {
-        token = btoa(String.fromCharCode(...crypto.getRandomValues(new Uint8Array(32)))).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+        token = btoa(String.fromCodePoint(...crypto.getRandomValues(new Uint8Array(32)))).replaceAll("+", "-").replaceAll("/", "_").split("=")[0];
         localStorage.setItem(TOKEN_KEY, token);
       }
       // Permission must stay directly in the button gesture, particularly on iOS.
@@ -96,7 +109,7 @@ export function DailyVersePreferences() {
       const next = current ?? await registration.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: applicationKey(config.publicKey) });
       if (!current) created = next;
       const response = await fetch("/api/notifications/subscriptions", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ ...next.toJSON(), token, ...schedule }) });
-      if (!response.ok) throw new Error();
+      if (!response.ok) throw new Error("Could not save subscription");
       setSubscription(next);
       setSavedSchedule({ ...schedule });
       setMessage(`Saved. Your daily verse is set for ${schedule.reminderTime} in ${schedule.timeZone.replaceAll("_", " ")}.`);
@@ -114,7 +127,7 @@ export function DailyVersePreferences() {
     setFailed(false);
     try {
       const previous = subscription;
-      if (!await previous.unsubscribe()) throw new Error();
+      if (!await previous.unsubscribe()) throw new Error("Device could not unsubscribe");
       setSubscription(null);
       setSavedSchedule(null);
       const token = localStorage.getItem(TOKEN_KEY);
@@ -133,7 +146,7 @@ export function DailyVersePreferences() {
         <div className="flex items-center justify-between gap-3">
           <div><h3 id={headingId} className="m-0 text-sm font-semibold">Daily verse reminder</h3><p className="mb-0 mt-1 text-xs text-muted-foreground">{subscription ? "Enabled" : "Disabled"}</p></div>
           <label className="relative flex min-h-11 min-w-11 cursor-pointer items-center">
-            <input type="checkbox" role="switch" aria-label="Daily verse reminder" checked={Boolean(subscription)} disabled={busy || (!subscription && (device !== "supported" || !config?.enabled || permission === "denied"))} onChange={(event) => { if (event.target.checked) void save(); else void disable(); }} className="peer sr-only" />
+            <input type="checkbox" role="switch" aria-label="Daily verse reminder" checked={Boolean(subscription)} disabled={reminderDisabled(busy, Boolean(subscription), device, Boolean(config?.enabled), permission)} onChange={(event) => { if (event.target.checked) void save(); else void disable(); }} className="peer sr-only" />
             <span aria-hidden="true" className="h-6 w-11 rounded-full bg-border transition-colors peer-checked:bg-copper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-4 peer-focus-visible:outline-copper peer-disabled:opacity-50" />
             <span aria-hidden="true" className="pointer-events-none absolute left-1 h-4 w-4 rounded-full bg-cream transition-transform peer-checked:translate-x-5 peer-disabled:opacity-50" />
           </label>

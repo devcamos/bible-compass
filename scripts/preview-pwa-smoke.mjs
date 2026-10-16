@@ -1,9 +1,13 @@
 import assert from "node:assert/strict";
 import { chromium } from "@playwright/test";
+import { mkdtemp } from "node:fs/promises";
+import { tmpdir } from "node:os";
+import { join } from "node:path";
 
 const origin = new URL(process.env.PREVIEW_URL).origin;
+const artifactDirectory = await mkdtemp(join(tmpdir(), "bible-compass-preview-"));
 if (!origin.startsWith("https://") || !new URL(origin).hostname.endsWith(".vercel.app")) throw new Error("Use a Vercel Preview URL");
-const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined, headless: true, args: ["--no-sandbox", ...(process.env.PROXY_CA_SPKI ? [`--ignore-certificate-errors-spki-list=${process.env.PROXY_CA_SPKI}`] : [])], ...(process.env.HTTPS_PROXY ? { proxy: { server: process.env.HTTPS_PROXY } } : {}) });
+const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined, headless: true, chromiumSandbox: true, ...(process.env.HTTPS_PROXY ? { proxy: { server: process.env.HTTPS_PROXY } } : {}) });
 try {
   const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
   // Attach credentials only to requests to the exact deployment under test.
@@ -15,8 +19,8 @@ try {
   page.on("pageerror", (error) => errors.push(error.message));
   await page.goto(origin, { waitUntil: "networkidle" });
   await page.getByRole("button", { name: "Open profile" }).click();
-  await page.getByRole("heading", { name: "A daily moment" }).waitFor();
-  await page.getByRole("button", { name: "Enable daily verse", exact: true }).waitFor();
+  await page.getByRole("heading", { name: "Daily verse reminder" }).waitFor();
+  await page.getByRole("switch", { name: "Daily verse reminder", exact: true }).waitFor({ state: "attached" });
   assert.equal(await page.evaluate(() => Notification.permission), "default", "page load must not ask permission");
   const worker = await page.evaluate(async () => {
     const registration = await navigator.serviceWorker.ready;
@@ -24,11 +28,12 @@ try {
   });
   assert.equal(worker.scope, `${origin}/`);
   assert.equal(worker.active, true);
+  assert.equal(await page.getByLabel("Remind me at").count(), 0, "timing stays hidden while reminders are off");
   const api = await page.evaluate(async () => {
     const manifest = await (await fetch("/manifest.webmanifest")).json();
     if (manifest.display !== "standalone" || !manifest.icons.some((icon) => icon.purpose === "maskable")) throw new Error("Manifest missing installation metadata");
     const keys = await crypto.subtle.generateKey({ name: "ECDH", namedCurve: "P-256" }, true, ["deriveBits"]);
-    const encode = (bytes) => btoa(String.fromCharCode(...bytes)).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, "");
+    const encode = (bytes) => btoa(String.fromCodePoint(...bytes)).replaceAll("+", "-").replaceAll("/", "_").split("=")[0];
     const input = { endpoint: `https://fcm.googleapis.com/fcm/send/bible-compass-preview-test-${crypto.randomUUID()}`, token: encode(crypto.getRandomValues(new Uint8Array(32))), keys: { p256dh: encode(new Uint8Array(await crypto.subtle.exportKey("raw", keys.publicKey))), auth: encode(crypto.getRandomValues(new Uint8Array(16))) }, reminderTime: "19:45", timeZone: "Europe/London" };
     const mutate = (method, body) => fetch("/api/notifications/subscriptions", { method, headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
     const created = await mutate("POST", input);
@@ -53,7 +58,30 @@ try {
       if (removed.status !== 200) throw new Error("Subscription cleanup failed");
     }
   });
-  await page.screenshot({ path: process.env.PREVIEW_SCREENSHOT || "/tmp/bible-compass-profile.png", fullPage: true });
+  // Simulate only the device push service; UI requests still use the real Preview API/database.
+  // Real OS delivery remains a separate iOS/Android release check.
+  await context.grantPermissions(["notifications"], { origin });
+  await page.evaluate(async () => {
+    const pair = await crypto.subtle.generateKey({ name: "ECDH", namedCurve: "P-256" }, true, ["deriveBits"]);
+    const encode = (bytes) => btoa(String.fromCodePoint(...bytes)).replaceAll("+", "-").replaceAll("/", "_").split("=")[0];
+    const data = { endpoint: `https://fcm.googleapis.com/fcm/send/bible-compass-preview-ui-${crypto.randomUUID()}`, keys: { p256dh: encode(new Uint8Array(await crypto.subtle.exportKey("raw", pair.publicKey))), auth: encode(crypto.getRandomValues(new Uint8Array(16))) } };
+    let current = null;
+    const simulated = { endpoint: data.endpoint, toJSON: () => data, unsubscribe: async () => { current = null; return true; } };
+    PushManager.prototype.getSubscription = async () => current;
+    PushManager.prototype.subscribe = async () => { current = simulated; return simulated; };
+  });
+  const reminder = page.getByRole("switch", { name: "Daily verse reminder", exact: true });
+  await reminder.check();
+  await page.getByLabel("Remind me at").waitFor();
+  await page.getByLabel("Remind me at").fill("20:15");
+  await page.getByLabel("Timezone", { exact: true }).selectOption("Europe/London");
+  await page.getByRole("button", { name: "Save time", exact: true }).click();
+  await page.getByText("Saved. Your daily verse is set for 20:15 in Europe/London.", { exact: true }).waitFor();
+  await page.getByRole("switch", { name: "Dark mode", exact: true }).check();
+  await page.screenshot({ path: join(artifactDirectory, "profile.png"), fullPage: true });
+  await reminder.uncheck();
+  await page.getByText("Reminders are off. Your daily verse is always here when you need it.", { exact: true }).waitFor();
+  assert.equal(await page.getByLabel("Remind me at").count(), 0);
   await page.getByRole("button", { name: "Close", exact: true }).click();
   await page.goto(`${origin}/verse-of-the-day?date=2026-10-16`, { waitUntil: "networkidle" });
   await page.getByRole("heading", { name: "A moment in Scripture" }).waitFor();
@@ -61,6 +89,6 @@ try {
   await page.getByRole("link", { name: "Back to the compass" }).click();
   await page.getByRole("button", { name: "Open profile" }).waitFor();
   assert.deepEqual(errors, []);
-  console.log(JSON.stringify({ ok: true, ...api, serviceWorker: worker.active, profile: true, datedVerse: true, readerNavigation: true, permissionPromptOnLoad: false }));
+  console.log(JSON.stringify({ ok: true, ...api, serviceWorker: worker.active, profile: true, reminderSwitchAndTiming: true, devicePushServiceSimulated: true, datedVerse: true, readerNavigation: true, permissionPromptOnLoad: false, artifactDirectory }));
   await context.close();
 } finally { await browser.close(); }
