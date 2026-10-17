@@ -11,7 +11,7 @@ import {
   proverbsVerseUrl,
 } from "@/content/proverbs";
 
-type Props = { params: Promise<{ id: string }> };
+type Props = Readonly<{ params: Promise<{ id: string }> }>;
 
 export const dynamicParams = false;
 export function generateStaticParams() {

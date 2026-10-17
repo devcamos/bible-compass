@@ -8,7 +8,7 @@ type LifeAreaListProps = {
   title: string;
   summary: string;
   topicSlugs: string[];
-  links?: LifeArea["links"];
+  links?: NonNullable<LifeArea["links"]>;
   defaultOpen?: boolean;
 };
 

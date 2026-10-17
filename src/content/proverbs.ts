@@ -91,7 +91,8 @@ export function getProverbsVerse(id: string): ProverbsVerse | undefined {
 }
 
 export function getProverbsVersesForCategory(slug: string): ProverbsVerse[] {
-  return PROVERBS_VERSES.filter((entry) => entry.categorySlugs.some((categorySlug) => categorySlug === slug));
+  const category = getProverbsCategory(slug);
+  return category ? PROVERBS_VERSES.filter((entry) => entry.categorySlugs.includes(category.slug)) : [];
 }
 
 export function getProverbsChapterGroups(slug: string): { chapter: number; verses: ProverbsVerse[] }[] {
@@ -102,13 +103,15 @@ export function getProverbsChapterGroups(slug: string): { chapter: number; verse
     groups.set(entry.chapter, entries);
   }
   return [...groups].sort(([left], [right]) => left - right)
-    .map(([chapter, verses]) => ({ chapter, verses: verses.sort((left, right) => left.verse - right.verse) }));
+    .map(([chapter, verses]) => ({ chapter, verses: verses.toSorted((left, right) => left.verse - right.verse) }));
 }
 
 export function proverbsVerseUrl(chapter: number, verseNumber: number): string {
-  return `https://www.biblegateway.com/passage/?search=${encodeURIComponent(`Proverbs ${chapter}:${verseNumber}`)}&version=NIV`;
+  const reference = `Proverbs ${chapter}:${verseNumber}`;
+  return `https://www.biblegateway.com/passage/?search=${encodeURIComponent(reference)}&version=NIV`;
 }
 
 export function proverbsChapterUrl(chapter: number): string {
-  return `https://www.biblegateway.com/passage/?search=${encodeURIComponent(`Proverbs ${chapter}`)}&version=NIV`;
+  const reference = `Proverbs ${chapter}`;
+  return `https://www.biblegateway.com/passage/?search=${encodeURIComponent(reference)}&version=NIV`;
 }
