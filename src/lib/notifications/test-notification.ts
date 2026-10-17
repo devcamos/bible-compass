@@ -30,7 +30,7 @@ export async function sendTestNotification(request: Request, dependencies = { da
     const verse = getVerseOfTheDay(new Date(`${row.day}T00:00:00Z`));
     try {
       await dependencies.pushClient().sendNotification(subscription, JSON.stringify({
-        body: `${verse.reference} (${verse.translation}) — ${verse.text}`, date: row.day, testId: randomUUID(),
+        body: `“${verse.text}”\n${verse.reference} · ${verse.translation}`, date: row.day, testId: randomUUID(),
       }), { TTL: 60, timeout: 5000 });
     } catch (error) {
       const status = (error as { statusCode?: number }).statusCode;

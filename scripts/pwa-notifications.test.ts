@@ -84,6 +84,7 @@ test("service worker shows dated verse, handles malformed push, and never opens 
   const waitUntil = (promise: Promise<unknown>) => { work = promise; };
   handlers.push({ data: { json: () => ({ date: "2026-10-16", body: "John 3:16", url: "https://evil.test" }) }, waitUntil });
   await work;
+  assert.equal(shown[0].title, "Your daily verse");
   assert.equal(shown[0].options.tag, "bible-compass-verse-2026-10-16");
   assert.equal(shown[0].options.data.date, "2026-10-16");
   handlers.push({ data: { json: () => { throw new Error("invalid json"); } }, waitUntil });
@@ -128,7 +129,7 @@ test("test pushes require ownership, enforce limits, and send only the stored ve
       assert.equal(subscription.endpoint, input.endpoint);
       assert.equal(JSON.parse(payload).date, "2026-10-17");
       assert.match(JSON.parse(payload).testId, /^[a-f0-9-]{36}$/);
-      assert.match(JSON.parse(payload).body, /—/);
+      assert.match(JSON.parse(payload).body, /^“[\s\S]+”\n.+ · .+$/);
       assert.equal(options.TTL, 60);
       if (expired) throw { statusCode: 410 };
     } }),

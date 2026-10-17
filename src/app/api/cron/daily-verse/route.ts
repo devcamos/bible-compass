@@ -37,7 +37,7 @@ export async function GET(request: Request) {
       try {
         const verse = getVerseOfTheDay(new Date(`${row.day}T00:00:00Z`));
         await push.sendNotification({ endpoint: row.endpoint, keys: { p256dh: row.p256dh, auth: row.auth } },
-          JSON.stringify({ date: row.day, body: `${verse.reference} (${verse.translation}) — ${verse.text}` }),
+          JSON.stringify({ date: row.day, body: `“${verse.text}”\n${verse.reference} · ${verse.translation}` }),
           { TTL: Math.max(1, Math.min(row.ttl, 86400)), timeout: 5000 });
         await db.query("UPDATE push_deliveries SET status = 'sent' WHERE subscription_id = $1 AND day = $2", [row.id, row.day]);
         sent++;
