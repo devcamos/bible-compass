@@ -31,7 +31,13 @@ export default function ProverbsPage() {
       </nav>
       <details className="mb-6 border-y border-border py-3">
         <summary className="cursor-pointer py-2 font-medium">Introduction to Proverbs</summary>
-        <p className="mb-2 leading-7 text-muted-foreground">{PROVERBS_INTRODUCTION}</p>
+        <ul className="mt-3 mb-2 list-disc space-y-3 pl-5 text-muted-foreground">
+          {PROVERBS_INTRODUCTION.map((point) => (
+            <li key={point.title} className="leading-7">
+              <strong className="font-medium text-foreground">{point.title}.</strong> {point.text}
+            </li>
+          ))}
+        </ul>
       </details>
       <section aria-label="Proverbs categories">
         <ul className="m-0 grid list-none gap-3 p-0">

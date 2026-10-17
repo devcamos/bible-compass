@@ -6,8 +6,12 @@ export const PROVERBS_CONCEPT_MAPPING = {
   verseIds: ["proverbs-1-7", "proverbs-9-10"],
 } as const;
 
-export const PROVERBS_INTRODUCTION =
-  "Proverbs brings together extended wisdom instructions and memorable sayings associated with Solomon and other contributors. Its foundation is reverence for God. These teachings offer wisdom for everyday life: principles to consider in context, not guarantees of wealth, safety or an immediate reward.";
+export const PROVERBS_INTRODUCTION = [
+  { title: "Practical wisdom", text: "Extended teaching and short, memorable sayings for everyday life." },
+  { title: "Contributors", text: "Sayings associated with Solomon and other contributors." },
+  { title: "Foundation", text: "Reverence for God." },
+  { title: "Read in context", text: "Wisdom principles, not guarantees of wealth, safety or an immediate reward." },
+] as const;
 
 export const PROVERBS_GRACE_GUARDRAIL =
   "Wisdom guides our response to God's grace. It is not a way to earn his love, and hardship is not proof that someone has failed to live wisely.";
