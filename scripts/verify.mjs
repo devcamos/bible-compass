@@ -26,6 +26,7 @@ run(process.execPath, [
 // Typed routes (LayoutProps / PageProps) live in .next/types — generate before tsc.
 const bin = join(root, "node_modules", ".bin");
 run(process.execPath, ["--import", "tsx", join(root, "scripts/pwa-notifications.test.ts")]);
+run(process.execPath, ["--import", "tsx", "--test", join(root, "scripts/proverbs.test.ts")]);
 run(join(bin, "next"), ["typegen"]);
 run(join(bin, "tsc"), ["--noEmit"]);
 run(join(bin, "eslint"), [".", "--max-warnings=0"]);

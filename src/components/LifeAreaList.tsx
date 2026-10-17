@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { EmojiIcon } from "@/components/EmojiIcon";
 import { requireTopic } from "@/content";
+import type { LifeArea } from "@/content/home";
 
 type LifeAreaListProps = {
   icon: string;
   title: string;
   summary: string;
   topicSlugs: string[];
+  links?: NonNullable<LifeArea["links"]>;
   defaultOpen?: boolean;
 };
 
@@ -15,6 +17,7 @@ export function LifeAreaList({
   title,
   summary,
   topicSlugs,
+  links,
   defaultOpen,
 }: LifeAreaListProps) {
   return (
@@ -41,6 +44,15 @@ export function LifeAreaList({
             </Link>
           );
         })}
+        {links?.map(({ href, title }) => (
+          <Link
+            key={href}
+            href={href}
+            className="inline-flex min-h-11 items-center rounded-full border border-border bg-card px-3.5 text-sm font-medium text-link no-underline"
+          >
+            {title}
+          </Link>
+        ))}
       </div>
     </details>
   );
