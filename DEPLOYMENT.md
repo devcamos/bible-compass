@@ -17,7 +17,7 @@ Bible Compass currently uses GitHub → Vercel Git integration.
 | Push to `main` | GitHub re-verifies the exact merged revision |
 | Production completion | GitHub proves the live `/health` endpoint reports the exact `main` commit |
 
-Agents must stop at a green pull request and provide the PR link. Agents do not merge, enable auto-merge, or approve their own release.
+Agents present a green pull request for founder review. An agent may merge only with explicit founder approval for that PR and release, with approval recorded and required checks passing. Agents do not approve their own release, enable auto-merge, or bypass checks.
 
 ## Release gates
 
