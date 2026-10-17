@@ -64,6 +64,8 @@ try {
       if (conflict.status !== 409) throw new Error("Device ownership was not enforced");
       const invalid = await mutate("POST", { ...input, endpoint: "https://127.0.0.1/private" });
       if (invalid.status !== 400) throw new Error("Unsafe endpoint accepted");
+      const rejectedTest = await fetch("/api/notifications/test", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ id, token: encode(crypto.getRandomValues(new Uint8Array(32))) }) });
+      if (rejectedTest.status !== 404) throw new Error("Test notification device ownership was not enforced");
       const unauthenticatedCron = await fetch("/api/cron/daily-verse");
       if (unauthenticatedCron.status !== 401) throw new Error("Unauthenticated cron accepted");
       return { subscriptions: true, schedulePersistence: true, ownership: true, endpointValidation: true, cronAuthentication: true, manifest: true };
@@ -91,7 +93,13 @@ try {
     await page.getByLabel("Remind me at").fill("20:15");
     await page.getByLabel("Timezone", { exact: true }).selectOption("Europe/London");
     await page.getByRole("button", { name: "Save time", exact: true }).click();
-    await page.getByText("Saved. Your daily verse is set for 20:15 in Europe/London.", { exact: true }).waitFor();
+    await page.getByText("Time saved for testing. Scheduled reminders start after release.", { exact: true }).waitFor();
+    await page.getByText("Enabled for testing", { exact: true }).waitFor();
+    // Exercise button feedback without sending to the synthetic push endpoint.
+    await page.route(`${origin}/api/notifications/test`, (route) => route.fulfill({ status: 200, contentType: "application/json", body: JSON.stringify({ ok: true }) }));
+    await page.getByRole("button", { name: "Send test notification", exact: true }).click();
+    await page.getByText(/Test sent to your push service/).waitFor();
+    await page.unroute(`${origin}/api/notifications/test`);
     await page.getByRole("switch", { name: "Dark mode", exact: true }).press("Space");
     await page.screenshot({ path: join(artifactDirectory, "profile.png"), fullPage: true });
   } finally {
