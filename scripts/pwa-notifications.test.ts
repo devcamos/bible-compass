@@ -53,12 +53,19 @@ test("scheduler identity requires the exact main-branch workflow, audience and r
     repository: "devcamos/bible-compass", repository_id: "1335846005", ref: "refs/heads/main",
     workflow_ref: "devcamos/bible-compass/.github/workflows/daily-verse.yml@refs/heads/main", event_name: "schedule",
   };
-  const sign = (changes = {}, audience = SCHEDULER_AUDIENCE, expiration = "5m") => new SignJWT({ ...claims, ...changes })
+  const sign = (changes = {}, audience = SCHEDULER_AUDIENCE, expiration = "5m", subject = "repo:devcamos@196340576/bible-compass@1335846005:ref:refs/heads/main") => new SignJWT({ ...claims, ...changes })
     .setProtectedHeader({ alg: "RS256" }).setIssuer("https://token.actions.githubusercontent.com")
-    .setAudience(audience).setSubject("repo:devcamos/bible-compass:ref:refs/heads/main")
+    .setAudience(audience).setSubject(subject)
     .setIssuedAt().setExpirationTime(expiration).sign(privateKey);
   const resolver = async () => publicKey;
   assert.equal(await githubSchedulerAuthorized(await sign(), resolver), true);
+  assert.equal(await githubSchedulerAuthorized(await sign({}, SCHEDULER_AUDIENCE, "5m", "repo:devcamos/bible-compass:ref:refs/heads/main"), resolver), true);
+  for (const subject of [
+    "repo:devcamos@999/bible-compass@1335846005:ref:refs/heads/main",
+    "repo:devcamos@196340576/bible-compass@999:ref:refs/heads/main",
+    "repo:devcamos@196340576/bible-compass@1335846005:ref:refs/heads/other",
+    "repo:other/bible-compass:ref:refs/heads/main",
+  ]) assert.equal(await githubSchedulerAuthorized(await sign({}, SCHEDULER_AUDIENCE, "5m", subject), resolver), false);
   for (const changes of [{ ref: "refs/heads/feature" }, { repository_id: "other" }, { workflow_ref: "devcamos/bible-compass/.github/workflows/other.yml@refs/heads/main" }, { event_name: "pull_request" }]) {
     assert.equal(await githubSchedulerAuthorized(await sign(changes), resolver), false);
   }

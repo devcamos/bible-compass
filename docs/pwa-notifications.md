@@ -177,3 +177,18 @@ users must enable reminders again from the Production Home Screen app.
 
 Each test has a unique notification tag so retries do not silently replace an
 earlier test or the daily verse. Daily notifications retain their per-day tag.
+
+### GitHub immutable OIDC subjects
+
+The repository's GitHub OIDC configuration uses immutable subjects. Its default
+subject prefix is `repo:devcamos@196340576/bible-compass@1335846005`, followed by
+`:ref:refs/heads/main` for this scheduler. The verifier accepts that exact subject
+and the exact legacy name-only subject, while still checking the signed issuer,
+audience, repository ID, main ref, workflow path, event type and expiry. It does
+not accept arbitrary owner IDs, repository IDs or branches.
+
+Before a scheduler rollout, inspect the non-secret subject policy with
+`gh api repos/devcamos/bible-compass/actions/oidc/customization/sub`; do not assume
+the legacy format from a synthetic test. Verify an authenticated workflow run
+after release. The initial PR #29 deployment exposed this mismatch as a 401;
+a compatible verifier must be deployed before authenticated scheduling can work.
