@@ -57,7 +57,7 @@ export default async function ConceptPage({ params }: PageProps<"/concepts/[slug
       <section className="mt-8" aria-labelledby="explanation-heading">
         <h2 id="explanation-heading" className="bc-title bc-heading m-0 mb-4 leading-snug">Concept Explained</h2>
         <div className="space-y-4">
-          {concept.explanation.map((paragraph) => <p key={paragraph} className="m-0 leading-8">{paragraph}</p>)}
+          {concept.explanation.map((paragraph) => <p key={paragraph} className="m-0 leading-7">{paragraph}</p>)}
         </div>
       </section>
 
@@ -66,7 +66,7 @@ export default async function ConceptPage({ params }: PageProps<"/concepts/[slug
         <ul className="m-0 list-none space-y-4 p-0">
           {concept.livingGuidance.map((action) => (
             <li key={action.id} className="rounded-2xl border border-border bg-card p-5">
-              <h3 className="bc-heading m-0 mb-3 leading-snug font-medium">{action.title}</h3>
+              <h3 className="bc-title bc-heading m-0 mb-3 leading-snug">{action.title}</h3>
               <p className="m-0 mb-4 leading-7 text-muted-foreground">{action.detail}</p>
               <p className="m-0 text-sm leading-6">{guidancePassages(concept, action).map((passage, index) => <span key={`${passage.id}:${passage.verseStart}:${passage.verseEnd}`}>{index ? ", " : ""}<a className="text-link" href={passageUrl(passage)} target="_blank" rel="noreferrer">{passageRef(passage)}</a></span>)}.</p>
             </li>

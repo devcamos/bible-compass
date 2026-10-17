@@ -20,7 +20,7 @@ export default function HowToUsePage() {
         <h1 className="bc-title bc-heading m-0 mb-2 leading-tight">
           <span aria-hidden="true">🧭</span> {howToUse.title}
         </h1>
-        <p className="m-0 text-[1.02rem] leading-7 text-muted-foreground">
+        <p className="m-0 text-base leading-7 text-muted-foreground">
           {howToUse.summary}
         </p>
       </header>

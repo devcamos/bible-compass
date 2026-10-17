@@ -25,7 +25,7 @@ export function LifeAreaList({
       className="border-b border-border py-3"
       {...(defaultOpen ? { open: true } : {})}
     >
-      <summary className="cursor-pointer py-2 text-[1.02rem] font-medium">
+      <summary className="cursor-pointer py-2 text-base font-medium">
         <span className="summary-label">
           <EmojiIcon icon={icon} /> {title}
         </span>
