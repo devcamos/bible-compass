@@ -1,3 +1,4 @@
+import { readBody } from "@/lib/notifications/request";
 import { database, notificationsReady } from "@/lib/notifications/db";
 import { hash, parseSubscription, sameOrigin, validToken } from "@/lib/notifications/validation";
 
@@ -14,22 +15,6 @@ export async function GET(request: Request) {
   } catch { return Response.json({ error: "Could not load reminder time" }, { status: 503 }); }
 }
 
-async function readBody(request: Request): Promise<unknown> {
-  if (!request.headers.get("content-type")?.startsWith("application/json")) throw new Error("JSON required");
-  if (Number(request.headers.get("content-length")) > 4096) throw new Error("Body too large");
-  const reader = request.body?.getReader();
-  if (!reader) throw new Error("Body required");
-  const chunks: Uint8Array[] = [];
-  let size = 0;
-  while (true) {
-    const { done, value } = await reader.read();
-    if (done) break;
-    size += value.length;
-    if (size > 4096) { await reader.cancel(); throw new Error("Body too large"); }
-    chunks.push(value);
-  }
-  return JSON.parse(Buffer.concat(chunks).toString("utf8"));
-}
 
 export async function POST(request: Request) {
   if (!sameOrigin(request)) return Response.json({ error: "Origin rejected" }, { status: 403 });

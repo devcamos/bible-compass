@@ -3,7 +3,7 @@
 import { useEffect, useId, useState } from "react";
 
 const TOKEN_KEY = "bible-compass-push-token";
-type Config = { enabled: boolean; publicKey: string | null };
+type Config = { enabled: boolean; scheduled: boolean; publicKey: string | null };
 type Schedule = { reminderTime: string; timeZone: string };
 type Device = "loading" | "unsupported" | "install" | "supported";
 
@@ -111,11 +111,36 @@ export function DailyVersePreferences() {
       if (!response.ok) throw new Error("Could not save subscription");
       setSubscription(next);
       setSavedSchedule({ ...schedule });
-      setMessage(`Saved. Your daily verse is set for ${schedule.reminderTime} in ${schedule.timeZone.replaceAll("_", " ")}.`);
+      setMessage(config.scheduled
+        ? `Saved. Your daily verse is set for ${schedule.reminderTime} in ${schedule.timeZone.replaceAll("_", " ")}.`
+        : "Time saved for testing. Scheduled reminders start after release.");
     } catch {
       if (created) await created.unsubscribe().catch(() => false);
       setFailed(true);
       setMessage("Could not save your reminder. Check your connection and browser settings, then try again.");
+    } finally { setBusy(false); }
+  }
+
+  async function sendTest() {
+    if (!subscription) return;
+    setBusy(true);
+    setFailed(false);
+    setMessage("");
+    try {
+      const token = localStorage.getItem(TOKEN_KEY);
+      const response = await fetch("/api/notifications/test", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: await subscriptionId(subscription.endpoint), token }),
+      });
+      if (!response.ok) {
+        if (response.status === 429) throw new Error("Please wait five minutes before sending another test.");
+        if (response.status === 404 || response.status === 410) throw new Error("Turn reminders off and enable them again, then retry the test.");
+        throw new Error("The test could not be sent. Check your connection and try again.");
+      }
+      setMessage("Test sent to your push service. Check your phone’s notifications. If no banner appears, check Banners and Focus in your device settings.");
+    } catch (error) {
+      setFailed(true);
+      setMessage(error instanceof Error ? error.message : "The test could not be sent.");
     } finally { setBusy(false); }
   }
 
@@ -143,7 +168,7 @@ export function DailyVersePreferences() {
     <>
       <section className="bc-reminders rounded-2xl border border-border p-4" aria-labelledby={headingId}>
         <div className="flex items-center justify-between gap-3">
-          <div><h3 id={headingId} className="m-0 text-sm font-semibold">Daily verse reminder</h3><p className="mb-0 mt-1 text-xs text-muted-foreground">{subscription ? "Enabled" : "Disabled"}</p></div>
+          <div><h3 id={headingId} className="m-0 text-sm font-semibold">Daily verse reminder</h3><p className="mb-0 mt-1 text-xs text-muted-foreground">{subscription ? (config?.scheduled ? "Enabled" : "Enabled for testing") : "Disabled"}</p></div>
           <label className="relative flex min-h-11 min-w-11 cursor-pointer items-center">
             <input type="checkbox" role="switch" aria-label="Daily verse reminder" checked={Boolean(subscription)} disabled={reminderDisabled(busy, Boolean(subscription), device, Boolean(config?.enabled), permission)} onChange={(event) => { if (event.target.checked) void save(); else void disable(); }} className="peer sr-only" />
             <span aria-hidden="true" className="h-6 w-11 rounded-full bg-border transition-colors peer-checked:bg-copper peer-focus-visible:outline-2 peer-focus-visible:outline-offset-4 peer-focus-visible:outline-copper peer-disabled:opacity-50" />
@@ -166,9 +191,10 @@ export function DailyVersePreferences() {
               </select>
             </div>
           </fieldset>
-          <p className="mb-0 mt-2 text-xs leading-5 text-muted-foreground">Daily, in your selected timezone. Delivery may be delayed.</p>
+          <p className="mb-0 mt-2 text-xs leading-5 text-muted-foreground">{config?.scheduled ? "Daily, in your selected timezone. Allow at least five minutes; delivery may be delayed further." : "Scheduled reminders start after release. Send a test now to check this device."}</p>
           {changed ? <button type="button" className="bc-btn mt-3 justify-center disabled:opacity-50" disabled={busy || !schedule.reminderTime || !config?.enabled} onClick={() => void save()}>{busy ? "Saving…" : "Save time"}</button> : null}
         </> : null}
+        {subscription ? <button type="button" className="bc-btn mt-3 justify-center disabled:opacity-50" disabled={busy || !config?.enabled} onClick={() => void sendTest()}>Send test notification</button> : null}
         {device === "supported" && permission === "denied" ? <p className="text-sm leading-6">Allow notifications in your browser or device settings to enable reminders.</p> : null}
         {device === "supported" && config && !config.enabled ? <p className="text-sm">Reminders are not available yet.</p> : null}
         {message ? <p role="status" aria-live="polite" className={`mb-0 mt-3 rounded-xl border border-border bg-background p-3 text-sm leading-5 ${failed ? "text-link" : "text-muted-foreground"}`}>{message}</p> : null}

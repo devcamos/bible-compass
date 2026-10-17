@@ -156,3 +156,21 @@ dependency advisories fail CI even if the external SonarQube app is disconnected
 
 Founder-local development remains http://localhost:3003. Cloud agents use the
 Vercel Preview for browser validation and do not start the development server.
+
+### Checking a phone banner
+
+Profile offers **Send test notification** for an enabled device, including on
+Preview. This uses the same server-to-push-service-to-service-worker path as a
+daily reminder. The test endpoint requires same-origin JSON, the subscription
+ID and its device management token. It reads only that stored subscription,
+revalidates its push host, and allows three tests per five-minute bucket.
+Expired subscriptions are removed; arbitrary recipients and message text are
+not accepted. Tests do not claim a daily delivery or change the next reminder.
+
+Preview explicitly says **Enabled for testing**: scheduled broadcasts remain
+disabled there. The main-branch workflow becomes available only after release.
+A successful test response means the push service accepted the request, not
+that iOS displayed a banner. On iPhone, launch the Home Screen app, allow
+notifications, and check Settings → Notifications → Bible Compass → Banners
+and any active Focus mode. Preview and Production are separate origins, so
+users must enable reminders again from the Production Home Screen app.

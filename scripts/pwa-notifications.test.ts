@@ -97,3 +97,50 @@ test("service worker shows dated verse, handles malformed push, and never opens 
   assert.equal(opened[1], "https://compass.test/?verse=2026-10-16#verse-of-the-day-heading");
   assert.equal(handlers.fetch, undefined, "reader traffic must not be intercepted or cached");
 });
+
+test("test pushes require ownership, enforce limits, and send only the stored verse", async () => {
+  const { sendTestNotification } = await import("../src/lib/notifications/test-notification");
+  type Dependencies = NonNullable<Parameters<typeof sendTestNotification>[1]>;
+  let owned = true;
+  let count = 1;
+  let sends = 0;
+  let expired = false;
+  let removed = false;
+  const dependencies = {
+    notificationsReady: () => true,
+    database: () => ({ query: async (sql: string, params: unknown[]) => {
+      if (sql.startsWith("SELECT")) {
+        assert.equal(params[1], (await import("../src/lib/notifications/validation")).hash(input.token));
+        return { rowCount: owned ? 1 : 0, rows: owned ? [{ endpoint: input.endpoint, ...input.keys, day: "2026-10-17" }] : [] };
+      }
+      if (sql.startsWith("DELETE")) { removed = true; return {}; }
+      return { rows: [{ count }] };
+    } }),
+    pushClient: () => ({ sendNotification: async (subscription: { endpoint: string }, payload: string, options: { TTL: number }) => {
+      sends++;
+      assert.equal(subscription.endpoint, input.endpoint);
+      assert.equal(JSON.parse(payload).date, "2026-10-17");
+      assert.match(JSON.parse(payload).body, /—/);
+      assert.equal(options.TTL, 60);
+      if (expired) throw { statusCode: 410 };
+    } }),
+  } as unknown as Dependencies;
+  const request = (body: unknown = { id: "a".repeat(64), token: input.token }, origin = "https://compass.test") => new Request("https://compass.test/api/notifications/test", {
+    method: "POST", headers: { origin, "content-type": "application/json" }, body: JSON.stringify(body),
+  });
+  assert.equal((await sendTestNotification(request({}, "https://evil.test"), dependencies)).status, 403);
+  assert.equal((await sendTestNotification(request({ token: "bad" }), dependencies)).status, 400);
+  assert.equal((await sendTestNotification(request({ id: "a".repeat(64), token: input.token, ignored: "x".repeat(5000) }), dependencies)).status, 400);
+  owned = false;
+  assert.equal((await sendTestNotification(request(), dependencies)).status, 404);
+  assert.equal(sends, 0);
+  owned = true; count = 4;
+  assert.equal((await sendTestNotification(request(), dependencies)).status, 429);
+  assert.equal(sends, 0);
+  count = 1;
+  assert.equal((await sendTestNotification(request(), dependencies)).status, 200);
+  assert.equal(sends, 1);
+  expired = true;
+  assert.equal((await sendTestNotification(request(), dependencies)).status, 410);
+  assert.equal(removed, true);
+});
