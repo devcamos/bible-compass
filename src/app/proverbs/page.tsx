@@ -22,7 +22,7 @@ export default function ProverbsPage() {
         <p className="m-0 leading-7 text-muted-foreground">{PROVERBS_GRACE_GUARDRAIL}</p>
       </header>
       <details className="mb-6 border-y border-border py-3">
-        <summary className="cursor-pointer py-2 font-medium">What are Proverbs?</summary>
+        <summary className="cursor-pointer py-2 font-medium">Introduction to Proverbs</summary>
         <p className="mb-2 leading-7 text-muted-foreground">{PROVERBS_INTRODUCTION}</p>
       </details>
       <section aria-label="Proverbs categories">
