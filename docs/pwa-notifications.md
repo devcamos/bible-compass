@@ -148,6 +148,8 @@ directory-glob dependency is overridden with `tinyglobby` 0.2.17, which exposes
 the `globSync` / `onlyDirectories` interface used by the plugin. This removes the
 unpatched `braces` dependency without downgrading Next.js or disabling lint rules.
 Recheck this narrow override when upgrading the Next ESLint plugin.
+GitHub verification also runs `npm audit --audit-level=high`, so high and critical
+dependency advisories fail CI even if the external SonarQube app is disconnected.
 
 Founder-local development remains http://localhost:3003. Cloud agents use the
 Vercel Preview for browser validation and do not start the development server.

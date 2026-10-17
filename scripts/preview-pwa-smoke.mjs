@@ -10,9 +10,20 @@ if (!origin.startsWith("https://") || !new URL(origin).hostname.endsWith(".verce
 const browser = await chromium.launch({ executablePath: process.env.CHROMIUM_PATH || undefined, headless: true, chromiumSandbox: true, ...(process.env.HTTPS_PROXY ? { proxy: { server: process.env.HTTPS_PROXY } } : {}) });
 try {
   const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  await context.grantPermissions(["notifications"], { origin });
+  await context.addInitScript(() => {
+    window.__bibleCompassPermissionRequests = 0;
+    const request = Notification.requestPermission.bind(Notification);
+    Notification.requestPermission = (...args) => { window.__bibleCompassPermissionRequests++; return request(...args); };
+  });
   // Attach credentials only to requests to the exact deployment under test.
   if (process.env.PREVIEW_BYPASS) {
-    await context.route(`${origin}/**`, (route) => route.continue({ headers: { ...route.request().headers(), "x-vercel-protection-bypass": process.env.PREVIEW_BYPASS } }));
+    const headers = { "x-vercel-protection-bypass": process.env.PREVIEW_BYPASS, "x-vercel-set-bypass-cookie": "true" };
+    const authenticated = await context.request.get(origin, { headers });
+    if (!authenticated.ok()) throw new Error("Preview authentication failed");
+    // The session cookie also authenticates worker-script requests, which are
+    // outside Playwright's route interception. Keep headers scoped to this host.
+    await context.route(`${origin}/**`, (route) => route.continue({ headers: { ...route.request().headers(), ...headers } }));
   }
   const page = await context.newPage();
   const errors = [];
@@ -21,9 +32,12 @@ try {
   await page.getByRole("button", { name: "Open profile" }).click();
   await page.getByRole("heading", { name: "Daily verse reminder" }).waitFor();
   await page.getByRole("switch", { name: "Daily verse reminder", exact: true }).waitFor({ state: "attached" });
-  assert.equal(await page.evaluate(() => Notification.permission), "default", "page load must not ask permission");
+  assert.equal(await page.evaluate(() => window.__bibleCompassPermissionRequests), 0, "page load must not ask permission");
   const worker = await page.evaluate(async () => {
-    const registration = await navigator.serviceWorker.ready;
+    const registration = await Promise.race([
+      navigator.serviceWorker.ready,
+      new Promise((_, reject) => setTimeout(() => reject(new Error("Service worker did not activate")), 15_000)),
+    ]);
     return { scope: registration.scope, active: Boolean(registration.active) };
   });
   assert.equal(worker.scope, `${origin}/`);
@@ -71,16 +85,19 @@ try {
     PushManager.prototype.subscribe = async () => { current = simulated; return simulated; };
   });
   const reminder = page.getByRole("switch", { name: "Daily verse reminder", exact: true });
-  await reminder.check();
-  await page.getByLabel("Remind me at").waitFor();
-  await page.getByLabel("Remind me at").fill("20:15");
-  await page.getByLabel("Timezone", { exact: true }).selectOption("Europe/London");
-  await page.getByRole("button", { name: "Save time", exact: true }).click();
-  await page.getByText("Saved. Your daily verse is set for 20:15 in Europe/London.", { exact: true }).waitFor();
-  await page.getByRole("switch", { name: "Dark mode", exact: true }).check();
-  await page.screenshot({ path: join(artifactDirectory, "profile.png"), fullPage: true });
-  await reminder.uncheck();
-  await page.getByText("Reminders are off. Your daily verse is always here when you need it.", { exact: true }).waitFor();
+  await reminder.locator("..").click();
+  try {
+    await page.getByLabel("Remind me at").waitFor();
+    await page.getByLabel("Remind me at").fill("20:15");
+    await page.getByLabel("Timezone", { exact: true }).selectOption("Europe/London");
+    await page.getByRole("button", { name: "Save time", exact: true }).click();
+    await page.getByText("Saved. Your daily verse is set for 20:15 in Europe/London.", { exact: true }).waitFor();
+    await page.getByRole("switch", { name: "Dark mode", exact: true }).press("Space");
+    await page.screenshot({ path: join(artifactDirectory, "profile.png"), fullPage: true });
+  } finally {
+    if (await reminder.isChecked()) await reminder.locator("..").click();
+    await page.getByText("Reminders are off. Your daily verse is always here when you need it.", { exact: true }).waitFor();
+  }
   assert.equal(await page.getByLabel("Remind me at").count(), 0);
   await page.getByRole("button", { name: "Close", exact: true }).click();
   await page.goto(`${origin}/verse-of-the-day?date=2026-10-16`, { waitUntil: "networkidle" });

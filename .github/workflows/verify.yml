@@ -23,6 +23,8 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Audit dependency security
+        run: npm audit --audit-level=high
       - run: npm run verify
       - name: Smoke test built application
         shell: bash

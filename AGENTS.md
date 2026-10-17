@@ -23,6 +23,7 @@ Public static-first reader. Notion is private editorial source, never a runtime 
 - Keep Slack / Notion DNA (calm paper, soft callouts, simple icons). Colours on the reader and the share card must come from the Nexus kit (`refinery-brand`). Do not invent a palette on release.
 - Do not restyle away from that DNA in layout or chrome.
 - Verify with `npm run verify`.
+- Before handoff, inspect security-check annotations and run `npm audit --audit-level=high`. GitHub CI gates high/critical dependency advisories; passing lint/build alone is not a security check.
 - **Cloud Agent:** do not run `npm run dev` or browser-test against localhost in the VM. Push the branch, wait for green PR checks, then validate UI on the **Vercel Preview URL** from the PR (Git wrap). Hand off with PR URL + Preview URL.
 - **Local (founder machine):** `npm run dev` on http://localhost:3003 for in-dev clicking; include that URL in chat completion when the session is local.
 - **Cloud Agent chat completion:** lead with Preview URL; omit localhost unless the user is on their machine.
