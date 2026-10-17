@@ -3,7 +3,7 @@
 import { useEffect, useId, useState } from "react";
 
 const TOKEN_KEY = "bible-compass-push-token";
-type Config = { enabled: boolean; scheduled: boolean; publicKey: string | null };
+type Config = { enabled: boolean; canSendTest: boolean; scheduled: boolean; publicKey: string | null };
 type Schedule = { reminderTime: string; timeZone: string };
 type Device = "loading" | "unsupported" | "install" | "supported";
 
@@ -19,6 +19,12 @@ function reminderDisabled(busy: boolean, subscribed: boolean, device: Device, en
   if (busy) return true;
   if (subscribed) return false;
   return device !== "supported" || !enabled || permission === "denied";
+}
+
+function deliveryHint(config: Config | null): string {
+  if (config?.scheduled) return "Daily, in your selected timezone. Allow at least five minutes; delivery may be delayed further.";
+  if (config?.canSendTest) return "Scheduled reminders start after release. Send a test now to check this device.";
+  return "Scheduled reminders are not available in this environment.";
 }
 
 async function readSavedSchedule(current: PushSubscription | null): Promise<Schedule | null> {
@@ -122,7 +128,7 @@ export function DailyVersePreferences() {
   }
 
   async function sendTest() {
-    if (!subscription) return;
+    if (!subscription || !config?.canSendTest) return;
     setBusy(true);
     setFailed(false);
     setMessage("");
@@ -191,10 +197,10 @@ export function DailyVersePreferences() {
               </select>
             </div>
           </fieldset>
-          <p className="mb-0 mt-2 text-xs leading-5 text-muted-foreground">{config?.scheduled ? "Daily, in your selected timezone. Allow at least five minutes; delivery may be delayed further." : "Scheduled reminders start after release. Send a test now to check this device."}</p>
+          <p className="mb-0 mt-2 text-xs leading-5 text-muted-foreground">{deliveryHint(config)}</p>
           {changed ? <button type="button" className="bc-btn mt-3 justify-center disabled:opacity-50" disabled={busy || !schedule.reminderTime || !config?.enabled} onClick={() => void save()}>{busy ? "Saving…" : "Save time"}</button> : null}
         </> : null}
-        {subscription ? <button type="button" className="bc-btn mt-3 justify-center disabled:opacity-50" disabled={busy || !config?.enabled} onClick={() => void sendTest()}>Send test notification</button> : null}
+        {subscription && config?.canSendTest ? <button type="button" className="bc-btn mt-3 justify-center disabled:opacity-50" disabled={busy || !config.enabled} onClick={() => void sendTest()}>Send test notification</button> : null}
         {device === "supported" && permission === "denied" ? <p className="text-sm leading-6">Allow notifications in your browser or device settings to enable reminders.</p> : null}
         {device === "supported" && config && !config.enabled ? <p className="text-sm">Reminders are not available yet.</p> : null}
         {message ? <p role="status" aria-live="polite" className={`mb-0 mt-3 rounded-xl border border-border bg-background p-3 text-sm leading-5 ${failed ? "text-link" : "text-muted-foreground"}`}>{message}</p> : null}

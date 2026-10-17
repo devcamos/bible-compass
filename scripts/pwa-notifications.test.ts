@@ -8,6 +8,8 @@ import { GET as cron } from "../src/app/api/cron/daily-verse/route";
 import { generateKeyPair, SignJWT } from "jose";
 import { githubSchedulerAuthorized, SCHEDULER_AUDIENCE } from "../src/lib/notifications/scheduler-auth";
 import { parseVerseDate } from "../src/lib/verse-of-the-day";
+import { POST as testNotificationRoute } from "../src/app/api/notifications/test/route";
+import { GET as notificationConfig } from "../src/app/api/notifications/config/route";
 
 const input = {
   endpoint: "https://fcm.googleapis.com/fcm/send/test",
@@ -159,4 +161,26 @@ test("test pushes require ownership, enforce limits, and send only the stored ve
   expired = true;
   assert.equal((await sendTestNotification(request(), dependencies)).status, 410);
   assert.equal(removed, true);
+});
+
+
+test("test notification route and advertised capability are Preview-only", async () => {
+  const original = process.env.VERCEL_ENV;
+  const request = () => new Request("https://compass.test/api/notifications/test", { method: "POST", headers: { origin: "https://other.test" } });
+  try {
+    for (const environment of ["production", "development", "", undefined]) {
+      if (environment === undefined) delete process.env.VERCEL_ENV;
+      else process.env.VERCEL_ENV = environment;
+      const response = await testNotificationRoute(request());
+      assert.equal(response.status, 404, "deny outside Preview before request/auth/DB processing");
+      assert.equal(response.headers.get("cache-control"), "no-store");
+      assert.equal((await notificationConfig().json()).canSendTest, false);
+    }
+    process.env.VERCEL_ENV = "preview";
+    assert.equal((await notificationConfig().json()).canSendTest, true);
+    assert.equal((await testNotificationRoute(request())).status, 403, "Preview proceeds to existing origin enforcement");
+  } finally {
+    if (original === undefined) delete process.env.VERCEL_ENV;
+    else process.env.VERCEL_ENV = original;
+  }
 });
