@@ -18,7 +18,7 @@ With the next Bible Compass release, you’ll be able to:
 - **Explore further** by tapping a notification to open the verse and continue reading.
 
 Reminders are optional. Turn them on or off in **Your Profile**, where you can
-also adjust the timing and send a test notification. No account is needed.
+also adjust the timing. No account is needed.
 
 On iPhone, open Bible Compass in Safari, choose **Share → Add to Home Screen**,
 then launch it from the saved icon. When the update is live, enable reminders in

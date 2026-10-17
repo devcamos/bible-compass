@@ -159,8 +159,10 @@ Vercel Preview for browser validation and do not start the development server.
 
 ### Checking a phone banner
 
-Profile offers **Send test notification** for an enabled device, including on
-Preview. This uses the same server-to-push-service-to-service-worker path as a
+Profile offers **Send test notification** for an enabled device only on
+Vercel Preview deployments. Production and local development hide the action;
+its API returns 404 outside `VERCEL_ENV=preview`, before parsing input or accessing
+the database/push service. Client configuration exposes this Preview capability. This uses the same server-to-push-service-to-service-worker path as a
 daily reminder. The test endpoint requires same-origin JSON, the subscription
 ID and its device management token. It reads only that stored subscription,
 revalidates its push host, and allows three tests per five-minute bucket.
