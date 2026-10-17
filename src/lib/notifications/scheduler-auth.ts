@@ -3,6 +3,13 @@ import { secretEquals } from "./validation";
 
 const githubKeys = createRemoteJWKSet(new URL("https://token.actions.githubusercontent.com/.well-known/jwks"));
 export const SCHEDULER_AUDIENCE = "bible-compass-daily-verse";
+// GitHub can include immutable owner/repository IDs in the default subject.
+// Both exact formats identify this same repository and main branch; the
+// independent repository ID, workflow, issuer and audience checks still apply.
+const schedulerSubjects = new Set([
+  "repo:devcamos@196340576/bible-compass@1335846005:ref:refs/heads/main",
+  "repo:devcamos/bible-compass:ref:refs/heads/main",
+]);
 
 export async function githubSchedulerAuthorized(token: string, keys: JWTVerifyGetKey = githubKeys): Promise<boolean> {
   try {
@@ -15,7 +22,7 @@ export async function githubSchedulerAuthorized(token: string, keys: JWTVerifyGe
       requiredClaims: ["exp", "iat", "sub"],
     });
     return payload.repository === "devcamos/bible-compass" && payload.repository_id === "1335846005" &&
-      payload.ref === "refs/heads/main" && payload.sub === "repo:devcamos/bible-compass:ref:refs/heads/main" &&
+      payload.ref === "refs/heads/main" && typeof payload.sub === "string" && schedulerSubjects.has(payload.sub) &&
       payload.workflow_ref === "devcamos/bible-compass/.github/workflows/daily-verse.yml@refs/heads/main" &&
       (payload.event_name === "schedule" || payload.event_name === "workflow_dispatch");
   } catch { return false; }
