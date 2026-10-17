@@ -13,7 +13,7 @@ export function SupportCard() {
       <h2 id="support-heading" className="bc-title bc-heading m-0 mb-2">
         Keep this free to find
       </h2>
-      <p className="m-0 mb-4 text-[1.02rem] leading-7 text-muted-foreground">
+      <p className="m-0 mb-4 text-base leading-7 text-muted-foreground">
         If this reading helped, you can get me a coffee. Totally optional; nothing here
         depends on it.
       </p>

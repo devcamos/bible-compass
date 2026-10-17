@@ -41,11 +41,11 @@ export function TopicView({ topic }: TopicViewProps) {
         <h1 className="bc-title bc-heading m-0 mb-2 leading-tight">
           <EmojiIcon icon={topic.icon} /> {topic.title}
         </h1>
-        <p className="m-0 text-[1.02rem] leading-7 text-muted-foreground">{topic.summary}</p>
+        <p className="m-0 text-base leading-7 text-muted-foreground">{topic.summary}</p>
       </header>
 
       <section className="bc-callout" aria-label="Theological guardrail">
-        <p className="m-0 text-[0.98rem] leading-7">{topic.graceGuardrail}</p>
+        <p className="m-0 text-base leading-7">{topic.graceGuardrail}</p>
       </section>
 
       {topic.kind === "reset" && topic.stateChange && topic.resetName ? (
@@ -110,7 +110,7 @@ export function TopicView({ topic }: TopicViewProps) {
         <section key={section.heading} className="mt-8">
           <h2 className="bc-title bc-heading mb-3">{section.heading}</h2>
           {section.paragraphs.map((paragraph) => (
-            <p key={paragraph} className="mb-3 text-[1.02rem] leading-8">
+            <p key={paragraph} className="mb-3 text-base leading-7">
               {paragraph}
             </p>
           ))}
@@ -119,7 +119,7 @@ export function TopicView({ topic }: TopicViewProps) {
               {section.bullets.map((bullet) => (
                 <li
                   key={bullet}
-                  className="rounded-2xl border border-border bg-card px-4 py-3 text-[1.02rem] leading-7"
+                  className="rounded-2xl border border-border bg-card px-4 py-3 text-base leading-7"
                 >
                   <BulletText bullet={bullet} />
                 </li>
@@ -131,7 +131,7 @@ export function TopicView({ topic }: TopicViewProps) {
               {section.items.map((item) => (
                 <li
                   key={item.label}
-                  className="rounded-2xl border border-border bg-card px-4 py-3 text-[1.02rem] leading-7"
+                  className="rounded-2xl border border-border bg-card px-4 py-3 text-base leading-7"
                 >
                   <strong className="text-foreground">{item.label}</strong>
                   {item.detail ? (
@@ -143,7 +143,7 @@ export function TopicView({ topic }: TopicViewProps) {
                   {item.bookSummaryGroup ? (
                     <ProphetBookList books={getProphetBooks(item.bookSummaryGroup)} />
                   ) : item.children?.length ? (
-                    <ul className="mt-2 mb-0 list-disc space-y-1 pl-5 text-[0.98rem] leading-6 text-muted-foreground">
+                    <ul className="mt-2 mb-0 list-disc space-y-1 pl-5 text-base leading-6 text-muted-foreground">
                       {item.children.map((child) => (
                         <li key={child} className="pl-0.5">
                           {child}
@@ -178,7 +178,7 @@ export function TopicView({ topic }: TopicViewProps) {
           </h2>
           <ol className="my-0 space-y-2 pl-5">
             {topic.sixtySecond.map((item) => (
-              <li key={item} className="py-0.5 text-[1.02rem] leading-7">
+              <li key={item} className="py-0.5 text-base leading-7">
                 {item}
               </li>
             ))}

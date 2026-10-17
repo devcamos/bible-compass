@@ -48,7 +48,7 @@ export default async function ProverbsVersePage({ params }: Props) {
       </section>
       <section aria-labelledby="context-heading">
         <h2 id="context-heading" className="bc-title bc-heading mb-3">Consider the context</h2>
-        <p className="m-0 leading-8 text-muted-foreground">{verse.context}</p>
+        <p className="m-0 leading-7 text-muted-foreground">{verse.context}</p>
         <a href={proverbsChapterUrl(verse.chapter)} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex min-h-11 items-center text-link underline underline-offset-4" aria-label={`Read the full chapter Proverbs ${verse.chapter} in NIV on Bible Gateway (opens in a new tab)`}>Read Proverbs {verse.chapter} →</a>
         <p className="mt-1 text-sm text-muted-foreground">Scripture links open Bible Gateway in a new tab.</p>
       </section>

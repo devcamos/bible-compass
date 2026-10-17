@@ -9,7 +9,7 @@ export function ConceptCategories() {
       <p className="text-muted-foreground">Explore beliefs, practices and themes, and see how they connect.</p>
       {ontology.categories.map((category) => (
         <details key={category.id} className="border-b border-border py-3">
-          <summary className="cursor-pointer py-2 text-[1.02rem] font-medium">
+          <summary className="cursor-pointer py-2 text-base font-medium">
             <span className="summary-label">
               <EmojiIcon icon={category.icon} /> {category.title}
             </span>
