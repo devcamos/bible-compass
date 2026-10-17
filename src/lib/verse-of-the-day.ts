@@ -6,6 +6,12 @@ const MS_PER_DAY = 86_400_000;
 /** First day of the public rotation (UTC midnight). */
 const ROTATION_EPOCH_UTC = Date.UTC(2026, 0, 1);
 
+export function parseVerseDate(value: unknown): Date | null {
+  if (typeof value !== "string" || !/^\d{4}-\d{2}-\d{2}$/.test(value)) return null;
+  const date = new Date(`${value}T00:00:00Z`);
+  return Number.isFinite(date.getTime()) && date.toISOString().slice(0, 10) === value ? date : null;
+}
+
 export function getUtcDayIndex(date: Date = new Date()): number {
   const utcMidnight = Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate());
   return Math.floor((utcMidnight - ROTATION_EPOCH_UTC) / MS_PER_DAY);

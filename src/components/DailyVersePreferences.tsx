@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { useEffect, useId, useState } from "react";
 
 const TOKEN_KEY = "bible-compass-push-token";
@@ -173,7 +172,6 @@ export function DailyVersePreferences() {
         {device === "supported" && permission === "denied" ? <p className="text-sm leading-6">Allow notifications in your browser or device settings to enable reminders.</p> : null}
         {device === "supported" && config && !config.enabled ? <p className="text-sm">Reminders are not available yet.</p> : null}
         {message ? <p role="status" aria-live="polite" className={`mb-0 mt-3 rounded-xl border border-border bg-background p-3 text-sm leading-5 ${failed ? "text-link" : "text-muted-foreground"}`}>{message}</p> : null}
-        <Link href="/verse-of-the-day" className="mt-2 inline-flex min-h-11 items-center text-sm font-medium text-link no-underline">Read today’s verse <span aria-hidden="true" className="ml-2">→</span></Link>
       </section>
       <div className="divide-y divide-border rounded-2xl border border-border bg-card px-4">
         <details className="text-sm"><summary className="min-h-14"><span className="summary-label">Save to your Home Screen</span></summary><p className="mt-0 pb-3 leading-6 text-muted-foreground">On iPhone or iPad: Share → Add to Home Screen. On Android or desktop: browser menu → Install app or Add to Home Screen, if offered. Open the saved icon for your own quiet reading window. An internet connection is still required.</p></details>

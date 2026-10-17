@@ -7,6 +7,7 @@ import { POST, DELETE } from "../src/app/api/notifications/subscriptions/route";
 import { GET as cron } from "../src/app/api/cron/daily-verse/route";
 import { generateKeyPair, SignJWT } from "jose";
 import { githubSchedulerAuthorized, SCHEDULER_AUDIENCE } from "../src/lib/notifications/scheduler-auth";
+import { parseVerseDate } from "../src/lib/verse-of-the-day";
 
 const input = {
   endpoint: "https://fcm.googleapis.com/fcm/send/test",
@@ -29,6 +30,11 @@ test("reminder schedules accept local times and IANA zones, rejecting invalid in
   assert.deepEqual(parseSchedule({}), { reminderTime: "08:00", timeZone: "UTC" });
   for (const reminderTime of ["24:00", "08:60", "8:00", "", "08:00:00"]) assert.throws(() => parseSchedule({ reminderTime }));
   for (const timeZone of ["Fake/City", "+01:00", "", "Europe/London; DROP TABLE x"]) assert.throws(() => parseSchedule({ timeZone }));
+});
+
+test("home notification dates accept real calendar dates and reject malformed values", () => {
+  assert.equal(parseVerseDate("2026-10-16")?.toISOString(), "2026-10-16T00:00:00.000Z");
+  for (const value of ["2026-02-30", "2026-13-01", "//evil.test", "", null, ["2026-10-16"]]) assert.equal(parseVerseDate(value), null);
 });
 
 test("subscription mutations require same-origin and cron fails closed without a secret", async () => {
@@ -63,7 +69,7 @@ test("scheduler identity requires the exact main-branch workflow, audience and r
 
 test("service worker shows dated verse, handles malformed push, and never opens an external URL", async () => {
   const handlers: Record<string, (event: unknown) => void> = {};
-  const shown: { title: string; options: { tag: string; data: { url: string } } }[] = [];
+  const shown: { title: string; options: { tag: string; data: { date: string } } }[] = [];
   const opened: string[] = [];
   vm.runInNewContext(readFileSync(new URL("../public/sw.js", import.meta.url), "utf8"), {
     URL,
@@ -79,12 +85,15 @@ test("service worker shows dated verse, handles malformed push, and never opens 
   handlers.push({ data: { json: () => ({ date: "2026-10-16", body: "John 3:16", url: "https://evil.test" }) }, waitUntil });
   await work;
   assert.equal(shown[0].options.tag, "bible-compass-verse-2026-10-16");
-  assert.equal(shown[0].options.data.url, "/verse-of-the-day?date=2026-10-16");
+  assert.equal(shown[0].options.data.date, "2026-10-16");
   handlers.push({ data: { json: () => { throw new Error("invalid json"); } }, waitUntil });
   await work;
   assert.equal(shown.length, 2);
   handlers.notificationclick({ notification: { close() {}, data: { url: "https://evil.test/steal" } }, waitUntil });
   await work;
-  assert.equal(opened[0], "https://compass.test/verse-of-the-day");
+  assert.equal(opened[0], "https://compass.test/#verse-of-the-day-heading");
+  handlers.notificationclick({ notification: { close() {}, data: { date: "2026-10-16" } }, waitUntil });
+  await work;
+  assert.equal(opened[1], "https://compass.test/?verse=2026-10-16#verse-of-the-day-heading");
   assert.equal(handlers.fetch, undefined, "reader traffic must not be intercepted or cached");
 });

@@ -101,9 +101,11 @@ try {
   assert.equal(await page.getByLabel("Remind me at").count(), 0);
   await page.getByRole("button", { name: "Close", exact: true }).click();
   await page.goto(`${origin}/verse-of-the-day?date=2026-10-16`, { waitUntil: "networkidle" });
-  await page.getByRole("heading", { name: "A moment in Scripture" }).waitFor();
-  await page.getByText("Daily reading · 2026-10-16", { exact: true }).waitFor();
-  await page.getByRole("link", { name: "Back to the compass" }).click();
+  await page.waitForURL(`${origin}/?verse=2026-10-16#verse-of-the-day-heading`);
+  assert.equal(await page.getByRole("link", { name: "Daily verse & reminders", exact: true }).count(), 0);
+  await page.locator(".bc-votd").getByRole("link", { name: "Explore further", exact: true }).click();
+  await page.waitForURL(/\/topics\//);
+  await page.goto(origin, { waitUntil: "networkidle" });
   await page.getByRole("button", { name: "Open profile" }).waitFor();
   assert.deepEqual(errors, []);
   console.log(JSON.stringify({ ok: true, ...api, serviceWorker: worker.active, profile: true, reminderSwitchAndTiming: true, devicePushServiceSimulated: true, datedVerse: true, readerNavigation: true, permissionPromptOnLoad: false, artifactDirectory }));

@@ -41,9 +41,12 @@ Turn reminders off in the same panel; device settings can also block them.
    claims one delivery per device/local-calendar-day, and sends through standard
    Web Push with VAPID. The existing verse rotation is indexed by that local
    date, so timezone boundaries and delayed opens refer to a stable verse.
-5. A tap opens `/verse-of-the-day?date=YYYY-MM-DD` so delayed notifications open
-   the verse they referred to. The new page is rendered at request time. Existing
-   home-page caching is unchanged; the dedicated daily page is authoritative.
+5. A tap opens `/?verse=YYYY-MM-DD#verse-of-the-day-heading`: the usual home-page
+   verse card, with its existing Explore further link. There is no separate verse
+   or reminders page. The older `/verse-of-the-day` URL redirects here. The small
+   client wrapper selects the notification's verse after hydration; normal home
+   rendering remains static-first and refreshes the current verse on returning to
+   the tab. Reminder settings stay in Your Profile.
 
 No Notion requests or database calls are added to reader page rendering. The
 database and notification dependencies are confined to the notification API.

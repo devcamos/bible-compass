@@ -12,16 +12,16 @@ self.addEventListener("push", (event) => {
     body: typeof payload.body === "string" ? payload.body.slice(0, 500) : "A quiet moment in Scripture awaits.",
     icon: "/pwa/icon-192.png",
     tag: `bible-compass-verse-${date}`,
-    data: { url: date ? `/verse-of-the-day?date=${date}` : "/verse-of-the-day" },
+    data: { date },
   }));
 });
 
 self.addEventListener("notificationclick", (event) => {
   event.notification.close();
   // Never navigate to a URL supplied by an external push sender.
-  const candidate = new URL(event.notification.data?.url ?? "/verse-of-the-day", self.location.origin);
-  const url = candidate.origin === self.location.origin && candidate.pathname === "/verse-of-the-day"
-    ? candidate.href : new URL("/verse-of-the-day", self.location.origin).href;
+  const date = event.notification.data?.date;
+  const path = /^\d{4}-\d{2}-\d{2}$/.test(date) ? `/?verse=${date}#verse-of-the-day-heading` : "/#verse-of-the-day-heading";
+  const url = new URL(path, self.location.origin).href;
   event.waitUntil((async () => {
     const windows = await self.clients.matchAll({ type: "window", includeUncontrolled: true });
     const existing = windows.find((client) => new URL(client.url).origin === self.location.origin);
