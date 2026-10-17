@@ -19,7 +19,7 @@ export default function ProverbsPage() {
       <header className="mb-7">
         <p className="bc-kicker m-0 mb-2">Book of Proverbs</p>
         <h1 className="bc-title m-0 mb-3 text-3xl leading-tight sm:text-4xl">Wisdom for everyday life</h1>
-        <p className="m-0 leading-7 text-muted-foreground">Explore key chapters and selected verses by theme.</p>
+        <p className="m-0 leading-7 text-muted-foreground">{PROVERBS_GRACE_GUARDRAIL}</p>
       </header>
       <details className="mb-6 border-y border-border py-3">
         <summary className="cursor-pointer py-2 font-medium">What are Proverbs?</summary>
@@ -37,7 +37,6 @@ export default function ProverbsPage() {
           ))}
         </ul>
       </section>
-      <aside className="bc-callout mt-7" aria-label="Grace and wisdom"><p className="m-0 leading-7">{PROVERBS_GRACE_GUARDRAIL}</p></aside>
     </article>
   );
 }
