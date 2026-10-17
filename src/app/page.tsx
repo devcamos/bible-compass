@@ -2,7 +2,7 @@ import Link from "next/link";
 import type { Metadata } from "next";
 import { PathCard } from "@/components/PathCard";
 import { LifeAreaList } from "@/components/LifeAreaList";
-import { VerseOfTheDay } from "@/components/VerseOfTheDay";
+import { HomeVerseOfTheDay } from "@/components/HomeVerseOfTheDay";
 import { ConceptCategories } from "@/components/ConceptCategories";
 import { HomeSupportLine } from "@/components/HomeSupportLine";
 import { entryPaths, homeCopy, lifeAreas } from "@/content/home";
@@ -20,7 +20,7 @@ export default function HomePage() {
 
   return (
     <div>
-      <VerseOfTheDay verse={verse} />
+      <HomeVerseOfTheDay verse={{ ...verse }} />
 
       <section className="mb-6 rounded-2xl border border-border bg-card p-[22px]">
         <h1 className="bc-title bc-heading m-0 mb-2 leading-tight">

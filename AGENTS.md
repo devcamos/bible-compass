@@ -12,7 +12,7 @@ This block is written and re-added by `next dev` — verify at `node_modules/nex
 
 Public static-first reader. Notion is private editorial source, never a runtime dependency.
 
-- Do not add accounts, comments, payments, a database, AI chat, newsletter sending, or a native app in v0.1.
+- Do not add accounts, comments, payments, AI chat, newsletter sending, or a native app in v0.1. Founder authorized PWA installation and opt-in daily verse push reminders on 2026-10-16, including a small notification-only database and scheduler. The reader remains static-first; no database dependency for reading.
 - No direct pushes to Production or Preview. Every change must use a feature branch and GitHub pull request.
 - **Agents must not merge pull requests, enable auto-merge, or bypass founder approval.** An agent may create a PR, repair failing checks, and report the PR only when required CI and Vercel checks are green. Founder approval is required before merge.
 - Founder GO 2026-08-22 enabled `git.deploymentEnabled.main: true`, so Bible Compass currently treats an approved merge to `main` as the Production release action. Do not change that release mapping without a new founder decision.
@@ -23,6 +23,7 @@ Public static-first reader. Notion is private editorial source, never a runtime 
 - Keep Slack / Notion DNA (calm paper, soft callouts, simple icons). Colours on the reader and the share card must come from the Nexus kit (`refinery-brand`). Do not invent a palette on release.
 - Do not restyle away from that DNA in layout or chrome.
 - Verify with `npm run verify`.
+- Before handoff, inspect security-check annotations and run `npm audit --audit-level=high`. GitHub CI gates high/critical dependency advisories; passing lint/build alone is not a security check.
 - **Cloud Agent:** do not run `npm run dev` or browser-test against localhost in the VM. Push the branch, wait for green PR checks, then validate UI on the **Vercel Preview URL** from the PR (Git wrap). Hand off with PR URL + Preview URL.
 - **Local (founder machine):** `npm run dev` on http://localhost:3003 for in-dev clicking; include that URL in chat completion when the session is local.
 - **Cloud Agent chat completion:** lead with Preview URL; omit localhost unless the user is on their machine.

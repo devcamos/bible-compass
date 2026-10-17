@@ -220,6 +220,14 @@ body {
   padding-left: 1rem;
 }
 
+.bc-reminders {
+  background: linear-gradient(145deg, color-mix(in srgb, var(--moss) 12%, var(--card)), var(--card) 70%);
+}
+
+.bc-profile::backdrop {
+  backdrop-filter: blur(4px);
+}
+
 [data-theme="dark"] .bc-votd {
   background:
     linear-gradient(

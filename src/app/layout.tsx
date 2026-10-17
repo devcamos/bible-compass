@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
+import { PwaRegistration } from "@/components/PwaRegistration";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteChrome";
 import { SplashController } from "@/components/SplashScreen";
@@ -116,6 +117,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <SiteFooter />
         </div>
         <Analytics />
+        <PwaRegistration />
       </body>
     </html>
   );
