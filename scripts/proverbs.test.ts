@@ -1,8 +1,10 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { TOPIC_SLUGS } from "../src/content";
+import ontology from "../src/content/concepts/ontology.json";
 import {
   PROVERBS_CATEGORIES,
+  PROVERBS_CONCEPT_MAPPING,
   PROVERBS_VERSES,
   getProverbsChapterGroups,
   getProverbsVersesForCategory,
@@ -12,6 +14,13 @@ import {
 
 // Proverbs chapter lengths; prevents references to non-existent verses.
 const VERSE_COUNTS = [33, 22, 35, 27, 23, 35, 27, 36, 18, 32, 31, 28, 25, 35, 33, 33, 28, 24, 29, 30, 31, 29, 35, 34, 28, 28, 27, 28, 27, 33, 31];
+
+test("Proverbs maps to a published concept with curated Scripture evidence", () => {
+  assert.ok(ontology.concepts.some((concept) => concept.slug === PROVERBS_CONCEPT_MAPPING.conceptSlug));
+  for (const id of PROVERBS_CONCEPT_MAPPING.verseIds) {
+    assert.ok(PROVERBS_VERSES.some((verse) => verse.id === id), `Missing mapping evidence ${id}`);
+  }
+});
 
 test("curated Proverbs references are canonical, unique and within chapter bounds", () => {
   const ids = new Set<string>();

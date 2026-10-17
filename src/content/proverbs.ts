@@ -1,4 +1,11 @@
 /** Curated editorial summaries, not quotations from the NIV translation. */
+export const PROVERBS_CONCEPT_MAPPING = {
+  book: "Proverbs",
+  conceptSlug: "wisdom",
+  relationship: "explores",
+  verseIds: ["proverbs-1-7", "proverbs-9-10"],
+} as const;
+
 export const PROVERBS_INTRODUCTION =
   "Proverbs brings together extended wisdom instructions and memorable sayings associated with Solomon and other contributors. Its foundation is reverence for God. These teachings offer wisdom for everyday life: principles to consider in context, not guarantees of wealth, safety or an immediate reward.";
 
