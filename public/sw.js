@@ -8,10 +8,11 @@ self.addEventListener("push", (event) => {
   try { payload = event.data?.json() ?? {}; } catch { /* Show a safe fallback. */ }
   if (typeof payload !== "object" || Array.isArray(payload)) payload = {};
   const date = /^\d{4}-\d{2}-\d{2}$/.test(payload.date) ? payload.date : "";
+  const testId = typeof payload.testId === "string" && /^[a-f0-9-]{36}$/.test(payload.testId) ? payload.testId : "";
   event.waitUntil(self.registration.showNotification("Verse of the day · Bible Compass", {
     body: typeof payload.body === "string" ? payload.body.slice(0, 500) : "A quiet moment in Scripture awaits.",
     icon: "/pwa/icon-192.png",
-    tag: `bible-compass-verse-${date}`,
+    tag: testId ? `bible-compass-test-${testId}` : `bible-compass-verse-${date}`,
     data: { date },
   }));
 });

@@ -174,3 +174,6 @@ that iOS displayed a banner. On iPhone, launch the Home Screen app, allow
 notifications, and check Settings → Notifications → Bible Compass → Banners
 and any active Focus mode. Preview and Production are separate origins, so
 users must enable reminders again from the Production Home Screen app.
+
+Each test has a unique notification tag so retries do not silently replace an
+earlier test or the daily verse. Daily notifications retain their per-day tag.

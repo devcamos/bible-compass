@@ -89,6 +89,13 @@ test("service worker shows dated verse, handles malformed push, and never opens 
   handlers.push({ data: { json: () => { throw new Error("invalid json"); } }, waitUntil });
   await work;
   assert.equal(shown.length, 2);
+  const testIds = ["aaaaaaaa-aaaa-4aaa-8aaa-aaaaaaaaaaaa", "bbbbbbbb-bbbb-4bbb-8bbb-bbbbbbbbbbbb"];
+  for (const testId of testIds) {
+    handlers.push({ data: { json: () => ({ date: "2026-10-16", testId }) }, waitUntil });
+    await work;
+  }
+  assert.equal(shown[2].options.tag, `bible-compass-test-${testIds[0]}`);
+  assert.notEqual(shown[2].options.tag, shown[3].options.tag, "test retries must not silently replace previous tests");
   handlers.notificationclick({ notification: { close() {}, data: { url: "https://evil.test/steal" } }, waitUntil });
   await work;
   assert.equal(opened[0], "https://compass.test/#verse-of-the-day-heading");
@@ -120,6 +127,7 @@ test("test pushes require ownership, enforce limits, and send only the stored ve
       sends++;
       assert.equal(subscription.endpoint, input.endpoint);
       assert.equal(JSON.parse(payload).date, "2026-10-17");
+      assert.match(JSON.parse(payload).testId, /^[a-f0-9-]{36}$/);
       assert.match(JSON.parse(payload).body, /—/);
       assert.equal(options.TTL, 60);
       if (expired) throw { statusCode: 410 };
