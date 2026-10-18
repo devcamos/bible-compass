@@ -9,6 +9,31 @@ The service worker `/sw.js` only receives push and handles notification taps.
 It does not intercept requests, cache pages, force updates, or provide offline
 reading. Installation still works independently of notification availability.
 
+## Updates when opening the saved app
+
+The client compares its embedded deployment commit with a fresh, same-origin
+`/health` response when it opens, becomes visible, regains focus, is restored from
+the browser's page cache, or reconnects. A verified change on the same deployment
+environment reloads the current URL, retaining its path, query and fragment.
+It checks on these lifecycle events rather than polling in the background.
+The reader pages remain static-first; only this small, database-free health
+response is dynamic and sends `Cache-Control: no-store`.
+
+The reload leaves local preferences, notification subscriptions and management
+tokens intact. Offline, failed, malformed, redirected or wrong-environment probes
+leave reading undisturbed. A session marker limits reload attempts for the same
+old/new commit pair for 60 seconds, then permits a later foreground retry. If
+session storage is unavailable, automatic reload is skipped to avoid a reload
+loop; manual refresh still works. The service worker continues to handle push
+only and never intercepts reader requests.
+
+Save the icon from the live Production URL, not a Preview or immutable deployment
+URL. A saved address stays on its original environment. An installation still
+running code from before this update may need one manual refresh (or a full
+close and fresh launch) to load the new update-checking code. Do not clear site
+data or reinstall solely to update a correctly installed Production icon, since
+that can remove preferences or require notification setup again.
+
 ## User flow
 
 Open Your Profile → turn on Daily verse reminder → choose a time and timezone → Save time. Permission
