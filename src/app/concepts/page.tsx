@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { AboutPassages } from "@/components/AboutPassages";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { ConceptExplorer } from "@/components/ConceptExplorer";
 import { concepts, ontology } from "@/content/concepts";
@@ -22,7 +23,9 @@ export default function ConceptsPage() {
         lifeAreas={lifeAreas.map(({ id, title }) => ({ id, title }))}
         relations={ontology.relations.map(({ sourceId, targetId }) => ({ sourceId, targetId }))}
       />
-      <p className="mt-6 text-sm leading-6 text-muted-foreground">{ontology.classificationNote}</p>
+      <AboutPassages title="About these classifications" className="mt-6 border-y border-border py-1 text-sm">
+        {ontology.classificationNote}
+      </AboutPassages>
     </article>
   );
 }

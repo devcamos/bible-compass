@@ -19,6 +19,9 @@ export const PROVERBS_GRACE_GUARDRAIL =
 export const PROVERBS_SELECTION_NOTE =
   "A curated selection of passages, not a complete catalogue of Proverbs. Chapters contain several themes; these selections highlight the chosen category. All summaries are original paraphrases. Read the linked NIV passage on Bible Gateway for the Scripture text.";
 
+/** Short always-visible credit; the full selection note lives in AboutPassages. */
+export const PROVERBS_SCRIPTURE_CREDIT_NOTE = "Summaries are original paraphrases, not Bible quotations";
+
 export const PROVERBS_CATEGORIES = [
   { slug: "words-and-speech", title: "Words & speech", description: "Listen carefully and speak with truth and gentleness.", icon: "💬" },
   { slug: "wisdom-and-discernment", title: "Wisdom & discernment", description: "Learn, accept correction and make thoughtful choices.", icon: "🧭" },

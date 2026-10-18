@@ -5,6 +5,8 @@ import ontology from "../src/content/concepts/ontology.json";
 import {
   PROVERBS_CATEGORIES,
   PROVERBS_CONCEPT_MAPPING,
+  PROVERBS_SCRIPTURE_CREDIT_NOTE,
+  PROVERBS_SELECTION_NOTE,
   PROVERBS_VERSES,
   getProverbsChapterGroups,
   getProverbsVersesForCategory,
@@ -65,6 +67,13 @@ test("Explore further destinations name existing published topics", () => {
     assert.ok(entry.relatedTopics.length > 0, `${entry.id} needs an Explore further destination`);
     for (const slug of entry.relatedTopics) assert.ok(topicSlugs.has(slug), `${entry.id} links to missing topic ${slug}`);
   }
+});
+
+test("selection note and scripture credit copy remain available for category help", () => {
+  assert.match(PROVERBS_SELECTION_NOTE, /curated selection of passages/);
+  assert.match(PROVERBS_SELECTION_NOTE, /original paraphrases/);
+  assert.match(PROVERBS_SELECTION_NOTE, /Bible Gateway/);
+  assert.match(PROVERBS_SCRIPTURE_CREDIT_NOTE, /original paraphrases/);
 });
 
 test("verse links target the specific passage and chapter links target the whole chapter", () => {
