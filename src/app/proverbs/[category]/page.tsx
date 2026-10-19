@@ -42,7 +42,10 @@ export default async function ProverbsCategoryPage({ params }: Props) {
         <h1 className="bc-title m-0 mb-3 text-3xl leading-tight">{category.title}</h1>
         <p className="m-0 leading-7 text-muted-foreground">{category.description}</p>
       </header>
-      <p className="mb-6 border-l-2 border-copper pl-4 text-sm leading-6 text-muted-foreground">{PROVERBS_SELECTION_NOTE}</p>
+      <details className="mb-4">
+        <summary className="min-h-11 cursor-pointer py-3 text-sm font-medium text-link">About these selections</summary>
+        <p className="mt-2 mb-2 border-l-2 border-copper pl-4 text-sm leading-6 text-muted-foreground">{PROVERBS_SELECTION_NOTE}</p>
+      </details>
       <p className="mb-4 text-sm leading-6 text-muted-foreground">Verse links open the NIV passage on Bible Gateway in a new tab. Summaries below are paraphrases, not Bible quotations.</p>
       <div className="space-y-4">
         {groups.map(({ chapter, verses }) => (
