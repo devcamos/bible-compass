@@ -6,6 +6,7 @@ import {
   PROVERBS_CONCEPT_MAPPING,
   PROVERBS_GRACE_GUARDRAIL,
   PROVERBS_INTRODUCTION,
+  PROVERBS_SELECTION_NOTE,
 } from "@/content/proverbs";
 
 export const metadata: Metadata = {
@@ -38,6 +39,7 @@ export default function ProverbsPage() {
             </li>
           ))}
         </ul>
+        <p className="mt-4 mb-2 text-sm leading-6 text-muted-foreground">{PROVERBS_SELECTION_NOTE}</p>
       </details>
       <section aria-label="Proverbs categories">
         <ul className="m-0 grid list-none gap-3 p-0">
