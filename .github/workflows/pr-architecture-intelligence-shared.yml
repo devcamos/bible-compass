@@ -1,7 +1,7 @@
 name: PR Architecture Intelligence (shared, vendored from pr-intelligence v1 4cd64d8)
 
 # Shared, reusable PR review. Call it from any repository:
-#   uses: devcamos/pr-intelligence/.github/workflows/pr-architecture-intelligence.yml@v1
+#   uses: devonte-amos-apps/pr-intelligence/.github/workflows/pr-architecture-intelligence.yml@v1
 # Repository-specific principles and rules live in the caller's rules file.
 
 on:
