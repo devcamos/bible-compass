@@ -16,7 +16,7 @@ concurrency:
 
 jobs:
   review:
-    uses: devcamos/pr-intelligence/.github/workflows/pr-architecture-intelligence.yml@v1
+    uses: ./.github/workflows/pr-architecture-intelligence-shared.yml
     with:
       rules-path: architecture-rules.json
       node-version: "22"
