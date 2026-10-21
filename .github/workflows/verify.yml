@@ -55,6 +55,12 @@ jobs:
           curl --fail --silent --show-error http://127.0.0.1:3003/proverbs/words-and-speech > /dev/null
           curl --fail --silent --show-error http://127.0.0.1:3003/proverbs/verses/proverbs-15-1 > /dev/null
           test "$(curl --silent -o /dev/null -w '%{http_code}' http://127.0.0.1:3003/proverbs/not-a-category)" = 404
+          curl --fail --silent --show-error http://127.0.0.1:3003/psalms > /dev/null
+          curl --fail --silent --show-error http://127.0.0.1:3003/psalms/trust-and-refuge > /dev/null
+          curl --fail --silent --show-error http://127.0.0.1:3003/psalms/trust-and-refuge/verses/psalm-121-7-8 > /dev/null
+          test "$(curl --silent -o /dev/null -w '%{http_code}' http://127.0.0.1:3003/psalms/not-a-category)" = 404
+          test "$(curl --silent -o /dev/null -w '%{http_code}' http://127.0.0.1:3003/psalms/trust-and-refuge/verses/not-a-verse)" = 404
+          test "$(curl --silent -o /dev/null -w '%{http_code}' http://127.0.0.1:3003/psalms/justice-and-hope/verses/psalm-23-4)" = 404
           curl --fail --silent --show-error http://127.0.0.1:3003/verse-of-the-day?date=2026-10-16 > /dev/null
           curl --fail --silent --show-error http://127.0.0.1:3003/manifest.webmanifest > /tmp/manifest.json
           node -e 'const m = JSON.parse(require("fs").readFileSync("/tmp/manifest.json")); if (m.display !== "standalone" || m.start_url !== "/" || m.icons.length < 2) process.exit(1)'
