@@ -27,7 +27,7 @@ for (const concept of ontology.concepts) {
       assert.equal(url.origin, "https://www.biblegateway.com", action.id);
       assert.equal(url.pathname, "/passage/", action.id);
       assert.equal(url.searchParams.get("search"), reference, action.id);
-      assert.equal(url.searchParams.get("version"), "NIV", action.id);
+      assert.equal(url.searchParams.get("version"), "BSB", action.id);
       assert.equal(links[linkIndex][2].replace(/<[^>]*>/g, ""), reference, action.id);
     }
     actionCount += 1;

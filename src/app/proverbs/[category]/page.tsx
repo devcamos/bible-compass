@@ -41,7 +41,7 @@ export default async function ProverbsCategoryPage({ params }: Props) {
         <h1 className="bc-title m-0 mb-3 text-3xl leading-tight">{category.title}</h1>
         <p className="m-0 leading-7 text-muted-foreground">{category.description}</p>
       </header>
-      <p className="mb-4 text-sm leading-6 text-muted-foreground">Verse links open the NIV passage on Bible Gateway in a new tab. Summaries below are paraphrases, not Bible quotations.</p>
+      <p className="mb-4 text-sm leading-6 text-muted-foreground">Verse links open the BSB passage on Bible Gateway in a new tab. Summaries below are paraphrases, not Bible quotations.</p>
       <div className="space-y-4">
         {groups.map(({ chapter, verses }) => (
           <details key={chapter} open className="rounded-2xl border border-border bg-card">
@@ -53,7 +53,7 @@ export default async function ProverbsCategoryPage({ params }: Props) {
               <ul className="m-0 list-none p-0">
                 {verses.map((verse) => (
                   <li key={verse.id} className="border-t border-border py-3">
-                    <a href={proverbsVerseUrl(chapter, verse.verse)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center py-2 font-medium leading-7 text-link underline underline-offset-4" aria-label={`Read Proverbs ${chapter}:${verse.verse} in NIV on Bible Gateway (opens in a new tab)`}>
+                    <a href={proverbsVerseUrl(chapter, verse.verse)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center py-2 font-medium leading-7 text-link underline underline-offset-4" aria-label={`Read Proverbs ${chapter}:${verse.verse} in BSB on Bible Gateway (opens in a new tab)`}>
                       {chapter}:{verse.verse} · {verse.title} <span className="ml-1" aria-hidden="true">↗</span>
                     </a>
                     <p className="m-0 mb-1 leading-7 text-muted-foreground">{verse.summary}</p>
@@ -61,7 +61,7 @@ export default async function ProverbsCategoryPage({ params }: Props) {
                   </li>
                 ))}
               </ul>
-              <a href={proverbsChapterUrl(chapter)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center text-sm font-medium text-link underline underline-offset-4" aria-label={`Read the full chapter Proverbs ${chapter} in NIV on Bible Gateway (opens in a new tab)`}>Read Proverbs {chapter} →</a>
+              <a href={proverbsChapterUrl(chapter)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center text-sm font-medium text-link underline underline-offset-4" aria-label={`Read the full chapter Proverbs ${chapter} in BSB on Bible Gateway (opens in a new tab)`}>Read Proverbs {chapter} →</a>
             </div>
           </details>
         ))}

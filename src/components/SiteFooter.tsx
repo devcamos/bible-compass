@@ -6,6 +6,7 @@ export function SiteFooter() {
         trusted translation or a healthy church.
       </p>
       <p className="mt-2">Grace precedes effort. You do not work to earn God&apos;s love.</p>
+      <p className="mt-2">Scripture from the Berean Standard Bible (BSB), public domain.</p>
     </footer>
   );
 }

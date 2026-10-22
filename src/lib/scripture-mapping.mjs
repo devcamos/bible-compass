@@ -10,7 +10,7 @@ export function scriptureReference(passage) {
 
 /** @param {CanonicalPassage} passage */
 export function scriptureUrl(passage) {
-  return `https://www.biblegateway.com/passage/?search=${encodeURIComponent(scriptureReference(passage))}&version=NIV`;
+  return `https://www.biblegateway.com/passage/?search=${encodeURIComponent(scriptureReference(passage))}&version=BSB`;
 }
 
 /**

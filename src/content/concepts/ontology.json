@@ -168,8 +168,8 @@
         "passageId": "judgment:passage:3",
         "verseStart": 1,
         "verseEnd": 1,
-        "text": "Do not judge, or you too will be judged.",
-        "translation": "NIV",
+        "text": "“Do not judge, or you will be judged.",
+        "translation": "BSB",
         "isExcerpt": false
       },
       "explanation": [
@@ -261,9 +261,9 @@
         "passageId": "salvation:passage:1",
         "verseStart": 8,
         "verseEnd": 8,
-        "text": "For it is by grace you have been saved, through faith",
-        "translation": "NIV",
-        "isExcerpt": true
+        "text": "For it is by grace you have been saved through faith, and this not from yourselves; it is the gift of God,",
+        "translation": "BSB",
+        "isExcerpt": false
       },
       "explanation": [
         "Salvation is God rescuing people from sin and bringing them into life with him through Jesus.",
@@ -364,9 +364,9 @@
         "passageId": "resurrection:passage:2",
         "verseStart": 25,
         "verseEnd": 25,
-        "text": "I am the resurrection and the life.",
-        "translation": "NIV",
-        "isExcerpt": true
+        "text": "Jesus said to her, “I am the resurrection and the life. Whoever believes in Me will live, even though he dies.",
+        "translation": "BSB",
+        "isExcerpt": false
       },
       "explanation": [
         "Resurrection means being raised from the dead. Christianity centres on Jesus' resurrection and the hope of future resurrection for those who belong to him.",
@@ -473,9 +473,9 @@
         "passageId": "trinity:passage:1",
         "verseStart": 19,
         "verseEnd": 19,
-        "text": "baptizing them in the name of the Father and of the Son and of the Holy Spirit",
-        "translation": "NIV",
-        "isExcerpt": true
+        "text": "Therefore go and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit,",
+        "translation": "BSB",
+        "isExcerpt": false
       },
       "explanation": [
         "The Trinity is historic Christian teaching that the one God is Father, Son and Holy Spirit. It does not mean three separate gods.",
@@ -574,9 +574,9 @@
         "passageId": "justification:passage:1",
         "verseStart": 1,
         "verseEnd": 1,
-        "text": "Therefore, since we have been justified through faith, we have peace with God through our Lord Jesus Christ",
-        "translation": "NIV",
-        "isExcerpt": true
+        "text": "Therefore, since we have been justified through faith, we have peace with God through our Lord Jesus Christ,",
+        "translation": "BSB",
+        "isExcerpt": false
       },
       "explanation": [
         "Justification concerns being put right with God through Jesus. Romans 5 connects it with faith and peace with God.",
@@ -669,9 +669,9 @@
         "passageId": "grace:passage:1",
         "verseStart": 8,
         "verseEnd": 8,
-        "text": "and this is not from yourselves, it is the gift of God",
-        "translation": "NIV",
-        "isExcerpt": true
+        "text": "For it is by grace you have been saved through faith, and this not from yourselves; it is the gift of God,",
+        "translation": "BSB",
+        "isExcerpt": false
       },
       "explanation": [
         "Grace is God's freely given favour and help. It is received rather than earned.",
@@ -771,8 +771,8 @@
         "passageId": "armour-of-god:passage:1",
         "verseStart": 11,
         "verseEnd": 11,
-        "text": "Put on the full armor of God, so that you can take your stand against the devil’s schemes.",
-        "translation": "NIV",
+        "text": "Put on the full armor of God, so that you can make your stand against the devil’s schemes.",
+        "translation": "BSB",
         "isExcerpt": false
       },
       "explanation": [
@@ -890,9 +890,9 @@
         "passageId": "fruit-of-the-spirit:passage:1",
         "verseStart": 22,
         "verseEnd": 23,
-        "text": "But the fruit of the Spirit is love, joy, peace, forbearance, kindness, goodness, faithfulness, gentleness and self-control.",
-        "translation": "NIV",
-        "isExcerpt": true
+        "text": "But the fruit of the Spirit is love, joy, peace, patience, kindness, goodness, faithfulness, gentleness, and self-control. Against such things there is no law.",
+        "translation": "BSB",
+        "isExcerpt": false
       },
       "explanation": [
         "The Fruit of the Spirit describes the character the Holy Spirit grows in believers. The image is about life producing fruit, not scoring enough points to earn God's love.",
@@ -985,8 +985,8 @@
         "passageId": "beatitudes:passage:1",
         "verseStart": 9,
         "verseEnd": 9,
-        "text": "Blessed are the peacemakers, for they will be called children of God.",
-        "translation": "NIV",
+        "text": "Blessed are the peacemakers, for they will be called sons of God.",
+        "translation": "BSB",
         "isExcerpt": false
       },
       "explanation": [
@@ -1081,9 +1081,9 @@
         "passageId": "parable-of-the-sower:passage:1",
         "verseStart": 23,
         "verseEnd": 23,
-        "text": "But the seed falling on good soil refers to someone who hears the word and understands it.",
-        "translation": "NIV",
-        "isExcerpt": true
+        "text": "But the seed sown on good soil is the one who hears the word and understands it. He indeed bears fruit and produces a crop—a hundredfold, sixtyfold, or thirtyfold.”",
+        "translation": "BSB",
+        "isExcerpt": false
       },
       "explanation": [
         "Jesus uses seed and soils to describe different responses to the word of the kingdom. The seed is received differently depending on the hearer's response.",
@@ -1182,8 +1182,8 @@
         "passageId": "prayer:passage:2",
         "verseStart": 17,
         "verseEnd": 17,
-        "text": "pray continually",
-        "translation": "NIV",
+        "text": "Pray without ceasing.",
+        "translation": "BSB",
         "isExcerpt": false
       },
       "explanation": [
@@ -1275,9 +1275,9 @@
         "passageId": "fasting:passage:1",
         "verseStart": 17,
         "verseEnd": 17,
-        "text": "But when you fast, put oil on your head and wash your face",
-        "translation": "NIV",
-        "isExcerpt": true
+        "text": "But when you fast, anoint your head and wash your face,",
+        "translation": "BSB",
+        "isExcerpt": false
       },
       "explanation": [
         "Biblical fasting involves voluntarily abstaining from food for a time as a spiritual response to God.",
@@ -1386,9 +1386,9 @@
         "passageId": "repentance:passage:1",
         "verseStart": 15,
         "verseEnd": 15,
-        "text": "Repent and believe the good news!",
-        "translation": "NIV",
-        "isExcerpt": true
+        "text": "“The time is fulfilled,” He said, “and the kingdom of God is near. Repent and believe in the gospel!”",
+        "translation": "BSB",
+        "isExcerpt": false
       },
       "explanation": [
         "Repentance means turning from sin towards God. It includes a change of mind and a change of direction.",
@@ -1488,8 +1488,8 @@
         "passageId": "worship:passage:1",
         "verseStart": 24,
         "verseEnd": 24,
-        "text": "God is spirit, and his worshipers must worship in the Spirit and in truth.",
-        "translation": "NIV",
+        "text": "God is Spirit, and His worshipers must worship Him in spirit and in truth.”",
+        "translation": "BSB",
         "isExcerpt": false
       },
       "explanation": [
@@ -1589,9 +1589,9 @@
         "passageId": "stewardship:passage:1",
         "verseStart": 10,
         "verseEnd": 10,
-        "text": "Each of you should use whatever gift you have received to serve others",
-        "translation": "NIV",
-        "isExcerpt": true
+        "text": "As good stewards of the manifold grace of God, each of you should use whatever gift he has received to serve one another.",
+        "translation": "BSB",
+        "isExcerpt": false
       },
       "explanation": [
         "Stewardship is caring faithfully for gifts and responsibilities entrusted to us. In 1 Peter 4, the emphasis is on using received gifts to serve others.",
@@ -1693,8 +1693,8 @@
         "passageId": "forgiveness:passage:1",
         "verseStart": 32,
         "verseEnd": 32,
-        "text": "Be kind and compassionate to one another, forgiving each other, just as in Christ God forgave you.",
-        "translation": "NIV",
+        "text": "Be kind and tenderhearted to one another, forgiving each other just as in Christ God forgave you.",
+        "translation": "BSB",
         "isExcerpt": false
       },
       "explanation": [
@@ -1804,9 +1804,9 @@
         "passageId": "justice:passage:1",
         "verseStart": 8,
         "verseEnd": 8,
-        "text": "To act justly and to love mercy and to walk humbly with your God.",
-        "translation": "NIV",
-        "isExcerpt": true
+        "text": "He has shown you, O man, what is good. And what does the LORD require of you but to act justly, to love mercy, and to walk humbly with your God?",
+        "translation": "BSB",
+        "isExcerpt": false
       },
       "explanation": [
         "Justice means acting rightly and fairly, reflecting God's concern for truth and those who are vulnerable.",
@@ -1898,9 +1898,9 @@
         "passageId": "humility:passage:1",
         "verseStart": 3,
         "verseEnd": 3,
-        "text": "Do nothing out of selfish ambition or vain conceit. Rather, in humility value others above yourselves",
-        "translation": "NIV",
-        "isExcerpt": true
+        "text": "Do nothing out of selfish ambition or empty pride, but in humility consider others more important than yourselves.",
+        "translation": "BSB",
+        "isExcerpt": false
       },
       "explanation": [
         "Humility is an honest posture before God and a willingness to consider the needs of others. It does not require pretending that gifts or responsibilities do not exist.",
@@ -2000,9 +2000,9 @@
         "passageId": "covenant:passage:2",
         "verseStart": 20,
         "verseEnd": 20,
-        "text": "This cup is the new covenant in my blood, which is poured out for you.",
-        "translation": "NIV",
-        "isExcerpt": true
+        "text": "In the same way, after supper He took the cup, saying, “This cup is the new covenant in My blood, which is poured out for you.",
+        "translation": "BSB",
+        "isExcerpt": false
       },
       "explanation": [
         "A covenant is a committed relationship established by God, with promises and responsibilities that shape the biblical story.",
@@ -2112,9 +2112,9 @@
         "passageId": "kingdom-of-god:passage:3",
         "verseStart": 33,
         "verseEnd": 33,
-        "text": "But seek first his kingdom and his righteousness",
-        "translation": "NIV",
-        "isExcerpt": true
+        "text": "But seek first the kingdom of God and His righteousness, and all these things will be added unto you.",
+        "translation": "BSB",
+        "isExcerpt": false
       },
       "explanation": [
         "The Kingdom of God concerns God's reign. Jesus announces its arrival, and Christians await its future fulfilment.",
@@ -2215,9 +2215,9 @@
         "passageId": "redemption:passage:1",
         "verseStart": 7,
         "verseEnd": 7,
-        "text": "In him we have redemption through his blood, the forgiveness of sins",
-        "translation": "NIV",
-        "isExcerpt": true
+        "text": "In Him we have redemption through His blood, the forgiveness of our trespasses, according to the riches of His grace",
+        "translation": "BSB",
+        "isExcerpt": false
       },
       "explanation": [
         "Redemption describes being set free through Jesus. Ephesians 1 connects it with the forgiveness of sins and the riches of God's grace.",
@@ -2308,9 +2308,9 @@
         "passageId": "spiritual-warfare:passage:1",
         "verseStart": 12,
         "verseEnd": 12,
-        "text": "For our struggle is not against flesh and blood",
-        "translation": "NIV",
-        "isExcerpt": true
+        "text": "For our struggle is not against flesh and blood, but against the rulers, against the authorities, against the powers of this world’s darkness, and against the spiritual forces of evil in the heavenly realms.",
+        "translation": "BSB",
+        "isExcerpt": false
       },
       "explanation": [
         "Spiritual warfare concerns resisting spiritual evil through dependence on God, faithfulness and prayer.",
@@ -2422,9 +2422,9 @@
         "passageId": "integrity:passage:1",
         "verseStart": 2,
         "verseEnd": 2,
-        "text": "The one whose walk is blameless, who does what is righteous, who speaks the truth from their heart",
-        "translation": "NIV",
-        "isExcerpt": true
+        "text": "He who walks with integrity and practices righteousness, who speaks the truth from his heart,",
+        "translation": "BSB",
+        "isExcerpt": false
       },
       "explanation": [
         "Integrity is a life that is truthful and coherent before God. It is not a claim of sinless perfection; it includes honest confession, repentance and a willingness to be corrected.",
@@ -2538,9 +2538,9 @@
         "passageId": "wisdom:passage:1",
         "verseStart": 5,
         "verseEnd": 5,
-        "text": "If any of you lacks wisdom, you should ask God, who gives generously to all without finding fault",
-        "translation": "NIV",
-        "isExcerpt": true
+        "text": "Now if any of you lacks wisdom, he should ask God, who gives generously to all without finding fault, and it will be given to him.",
+        "translation": "BSB",
+        "isExcerpt": false
       },
       "explanation": [
         "Biblical wisdom is more than information or cleverness. It seeks God's perspective and applies truth carefully to the situation in front of us.",

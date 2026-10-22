@@ -24,7 +24,7 @@ for (const book of books) {
   assert.ok(fallback.includes(escapeHtml(book.summary)), `${book.title} missing static summary`);
   assert.ok(fallback.includes(escapeHtml(book.takeaway)), `${book.title} missing takeaway`);
   assert.ok(fallback.includes(`href="${escapeHtml(scriptureUrl(book.passage))}"`), `${book.title} has incorrect Scripture link`);
-  assert.ok(fallback.includes(`Read ${escapeHtml(scriptureReference(book.passage))} (NIV)`));
+  assert.ok(fallback.includes(`Read ${escapeHtml(scriptureReference(book.passage))} (BSB)`));
   assert.ok(fallback.includes(`href="${book.sourceUrl}"`));
 }
 console.log(`Verified modal triggers and static summaries for all ${books.length} prophetic books.`);

@@ -1,4 +1,4 @@
-/** Curated editorial paraphrases, not quotations from the NIV translation. */
+/** Curated editorial paraphrases, not quotations from the BSB translation. */
 export const PSALMS_CONCEPT_MAPPING = {
   book: "Psalms",
   conceptSlugs: ["prayer", "worship"],
@@ -17,7 +17,7 @@ export const PSALMS_GRACE_GUARDRAIL =
 
 /** Show only within the parent page's closed introduction disclosure. */
 export const PSALMS_SELECTION_NOTE =
-  "These selected psalms and verse highlights are starting points for exploring the collection, not all 150 psalms. The themes overlap. Summaries are original paraphrases; use the Scripture links to read the NIV text and each complete psalm.";
+  "These selected psalms and verse highlights are starting points for exploring the collection, not all 150 psalms. The themes overlap. Summaries are original paraphrases; use the Scripture links to read the BSB text and each complete psalm.";
 
 export const PSALMS_CATEGORIES = [
   {"slug": "trust-and-refuge", "title": "Trust & refuge", "description": "Find words for trusting God amid uncertainty."},
@@ -120,9 +120,9 @@ export function psalmVerseReference(verseStart: number, verseEnd?: number): stri
 
 export function psalmVerseUrl(psalm: number, verseStart: number, verseEnd?: number): string {
   const reference = `Psalm ${psalm}:${psalmVerseReference(verseStart, verseEnd)}`;
-  return `https://www.biblegateway.com/passage/?search=${encodeURIComponent(reference)}&version=NIV`;
+  return `https://www.biblegateway.com/passage/?search=${encodeURIComponent(reference)}&version=BSB`;
 }
 
 export function psalmUrl(psalm: number): string {
-  return `https://www.biblegateway.com/passage/?search=${encodeURIComponent(`Psalm ${psalm}`)}&version=NIV`;
+  return `https://www.biblegateway.com/passage/?search=${encodeURIComponent(`Psalm ${psalm}`)}&version=BSB`;
 }

@@ -24,7 +24,7 @@ function SummaryContent({ book }: { book: ProphetBook }) {
       </div>
       <div className="flex flex-col gap-3 border-t border-border pt-4">
         <a className="text-link leading-6" href={scriptureUrl(book.passage)} target="_blank" rel="noreferrer">
-          Read {scriptureReference(book.passage)} (NIV)
+          Read {scriptureReference(book.passage)} (BSB)
         </a>
         <a className="text-link text-sm leading-6" href={book.sourceUrl} target="_blank" rel="noreferrer">
           Book overview at BibleProject

@@ -74,7 +74,7 @@ test("verse links target the specific passage and chapter links target the whole
     for (const link of [passage, chapter]) {
       assert.equal(link.origin, "https://www.biblegateway.com");
       assert.equal(link.pathname, "/passage/");
-      assert.equal(link.searchParams.get("version"), "NIV");
+      assert.equal(link.searchParams.get("version"), "BSB");
     }
     assert.equal(passage.searchParams.get("search"), `Proverbs ${entry.chapter}:${entry.verse}`);
     assert.equal(chapter.searchParams.get("search"), `Proverbs ${entry.chapter}`);

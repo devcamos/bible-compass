@@ -7,7 +7,7 @@ export type VerseOfTheDayDraft = {
   translation?: string;
 };
 
-const DEFAULT_TRANSLATION = "NIV";
+const DEFAULT_TRANSLATION = "BSB";
 
 /** Normalized verse-of-the-day row passed into UI and rotation logic. */
 export class VerseOfTheDay implements VerseOfTheDayEntry {

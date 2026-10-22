@@ -249,7 +249,7 @@ test("every concept has a key verse, explanation and traceable living guidance",
     const passages = new Map(concept.scripture.map((passage) => [passage.id, passage]));
     const key = concept.keyVerse;
     assert.ok(key && key.text.trim().length > 0, `${concept.id} missing key verse`);
-    assert.equal(key.translation, "NIV");
+    assert.equal(key.translation, "BSB");
     assert.equal(typeof key.isExcerpt, "boolean");
     const source = passages.get(key.passageId);
     assert.ok(source, `${concept.id} key verse has no source passage`);
@@ -317,7 +317,7 @@ test("shared Scripture links preserve book names and exact verse ranges", () => 
     const url = new URL(scriptureUrl(passage));
     assert.equal(url.hostname, "www.biblegateway.com");
     assert.equal(url.searchParams.get("search"), expected);
-    assert.equal(url.searchParams.get("version"), "NIV");
+    assert.equal(url.searchParams.get("version"), "BSB");
   }
 });
 
@@ -409,4 +409,10 @@ test("prophetic summaries cover every listed Major and Minor Prophet book", () =
     assert.ok(book.passage.verseEnd >= book.passage.verseStart);
     assert.equal(book.sourceUrl, `https://bibleproject.com/guides/book-of-${book.id}/`);
   }
+});
+
+test("site footer carries the BSB public-domain attribution", async () => {
+  const { readFile } = await import("node:fs/promises");
+  const footer = await readFile(new URL("../src/components/SiteFooter.tsx", import.meta.url), "utf8");
+  assert.ok(footer.includes("Scripture from the Berean Standard Bible (BSB), public domain."));
 });

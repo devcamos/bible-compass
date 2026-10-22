@@ -55,12 +55,12 @@ export default async function PsalmsPassagePage({ params }: Props) {
       <section className="mb-7 rounded-2xl border border-border bg-card p-5" aria-label="Passage summary">
         <p className="m-0 mb-3 text-sm text-muted-foreground">Paraphrased summary · not a Bible quotation</p>
         <p className="bc-title m-0 mb-4 text-2xl leading-snug">{verse.summary}</p>
-        <a href={psalmVerseUrl(verse.psalm, verse.verseStart, verse.verseEnd)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center text-link underline underline-offset-4" aria-label={`Read Psalm ${reference} in NIV on Bible Gateway (opens in a new tab)`}>Read Psalm {reference} (NIV) ↗</a>
+        <a href={psalmVerseUrl(verse.psalm, verse.verseStart, verse.verseEnd)} target="_blank" rel="noopener noreferrer" className="inline-flex min-h-11 items-center text-link underline underline-offset-4" aria-label={`Read Psalm ${reference} in BSB on Bible Gateway (opens in a new tab)`}>Read Psalm {reference} (BSB) ↗</a>
       </section>
       <section aria-labelledby="context-heading">
         <h2 id="context-heading" className="bc-title bc-heading mb-3">Consider the context</h2>
         <p className="m-0 leading-7 text-muted-foreground">{verse.context}</p>
-        <a href={psalmUrl(verse.psalm)} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex min-h-11 items-center text-link underline underline-offset-4" aria-label={`Read the full Psalm ${verse.psalm} in NIV on Bible Gateway (opens in a new tab)`}>Read Psalm {verse.psalm} →</a>
+        <a href={psalmUrl(verse.psalm)} target="_blank" rel="noopener noreferrer" className="mt-2 inline-flex min-h-11 items-center text-link underline underline-offset-4" aria-label={`Read the full Psalm ${verse.psalm} in BSB on Bible Gateway (opens in a new tab)`}>Read Psalm {verse.psalm} →</a>
         <p className="mt-1 text-sm text-muted-foreground">Scripture links open Bible Gateway in a new tab.</p>
       </section>
       <section className="mt-7 border-t border-border pt-6" aria-labelledby="explore-heading">

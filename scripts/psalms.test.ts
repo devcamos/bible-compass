@@ -15,7 +15,7 @@ import {
   psalmVerseUrl,
 } from "../src/content/psalms";
 
-// NIV verse counts for the selected Psalms; ranges use English numbering.
+// English verse counts for the selected Psalms; ranges use English numbering.
 const VERSE_COUNTS: Record<number, number> = {
   1: 6, 8: 9, 10: 18, 13: 6, 19: 14, 23: 6, 30: 12,
   32: 11, 42: 11, 46: 11, 51: 19, 72: 20, 82: 8,
@@ -94,7 +94,7 @@ test("Scripture links preserve exact single verses, ranges and whole Psalms", ()
     for (const url of [passage, whole]) {
       assert.equal(url.origin, "https://www.biblegateway.com");
       assert.equal(url.pathname, "/passage/");
-      assert.equal(url.searchParams.get("version"), "NIV");
+      assert.equal(url.searchParams.get("version"), "BSB");
     }
     const range = `${verse.verseStart}${verse.verseEnd === undefined ? "" : `-${verse.verseEnd}`}`;
     assert.equal(passage.searchParams.get("search"), `Psalm ${verse.psalm}:${range}`);
