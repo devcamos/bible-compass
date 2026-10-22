@@ -1,0 +1,5 @@
+# Changes to these paths always need review by Devonte (@devcamos).
+/.github/ @devcamos
+/migrations/ @devcamos
+/src/lib/notifications/scheduler-auth.ts @devcamos
+/src/lib/notifications/push.ts @devcamos
