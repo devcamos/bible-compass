@@ -27,6 +27,9 @@ run(process.execPath, [
 const bin = join(root, "node_modules", ".bin");
 run(process.execPath, ["--import", "tsx", join(root, "scripts/pwa-notifications.test.ts")]);
 run(process.execPath, ["--import", "tsx", join(root, "scripts/app-updates.test.ts")]);
+run(process.execPath, ["--import", "tsx", join(root, "scripts/feedback.test.ts")]);
+run(process.execPath, ["--import", "tsx", join(root, "scripts/feedback-client.test.ts")]);
+run(process.execPath, ["--import", "tsx", join(root, "scripts/feedback-outbox.test.ts")]);
 run(process.execPath, ["--import", "tsx", "--test", join(root, "scripts/proverbs.test.ts")]);
 run(process.execPath, ["--import", "tsx", "--test", join(root, "scripts/psalms.test.ts")]);
 run(join(bin, "next"), ["typegen"]);

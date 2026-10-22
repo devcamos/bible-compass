@@ -1,0 +1,39 @@
+name: Feedback triage delivery
+
+on:
+  schedule:
+    - cron: '7,22,37,52 * * * *'
+  workflow_dispatch:
+
+permissions:
+  id-token: write
+
+concurrency:
+  group: feedback-triage-delivery
+  cancel-in-progress: false
+
+jobs:
+  deliver:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Deliver queued feedback
+        shell: bash
+        run: |
+          set -euo pipefail
+          umask 077
+          TOKEN_FILE="$RUNNER_TEMP/bible-compass-feedback-oidc.json"
+          trap 'rm -f "$TOKEN_FILE"' EXIT
+          curl --fail --silent --show-error --max-time 30 --output "$TOKEN_FILE" --config - <<CURL
+          url = "${ACTIONS_ID_TOKEN_REQUEST_URL}&audience=bible-compass-feedback"
+          header = "Authorization: Bearer ${ACTIONS_ID_TOKEN_REQUEST_TOKEN}"
+          CURL
+          python3 - "$TOKEN_FILE" <<'PY' | curl --fail-with-body --silent --show-error --max-time 65 --config -
+          import json, sys
+          with open(sys.argv[1]) as source:
+              token = json.load(source)["value"]
+          print('url = "https://bible-compass-three.vercel.app/api/cron/feedback"')
+          print('request = "POST"')
+          print('header = "Authorization: Bearer ' + token + '"')
+          PY

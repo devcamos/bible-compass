@@ -51,6 +51,10 @@ jobs:
           node -e 'const fs = require("fs"); const health = JSON.parse(fs.readFileSync("/tmp/health.json", "utf8")); if (health.ok !== true || health.product !== "bible-compass") process.exit(1)'
           curl --fail --silent --show-error http://127.0.0.1:3003/ > /dev/null
           curl --fail --silent --show-error http://127.0.0.1:3003/how-to-use > /dev/null
+          curl --fail --silent --show-error http://127.0.0.1:3003/feedback > /dev/null
+          # Optional feedback services fail closed when CI has no private storage.
+          test "$(curl --silent -o /dev/null -w '%{http_code}' http://127.0.0.1:3003/api/ratings/summary)" = 503
+          test "$(curl --silent -X POST -o /dev/null -w '%{http_code}' http://127.0.0.1:3003/api/cron/feedback)" = 401
           curl --fail --silent --show-error http://127.0.0.1:3003/proverbs > /dev/null
           curl --fail --silent --show-error http://127.0.0.1:3003/proverbs/words-and-speech > /dev/null
           curl --fail --silent --show-error http://127.0.0.1:3003/proverbs/verses/proverbs-15-1 > /dev/null
