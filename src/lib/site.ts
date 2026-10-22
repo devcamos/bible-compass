@@ -3,7 +3,7 @@ export const SITE_NAME = "Bible Compass";
 export const SITE_DESCRIPTION =
   "Meet Scripture with an open heart, understand it in context, and take one faithful step at a time.";
 
-/** Default Buy Me a Coffee link for Devonte's personal sole-trader project. */
+/** Default Buy Me a Coffee link for the maintainer's personal sole-trader project. */
 export const DEFAULT_SUPPORT_URL = "https://buymeacoffee.com/devoamos";
 
 export function getSiteUrl(): string {
