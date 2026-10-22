@@ -66,5 +66,8 @@ REVOKE ALL ON feedback_submissions, feedback_contacts, feedback_outbox, app_rati
 GRANT USAGE ON SCHEMA public TO feedback_runtime;
 GRANT SELECT, INSERT ON feedback_submissions, feedback_contacts TO feedback_runtime;
 GRANT SELECT, INSERT, UPDATE ON app_ratings, feedback_outbox, feedback_rate_limits TO feedback_runtime;
+-- Role defaults work across Neon transaction pooling; startup GUC parameters do not.
+ALTER ROLE feedback_runtime SET statement_timeout = '5s';
+ALTER ROLE feedback_runtime SET idle_in_transaction_session_timeout = '10s';
 -- Expired-rate cleanup and retention deletion are operator/worker maintenance, not public API privileges.
 COMMIT;

@@ -1,7 +1,8 @@
 import assert from "node:assert/strict";
 import { test } from "node:test";
-import type { Pool } from "pg";
-import { feedbackReady } from "../src/lib/feedback/db";
+import { Client, type Pool } from "pg";
+import { feedbackPoolConfig, feedbackReady } from "../src/lib/feedback/db";
+import { feedbackFailureCode } from "../src/lib/feedback/handlers";
 import { feedbackLimits, FeedbackRateError, limitFeedbackRequest } from "../src/lib/feedback/rate-limit";
 import { feedbackJson, FeedbackRequestError, readFeedbackBody, sameFeedbackOrigin } from "../src/lib/feedback/request";
 import { loadRatingSummary, saveFeedback, FeedbackConflictError, RatingConflictError, saveRating } from "../src/lib/feedback/service";
@@ -15,6 +16,22 @@ const input = { idempotencyKey: key, category: "bug", description: "The back lin
 const token = Buffer.alloc(32, 7).toString("base64url");
 const request = (body: unknown, headers: HeadersInit = {}) => new Request("https://compass.test/api/feedback", {
   method: "POST", headers: { origin: "https://compass.test", "content-type": "application/json", ...headers }, body: JSON.stringify(body),
+});
+
+test("feedback pool sends only PgBouncer-supported startup parameters", () => {
+  const config = feedbackPoolConfig("postgresql://fixture:fixture@localhost:5432/feedback");
+  const client = new Client(config) as unknown as { getStartupConf(): Record<string, unknown> };
+  const allowed = new Set(["user", "database", "application_name", "client_encoding", "datestyle", "timezone", "standard_conforming_strings"]);
+  assert.ok(Object.keys(client.getStartupConf()).every(name => allowed.has(name)));
+  assert.equal(config.query_timeout, 6_000);
+});
+
+test("service diagnostics emit fixed safe codes only, not provider details", () => {
+  assert.equal(feedbackFailureCode({ code: "42501", message: "private SQL and credentials" }), "42501");
+  assert.equal(feedbackFailureCode({ code: "08P01" }), "08P01");
+  assert.equal(feedbackFailureCode({ code: "ENOTFOUND" }), "ENOTFOUND");
+  assert.equal(feedbackFailureCode({ code: "secret=private-value", message: "private" }), "UNKNOWN");
+  assert.equal(feedbackFailureCode(new Error("Sensitive details must not be logged")), "UNKNOWN");
 });
 
 test("feedback intake is anonymous, bounded and allowlisted; no hidden diagnostics", () => {
