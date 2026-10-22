@@ -2,6 +2,14 @@
 
 Public, static-first reader for Scripture-backed paths. Notion stays the private editorial workspace. Readers never need a Notion account.
 
+## Stack
+
+- Next.js 16 (App Router, static-first), React 19, TypeScript, Tailwind CSS 4
+- Content lives in `src/content/` (copied from the editorial workspace; no runtime fetching)
+- Installable PWA with opt-in Verse of the Day reminders (small isolated notification store)
+- Node test runner content-contract tests, ESLint, Playwright; deployed on Vercel
+
+
 **Local:** http://localhost:3003  
 **GitHub:** https://github.com/devcamos/bible-compass  
 **Surface:** local + Vercel **Preview** from PR branches.  
@@ -46,3 +54,11 @@ installation guidance and opt-in Verse of the Day reminders at a chosen time
 and timezone (default: 08:00 in the device's timezone).
 Reminders use a small, isolated notification database; reading remains static-first
 and needs no account or database. See [PWA architecture and operations](docs/pwa-notifications.md).
+
+## Security
+
+Please report vulnerabilities privately. See [SECURITY.md](SECURITY.md).
+
+## License
+
+Proprietary. Copyright Devonte Amos, all rights reserved. See [LICENSE](LICENSE).
