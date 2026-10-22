@@ -1,3 +1,5 @@
+import { bsbUrl } from "@/lib/scripture-mapping.mjs";
+
 /** Curated editorial paraphrases, not quotations from the BSB translation. */
 export const PSALMS_CONCEPT_MAPPING = {
   book: "Psalms",
@@ -119,10 +121,10 @@ export function psalmVerseReference(verseStart: number, verseEnd?: number): stri
 }
 
 export function psalmVerseUrl(psalm: number, verseStart: number, verseEnd?: number): string {
-  const reference = `Psalm ${psalm}:${psalmVerseReference(verseStart, verseEnd)}`;
-  return `https://www.biblegateway.com/passage/?search=${encodeURIComponent(reference)}&version=BSB`;
+  void verseEnd;
+  return bsbUrl("Psalm", psalm, verseStart);
 }
 
 export function psalmUrl(psalm: number): string {
-  return `https://www.biblegateway.com/passage/?search=${encodeURIComponent(`Psalm ${psalm}`)}&version=BSB`;
+  return bsbUrl("Psalm", psalm);
 }

@@ -1,3 +1,5 @@
+import { bsbUrl } from "@/lib/scripture-mapping.mjs";
+
 /** Curated editorial summaries, not quotations from the BSB translation. */
 export const PROVERBS_CONCEPT_MAPPING = {
   book: "Proverbs",
@@ -118,11 +120,9 @@ export function getProverbsChapterGroups(slug: string): { chapter: number; verse
 }
 
 export function proverbsVerseUrl(chapter: number, verseNumber: number): string {
-  const reference = `Proverbs ${chapter}:${verseNumber}`;
-  return `https://www.biblegateway.com/passage/?search=${encodeURIComponent(reference)}&version=BSB`;
+  return bsbUrl("Proverbs", chapter, verseNumber);
 }
 
 export function proverbsChapterUrl(chapter: number): string {
-  const reference = `Proverbs ${chapter}`;
-  return `https://www.biblegateway.com/passage/?search=${encodeURIComponent(reference)}&version=BSB`;
+  return bsbUrl("Proverbs", chapter);
 }

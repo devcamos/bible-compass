@@ -24,7 +24,7 @@ Schema 1.2.0 retains `keyVerse`, `explanation` and `livingGuidance`, and adds re
 
 ## Scripture mapping engine
 
-`guidancePassages` delegates to the shared `resolveScriptureReferences` engine. It resolves the action's approved passage IDs and narrows them to the curated verse ranges. The reader uses those resolved ranges for both the displayed reference and Bible Gateway link. It does not fall back to displaying a whole context passage when an action has no specific mapping.
+`guidancePassages` delegates to the shared `resolveScriptureReferences` engine. It resolves the action's approved passage IDs and narrows them to the curated verse ranges. The reader uses those resolved ranges for both the displayed reference and Bible Hub BSB link. It does not fall back to displaying a whole context passage when an action has no specific mapping.
 
 When adding a concept or action, identify the verses that support the idea and add explicit references within the registered source ranges. Add a source passage if the supporting verse is not registered. Multiple verse references are supported when an idea needs them; select Scripture on its meaning, rather than inventing different verses just to make references unique. The wider context passage and key verse stay independent from the action reference.
 

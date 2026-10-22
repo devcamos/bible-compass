@@ -8,9 +8,27 @@ export function scriptureReference(passage) {
   return `${passage.book} ${passage.chapter}:${passage.verseStart}${end}`;
 }
 
+const BOOK_SLUG_OVERRIDES = { psalm: "psalms", "song of songs": "songs", "song of solomon": "songs" };
+
+/** Bible Hub path slug, e.g. "1 Corinthians" -> "1_corinthians", "Psalm" -> "psalms". @param {string} book */
+export function bibleHubSlug(book) {
+  const key = book.trim().toLowerCase().replace(/\s+/g, " ");
+  return BOOK_SLUG_OVERRIDES[key] ?? key.replaceAll(" ", "_");
+}
+
+/**
+ * The single builder for Scripture links: Bible Hub's English BSB chapter page,
+ * anchored to the first verse when one is given.
+ * @param {string} book @param {number} chapter @param {number} [verse]
+ */
+export function bsbUrl(book, chapter, verse) {
+  const anchor = verse === undefined ? "" : `#${verse}`;
+  return `https://biblehub.com/bsb/${bibleHubSlug(book)}/${chapter}.htm${anchor}`;
+}
+
 /** @param {CanonicalPassage} passage */
 export function scriptureUrl(passage) {
-  return `https://www.biblegateway.com/passage/?search=${encodeURIComponent(scriptureReference(passage))}&version=BSB`;
+  return bsbUrl(passage.book, passage.chapter, passage.verseStart);
 }
 
 /**

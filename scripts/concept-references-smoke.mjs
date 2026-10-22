@@ -24,10 +24,9 @@ for (const concept of ontology.concepts) {
       const end = passage.verseEnd === passage.verseStart ? "" : `-${passage.verseEnd}`;
       const reference = `${passage.book} ${passage.chapter}:${passage.verseStart}${end}`;
       const url = new URL(links[linkIndex][1].replaceAll("&amp;", "&"));
-      assert.equal(url.origin, "https://www.biblegateway.com", action.id);
-      assert.equal(url.pathname, "/passage/", action.id);
-      assert.equal(url.searchParams.get("search"), reference, action.id);
-      assert.equal(url.searchParams.get("version"), "BSB", action.id);
+      assert.equal(url.origin, "https://biblehub.com", action.id);
+      assert.equal(url.pathname, `/bsb/${passage.book.toLowerCase().replaceAll(" ", "_").replace(/^psalm$/, "psalms")}/${passage.chapter}.htm`, action.id);
+      assert.equal(url.hash, `#${passage.verseStart}`, action.id);
       assert.equal(links[linkIndex][2].replace(/<[^>]*>/g, ""), reference, action.id);
     }
     actionCount += 1;

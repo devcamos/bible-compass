@@ -309,15 +309,14 @@ test("Scripture engine rejects missing, unknown, invalid and duplicate mappings"
 });
 
 test("shared Scripture links preserve book names and exact verse ranges", () => {
-  for (const [passage, expected] of [
-    [{ book: "Galatians", chapter: 5, verseStart: 16, verseEnd: 16 }, "Galatians 5:16"],
-    [{ book: "1 Peter", chapter: 1, verseStart: 18, verseEnd: 19 }, "1 Peter 1:18-19"],
+  for (const [passage, expected, url] of [
+    [{ book: "Galatians", chapter: 5, verseStart: 16, verseEnd: 16 }, "Galatians 5:16", "https://biblehub.com/bsb/galatians/5.htm#16"],
+    [{ book: "1 Peter", chapter: 1, verseStart: 18, verseEnd: 19 }, "1 Peter 1:18-19", "https://biblehub.com/bsb/1_peter/1.htm#18"],
+    [{ book: "Psalm", chapter: 23, verseStart: 1, verseEnd: 1 }, "Psalm 23:1", "https://biblehub.com/bsb/psalms/23.htm#1"],
+    [{ book: "Song of Songs", chapter: 2, verseStart: 4, verseEnd: 4 }, "Song of Songs 2:4", "https://biblehub.com/bsb/songs/2.htm#4"],
   ]) {
     assert.equal(scriptureReference(passage), expected);
-    const url = new URL(scriptureUrl(passage));
-    assert.equal(url.hostname, "www.biblegateway.com");
-    assert.equal(url.searchParams.get("search"), expected);
-    assert.equal(url.searchParams.get("version"), "BSB");
+    assert.equal(scriptureUrl(passage), url);
   }
 });
 

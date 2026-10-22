@@ -92,12 +92,10 @@ test("Scripture links preserve exact single verses, ranges and whole Psalms", ()
     const passage = new URL(psalmVerseUrl(verse.psalm, verse.verseStart, verse.verseEnd));
     const whole = new URL(psalmUrl(verse.psalm));
     for (const url of [passage, whole]) {
-      assert.equal(url.origin, "https://www.biblegateway.com");
-      assert.equal(url.pathname, "/passage/");
-      assert.equal(url.searchParams.get("version"), "BSB");
+      assert.equal(url.origin, "https://biblehub.com");
+      assert.equal(url.pathname, `/bsb/psalms/${verse.psalm}.htm`);
     }
-    const range = `${verse.verseStart}${verse.verseEnd === undefined ? "" : `-${verse.verseEnd}`}`;
-    assert.equal(passage.searchParams.get("search"), `Psalm ${verse.psalm}:${range}`);
-    assert.equal(whole.searchParams.get("search"), `Psalm ${verse.psalm}`);
+    assert.equal(passage.hash, `#${verse.verseStart}`);
+    assert.equal(whole.hash, "");
   }
 });
