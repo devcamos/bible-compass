@@ -1,4 +1,6 @@
-/** Curated editorial summaries, not quotations from the NIV translation. */
+import { bsbUrl } from "@/lib/scripture-mapping.mjs";
+
+/** Curated editorial summaries, not quotations from the BSB translation. */
 export const PROVERBS_CONCEPT_MAPPING = {
   book: "Proverbs",
   conceptSlug: "wisdom",
@@ -17,7 +19,7 @@ export const PROVERBS_GRACE_GUARDRAIL =
   "Wisdom guides our response to God's grace. It is not a way to earn his love, and hardship is not proof that someone has failed to live wisely.";
 
 export const PROVERBS_SELECTION_NOTE =
-  "A curated selection of passages, not a complete catalogue of Proverbs. Chapters contain several themes; these selections highlight the chosen category. All summaries are original paraphrases. Read the linked NIV passage on Bible Gateway for the Scripture text.";
+  "A curated selection of passages, not a complete catalogue of Proverbs. Chapters contain several themes; these selections highlight the chosen category. All summaries are original paraphrases. Read the linked BSB passage on Bible Gateway for the Scripture text.";
 
 export const PROVERBS_CATEGORIES = [
   { slug: "words-and-speech", title: "Words & speech", description: "Listen carefully and speak with truth and gentleness.", icon: "💬" },
@@ -118,11 +120,9 @@ export function getProverbsChapterGroups(slug: string): { chapter: number; verse
 }
 
 export function proverbsVerseUrl(chapter: number, verseNumber: number): string {
-  const reference = `Proverbs ${chapter}:${verseNumber}`;
-  return `https://www.biblegateway.com/passage/?search=${encodeURIComponent(reference)}&version=NIV`;
+  return bsbUrl("Proverbs", chapter, verseNumber);
 }
 
 export function proverbsChapterUrl(chapter: number): string {
-  const reference = `Proverbs ${chapter}`;
-  return `https://www.biblegateway.com/passage/?search=${encodeURIComponent(reference)}&version=NIV`;
+  return bsbUrl("Proverbs", chapter);
 }

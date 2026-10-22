@@ -1,6 +1,6 @@
 # Prophetic book summaries
 
-The Components of the Bible page offers a short summary for all 17 books in its Major and Minor Prophets lists. Selecting a book opens a small native dialog. It shows a summary, three themes, a practical takeaway, an NIV passage link and the BibleProject guide used for editorial research. Major and minor describe the length of the collections, not their importance.
+The Components of the Bible page offers a short summary for all 17 books in its Major and Minor Prophets lists. Selecting a book opens a small native dialog. It shows a summary, three themes, a practical takeaway, an BSB passage link and the BibleProject guide used for editorial research. Major and minor describe the length of the collections, not their importance.
 
 ## Content
 
