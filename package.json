@@ -5,6 +5,9 @@
   "overrides": {
     "@next/eslint-plugin-next": {
       "fast-glob": "npm:tinyglobby@0.2.17"
+    },
+    "@vercel/cli-config": {
+      "zod": "4.6.7"
     }
   },
   "scripts": {
