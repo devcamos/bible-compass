@@ -5,7 +5,7 @@ import {
   feedbackReloadSafe, loadFeedbackDraft, prepareFeedbackAttempt, rememberFeedbackDraft, saveFeedbackDraft, setFeedbackReloadUnsafe,
 } from "../src/lib/feedback/client-draft";
 import { parseAppRatingSummary, retryAfterAt, randomRatingToken } from "../src/lib/feedback/client-request";
-import { APP_RATING_KEY, loadOwnAppRating, prepareOwnRatingCommand, recalledOwnAppRating, saveOwnAppRating } from "../src/lib/feedback/client-rating";
+import { APP_RATING_KEY, loadOwnAppRating, prepareOwnRatingCommand, prepareStoredRatingCommand, recalledOwnAppRating, saveOwnAppRating, withRatingIdentityLock } from "../src/lib/feedback/client-rating";
 
 const key = "6dbf653f-c730-4ed6-9464-5d67edc01d33";
 const nextKey = "0eb25f60-b275-45d1-b385-05bbebd9b774";
@@ -112,4 +112,36 @@ test("lost-ack rating retry preserves command revision and later selection issue
   const afterConflict = prepareOwnRatingCommand({ ...changed, pending: null, retryStars: 4 }, 4, 900);
   assert.equal(afterConflict.pending!.revision, 1002);
   assert.equal(afterConflict.retryStars, null);
+});
+
+test("already-open feedback tabs reuse the installation identity persisted by the first tab", () => {
+  const shared = storage();
+  const firstToken = randomRatingToken();
+  let tokenCreations = 0;
+  const first = prepareStoredRatingCommand(shared, null, 4, () => { tokenCreations++; return firstToken; }, 1000);
+  // The second panel mounted before the first save and still has a null snapshot.
+  const second = prepareStoredRatingCommand(shared, null, 5, () => { tokenCreations++; return randomRatingToken(); }, 1001);
+  assert.equal(second.identity.token, first.identity.token);
+  assert.equal(tokenCreations, 1);
+  assert.equal(second.identity.revision, 1001);
+  assert.equal(loadOwnAppRating(shared)!.token, firstToken);
+  // Another tab's fresher persisted state wins over a stale in-memory token.
+  const replacement = { ...second.identity, token: randomRatingToken(), stars: 5, revision: 1002, pending: null };
+  shared.setItem(APP_RATING_KEY, JSON.stringify(replacement));
+  assert.equal(loadOwnAppRating(shared)!.token, replacement.token);
+});
+
+test("simultaneous first saves serialize identity creation, with a safe unsupported-lock fallback", async () => {
+  const shared = storage();
+  let queue: Promise<unknown> = Promise.resolve();
+  const locks = { request: (_name: string, callback: () => unknown) => {
+    const result = queue.then(callback); queue = result.catch(() => {}); return result;
+  } } as Pick<LockManager, "request">;
+  let creations = 0;
+  const prepare = (stars: number) => prepareStoredRatingCommand(shared, null, stars, () => { creations++; return randomRatingToken(); }, 1000);
+  const [first, second] = await Promise.all([withRatingIdentityLock(locks, () => prepare(4)), withRatingIdentityLock(locks, () => prepare(5))]);
+  assert.equal(first.identity.token, second.identity.token);
+  assert.equal(creations, 1);
+  assert.equal(second.identity.revision, first.identity.revision + 1);
+  assert.equal(await withRatingIdentityLock(undefined, () => "fallback"), "fallback");
 });

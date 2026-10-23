@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { feedbackRequest, FeedbackRequestError, parseAppRatingSummary, randomRatingToken, type AppRatingSummary } from "@/lib/feedback/client-request";
-import { loadOwnAppRating, prepareOwnRatingCommand, recalledOwnAppRating, rememberOwnAppRating, saveOwnAppRating, type OwnAppRating, type RatingCommand } from "@/lib/feedback/client-rating";
+import { loadOwnAppRating, prepareStoredRatingCommand, recalledOwnAppRating, rememberOwnAppRating, saveOwnAppRating, withRatingIdentityLock, type OwnAppRating, type RatingCommand } from "@/lib/feedback/client-rating";
 import { useFeedbackRetryWait } from "@/components/FeedbackTimers";
 import styles from "./Feedback.module.css";
 
@@ -30,7 +30,7 @@ export function AppRatingPanel({ onBusyChange }: Readonly<{ onBusyChange: (busy:
     mounted.current = true;
     async function restore() {
       let restored = recalledOwnAppRating();
-      try { restored ??= loadOwnAppRating(window.localStorage); } catch { setStorageUnavailable(true); }
+      try { restored = loadOwnAppRating(window.localStorage); } catch { setStorageUnavailable(true); }
       if (!mounted.current) return;
       ownRating.current = restored;
       savedStarsRef.current = restored?.stars ?? null;
@@ -64,13 +64,23 @@ export function AppRatingPanel({ onBusyChange }: Readonly<{ onBusyChange: (busy:
     event.preventDefault();
     if (!ready || writePending.current || selected === null || selected === savedStarsRef.current && !ownRating.current?.pending && !needsConfirmation || writeWait > 0) return;
     const stars = selected, updating = savedStarsRef.current !== null;
+    writePending.current = true; setSaving(true); setSaveStatus(""); setSaveFailed(false); onBusyChange(true);
     let identity: OwnAppRating;
-    try { identity = prepareOwnRatingCommand(ownRating.current ?? { token: randomRatingToken(), stars: null, revision: 0, pending: null, retryStars: null }, stars); }
-    catch { setSaveFailed(true); setSaveStatus("We couldn’t prepare your rating. Please try again."); return; }
+    try {
+      const prepare = () => {
+        let storage: Pick<Storage, "getItem" | "setItem">;
+        try { storage = window.localStorage; } catch { storage = { getItem: () => null, setItem: () => { throw new Error("Storage unavailable"); } }; }
+        const command = prepareStoredRatingCommand(storage, ownRating.current, stars, randomRatingToken);
+        ownRating.current = command.identity; setPendingCommand(command.identity.pending); setStorageUnavailable(!command.persisted);
+        return command.identity;
+      };
+      identity = await withRatingIdentityLock(navigator.locks, prepare);
+    } catch {
+      writePending.current = false; setSaving(false); onBusyChange(false);
+      setSaveFailed(true); setSaveStatus("We couldn’t prepare your rating. Please try again."); return;
+    }
     const revision = identity.pending!.revision;
     // Keep the same token before sending, including when acknowledgement is lost.
-    persistOwn(identity);
-    writePending.current = true; setSaving(true); setSaveStatus(""); setSaveFailed(false); onBusyChange(true);
     const controller = new AbortController(); writeController.current = controller;
     try {
       const result = await feedbackRequest("/api/ratings", { method: "PUT", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ token: identity.token, stars, revision }) }, controller.signal);
