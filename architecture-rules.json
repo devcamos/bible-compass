@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "project": "Bible Compass",
+  "reviewPrinciples": [
+    "Report only findings supported by the changed files, diff, or diagnostic output.",
+    "Prefer small, actionable findings over speculative redesigns.",
+    "Do not treat generated files, lockfiles, or diagnostic noise as architectural violations by themselves.",
+    "Recommend dependency upgrades only when they add security or clear value; key-framework majors belong in a dedicated PR.",
+    "Scripture text and references must be accurate and attributed to their translation; content changes must keep the content contract passing.",
+    "Keep the app fast and accessible; daily verse delivery must be reliable."
+  ],
+  "rules": [
+    {
+      "id": "ARCH-001",
+      "severity": "high",
+      "title": "Keep scripture content accurate",
+      "description": "Verse text, references and translation attribution must match the source; content must satisfy scripts/content-contract.mjs.",
+      "evidence": [
+        "src/**",
+        "scripts/**",
+        "migrations/**"
+      ]
+    },
+    {
+      "id": "ARCH-002",
+      "severity": "high",
+      "title": "Protect user data and subscriptions",
+      "description": "Any email, reminder or account data must be validated, stored minimally and never exposed in logs or client bundles.",
+      "evidence": [
+        "src/**",
+        "migrations/**"
+      ]
+    },
+    {
+      "id": "ARCH-003",
+      "severity": "high",
+      "title": "Keep migrations safe",
+      "description": "Database migrations must be backward compatible and preserve existing data.",
+      "evidence": [
+        "migrations/**"
+      ]
+    },
+    {
+      "id": "ARCH-004",
+      "severity": "high",
+      "title": "Keep secrets out of outputs",
+      "description": "No secrets or tokens committed, logged or shipped to the browser.",
+      "evidence": [
+        "src/**",
+        "NEXT_PUBLIC_* usage",
+        ".github/workflows/**"
+      ]
+    },
+    {
+      "id": "ARCH-005",
+      "severity": "medium",
+      "title": "Keep scheduled jobs reliable",
+      "description": "Scheduled workflows (daily verse) must be idempotent and fail loudly.",
+      "evidence": [
+        ".github/workflows/**",
+        "scripts/**"
+      ]
+    },
+    {
+      "id": "ARCH-006",
+      "severity": "medium",
+      "title": "Preserve performance and accessibility",
+      "description": "Changes must not add heavy client bundles or regress accessibility of the shell.",
+      "evidence": [
+        "src/**",
+        "package.json"
+      ]
+    },
+    {
+      "id": "ARCH-007",
+      "severity": "medium",
+      "title": "Avoid dependency and module cycles",
+      "description": "New dependencies need a clear purpose; no circular imports.",
+      "evidence": [
+        "package.json",
+        "dependency-cruiser output"
+      ]
+    }
+  ]
+}
