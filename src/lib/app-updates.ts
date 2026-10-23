@@ -7,6 +7,7 @@ type UpdateEvent = "visibilitychange" | "focus" | "pageshow" | "online";
 export interface AppUpdateHost {
   isVisible(): boolean;
   isOnline(): boolean;
+  canReload?(): boolean;
   now(): number;
   fetch(url: string, init: RequestInit): Promise<Response>;
   storage: Pick<Storage, "getItem" | "setItem">;
@@ -60,6 +61,9 @@ export function startAppUpdateChecks(build: Build, host: AppUpdateHost): () => v
 
       const nextCommit = version.commit.toLowerCase();
       if (nextCommit === currentCommit) return;
+      // A pending write or an unsaved draft with blocked storage must survive
+      // foreground update checks. Try again on a later opening/focus event.
+      if (host.canReload && !host.canReload()) return;
 
       // A stale document must not cause a reload loop. This guard expires rather
       // than permanently suppressing the same update on a later app opening.

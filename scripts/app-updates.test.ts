@@ -31,6 +31,22 @@ function fixture(storage = new Map<string, string>()) {
   return { host, state, storage, listeners, timers, emit: (name: string) => { listeners.get(name)?.forEach(listener => listener()); } };
 }
 
+test("pending feedback writes and unpersisted drafts defer updates without consuming the reload guard", async () => {
+  const f = fixture();
+  let safe = false;
+  f.host.canReload = () => safe;
+  f.state.fetch = async () => response(payload(newCommit));
+  const stop = startAppUpdateChecks(build, f.host);
+  await flush();
+  assert.equal(f.state.reloads, 0);
+  assert.equal(f.storage.has(APP_UPDATE_STORAGE_KEY), false);
+  safe = true;
+  f.emit("focus");
+  await flush();
+  assert.equal(f.state.reloads, 1);
+  stop();
+});
+
 test("opens check current deployment without cache; same version never reloads", async () => {
   const f = fixture(); const stop = startAppUpdateChecks(build, f.host); await flush();
   assert.equal(f.state.calls.length, 1);
