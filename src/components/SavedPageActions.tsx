@@ -43,10 +43,10 @@ export function SavedPageActions({ path }: { path: string }) {
       requestAnimationFrame(() => { if (document.activeElement === document.body) undoRef.current?.focus(); });
     }
   }
-  return <div className="mt-4">
+  return <div className="bc-saved-surface mt-4">
     <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
       <button ref={buttonRef} type="button" className="bc-btn bc-btn--quiet inline-flex items-center gap-2 disabled:opacity-60" aria-pressed={saved} disabled={state !== "ready" || pending} onClick={() => { void toggle(); }}><BookmarkIcon />{pending ? "Saving…" : saved ? "Saved" : "Save page"}</button>
-      {saved && state === "ready" ? <Link href="/saved" prefetch={false} className="inline-flex min-h-11 items-center text-sm text-link underline underline-offset-4">View saved pages</Link> : null}
+      {entries.length > 0 && state === "ready" ? <Link href="/saved" prefetch={false} className="inline-flex min-h-11 items-center text-sm text-link underline underline-offset-4">View saved pages</Link> : null}
       {undo ? <button ref={undoRef} type="button" className="inline-flex min-h-11 items-center text-sm text-link underline underline-offset-4" disabled={state !== "ready" || pending} onClick={() => { void restore(); }}>Undo removal</button> : null}
     </div>
     <p className="m-0 mt-2 text-sm text-muted-foreground" role="status">{state === "loading" ? "Checking saved pages…" : notice}</p>
