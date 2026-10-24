@@ -31,6 +31,7 @@ run(process.execPath, ["--import", "tsx", join(root, "scripts/app-updates.test.t
 run(process.execPath, ["--import", "tsx", join(root, "scripts/feedback.test.ts")]);
 run(process.execPath, ["--import", "tsx", join(root, "scripts/feedback-client.test.ts")]);
 run(process.execPath, ["--import", "tsx", join(root, "scripts/feedback-outbox.test.ts")]);
+run(process.execPath, ["--import", "tsx", join(root, "scripts/saved-pages.test.ts")]);
 run(process.execPath, ["--import", "tsx", "--test", join(root, "scripts/proverbs.test.ts")]);
 run(process.execPath, ["--import", "tsx", "--test", join(root, "scripts/psalms.test.ts")]);
 run(join(bin, "next"), ["typegen"]);

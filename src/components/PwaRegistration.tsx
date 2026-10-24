@@ -3,11 +3,14 @@
 import { useEffect } from "react";
 import { startAppUpdateChecks, type AppUpdateHost } from "@/lib/app-updates";
 import { feedbackReloadSafe } from "@/lib/feedback/client-draft";
+import { savedPagesReloadSafe } from "@/lib/saved-pages";
+
+function readerReloadSafe() { return feedbackReloadSafe() && savedPagesReloadSafe(); }
 
 export function PwaRegistration({ commit, surface }: Readonly<{ commit: string | null; surface: string | null }>) {
   useEffect(() => {
     const beforeUnload = (event: BeforeUnloadEvent) => {
-      if (!feedbackReloadSafe()) event.preventDefault();
+      if (!readerReloadSafe()) event.preventDefault();
     };
     window.addEventListener("beforeunload", beforeUnload);
     if ("serviceWorker" in navigator && window.isSecureContext) {
@@ -22,7 +25,7 @@ export function PwaRegistration({ commit, surface }: Readonly<{ commit: string |
     const host: AppUpdateHost = {
       isVisible: () => document.visibilityState === "visible",
       isOnline: () => navigator.onLine,
-      canReload: feedbackReloadSafe,
+      canReload: readerReloadSafe,
       now: () => Date.now(),
       fetch: (url, init) => fetch(url, init),
       storage: {
