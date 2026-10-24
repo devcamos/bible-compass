@@ -17,6 +17,7 @@ function run(command, args) {
 
 // Node 22.18+ strips types by default; older 22.x needs the experimental flag
 // so content-contract can import `src/**/*.ts` helpers.
+run(process.execPath, [join(root, "scripts/production-dependencies.test.mjs")]);
 run(process.execPath, [
   "--experimental-strip-types",
   "--test",
