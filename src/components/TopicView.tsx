@@ -1,3 +1,4 @@
+import { SavedPageActions } from "@/components/SavedPageActions";
 import Link from "next/link";
 import { EmojiIcon } from "@/components/EmojiIcon";
 import { Breadcrumb } from "@/components/Breadcrumb";
@@ -42,6 +43,7 @@ export function TopicView({ topic }: TopicViewProps) {
           <EmojiIcon icon={topic.icon} /> {topic.title}
         </h1>
         <p className="m-0 text-base leading-7 text-muted-foreground">{topic.summary}</p>
+        <SavedPageActions path={`/topics/${topic.slug}`} />
       </header>
 
       <section className="bc-callout" aria-label="Theological guardrail">
