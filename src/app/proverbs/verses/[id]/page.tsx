@@ -1,3 +1,4 @@
+import { SavedPageActions } from "@/components/SavedPageActions";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -40,6 +41,7 @@ export default async function ProverbsVersePage({ params }: Props) {
       <header className="mb-6">
         <p className="bc-kicker m-0 mb-2">Proverbs {verse.chapter}:{verse.verse}</p>
         <h1 className="bc-title m-0 text-3xl leading-tight">{verse.title}</h1>
+        <SavedPageActions path={`/proverbs/verses/${verse.id}`} />
       </header>
       <section className="mb-7 rounded-2xl border border-border bg-card p-5" aria-label="Verse summary">
         <p className="m-0 mb-3 text-sm text-muted-foreground">Paraphrased summary · not a Bible quotation</p>

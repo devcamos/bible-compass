@@ -1,3 +1,4 @@
+import { SavedPageActions } from "@/components/SavedPageActions";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getConcept } from "@/content/concepts";
@@ -24,6 +25,7 @@ export default function ProverbsPage() {
         <p className="bc-kicker m-0 mb-2">Book of Proverbs</p>
         <h1 className="bc-title m-0 mb-3 text-3xl leading-tight sm:text-4xl">Wisdom for everyday life</h1>
         <p className="m-0 leading-7 text-muted-foreground">{PROVERBS_GRACE_GUARDRAIL}</p>
+        <SavedPageActions path={"/proverbs"} />
       </header>
       <nav className="mb-4 flex items-center gap-2 text-sm" aria-label="Book-to-concept mapping">
         <span>{PROVERBS_CONCEPT_MAPPING.book}</span>

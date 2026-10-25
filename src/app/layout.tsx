@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Analytics } from "@vercel/analytics/next";
 import { PwaRegistration } from "@/components/PwaRegistration";
+import { SavedPagesProvider } from "@/components/SavedPagesProvider";
+import { SAVED_PAGE_CATALOG } from "@/lib/saved-page-catalog";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SiteHeader } from "@/components/SiteChrome";
 import { SplashController } from "@/components/SplashScreen";
@@ -112,9 +114,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to content
         </a>
         <div className="mx-auto w-full max-w-[40rem] flex-1 px-4 sm:px-6">
+          <SavedPagesProvider catalog={SAVED_PAGE_CATALOG}>
           <SiteHeader />
           <main id="main">{children}</main>
           <SiteFooter />
+          </SavedPagesProvider>
         </div>
         <Analytics />
         <PwaRegistration

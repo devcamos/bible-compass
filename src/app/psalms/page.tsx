@@ -1,3 +1,4 @@
+import { SavedPageActions } from "@/components/SavedPageActions";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getConcept } from "@/content/concepts";
@@ -23,6 +24,7 @@ export default function PsalmsPage() {
         <p className="bc-kicker m-0 mb-2">Book of Psalms</p>
         <h1 className="bc-title m-0 mb-3 text-3xl leading-tight sm:text-4xl">Prayer and praise for every season</h1>
         <p className="m-0 leading-7 text-muted-foreground">{PSALMS_GRACE_GUARDRAIL}</p>
+        <SavedPageActions path={"/psalms"} />
       </header>
       <nav className="mb-4 flex flex-wrap items-center gap-2 text-sm" aria-label="Related biblical concepts">
         <span>{PSALMS_CONCEPT_MAPPING.book}</span>

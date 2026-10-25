@@ -2,6 +2,7 @@
 
 import { useEffect, useId, useRef, useSyncExternalStore } from "react";
 import { DailyVersePreferences } from "@/components/DailyVersePreferences";
+import { SavedPagesProfileLink } from "@/components/SavedPagesProfileLink";
 import { isSkinTone, SKIN_TONE_KEY, SKIN_TONES, withSkinTone, type SkinTone } from "@/lib/skin-tone";
 
 const THEME_KEY = "bible-compass-theme";
@@ -96,6 +97,7 @@ export function ProfilePreferences() {
           <button type="button" className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-border bg-card text-xl" aria-label="Close" onClick={() => dialogRef.current?.close()}><span aria-hidden="true">×</span></button>
         </header>
         <div className="space-y-5 p-5">
+          <SavedPagesProfileLink onOpen={() => dialogRef.current?.close()} />
           <section aria-label="Appearance" className="space-y-4">
           <div><h3 className="m-0 text-sm font-semibold">Appearance</h3><p className="mb-0 mt-1 text-sm text-muted-foreground">A little more like you, on this device.</p></div>
           <fieldset className="m-0 min-w-0 border-0 p-0">

@@ -1,3 +1,4 @@
+import { SavedPageActions } from "@/components/SavedPageActions";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -41,6 +42,7 @@ export default async function PsalmsCategoryPage({ params }: Props) {
         <p className="bc-kicker m-0 mb-2">Psalms</p>
         <h1 className="bc-title m-0 mb-3 text-3xl leading-tight">{category.title}</h1>
         <p className="m-0 leading-7 text-muted-foreground">{category.description}</p>
+        <SavedPageActions path={`/psalms/${category.slug}`} />
       </header>
       <p className="mb-4 text-sm leading-6 text-muted-foreground">Verse links open the BSB passage on Bible Hub in a new tab. Summaries below are paraphrases, not Bible quotations.</p>
       <div className="space-y-4">
