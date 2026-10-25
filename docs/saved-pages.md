@@ -10,10 +10,14 @@ Browser IndexedDB database `bible-compass-saved-pages`, version1, has one `pages
 
 BroadcastChannel refreshes other open tabs after a commit. Where unavailable, focus/visibility/pageshow refresh the view; transaction safety is unchanged, but an inactive view may stay stale until reactivated. Existing automatic-update and before-unload guards also check pending saved-page actions from opening storage through commit/refresh. Completed data stays in its separate database across normal app reloads/updates. Browser eviction, process termination and physical-device behavior remain platform limits.
 
+Profile links to the focusable Saved pages heading so keyboard navigation continues in the destination page after the dialog closes. An in-page removal owns its adjacent-row/Undo focus; the separate refresh recovery applies to externally removed focused rows, avoiding competing focus updates when the final item is removed.
+
 The reader stays statically rendered and usable when JavaScript or storage fails. Saving uses no app API, account, permission prompt, third-party service or server database. Existing preference, reminder, rating and feedback storage remains separate. Errors distinguish unavailable data from an empty list and retain the reading. Retry does not clear data automatically.
 
 ## Verification
 
 `npm run verify` includes transaction tests using the development-only `fake-indexeddb` package: persisted reopening, separate-connection concurrency, idempotency, stale/replayed Undo, capacity races, malformed/unknown data, failed/blocked/version opens, rollback and the pending reload guard. Actual browser checks must separately verify the complete Preview journey, focus, real storage/reload, cross-tab convergence, error/retry states and existing reader/BSB/reminder behavior at narrow light/dark widths. Model tests do not certify a physical phone, assistive technology, browser eviction or an actual two-release Home Screen update.
+
+Run `node scripts/saved-pages-focus.preview.mjs /private/path/preview-access.json` separately against an authenticated immutable Git Preview. Its private mode-0600 config contains `origin`, same-origin `shareUrl` and the exact full `commit`. It checks the deployment identity before exercising keyboard Profile navigation, repeated final-item removal/Undo and cross-tab focus recovery at narrow light/dark widths. It blocks application API mutations, notification permission requests and push subscriptions. Keep access URLs and the config out of source control, and revoke any temporary QA access after use.
 
 Implementation review and release approval are separate. The earlier standalone design proposal is not part of this application branch or release.

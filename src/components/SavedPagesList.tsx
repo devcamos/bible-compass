@@ -45,6 +45,8 @@ export function SavedPagesList() {
     }
   }, [entries, state]);
   async function remove(entry: SavedEntry, index: number, control: HTMLButtonElement) {
+    // This handler owns focus after its removal; external-refresh recovery must not compete.
+    focusedRow.current = null;
     setFailure("");
     try {
       const result = await store.act({ type: "remove", path: entry.path });
