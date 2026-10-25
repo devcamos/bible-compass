@@ -82,7 +82,7 @@ test("new saved-pages database is empty and owns only the path-keyed pages store
   assert.equal(savedPagesReloadSafe(), true);
 });
 
-test("the real catalog saves representative routes from all eight supported reading families", async t => {
+test("the real catalog saves representative routes from all supported reading families", async t => {
   const { db } = await database(t);
   const permissions = new Set(SAVED_PAGE_CATALOG.map(entry => entry.path));
   assert.equal(permissions.size, SAVED_PAGE_CATALOG.length);
@@ -91,7 +91,8 @@ test("the real catalog saves representative routes from all eight supported read
     assert.match(entry.path, /^\/[a-z0-9/-]+$/);
   }
   const representatives = [first, second, "/proverbs", "/proverbs/words-and-speech",
-    "/proverbs/verses/proverbs-3-5", "/psalms", "/psalms/trust-and-refuge", third];
+    "/proverbs/verses/proverbs-3-5", "/psalms", "/psalms/trust-and-refuge", third,
+    "/revelation", "/revelation/jesus-and-worship", "/revelation/jesus-and-worship/verses/revelation-1-17-18"];
   for (const path of representatives) {
     assert.ok(permissions.has(path), path);
     assert.equal((await mutateSavedPage(db, permissions, { type: "save", path })).changed, true);

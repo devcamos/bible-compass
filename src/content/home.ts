@@ -15,7 +15,7 @@ export type LifeArea = {
   summary: string;
   defaultOpen?: boolean;
   topicSlugs: string[];
-  links?: { href: "/proverbs" | "/psalms"; title: string }[];
+  links?: { href: "/proverbs" | "/psalms" | "/revelation"; title: string }[];
 };
 
 export const homeCopy = {
@@ -125,6 +125,7 @@ export const lifeAreas: LifeArea[] = [
     links: [
       { href: "/proverbs", title: "Proverbs →" },
       { href: "/psalms", title: "Psalms →" },
+      { href: "/revelation", title: "Revelation →" },
     ],
   },
   {

@@ -1,6 +1,6 @@
 # Saved pages
 
-Readers can save a teaching, concept, Proverbs/Psalms book, category or exact passage page, then return through **Your Profile → Saved pages**. The home page has no extra card. The list is on this browser/device only, with at most200 active entries. Clearing browser data or ending a private-browsing session can remove it. This is not a backup, cross-device sync or an offline Scripture copy.
+Readers can save a teaching, concept, Proverbs, Psalms or Revelation book, category or exact passage page, then return through **Your Profile → Saved pages**. The home page has no extra card. The list is on this browser/device only, with at most200 active entries. Clearing browser data or ending a private-browsing session can remove it. This is not a backup, cross-device sync or an offline Scripture copy.
 
 The canonical catalog derives titles and destinations from current content. The changing verse-of-the-day route, home, help, feedback, APIs and design artifacts are excluded. Query strings, fragments, unknown IDs and invalid Psalm category/passage combinations are not saved. Stored metadata is limited to canonical path, time, opaque revision and removal state; no Scripture text, contacts, push subscription or feedback identity is copied.
 
