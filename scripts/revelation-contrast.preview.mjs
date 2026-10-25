@@ -93,12 +93,21 @@ try {
           measured++;
         }
         assert.ok(measured > 0, 'Each page must expose measured reading links');
+        const captions = page.locator('article .bc-kicker');
+        await expect(captions).toHaveCount(1);
+        const css = await captions.evaluate(node => {
+          let parent = node;
+          while (parent && getComputedStyle(parent).backgroundColor === 'rgba(0, 0, 0, 0)') parent = parent.parentElement;
+          return { color: getComputedStyle(node).color, bg: getComputedStyle(parent || document.documentElement).backgroundColor };
+        });
+        result.checks.push({ kind: 'caption', theme, path, ...css, textRatio: contrast(css.color, css.bg) });
       }
     } finally { await context.close(); }
   }
   assert.deepEqual(result.errors, []);
   assert.equal(result.writes + result.permissions + result.subscriptions, 0);
-  result.result = result.checks.every(x => x.textRatio >= 4.5 && x.focusRatio >= 3 && x.outlineStyle !== 'none' && x.outlineWidth >= 2) ? 'passed' : 'failed';
+  result.result = result.checks.every(x => x.textRatio >= 4.5 && (x.kind === 'caption' ||
+    (x.focusRatio >= 3 && x.outlineStyle !== 'none' && x.outlineWidth >= 2))) ? 'passed' : 'failed';
   if (result.result !== 'passed') process.exitCode = 1;
 } catch (error) {
   result.result = 'failed'; result.errors.push(safe(error)); process.exitCode = 1;

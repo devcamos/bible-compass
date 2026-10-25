@@ -147,6 +147,7 @@ body {
 
 /* Revelation uses the existing accessible reading-link and focus tokens. */
 .bc-revelation-surface { --link: var(--copper-2); --focus: var(--copper-2); }
+.bc-revelation-surface .bc-kicker { color: var(--link); }
 [data-theme="dark"] .bc-revelation-surface { --link: var(--gold); --focus: var(--gold); }
 .bc-saved-surface .bc-kicker { color: var(--link); }
 
