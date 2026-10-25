@@ -38,7 +38,7 @@ export default async function RevelationCategoryPage({ params }: Props) {
   const groups = getRevelationGroups(slug);
 
   return (
-    <article>
+    <article className="bc-revelation-surface">
       <PassageReturnFocus passageIds={groups.flatMap(({ passages }) => passages.map(({ id }) => id))} />
       <Link href="/revelation" className="mb-5 inline-flex min-h-11 items-center text-sm text-link">← All Revelation categories</Link>
       <header className="mb-6">

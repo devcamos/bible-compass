@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function RevelationPage() {
   return (
-    <article>
+    <article className="bc-revelation-surface">
       <Link href="/" className="mb-5 inline-flex min-h-11 items-center text-sm text-link">← Back to the compass</Link>
       <header className="mb-7">
         <p className="bc-kicker m-0 mb-2">Book of Revelation</p>
