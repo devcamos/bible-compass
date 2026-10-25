@@ -1,31 +1,21 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
 import { useEffect, useRef } from "react";
 import { BookmarkIcon } from "./SavedPageActions";
 import { useSavedPages } from "./SavedPagesProvider";
 
 export function SavedPagesProfileLink({ onOpen }: { onOpen: () => void }) {
   const { state, entries } = useSavedPages();
-  const pathname = usePathname();
-  const focusRequested = useRef(false);
   const focusFrame = useRef<number | null>(null);
-  useEffect(() => {
-    if (pathname === "/saved" && focusRequested.current) {
-      focusRequested.current = false;
-      document.getElementById("saved-pages-heading")?.focus();
-    }
-  }, [pathname]);
   useEffect(() => () => { if (focusFrame.current !== null) cancelAnimationFrame(focusFrame.current); }, []);
   return <Link href="/saved#saved-pages-heading" prefetch={false} onNavigate={() => {
-    focusRequested.current = true;
     onOpen();
-    // The router scrolls hash targets without moving focus. On this route the
-    // heading is already mounted; other routes transfer focus after commit.
-    if (pathname === "/saved") {
+    // An already mounted destination needs no route effect to run again.
+    // A streamed destination transfers focus when its list actually mounts.
+    if (document.getElementById("saved-pages-heading")) {
+      if (focusFrame.current !== null) cancelAnimationFrame(focusFrame.current);
       focusFrame.current = requestAnimationFrame(() => {
-        focusRequested.current = false;
         document.getElementById("saved-pages-heading")?.focus();
       });
     }

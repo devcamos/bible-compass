@@ -14,6 +14,13 @@ export function SavedPagesList() {
   const undoRef = useRef<HTMLButtonElement>(null);
   const emptyRef = useRef<HTMLHeadingElement>(null);
   const focusedRow = useRef<{ path: string; index: number; control: HTMLElement } | null>(null);
+  useEffect(() => {
+    // Header pathname effects can run before this streamed page exists.
+    // Transfer the requested focus only after the destination has mounted.
+    if (location.hash !== "#saved-pages-heading") return;
+    const frame = requestAnimationFrame(() => document.getElementById("saved-pages-heading")?.focus());
+    return () => cancelAnimationFrame(frame);
+  }, []);
   function focusPath(path?: string) {
     requestAnimationFrame(() => {
       const links = listRef.current?.querySelectorAll<HTMLAnchorElement>("a[data-reading]");
