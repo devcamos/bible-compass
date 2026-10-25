@@ -3,6 +3,7 @@ import { TOPIC_SLUGS } from "@/content";
 import { CONCEPT_SLUGS } from "@/content/concepts";
 import { PROVERBS_CATEGORIES, PROVERBS_VERSES } from "@/content/proverbs";
 import { PSALMS_CATEGORIES, PSALMS_VERSES } from "@/content/psalms";
+import { REVELATION_CATEGORIES, REVELATION_PASSAGES, revelationPassageUrl } from "@/content/revelation";
 import { getSiteUrl, isPreviewDeployment } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -13,7 +14,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const origin = getSiteUrl();
   const lastModified = new Date();
   const paths = [
-    "/", "/how-to-use", "/concepts", "/proverbs", "/psalms",
+    "/", "/how-to-use", "/concepts", "/proverbs", "/psalms", "/revelation",
     ...TOPIC_SLUGS.map((slug) => `/topics/${slug}`),
     ...CONCEPT_SLUGS.map((slug) => `/concepts/${slug}`),
     ...PROVERBS_CATEGORIES.map(({ slug }) => `/proverbs/${slug}`),
@@ -21,6 +22,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...PSALMS_CATEGORIES.map(({ slug }) => `/psalms/${slug}`),
     ...PSALMS_VERSES.flatMap(({ id, categorySlugs }) =>
       categorySlugs.map((slug) => `/psalms/${slug}/verses/${id}`)),
+    ...REVELATION_CATEGORIES.map(({ slug }) => `/revelation/${slug}`),
+    ...REVELATION_PASSAGES.flatMap(({ id, categorySlugs }) =>
+      categorySlugs.map((slug) => revelationPassageUrl(slug, id))),
   ];
 
   return paths.map((path) => ({
