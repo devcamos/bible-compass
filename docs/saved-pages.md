@@ -10,7 +10,7 @@ Browser IndexedDB database `bible-compass-saved-pages`, version1, has one `pages
 
 BroadcastChannel refreshes other open tabs after a commit. Where unavailable, focus/visibility/pageshow refresh the view; transaction safety is unchanged, but an inactive view may stay stale until reactivated. Existing automatic-update and before-unload guards also check pending saved-page actions from opening storage through commit/refresh. Completed data stays in its separate database across normal app reloads/updates. Browser eviction, process termination and physical-device behavior remain platform limits.
 
-Profile links to the focusable Saved pages heading so keyboard navigation continues in the destination page after the dialog closes. An in-page removal owns its adjacent-row/Undo focus; the separate refresh recovery applies to externally removed focused rows, avoiding competing focus updates when the final item is removed.
+Profile links to the focusable Saved pages heading so keyboard navigation continues after the streamed destination mounts and the dialog closes. An in-page removal owns its adjacent-row/Undo focus after its local controls commit; an animation frame alone cannot guarantee that React has rendered Undo. The separate refresh recovery applies to externally removed focused rows.
 
 The reader stays statically rendered and usable when JavaScript or storage fails. Saving uses no app API, account, permission prompt, third-party service or server database. Existing preference, reminder, rating and feedback storage remains separate. Errors distinguish unavailable data from an empty list and retain the reading. Retry does not clear data automatically.
 

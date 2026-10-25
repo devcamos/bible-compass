@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { useSavedPages } from "./SavedPagesProvider";
 import { SavedPagesError, type SavedEntry } from "@/lib/saved-pages";
 
@@ -10,6 +10,7 @@ export function SavedPagesList() {
   const [undo, setUndo] = useState<{ path: string; revision: string } | null>(null);
   const [notice, setNotice] = useState("");
   const [failure, setFailure] = useState("");
+  const [focusRequest, setFocusRequest] = useState<{ path?: string } | null>(null);
   const listRef = useRef<HTMLUListElement>(null);
   const undoRef = useRef<HTMLButtonElement>(null);
   const emptyRef = useRef<HTMLHeadingElement>(null);
@@ -21,13 +22,15 @@ export function SavedPagesList() {
     const frame = requestAnimationFrame(() => document.getElementById("saved-pages-heading")?.focus());
     return () => cancelAnimationFrame(frame);
   }, []);
-  function focusPath(path?: string) {
-    requestAnimationFrame(() => {
-      const links = listRef.current?.querySelectorAll<HTMLAnchorElement>("a[data-reading]");
-      const link = [...(links ?? [])].find((link) => link.dataset.reading === path);
-      (link ?? links?.[0] ?? undoRef.current ?? emptyRef.current)?.focus();
-    });
-  }
+  useLayoutEffect(() => {
+    if (!focusRequest) return;
+    // Store updates can render the empty list before local Undo state commits.
+    // Focus only after this request and its target controls commit together;
+    // an animation frame alone does not guarantee a React state commit.
+    const links = listRef.current?.querySelectorAll<HTMLAnchorElement>("a[data-reading]");
+    const link = [...(links ?? [])].find((link) => link.dataset.reading === focusRequest.path);
+    (link ?? links?.[0] ?? undoRef.current ?? emptyRef.current)?.focus();
+  }, [focusRequest]);
   useEffect(() => {
     const clearIfElsewhere = (event: Event) => {
       if (event.target instanceof Node && !listRef.current?.contains(event.target)) focusedRow.current = null;
@@ -60,7 +63,7 @@ export function SavedPagesList() {
       setUndo(result.undo ?? null);
       setNotice(result.changed ? "Page removed. You can undo this removal." : "This page was already removed.");
       const next = result.entries[Math.min(index, result.entries.length - 1)];
-      focusPath(next?.path);
+      setFocusRequest({ path: next?.path });
     } catch (error) {
       setFailure(error instanceof SavedPagesError ? error.message : "The page couldn't be removed. Nothing was changed. Try again.");
       requestAnimationFrame(() => { if (document.activeElement === document.body) control.focus(); });
@@ -74,7 +77,7 @@ export function SavedPagesList() {
       setNotice(result.conflict ? "This removal changed in another tab. Nothing was overwritten." : "Page restored.");
       const path = undo.path;
       setUndo(null);
-      focusPath(path);
+      setFocusRequest({ path });
     } catch (error) {
       setFailure(error instanceof SavedPagesError ? error.message : "The page couldn't be restored. Nothing was changed. Try again.");
       requestAnimationFrame(() => { if (document.activeElement === document.body) undoRef.current?.focus(); });
