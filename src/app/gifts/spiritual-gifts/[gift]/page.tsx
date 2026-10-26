@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ExternalLinkIcon } from "@/app/revelation/ExternalLinkIcon";
 import { SavedPageActions } from "@/components/SavedPageActions";
 import { GIFTS, getGift, giftUrl, giftReferenceUrl, giftChapterUrl } from "@/content/gifts";
 import { GiftsRelated, ScriptureContext } from "../../GiftsReading";
@@ -30,8 +31,8 @@ export default async function GiftPage({ params }: Props) {
       <h2 id="quotation-heading" className="bc-gifts-quote-label">Scripture · BSB</h2>
       <blockquote cite={giftReferenceUrl(quote.ref)}><p>{quote.text.slice(0,start)}<mark><strong>{quote.highlight}</strong></mark>{quote.text.slice(start+quote.highlight.length)}</p></blockquote>
       <div className="flex flex-wrap gap-x-4">
-        <a href={giftReferenceUrl(quote.ref)} target="_blank" rel="noopener noreferrer" className="bc-gifts-reference">{quote.ref.label} · BSB<span aria-hidden="true"> ↗</span><span className="sr-only">, opens in a new tab</span></a>
-        <a href={giftChapterUrl(quote.ref)} target="_blank" rel="noopener noreferrer" className="bc-gifts-reference">Read {quote.ref.book} {quote.ref.chapter}<span aria-hidden="true"> ↗</span><span className="sr-only"> · full chapter, opens in a new tab</span></a>
+        <a href={giftReferenceUrl(quote.ref)} target="_blank" rel="noopener noreferrer" className="bc-gifts-reference">{quote.ref.label} · BSB<ExternalLinkIcon /><span className="sr-only">, opens in a new tab</span></a>
+        <a href={giftChapterUrl(quote.ref)} target="_blank" rel="noopener noreferrer" className="bc-gifts-reference">Read {quote.ref.book} {quote.ref.chapter}<ExternalLinkIcon /><span className="sr-only"> · full chapter, opens in a new tab</span></a>
       </div>
     </section>
     <section aria-labelledby="meaning-heading"><h2 id="meaning-heading" className="bc-title bc-heading mb-3">What it means</h2><p className="m-0 leading-7">{gift.meaning}</p></section>

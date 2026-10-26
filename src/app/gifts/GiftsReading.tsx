@@ -1,10 +1,11 @@
 import Link from "next/link";
+import { ExternalLinkIcon } from "@/app/revelation/ExternalLinkIcon";
 import { bsbUrl } from "@/lib/scripture-mapping.mjs";
 import { giftReferenceUrl, type GiftReference } from "@/content/gifts";
 
 export function ScriptureLink({ reference }: { reference: GiftReference }) {
   return <a href={giftReferenceUrl(reference)} target="_blank" rel="noopener noreferrer" className="bc-gifts-reference">
-    {reference.label}<span className="sr-only"> · BSB on Bible Hub, opens in a new tab</span><span aria-hidden="true"> ↗</span>
+    {reference.label}<span className="sr-only"> · BSB on Bible Hub, opens in a new tab</span><ExternalLinkIcon />
   </a>;
 }
 
@@ -14,7 +15,7 @@ export function ScriptureContext({ references }: { references: readonly GiftRefe
     <p className="mb-3 text-sm leading-6 text-muted-foreground">Explanations are original paraphrases; quoted Scripture is BSB. Open these passages on Bible Hub for the wider context.</p>
     <ul className="m-0 list-none space-y-3 p-0">{references.map(ref => <li key={ref.label}>
       <ScriptureLink reference={ref} /><br />
-      <a className="bc-gifts-reference" href={bsbUrl(ref.book, ref.chapter)} target="_blank" rel="noopener noreferrer">Read {ref.book} {ref.chapter}<span aria-hidden="true"> ↗</span><span className="sr-only"> · full chapter, opens in a new tab</span></a>
+      <a className="bc-gifts-reference" href={bsbUrl(ref.book, ref.chapter)} target="_blank" rel="noopener noreferrer">Read {ref.book} {ref.chapter}<ExternalLinkIcon /><span className="sr-only"> · full chapter, opens in a new tab</span></a>
     </li>)}</ul>
   </section>;
 }
