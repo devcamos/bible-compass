@@ -6,7 +6,7 @@ export default defineConfig({
     environment: "node",
     coverage: {
       provider: "v8",
-      include: [
+      include: ["src/lib/feedback/**/*.ts"], _old: [
         "src/lib/feedback/validation.ts",
         "src/lib/feedback/rate-limit.ts",
         "src/lib/feedback/request.ts",
