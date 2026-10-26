@@ -26,6 +26,8 @@ jobs:
       - name: Audit dependency security
         run: npm audit --audit-level=high
       - run: npm run verify
+      - name: Unit and integration tests (coverage >= 90%)
+        run: npm run test:coverage
       - name: Smoke test built application
         shell: bash
         run: |
