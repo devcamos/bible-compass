@@ -5,6 +5,7 @@ import fs from "node:fs";
 import path from "node:path";
 import assert from "node:assert/strict";
 import { chromium, expect as baseExpect } from "@playwright/test";
+import { redactPreviewError } from "./preview-error.mjs";
 
 const expect=baseExpect.configure({timeout:15_000});
 const file=process.argv[2], output=process.argv[3];
@@ -19,12 +20,13 @@ const source=JSON.parse(fs.readFileSync(new URL("./fixtures/gifts-bsb.json",impo
 const result={type:"Actual Gifts app Git Preview",commit:cfg.commit,result:"running",checks:[],errors:[],apiWrites:0,permissions:0,subscriptions:0,contrast:[],startedAt:new Date().toISOString(),limits:["Synthetic Chromium; no physical-device or screen-reader certification.","Scripture URLs inspected; external Scripture provider availability not exercised.","Preview-local IndexedDB only; no Production data or notifications."]};
 const check=(label,ok=true)=>{assert.ok(ok,label);result.checks.push(label);};
 const external=ref=>`https://biblehub.com/bsb/${ref.book.toLowerCase().replaceAll(" ","_")}/${ref.chapter}.htm`;
-const safe=e=>String(e).split(cfg.shareUrl).join("[private access]").replace(/([?&]_vercel_share=)[^&\s)]+/gi,"$1[redacted]");
+const safe=e=>redactPreviewError(e,cfg.shareUrl);
 function luminance(color){return color.match(/[\d.]+/g).slice(0,3).map(Number).map(v=>v/255).map(v=>v<=.04045?v/12.92:((v+.055)/1.055)**2.4).reduce((s,v,i)=>s+v*[.2126,.7152,.0722][i],0);}
 function contrast(a,b){const x=luminance(a),y=luminance(b);return(Math.max(x,y)+.05)/(Math.min(x,y)+.05);}
 let browser;
 try{
- browser=await chromium.launch({executablePath:process.env.GIFTS_CHROMIUM_EXECUTABLE||"/usr/bin/chromium",headless:true,args:["--no-sandbox","--disable-dev-shm-usage","--disable-background-networking"]});
+ const proxy=process.env.HTTPS_PROXY||process.env.HTTP_PROXY;
+ browser=await chromium.launch({executablePath:process.env.GIFTS_CHROMIUM_EXECUTABLE||"/usr/bin/chromium",headless:true,args:["--no-sandbox","--disable-dev-shm-usage","--disable-background-networking"],...(proxy?{proxy:{server:proxy}}:{})});
  for(const [width,theme] of [[390,"light"],[320,"dark"],[1280,"light"]]){
   const context=await browser.newContext({viewport:{width,height:1000},colorScheme:theme});
   context.setDefaultTimeout(15_000);

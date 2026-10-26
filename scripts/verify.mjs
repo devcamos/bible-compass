@@ -36,6 +36,7 @@ run(process.execPath, ["--import", "tsx", "--test", join(root, "scripts/proverbs
 run(process.execPath, ["--import", "tsx", "--test", join(root, "scripts/psalms.test.ts")]);
 run(process.execPath, ["--import", "tsx", join(root, "scripts/revelation.test.ts")]);
 run(process.execPath, ["--import", "tsx", join(root, "scripts/gifts.test.ts")]);
+run(process.execPath, ["--test", join(root, "scripts/preview-error.test.mjs")]);
 run(join(bin, "next"), ["typegen"]);
 run(join(bin, "tsc"), ["--noEmit"]);
 run(join(bin, "eslint"), [".", "--max-warnings=0"]);
