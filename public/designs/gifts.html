@@ -33,6 +33,7 @@ function loadFrame(frame){
   const url = new URL('gifts-flow.html',location.href);
   url.searchParams.set('review','1');
   url.searchParams.set('theme',dark?'dark':'light');
+  if(frame.dataset.source)url.searchParams.set('source',frame.dataset.source);
   url.hash=frame.dataset.route;
   frame.src=url.href;
 }
@@ -46,7 +47,7 @@ allButton.addEventListener('click',()=>mode(false));
 walkButton.addEventListener('click',()=>mode(true));
 themeButton.addEventListener('click',()=>{dark=!dark;document.documentElement.dataset.theme=dark?'dark':'light';themeButton.setAttribute('aria-pressed',String(dark));themeButton.textContent=dark?'Light view':'Dark view';frames.forEach(loadFrame);});
 document.querySelectorAll('.screen-tabs [data-route]').forEach(button=>button.addEventListener('click',()=>{walkthrough.dataset.route=button.dataset.route;loadFrame(walkthrough);updateTabs(button.dataset.route);}));
-window.addEventListener('message',event=>{const frame=frames.find(f=>f.contentWindow===event.source);if(!frame||event.origin!==location.origin||event.data?.type!=='gifts-route'||typeof event.data.route!=='string')return;const route=event.data.route.slice(1);if(!/^\/(placement|gifts(?:\/[a-z-]+){0,2})$/.test(route))return;frame.dataset.route=route;if(frame===walkthrough)updateTabs(route);});
+window.addEventListener('message',event=>{const frame=frames.find(f=>f.contentWindow===event.source);if(!frame||event.origin!==location.origin||event.data?.type!=='gifts-route'||typeof event.data.route!=='string')return;const route=event.data.route.slice(1);if(!/^\/(placement|gifts(?:\/[a-z-]+){0,2})$/.test(route))return;frame.dataset.route=route;if(['corinthians','romans','helping','equipping'].includes(event.data.group))frame.dataset.source=event.data.group;if(frame===walkthrough)updateTabs(route);});
 frames.forEach(loadFrame);
 mode(matchMedia('(max-width: 600px)').matches);
 </script></body></html>
