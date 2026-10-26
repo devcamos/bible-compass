@@ -7,8 +7,8 @@ function host(over: Partial<AppUpdateHost> = {}, response: () => Promise<Respons
   const store = new Map<string, string>(); const listeners: Record<string, () => void> = {};
   const h: AppUpdateHost & { listeners: typeof listeners; store: typeof store } = {
     isVisible: () => true, isOnline: () => true, now: () => 1000, fetch: vi.fn(response), reload: vi.fn(),
-    storage: { getItem: k => store.get(k) ?? null, setItem: (k, v) => void store.set(k, v) },
-    on: (e, l) => { listeners[e] = l; return () => delete listeners[e]; }, setTimer: (cb, ms) => setTimeout(cb, ms), clearTimer: t => clearTimeout(t as number),
+    storage: { getItem: (k: string) => store.get(k) ?? null, setItem: (k: string, v: string) => void store.set(k, v) },
+    on: (e: string, l: () => void) => { listeners[e] = l; return () => delete listeners[e]; }, setTimer: (cb: () => void, ms: number) => setTimeout(cb, ms), clearTimer: (t: unknown) => clearTimeout(t as number),
     listeners, store, ...over,
   } as never;
   return h;

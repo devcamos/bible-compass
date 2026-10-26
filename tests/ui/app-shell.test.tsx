@@ -24,8 +24,8 @@ describe("metadata routes", () => {
   });
   it("image routes render the book mark", async () => {
     const mods = [await import("@/app/icon"), await import("@/app/apple-icon"), await import("@/app/opengraph-image")];
-    for (const m of mods) { const r = (m.default as () => { element: ReactElement })(); render(r.element); cleanup(); }
-    for (const m of Object.values(import.meta.glob("../../src/app/pwa/**/route.tsx", { eager: true })) as { GET: () => { element: ReactElement } }[]) { render(m.GET().element); cleanup(); }
+    for (const m of mods) { const r = (m.default as unknown as () => { element: ReactElement })(); render(r.element); cleanup(); }
+    for (const m of Object.values(import.meta.glob("../../src/app/pwa/**/route.tsx", { eager: true })) as unknown as { GET: () => { element: ReactElement } }[]) { render(m.GET().element); cleanup(); }
   });
 });
 
@@ -35,10 +35,11 @@ describe("shell", () => {
       if (env) process.env.VERCEL_ENV = env; vi.resetModules();
       const { default: RootLayout, metadata } = await import("@/app/layout");
       expect(metadata.robots).toBeTruthy();
-      const html = (RootLayout as (p: unknown) => ReactElement)({ children: <p>child</p> });
+      type Node = { props: { children: Node[] & ReactElement } };
+      const html = (RootLayout as unknown as (p: unknown) => Node)({ children: <p>child</p> });
       const { container } = render(html.props.children[1].props.children[5].props.children);
       expect(container).toBeTruthy(); cleanup();
-      render(html);
+      render(html as unknown as ReactElement);
       cleanup();
     }
   });

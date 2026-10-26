@@ -155,7 +155,7 @@ describe("small routes", () => {
     delete process.env.DATABASE_URL; expect(await config.GET().json()).toMatchObject({ enabled: false, publicKey: null });
     expect(await health.GET().json()).toMatchObject({ ok: true, surface: "local" });
     process.env.VERCEL_ENV = "production"; process.env.VERCEL_GIT_COMMIT_SHA = "a"; expect(await health.GET().json()).toMatchObject({ surface: "production" }); delete process.env.VERCEL_GIT_COMMIT_SHA;
-    const cd = conceptsData as Record<string, (r?: Request) => Response | Promise<Response>>;
+    const cd = conceptsData as unknown as Record<string, (r?: Request) => Response | Promise<Response>>;
     expect((await cd.GET(new Request(O))).status).toBe(200);
     vi.spyOn(console, "error").mockImplementation(() => {});
     for (const [h, m] of [[(fbRoute as Record<string, unknown>).POST, "POST"], [(ratingRoute as Record<string, unknown>).PUT, "PUT"]] as const) expect((await (h as (r: Request) => Promise<Response>)(req(m, {}))).status).toBe(503);
