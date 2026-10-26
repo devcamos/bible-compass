@@ -5,6 +5,7 @@ import { PROVERBS_CATEGORIES, PROVERBS_VERSES } from "@/content/proverbs";
 import { PSALMS_CATEGORIES, PSALMS_VERSES } from "@/content/psalms";
 import { REVELATION_CATEGORIES, REVELATION_PASSAGES, revelationPassageUrl } from "@/content/revelation";
 import { getSiteUrl, isPreviewDeployment } from "@/lib/site";
+import { GIFTS_READING_PAGES } from "@/content/gifts";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   if (isPreviewDeployment()) {
@@ -25,6 +26,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...REVELATION_CATEGORIES.map(({ slug }) => `/revelation/${slug}`),
     ...REVELATION_PASSAGES.flatMap(({ id, categorySlugs }) =>
       categorySlugs.map((slug) => revelationPassageUrl(slug, id))),
+    ...GIFTS_READING_PAGES.map(({ path }) => path),
   ];
 
   return paths.map((path) => ({

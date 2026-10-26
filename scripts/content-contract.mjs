@@ -62,7 +62,7 @@ const declaredSlugs = topicFiles.map((slug) => {
 });
 
 const ontology = JSON.parse(read(join(src, "content/concepts/ontology.json")));
-const allowedHrefs = new Set(["/", "/how-to-use", "/concepts", "/proverbs", "/psalms", "/revelation", ...topicFiles.map((slug) => `/topics/${slug}`), ...ontology.concepts.map((concept) => `/concepts/${concept.slug}`)]);
+const allowedHrefs = new Set(["/", "/how-to-use", "/concepts", "/proverbs", "/psalms", "/revelation", "/gifts", ...topicFiles.map((slug) => `/topics/${slug}`), ...ontology.concepts.map((concept) => `/concepts/${concept.slug}`)]);
 
 const requiredHubSlugs = [
   "worry",
