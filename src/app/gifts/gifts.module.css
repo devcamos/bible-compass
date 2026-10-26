@@ -1,0 +1,28 @@
+.reader { --link:var(--copper-2); --focus:var(--copper-2); }
+:global([data-theme="dark"]) .reader { --link:var(--gold); --focus:var(--gold); }
+.reader :global(.bc-kicker) { color:var(--link); }
+.reader :global(.bc-gifts-table) { width:100%; border-collapse:collapse; table-layout:fixed; }
+.reader :global(.bc-gifts-table) th, .reader :global(.bc-gifts-table) td { padding:16px 12px 16px 0; vertical-align:top; border-bottom:1px solid var(--border); text-align:left; font-weight:400; overflow-wrap:break-word; }
+.reader :global(.bc-gifts-table) thead th { font-size:14px; font-weight:500; }
+.reader :global(.bc-gifts-table) thead th:first-child { width:25%; }
+.reader :global(.bc-gifts-table) thead th:last-child { width:28%; }
+.reader :global(.bc-gifts-table) tbody th a { font-weight:500; }
+.reader :global(.bc-gifts-table) p { margin:0; line-height:1.75; }
+.reader :global(.bc-gifts-cell-label) { display:none; }
+.reader :global(.bc-gifts-reference) { display:inline-flex; align-items:center; min-height:44px; font-size:14px; line-height:1.7; color:var(--link); text-decoration:underline; text-underline-offset:4px; }
+.reader :global(.bc-gifts-quote) { border-left:3px solid var(--link); padding-left:16px; margin:0 0 28px; }
+.reader :global(.bc-gifts-quote) blockquote { margin:0; }
+.reader :global(.bc-gifts-quote) blockquote p { margin:0 0 12px; line-height:1.75; }
+.reader :global(.bc-gifts-quote) mark { background:var(--card); color:inherit; text-decoration:underline; text-decoration-color:var(--link); text-decoration-thickness:2px; text-underline-offset:.18em; }
+.reader :global(.bc-gifts-quote) strong { font-weight:600; }
+.reader :global(.bc-gifts-quote-label) { margin:0 0 12px; font:inherit; font-size:12px; font-weight:500; letter-spacing:.12em; text-transform:uppercase; color:var(--link); }
+@media(max-width:559px) {
+  .reader :global(.bc-gifts-table), .reader :global(.bc-gifts-table) tbody, .reader :global(.bc-gifts-table) tr, .reader :global(.bc-gifts-table) td, .reader :global(.bc-gifts-table) tbody th { display:block; width:100%; }
+  .reader :global(.bc-gifts-table) thead { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); }
+  .reader :global(.bc-gifts-table) tr { padding:16px 0; border-bottom:1px solid var(--border); }
+  .reader :global(.bc-gifts-table) tbody th, .reader :global(.bc-gifts-table) td { border:0; padding:0; }
+  .reader :global(.bc-gifts-table) tbody th { margin-bottom:4px; }
+  .reader :global(.bc-gifts-table) tbody th a { font-size:18px; }
+  .reader :global(.bc-gifts-table) td:last-child { margin-top:8px; }
+  .reader :global(.bc-gifts-cell-label) { display:block; margin-top:8px; color:var(--muted-foreground); font-size:14px; }
+}

@@ -3,6 +3,7 @@ import { concepts } from "@/content/concepts";
 import { PROVERBS_CATEGORIES, PROVERBS_VERSES } from "@/content/proverbs";
 import { PSALMS_CATEGORIES, PSALMS_VERSES, psalmVerseReference } from "@/content/psalms";
 import { REVELATION_CATEGORIES, REVELATION_PASSAGES, revelationPassageUrl, revelationVerseReference } from "@/content/revelation";
+import { GIFTS_READING_PAGES } from "@/content/gifts";
 
 export type ReadingPage = { path: string; title: string; context: string };
 /** Content-derived allowlist: no query strings, arbitrary URLs or changing daily readings. */
@@ -18,4 +19,5 @@ export const SAVED_PAGE_CATALOG: ReadingPage[] = [
   { path: "/revelation", title: "Revelation", context: "Faithful hope in Christ" },
   ...REVELATION_CATEGORIES.map((c) => ({ path: `/revelation/${c.slug}`, title: c.title, context: "Revelation" })),
   ...REVELATION_PASSAGES.flatMap((p) => p.categorySlugs.map((category) => ({ path: revelationPassageUrl(category, p.id), title: p.title, context: revelationVerseReference(p) }))),
+  ...GIFTS_READING_PAGES,
 ];

@@ -19,6 +19,7 @@ import {
   revelationUrl,
   revelationVerseReference,
 } from "../src/content/revelation";
+import { GIFTS_READING_PAGES } from "../src/content/gifts";
 import { SAVED_PAGE_CATALOG } from "../src/lib/saved-page-catalog";
 import { mutateSavedPage, openSavedPages, readSavedPages } from "../src/lib/saved-pages";
 import RevelationCategoryPage, { generateStaticParams as categoryParams } from "../src/app/revelation/[category]/page";
@@ -70,6 +71,7 @@ const selections = THEMES.flatMap(theme => theme.groups.flatMap(group => group.r
 const revelationPaths = ["/revelation", ...THEMES.map(({ slug }) => `/revelation/${slug}`),
   ...selections.map(({ category, id }) => `/revelation/${category}/verses/${id}`)];
 const existingReadingPaths = [
+  ...GIFTS_READING_PAGES.map(({ path }) => path),
   ...TOPIC_SLUGS.map(slug => `/topics/${slug}`), ...CONCEPT_SLUGS.map(slug => `/concepts/${slug}`),
   "/proverbs", ...PROVERBS_CATEGORIES.map(({ slug }) => `/proverbs/${slug}`),
   ...PROVERBS_VERSES.map(({ id }) => `/proverbs/verses/${id}`),
@@ -170,7 +172,7 @@ test("home adds only one compact Foundations link and preserves Jesus, Proverbs 
   assert.equal(lifeAreas.length, 8);
   const foundations = lifeAreas.find(({ id }) => id === "foundations");
   assert.deepEqual(foundations?.topicSlugs, ["jesus-and-the-gospel", "components-of-the-bible", "how-to-read-the-bible", "bible-timeline", "books-described"]);
-  assert.deepEqual(foundations?.links?.map(({ href }) => href), ["/proverbs", "/psalms", "/revelation"]);
+  assert.deepEqual(foundations?.links?.map(({ href }) => href), ["/proverbs", "/psalms", "/revelation", "/gifts"]);
   assert.equal(lifeAreas.flatMap(area => area.links ?? []).filter(({ href }) => href === "/revelation").length, 1);
   assert.deepEqual(entryPaths.map(({ href }) => href), ["/topics/peace", "/topics/courage", "/topics/faith", "/topics/how-to-read-the-bible"]);
 });
