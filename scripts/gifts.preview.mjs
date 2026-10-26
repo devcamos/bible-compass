@@ -103,6 +103,21 @@ try{
    assert.ok(await q.locator(`a[href="${external(ref)}"]`).count());
    const canonical=await page.locator('link[rel="canonical"]').getAttribute("href");assert.equal(new URL(canonical).pathname,`/gifts/spiritual-gifts/${gift.id}`);
    check(width+": "+gift.id+" real route, verified BSB, highlighted naming words and approved explanation");
+   if(gift.id==="discernment"){
+    const insights=gift.everydayInsights;
+    assert.deepEqual(insights.contexts.map(context=>context.id),["friends","family","relationships","work","business"]);
+    await expect(page.locator('[data-everyday-context]')).toHaveCount(5);
+    for(const context of insights.contexts){
+     const section=page.locator(`[data-everyday-context="${context.id}"]`);
+     await expect(section.getByRole('heading',{level:3,name:context.title,exact:true})).toBeVisible();
+     for(const text of [context.situation,context.insight,context.response])await expect(section).toContainText(text);
+     for(const ref of context.references)assert.ok(await section.locator(`a[href="${external(ref)}#${ref.verse}"]`).count());
+    }
+    await expect(page.locator('[aria-labelledby="reflection-heading"] li')).toHaveCount(5);
+    await expect(page.getByText(insights.introduction,{exact:true})).toBeVisible();
+    await expect(page.getByText(insights.closing,{exact:true})).toBeVisible();
+    check(width+": discernment has five everyday applications, exact Scripture links and reflective questions");
+   }else await expect(page.locator('[data-everyday-context]')).toHaveCount(0);
    check(width+": "+gift.id+" no overflow",await page.locator("html").evaluate(el=>el.scrollWidth<=innerWidth));
    if(["healing","discernment"].includes(gift.id)){
     await page.screenshot({path:path.join(path.dirname(output),`gifts-${gift.id}-${width}-${theme}.png`),fullPage:true});
@@ -138,7 +153,7 @@ try{
  await plain.request.get(cfg.shareUrl);
  const page=await plain.newPage();assert.equal((await page.goto(cfg.origin+"/gifts/spiritual-gifts")).status(),200);
  await expect(page.locator("[data-gift]")).toHaveCount(17);await expect(page.locator("[data-role]")).toHaveCount(5);
- check("Descriptions and references are server rendered and readable with JavaScript disabled");await plain.close();
+ check("Descriptions and references are present in server-rendered HTML with JavaScript disabled");await plain.close();
  check("No script errors",result.errors.length===0);check("No app API writes or notification permissions/subscriptions",result.apiWrites+result.permissions+result.subscriptions===0);
  result.result="passed";result.phase="complete";
 }catch(error){result.result="failed";result.failure=safe(error);process.exitCode=1;}

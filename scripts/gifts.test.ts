@@ -91,6 +91,30 @@ test("only canonical static routes resolve; unknown lookups and server resources
   assert.equal((await foundationMetadata({params:Promise.resolve({section:"missing"})})).alternates,undefined);
 });
 
+test("discernment offers the five requested everyday contexts with linked wisdom and reflective questions",()=>{
+  const insights=getGift("discernment")!.everydayInsights;
+  assert.ok(insights);
+  assert.deepEqual(insights.contexts.map(({id,title})=>[id,title]),[
+    ["friends","Friends"],["family","Family"],["relationships","Relationships"],["work","Work"],["business","Business"],
+  ]);
+  assert.match(insights.introduction,/testing of spiritual claims alongside biblical wisdom/);
+  assert.match(insights.introduction,/not additional definitions of the gift/);
+  assert.match(insights.closing,/Feelings can prompt a question; they do not prove a conclusion/);
+  assert.equal(insights.questions.length,5);
+  assert.ok(insights.questions.some(question=>question.includes("what am I assuming")));
+  const expectedReferences=[
+    ["Proverbs 13:20","Proverbs 27:6"],["James 1:19–20","Proverbs 18:17"],
+    ["1 Corinthians 13:4–7","James 3:17"],["Proverbs 18:13","James 3:17"],["Proverbs 11:1","Proverbs 15:22"],
+  ];
+  assert.deepEqual(insights.contexts.map(context=>context.references.map(ref=>ref.label)),expectedReferences);
+  assert.deepEqual(insights.references.map(ref=>ref.label),["1 Thessalonians 5:19–22","Hebrews 5:14"]);
+  for(const context of insights.contexts){
+    assert.ok(context.situation.length>50&&context.insight.length>80&&context.response.length>80);
+    for(const ref of context.references)assert.match(giftReferenceUrl(ref),/^https:\/\/biblehub\.com\/bsb\/[a-z0-9_]+\/\d+\.htm#\d+$/);
+  }
+  assert.ok(GIFTS.filter(gift=>gift.id!=="discernment").every(gift=>gift.everydayInsights===undefined));
+});
+
 test("home adds a single collapsed Foundations destination while preserving all existing compass choices",()=>{
   assert.equal(lifeAreas.length,8);
   const foundationsArea=lifeAreas.find(a=>a.id==="foundations")!;

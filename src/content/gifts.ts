@@ -2,6 +2,16 @@ import data from "./gifts-data.json";
 import { bsbUrl } from "@/lib/scripture-mapping.mjs";
 
 export type GiftReference = { book: string; chapter: number; verse: number; label: string };
+export type GiftEverydayInsights = {
+  introduction: string;
+  references: GiftReference[];
+  contexts: {
+    id: string; title: string; situation: string; insight: string; response: string;
+    references: GiftReference[];
+  }[];
+  closing: string;
+  questions: string[];
+};
 export type GiftEntry = {
   id: string;
   title: string;
@@ -15,6 +25,7 @@ export type GiftEntry = {
   overviewRefs: GiftReference[];
   related: string[][];
   namingScripture: { ref: GiftReference; text: string; highlight: string };
+  everydayInsights?: GiftEverydayInsights;
 };
 export type GiftsSection = {
   id: string; title: string; summary: string; body?: string;

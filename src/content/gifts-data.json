@@ -471,8 +471,8 @@
       "summary": "Distinguishing between spirits.",
       "meaning": "“Distinguishing between spirits”: evaluating spiritual messages and influences, with careful attention to their source and faithfulness to Christ.",
       "context": "Read 1 Corinthians 12:10 with the common-good purpose in verse 7. First John 4:1–3 separately calls believers to test spirits and attend to their confession of Jesus; that broader instruction supports careful testing without defining every detail of this gift.",
-      "example": "When a spiritual claim is made, listen carefully, return to Scripture and consider it with the church. Be ready to revise your judgement rather than treating an impression as certainty.",
-      "step": "Consider how this reading could shape one act of service. Pray, listen to trusted believers and stay open to correction.",
+      "example": "When someone presents an idea, relationship or opportunity as God’s will, listen carefully, return to Scripture and consider it with trusted believers. Leave room to revise your judgement as the facts become clearer.",
+      "step": "Bring one real situation to prayer. Use these questions to examine both the influence you are facing and your own response.",
       "refs": [
         {
           "book": "1 Corinthians",
@@ -521,7 +521,139 @@
           "verse": 1,
           "label": "1 John 4:1–3"
         }
-      ]
+      ],
+      "everydayInsights": {
+        "introduction": "In 1 Corinthians 12:10, this gift concerns distinguishing between spirits. The examples below bring the testing of spiritual claims alongside biblical wisdom that all believers can practise. They are applications for reflection, not additional definitions of the gift or a way to know another person’s hidden motives.",
+        "references": [
+          {
+            "book": "1 Thessalonians",
+            "chapter": 5,
+            "verse": 19,
+            "label": "1 Thessalonians 5:19–22"
+          },
+          {
+            "book": "Hebrews",
+            "chapter": 5,
+            "verse": 14,
+            "label": "Hebrews 5:14"
+          }
+        ],
+        "contexts": [
+          {
+            "id": "friends",
+            "title": "Friends",
+            "situation": "One friend always agrees with you; another gently challenges a choice you want to make.",
+            "insight": "Agreement can feel supportive while leaving a harmful choice unchallenged. An uncomfortable conversation can be an expression of care. Consider whether the friendship encourages honesty, humility and responsibility, and whether your own desire for approval is shaping what you hear.",
+            "response": "Listen to the reasons behind the challenge. Weigh them against Scripture and what actually happened. Look for a pattern of honest, respectful care rather than choosing the voice that feels easiest to hear.",
+            "references": [
+              {
+                "book": "Proverbs",
+                "chapter": 13,
+                "verse": 20,
+                "label": "Proverbs 13:20"
+              },
+              {
+                "book": "Proverbs",
+                "chapter": 27,
+                "verse": 6,
+                "label": "Proverbs 27:6"
+              }
+            ]
+          },
+          {
+            "id": "family",
+            "title": "Family",
+            "situation": "You hear different accounts of a family conflict and feel pressure to take a side out of loyalty.",
+            "insight": "The first account can sound complete until another perspective is heard. Strong emotion, closeness or seniority does not settle the facts. You can care about someone’s pain while remaining uncertain about their explanation of another person’s intentions.",
+            "response": "Slow down, listen fairly and separate what you know from what you have assumed. Ask calm questions where it is safe to do so. Support truthful repair and clear boundaries rather than carrying accusations between people.",
+            "references": [
+              {
+                "book": "James",
+                "chapter": 1,
+                "verse": 19,
+                "label": "James 1:19–20"
+              },
+              {
+                "book": "Proverbs",
+                "chapter": 18,
+                "verse": 17,
+                "label": "Proverbs 18:17"
+              }
+            ]
+          },
+          {
+            "id": "relationships",
+            "title": "Relationships",
+            "situation": "Someone says God wants you to be together, but rushes commitment or dismisses your boundaries.",
+            "insight": "Spiritual confidence and strong attraction do not establish that a relationship is wise. Notice whether words are matched by patience, honesty, respect and responsibility over time, especially when you disagree or ask a reasonable question.",
+            "response": "Take time and keep appropriate boundaries. Talk with trusted people who can offer an independent perspective. You do not have to accept another person’s claim as God’s direction for your life. Where there is harm or coercion, seek appropriate support.",
+            "references": [
+              {
+                "book": "1 Corinthians",
+                "chapter": 13,
+                "verse": 4,
+                "label": "1 Corinthians 13:4–7"
+              },
+              {
+                "book": "James",
+                "chapter": 3,
+                "verse": 17,
+                "label": "James 3:17"
+              }
+            ]
+          },
+          {
+            "id": "work",
+            "title": "Work",
+            "situation": "A colleague repeats a rumour as fact, or a manager describes a questionable shortcut as being a team player.",
+            "insight": "Pressure, confidence and group agreement can make an untested claim feel certain. Notice the difference between firsthand evidence, interpretation and hearsay. Also consider whether fear of conflict or a desire for recognition is clouding your own judgement.",
+            "response": "Ask for the facts and clarify your responsibilities before acting. Listen to other perspectives and raise concerns through appropriate channels. Choose a response that is truthful, fair and open to correction, even when it is less convenient.",
+            "references": [
+              {
+                "book": "Proverbs",
+                "chapter": 18,
+                "verse": 13,
+                "label": "Proverbs 18:13"
+              },
+              {
+                "book": "James",
+                "chapter": 3,
+                "verse": 17,
+                "label": "James 3:17"
+              }
+            ]
+          },
+          {
+            "id": "business",
+            "title": "Business",
+            "situation": "An opportunity arrives with shared faith, an impressive pitch and pressure to decide before you can check the details.",
+            "insight": "Shared beliefs can create trust, but they do not replace verifiable facts. Examine the incentives: who benefits, who carries the risk and what remains unclear? Profit or an easy agreement does not establish God’s approval of the terms.",
+            "response": "Request clear written terms, check the claims and seek independent advice. Consider whether the arrangement is honest and fair to everyone affected. Give yourself time to decline a deal you cannot understand or defend truthfully.",
+            "references": [
+              {
+                "book": "Proverbs",
+                "chapter": 11,
+                "verse": 1,
+                "label": "Proverbs 11:1"
+              },
+              {
+                "book": "Proverbs",
+                "chapter": 15,
+                "verse": 22,
+                "label": "Proverbs 15:22"
+              }
+            ]
+          }
+        ],
+        "closing": "Feelings can prompt a question; they do not prove a conclusion. Weigh patterns alongside facts, Scripture and wise counsel. Make room for honest mistakes, different perspectives and your own blind spots. Let discernment lead to a truthful, loving and proportionate response, with the humility to change your mind.",
+        "questions": [
+          "What was actually said or done, and what am I assuming?",
+          "Does this spiritual claim align with Scripture and the character of Christ?",
+          "What pattern appears over time, including how questions and boundaries are received?",
+          "Could fear, loyalty, attraction, pride or profit be shaping my judgement?",
+          "What response is truthful, loving and proportionate, and who can help me test it?"
+        ]
+      }
     },
     {
       "id": "tongues",
