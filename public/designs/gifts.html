@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en" data-theme="light"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; frame-src 'self'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Gifts from God — interactive design preview</title>
+<style>
+:root{--bg:#fffaf1;--surface:#f3ead8;--ink:#1b1510;--muted:#6d6254;--line:#cbbfa3;--accent:#8a3d18;color-scheme:light}
+[data-theme=dark]{--bg:#1b1510;--surface:#241c16;--ink:#f3ead8;--muted:#cbbfa3;--line:#3a3026;--accent:#e8c07a;color-scheme:dark}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:ui-sans-serif,system-ui,sans-serif;line-height:1.65}button,a{font:inherit;touch-action:manipulation}button{cursor:pointer}a{color:var(--accent);text-underline-offset:4px}button:focus-visible,a:focus-visible{outline:2px solid var(--accent);outline-offset:4px}.review{max-width:1600px;padding:36px 28px 28px;margin:auto}.eyebrow{color:var(--accent);font-size:12px;letter-spacing:.16em;text-transform:uppercase;margin:0 0 8px}.review h1{font-family:ui-serif,Georgia,serif;font-weight:600;font-size:38px;letter-spacing:-.02em;line-height:1.2;margin:0 0 12px}.lede{color:var(--muted);max-width:760px;margin:0 0 24px}.review-header{display:flex;justify-content:space-between;align-items:flex-start;gap:24px}.controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.control{border:1px solid var(--line);background:var(--bg);color:var(--ink);min-height:44px;border-radius:999px;padding:8px 16px;font-size:14px;text-decoration:none;display:inline-flex;align-items:center;justify-content:center}.control[aria-pressed=true],.control[aria-current=step]{color:var(--accent);border-color:var(--accent);background:var(--surface)}.screen-tabs{display:none;flex-wrap:wrap;gap:8px;padding:20px 0}.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin-top:32px}.panel{min-width:0}.panel-heading{display:flex;gap:10px;align-items:center;margin:0 0 12px}.number{display:inline-flex;border:1px solid var(--line);border-radius:50%;width:28px;height:28px;align-items:center;justify-content:center;font-size:12px;color:var(--accent)}.panel h2{font-size:14px;font-weight:500;line-height:1.4;margin:0}.reader{display:block;width:100%;height:790px;border:1px solid var(--line);border-radius:20px;background:var(--bg)}.screen-description{color:var(--muted);font-size:13px;line-height:1.65;margin:12px 0}.walkthrough{display:none;max-width:640px;margin:0 auto}.walkthrough .reader{height:calc(100vh - 230px);min-height:620px;border-radius:20px}.mode-walkthrough .flow{display:none}.mode-walkthrough .walkthrough{display:block}.mode-walkthrough .screen-tabs{display:flex;justify-content:center}.footnote{margin:28px 0 0;border-top:1px solid var(--line);padding-top:18px;color:var(--muted);font-size:13px;display:flex;gap:18px;justify-content:space-between;flex-wrap:wrap}noscript{display:block;padding:24px}
+@media(max-width:1199px){.flow{grid-template-columns:repeat(2,minmax(0,1fr));max-width:860px;margin-inline:auto}.review-header{display:block}.controls{margin-top:20px}}
+@media(max-width:600px){.review{padding:24px 16px}.review h1{font-size:30px}.flow{grid-template-columns:minmax(0,1fr);max-width:390px}.controls{gap:8px}.control{padding-inline:12px}.walkthrough .reader{height:760px;min-height:0}.screen-tabs{justify-content:flex-start!important}.lede{font-size:14px}.reader{height:760px}}
+</style></head>
+<body><main class="review" id="review"><header class="review-header"><div><p class="eyebrow">Bible Compass · proposed feature</p><h1>Gifts from God</h1><p class="lede">Follow the journey from Foundations to Scripture. Open the walkthrough to try the links, introduction and reading pages.</p></div><nav class="controls" aria-label="Review controls"><button class="control" id="all-screens" aria-pressed="true">All screens</button><button class="control" id="walkthrough" aria-pressed="false">Try the walkthrough</button><button class="control" id="theme" aria-pressed="false">Dark view</button></nav></header>
+<nav class="screen-tabs" aria-label="Walkthrough screens"><button class="control" data-route="/placement">1 · Foundations</button><button class="control" data-route="/gifts" aria-current="step">2 · Gifts from God</button><button class="control" data-route="/gifts/spiritual-gifts">3 · Gifts for serving</button><button class="control" data-route="/gifts/spiritual-gifts/teaching">4 · Teaching</button></nav>
+<section class="flow" aria-label="Complete proposed flow">
+<article class="panel"><header class="panel-heading"><span class="number">1</span><h2>A quiet entry</h2></header><iframe class="reader" title="Foundations placement" data-route="/placement"></iframe><p class="screen-description">One link inside the existing Foundations section. No additional home card.</p></article>
+<article class="panel"><header class="panel-heading"><span class="number">2</span><h2>Begin with grace</h2></header><iframe class="reader" title="Gifts overview" data-route="/gifts"></iframe><p class="screen-description">A short introduction and four clear areas to explore.</p></article>
+<article class="panel"><header class="panel-heading"><span class="number">3</span><h2>Explore gifts for serving</h2></header><iframe class="reader" title="Spiritual gift groups" data-route="/gifts/spiritual-gifts"></iframe><p class="screen-description">Selected gifts grouped for browsing, with Scripture as the starting point.</p></article>
+<article class="panel"><header class="panel-heading"><span class="number">4</span><h2>Read in context</h2></header><iframe class="reader" title="Teaching detail" data-route="/gifts/spiritual-gifts/teaching"></iframe><p class="screen-description">Verse and chapter links, context, a reflection and related reading.</p></article>
+</section><section class="walkthrough" aria-label="Interactive walkthrough"><iframe class="reader" id="interactive" title="Interactive Gifts walkthrough" data-route="/gifts"></iframe></section>
+<footer class="footnote"><span>Design discussion only · Nothing is saved · Existing Bible Compass visual style</span><a href="gifts-flow.html" target="_blank" rel="noopener noreferrer">Open the standalone HTML</a></footer></main><noscript>This interactive HTML preview needs JavaScript. Proposed flow: Foundations → Gifts from God → gifts for serving → teaching → Scripture and related reading.</noscript>
+<script>
+"use strict";
+const review = document.getElementById('review');
+const frames = [...document.querySelectorAll('iframe')];
+const walkthrough = document.getElementById('interactive');
+const allButton = document.getElementById('all-screens');
+const walkButton = document.getElementById('walkthrough');
+const themeButton = document.getElementById('theme');
+let dark = false;
+function loadFrame(frame){
+  const url = new URL('gifts-flow.html',location.href);
+  url.searchParams.set('review','1');
+  url.searchParams.set('theme',dark?'dark':'light');
+  url.hash=frame.dataset.route;
+  frame.src=url.href;
+}
+function mode(walk){
+  review.classList.toggle('mode-walkthrough',walk);
+  allButton.setAttribute('aria-pressed',String(!walk));
+  walkButton.setAttribute('aria-pressed',String(walk));
+}
+function updateTabs(route){document.querySelectorAll('.screen-tabs [data-route]').forEach(b=>b.dataset.route===route?b.setAttribute('aria-current','step'):b.removeAttribute('aria-current'));}
+allButton.addEventListener('click',()=>mode(false));
+walkButton.addEventListener('click',()=>mode(true));
+themeButton.addEventListener('click',()=>{dark=!dark;document.documentElement.dataset.theme=dark?'dark':'light';themeButton.setAttribute('aria-pressed',String(dark));themeButton.textContent=dark?'Light view':'Dark view';frames.forEach(loadFrame);});
+document.querySelectorAll('.screen-tabs [data-route]').forEach(button=>button.addEventListener('click',()=>{walkthrough.dataset.route=button.dataset.route;loadFrame(walkthrough);updateTabs(button.dataset.route);}));
+window.addEventListener('message',event=>{const frame=frames.find(f=>f.contentWindow===event.source);if(!frame||event.origin!==location.origin||event.data?.type!=='gifts-route'||typeof event.data.route!=='string')return;const route=event.data.route.slice(1);if(!/^\/(placement|gifts(?:\/[a-z-]+){0,2})$/.test(route))return;frame.dataset.route=route;if(frame===walkthrough)updateTabs(route);});
+frames.forEach(loadFrame);
+mode(matchMedia('(max-width: 600px)').matches);
+</script></body></html>
