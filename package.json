@@ -21,7 +21,8 @@
     "typecheck": "tsc --noEmit",
     "test": "node --experimental-strip-types --test scripts/content-contract.mjs",
     "verify": "node scripts/verify.mjs",
-    "test:coverage": "vitest run --coverage"
+    "test:coverage": "vitest run --coverage",
+    "test:smoke": "playwright test"
   },
   "dependencies": {
     "@vercel/analytics": "^2.0.1",

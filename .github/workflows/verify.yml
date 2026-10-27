@@ -80,6 +80,43 @@ jobs:
           node scripts/concept-references-smoke.mjs
           node scripts/prophet-summaries-smoke.mjs
 
+  smoke:
+    # Real-browser smoke test on a local production build. Catches what unit
+    # tests can't: console errors, CSP blocks, broken hydration, wrong status.
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Cache Playwright browsers
+        id: pw-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
+      - name: Install Chromium
+        if: steps.pw-cache.outputs.cache-hit != 'true'
+        run: npx playwright install --with-deps chromium
+      - name: Install Chromium system deps
+        if: steps.pw-cache.outputs.cache-hit == 'true'
+        run: npx playwright install-deps chromium
+      - name: Browser smoke test
+        run: npm run test:smoke
+        env:
+          CI: "true"
+      - name: Upload Playwright traces on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-traces
+          path: test-results/
+          retention-days: 7
+
   production-proof:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     needs: verify

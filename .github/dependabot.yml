@@ -5,6 +5,9 @@ updates:
     schedule:
       interval: weekly
     open-pull-requests-limit: 5
+    # Minor and patch updates arrive together in one PR. Majors are left out of
+    # the group on purpose, so Dependabot opens each major as its own PR and a
+    # breakage points at exactly one upgrade.
     groups:
       minor-and-patch:
         update-types: [minor, patch]
