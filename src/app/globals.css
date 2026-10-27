@@ -141,6 +141,16 @@ body {
   border: 1px solid var(--border);
 }
 
+/* Saved-page controls use the same readable link tokens as the book readers. */
+.bc-saved-surface { --link: var(--copper-2); --focus: var(--copper-2); }
+[data-theme="dark"] .bc-saved-surface { --link: var(--gold); --focus: var(--gold); }
+
+/* Revelation uses the existing accessible reading-link and focus tokens. */
+.bc-revelation-surface { --link: var(--copper-2); --focus: var(--copper-2); }
+.bc-revelation-surface .bc-kicker { color: var(--link); }
+[data-theme="dark"] .bc-revelation-surface { --link: var(--gold); --focus: var(--gold); }
+.bc-saved-surface .bc-kicker { color: var(--link); }
+
 .bc-shell-fallback {
   margin: 1rem 0 2rem;
   border-radius: 1rem;

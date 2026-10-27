@@ -1,0 +1,13 @@
+# Revelation discovery
+
+Revelation joins Proverbs and Psalms as a single link in the existing Foundations list. The static reader follows book → theme → chapter groups → selected passage, with direct BSB verse and complete-chapter links. The introduction is a collapsed disclosure above the theme list; its selection note appears only on the parent book page.
+
+Five overlapping themes cover sixteen original paraphrases across eleven chapters: Jesus and worship, faithfulness under pressure, discernment and allegiance, justice and hope, and restoration and new creation. Summaries are clearly distinguished from Scripture quotations. Context includes the first seven churches, apocalyptic imagery, differing Christian interpretations and grace. Contemporary application does not identify current people/events as proven prophetic fulfilment or promise relief from suffering on a timetable.
+
+Published book, category and valid category/passage routes join the existing content-derived saved-pages catalog. Existing browser storage, limits, concurrent-tab semantics and Undo are unchanged. An unknown passage or a valid passage under the wrong theme returns404. There are no new accounts, permissions, dependencies, APIs, database tables or notification changes.
+
+`npm run verify` includes Revelation content/reference, membership, link and catalog contracts alongside existing reader, saved-pages, feedback and PWA suites. Hosted Preview verification separately covers the actual rendered navigation, Scripture links, invalid routes, keyboard disclosures/focus, Save page, responsive light/dark layouts and existing features. Prototype checks and synthetic browser checks do not establish physical-phone, screen-reader or Production delivery evidence.
+
+The agreed design authorizes implementation. A verified PR still requires direct founder approval before merge/release, with user-facing release communications for this substantial addition. Preview sharing and temporary-access cleanup follow the applicable authorization; deployment stays on the GitHub → Vercel Git path.
+
+For actual Preview contrast regression, run `node scripts/revelation-contrast.preview.mjs /private/config.json /private/report.json`. The mode-0600 config identifies an immutable HTTPS Preview origin, same-origin share URL and exact commit. The runner checks actual light/dark reading links, small captions and keyboard focus against their rendered backgrounds (4.5:1 text, 3:1 focus), blocks app API writes and notification/push attempts, and records evidence. Keep temporary access private and revoke owned grants after QA.

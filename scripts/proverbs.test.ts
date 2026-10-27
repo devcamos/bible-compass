@@ -72,11 +72,10 @@ test("verse links target the specific passage and chapter links target the whole
     const passage = new URL(proverbsVerseUrl(entry.chapter, entry.verse));
     const chapter = new URL(proverbsChapterUrl(entry.chapter));
     for (const link of [passage, chapter]) {
-      assert.equal(link.origin, "https://www.biblegateway.com");
-      assert.equal(link.pathname, "/passage/");
-      assert.equal(link.searchParams.get("version"), "NIV");
+      assert.equal(link.origin, "https://biblehub.com");
+      assert.equal(link.pathname, `/bsb/proverbs/${entry.chapter}.htm`);
     }
-    assert.equal(passage.searchParams.get("search"), `Proverbs ${entry.chapter}:${entry.verse}`);
-    assert.equal(chapter.searchParams.get("search"), `Proverbs ${entry.chapter}`);
+    assert.equal(passage.hash, `#${entry.verse}`);
+    assert.equal(chapter.hash, "");
   }
 });

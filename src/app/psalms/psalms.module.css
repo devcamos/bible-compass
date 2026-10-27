@@ -1,0 +1,13 @@
+.reader {
+  --link: var(--copper-2);
+  --focus: var(--copper-2);
+}
+
+:global([data-theme="dark"]) .reader {
+  --link: var(--gold);
+  --focus: var(--gold);
+}
+
+.reader :global(.bc-kicker) {
+  color: var(--link);
+}

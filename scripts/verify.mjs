@@ -17,6 +17,7 @@ function run(command, args) {
 
 // Node 22.18+ strips types by default; older 22.x needs the experimental flag
 // so content-contract can import `src/**/*.ts` helpers.
+run(process.execPath, [join(root, "scripts/production-dependencies.test.mjs")]);
 run(process.execPath, [
   "--experimental-strip-types",
   "--test",
@@ -27,7 +28,15 @@ run(process.execPath, [
 const bin = join(root, "node_modules", ".bin");
 run(process.execPath, ["--import", "tsx", join(root, "scripts/pwa-notifications.test.ts")]);
 run(process.execPath, ["--import", "tsx", join(root, "scripts/app-updates.test.ts")]);
+run(process.execPath, ["--import", "tsx", join(root, "scripts/feedback.test.ts")]);
+run(process.execPath, ["--import", "tsx", join(root, "scripts/feedback-client.test.ts")]);
+run(process.execPath, ["--import", "tsx", join(root, "scripts/feedback-outbox.test.ts")]);
+run(process.execPath, ["--import", "tsx", join(root, "scripts/saved-pages.test.ts")]);
 run(process.execPath, ["--import", "tsx", "--test", join(root, "scripts/proverbs.test.ts")]);
+run(process.execPath, ["--import", "tsx", "--test", join(root, "scripts/psalms.test.ts")]);
+run(process.execPath, ["--import", "tsx", join(root, "scripts/revelation.test.ts")]);
+run(process.execPath, ["--import", "tsx", join(root, "scripts/gifts.test.ts")]);
+run(process.execPath, ["--test", join(root, "scripts/preview-error.test.mjs")]);
 run(join(bin, "next"), ["typegen"]);
 run(join(bin, "tsc"), ["--noEmit"]);
 run(join(bin, "eslint"), [".", "--max-warnings=0"]);

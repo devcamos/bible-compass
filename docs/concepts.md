@@ -6,7 +6,7 @@ Concept families and individual concepts carry local emoji icons, matching the E
 
 ## Reader format
 
-Every concept page leads with Key Bible Verse, Concept Explained, then How the Bible Suggests Living With This [concept family]. Short NIV excerpts are labelled, with links to the exact verse and its surrounding context. Every suggested action has Scripture references. Concept pages keep the reader focused on these three sections and the grace guardrail. Classification, relationship and topic mapping data remain in the ontology and JSON export for analysis; no mapping details section is shown on concept pages.
+Every concept page leads with Key Bible Verse, Concept Explained, then How the Bible Suggests Living With This [concept family]. Short BSB excerpts are labelled, with links to the exact verse and its surrounding context. Every suggested action has Scripture references. Concept pages keep the reader focused on these three sections and the grace guardrail. Classification, relationship and topic mapping data remain in the ontology and JSON export for analysis; no mapping details section is shown on concept pages.
 
 Judgement leads with Matthew 7:1 and links to Matthew 7:1-5. Its explanation distinguishes hypocritical judgment, fair discernment in John 7:24, and God's judgment.
 
@@ -24,7 +24,7 @@ Schema 1.2.0 retains `keyVerse`, `explanation` and `livingGuidance`, and adds re
 
 ## Scripture mapping engine
 
-`guidancePassages` delegates to the shared `resolveScriptureReferences` engine. It resolves the action's approved passage IDs and narrows them to the curated verse ranges. The reader uses those resolved ranges for both the displayed reference and Bible Gateway link. It does not fall back to displaying a whole context passage when an action has no specific mapping.
+`guidancePassages` delegates to the shared `resolveScriptureReferences` engine. It resolves the action's approved passage IDs and narrows them to the curated verse ranges. The reader uses those resolved ranges for both the displayed reference and Bible Hub BSB link. It does not fall back to displaying a whole context passage when an action has no specific mapping.
 
 When adding a concept or action, identify the verses that support the idea and add explicit references within the registered source ranges. Add a source passage if the supporting verse is not registered. Multiple verse references are supported when an idea needs them; select Scripture on its meaning, rather than inventing different verses just to make references unique. The wider context passage and key verse stay independent from the action reference.
 
@@ -40,4 +40,4 @@ Topic pages derive reverse concept links from the same mappings, rather than dup
 
 ## Verification
 
-`npm run verify` checks data integrity, topic and facet references, traceable relationships, the shared reference engine, types, lint and the production build. CI smoke-tests the home, guide, concept explorer and export. `node scripts/concept-references-smoke.mjs` checks every rendered concept action against its precise reference data, including link text and the NIV destination. Vercel Preview must be green before founder review. Merge and production release remain subject to founder approval.
+`npm run verify` checks data integrity, topic and facet references, traceable relationships, the shared reference engine, types, lint and the production build. CI smoke-tests the home, guide, concept explorer and export. `node scripts/concept-references-smoke.mjs` checks every rendered concept action against its precise reference data, including link text and the BSB destination. Vercel Preview must be green before founder review. Merge and production release remain subject to founder approval.

@@ -1,3 +1,4 @@
+import { SavedPageActions } from "@/components/SavedPageActions";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -39,6 +40,7 @@ export default async function ConceptPage({ params }: PageProps<"/concepts/[slug
           <EmojiIcon icon={concept.icon} /> {concept.title}
         </h1>
         <p className="m-0 text-sm leading-6 text-muted-foreground">{conceptType}</p>
+        <SavedPageActions path={`/concepts/${concept.slug}`} />
       </header>
 
       <section className="bc-callout" aria-labelledby="key-verse-heading">
