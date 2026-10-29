@@ -11,10 +11,13 @@ import type { NextConfig } from "next";
 // debug script comes from va.vercel-scripts.com, so that host is dev-only.
 const isDev = process.env.NODE_ENV === "development";
 const devAnalytics = isDev ? " https://va.vercel-scripts.com" : "";
+// React uses eval only in development (to rebuild server stack traces).
+// Production builds never call it, so 'unsafe-eval' stays out of the live policy.
+const devEval = isDev ? " 'unsafe-eval'" : "";
 
 const contentSecurityPolicy = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline'${devAnalytics}`,
+  `script-src 'self' 'unsafe-inline'${devEval}${devAnalytics}`,
   // Inline event-handler attributes (onclick="...") are never used; block them.
   "script-src-attr 'none'",
   "style-src 'self' 'unsafe-inline'",
