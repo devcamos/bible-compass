@@ -36,7 +36,7 @@ export default async function GiftPage({ params }: Props) {
       </div>
     </section>
     <section aria-labelledby="meaning-heading"><h2 id="meaning-heading" className="bc-title bc-heading mb-3">What it means</h2><p className="m-0 leading-7">{gift.meaning}</p></section>
-    <ScriptureContext references={gift.refs} />
+    <ScriptureContext references={gift.refs} quotedReference={quote.ref} />
     <section className="mt-7" aria-labelledby="context-heading"><h2 id="context-heading" className="bc-title bc-heading mb-3">Read in context</h2><p className="m-0 leading-7 text-muted-foreground">{gift.context}</p></section>
     <section className="mt-7" aria-labelledby="everyday-heading">
       <h2 id="everyday-heading" className="bc-title bc-heading mb-3">In everyday life</h2>
