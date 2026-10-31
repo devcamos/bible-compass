@@ -1,7 +1,8 @@
 // @vitest-environment happy-dom
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
-import type { ReactElement } from "react";
+import { Children, isValidElement, type ReactElement, type ReactNode } from "react";
+import { runInNewContext } from "node:vm";
 vi.mock("next/og", () => ({ ImageResponse: class { constructor(public element: ReactElement, public init: unknown) {} } }));
 vi.mock("@vercel/analytics/next", () => ({ Analytics: () => null }));
 
@@ -30,6 +31,38 @@ describe("metadata routes", () => {
 });
 
 describe("shell", () => {
+  it("early bootstrap ignores only the optional Preview toolbar failure", async () => {
+    const { default: RootLayout } = await import("@/app/layout");
+    const root = (RootLayout as unknown as (props: unknown) => ReactElement)({ children: <p>child</p> });
+    function scripts(node: ReactNode): string[] {
+      const found: string[] = [];
+      Children.forEach(node, child => {
+        if (!isValidElement<{ children?: ReactNode; dangerouslySetInnerHTML?: { __html: string } }>(child)) return;
+        if (child.props.dangerouslySetInnerHTML) found.push(child.props.dangerouslySetInnerHTML.__html);
+        found.push(...scripts(child.props.children));
+      });
+      return found;
+    }
+    const bootstrap = scripts(root).find(script => script.includes("bible-compass-splash-seen"));
+    expect(bootstrap).toBeTruthy();
+    const attributes = new Map<string, string>();
+    let onError: ((event: { target: Element }) => void) | undefined;
+    runInNewContext(bootstrap!, {
+      document: { documentElement: { setAttribute: (key: string, value: string) => attributes.set(key, value), removeAttribute: (key: string) => attributes.delete(key) } },
+      sessionStorage: { getItem: () => "1" },
+      window: { matchMedia: () => ({ matches: false }), addEventListener: (_type: string, handler: typeof onError) => { onError = handler; } },
+    });
+    const toolbar = document.createElement("script");
+    toolbar.src = "https://vercel.live/_next-live/feedback/feedback.js";
+    onError!({ target: toolbar });
+    expect(attributes.get("data-shell")).toBeUndefined();
+    expect(attributes.get("data-splash")).toBe("seen");
+    for (const tag of ["script", "link"]) {
+      onError!({ target: document.createElement(tag) });
+      expect(attributes.get("data-shell")).toBe("fault");
+      expect(attributes.has("data-splash")).toBe(false);
+    }
+  });
   it("root layout renders for production and preview", async () => {
     for (const env of [undefined, "preview"]) {
       if (env) process.env.VERCEL_ENV = env; vi.resetModules();
