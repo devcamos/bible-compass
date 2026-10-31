@@ -186,4 +186,21 @@ describe("SplashController", () => {
     document.documentElement.dataset.shell = "fault"; vi.advanceTimersByTime(1000); cleanup();
     document.body.innerHTML = ""; render(<SplashController />);
   });
+  it("keeps reading available when the optional Preview toolbar is blocked", () => {
+    mount(); render(<SplashController />);
+    const toolbar = document.createElement("script");
+    toolbar.src = "https://vercel.live/_next-live/feedback/feedback.js";
+    document.body.append(toolbar);
+    toolbar.dispatchEvent(new Event("error"));
+    vi.advanceTimersByTime(2000);
+    expect(document.documentElement.dataset.shell).not.toBe("fault");
+    expect(document.documentElement.dataset.splash).toBe("seen");
+
+    // Required application scripts must still trigger recovery.
+    const appScript = document.createElement("script");
+    appScript.src = "/_next/static/chunks/app.js";
+    document.body.append(appScript);
+    appScript.dispatchEvent(new Event("error"));
+    expect(document.documentElement.dataset.shell).toBe("fault");
+  });
 });

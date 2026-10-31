@@ -104,6 +104,9 @@ export function SplashController() {
       if (!(target instanceof HTMLElement)) return;
       const tag = target.tagName;
       if (tag !== "SCRIPT" && tag !== "LINK") return;
+      // Vercel injects this optional developer toolbar into protected Previews.
+      // A CSP-blocked toolbar must not hide an otherwise working reader.
+      if (tag === "SCRIPT" && target.getAttribute("src") === "https://vercel.live/_next-live/feedback/feedback.js") return;
       finished = true;
       showShellFault(
         "Something needed for this page did not finish loading. Check your connection, then try again.",
