@@ -3,6 +3,18 @@ import { expect, test, type Page } from "@playwright/test";
 // Vercel Web Analytics is only served on Vercel; off-Vercel this request 404s.
 const KNOWN_OFF_VERCEL = /\/_vercel\/insights\//;
 
+test("Fear reset references open the matching Scripture passages", async ({ page }) => {
+  await page.goto("/topics/fear");
+  const firstStep = page.locator("details").nth(0);
+  await expect(firstStep.getByRole("link", { name: /Isaiah 41:10/ })).toHaveAttribute("href", "https://biblehub.com/bsb/isaiah/41.htm#10");
+  const peaceStep = page.locator("details").nth(2);
+  await peaceStep.locator("summary").click();
+  const rangeLink = peaceStep.getByRole("link", { name: /Philippians 4:6–7/ });
+  await expect(rangeLink).toBeVisible();
+  await expect(rangeLink).toHaveAttribute("href", "https://biblehub.com/bsb/philippians/4.htm#6");
+  await expect(rangeLink).toHaveAttribute("target", "_blank");
+});
+
 function watchForProblems(page: Page, expectedNotFoundPath?: string): string[] {
   const problems: string[] = [];
   page.on("console", (msg) => {

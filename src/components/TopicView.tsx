@@ -6,6 +6,7 @@ import { ProphetBookList } from "@/components/ProphetBookList";
 import { SupportCard } from "@/components/SupportCard";
 import type { Topic } from "@/content/types";
 import { wrapVerseInQuotes } from "@/lib/verse-quote";
+import { topicVerseUrl } from "@/lib/topic-verse-url";
 import { conceptsForTopic } from "@/content/concepts";
 import { getProphetBooks } from "@/content/prophets";
 
@@ -94,7 +95,22 @@ export function TopicView({ topic }: TopicViewProps) {
                 </span>
               </summary>
               <div className="pt-3 pb-1">
-                <strong className="mb-1.5 block">{wrapVerseInQuotes(step.verse)}</strong>
+                <strong className="mb-1.5 block">
+                  “{step.verse.split("; ").map((reference, referenceIndex) => {
+                    const href = topicVerseUrl(reference);
+                    return (
+                      <span key={`${reference}-${referenceIndex}`}>
+                        {referenceIndex > 0 ? "; " : null}
+                        {href ? (
+                          <a href={href} className="text-link underline underline-offset-4" target="_blank" rel="noopener noreferrer">
+                            {reference}
+                            <span className="sr-only"> (BSB on Bible Hub, opens in a new tab)</span>
+                          </a>
+                        ) : reference}
+                      </span>
+                    );
+                  })}”
+                </strong>
                 <p className="m-0 leading-7 text-muted-foreground">{step.explanation}</p>
                 {step.action ? (
                   <p className="mt-2 mb-0 rounded-full border-l-4 border-l-moss bg-card px-3 py-2 text-sm">
