@@ -3,6 +3,19 @@ import { expect, test, type Page } from "@playwright/test";
 // Vercel Web Analytics is only served on Vercel; off-Vercel this request 404s.
 const KNOWN_OFF_VERCEL = /\/_vercel\/insights\//;
 
+test("a blocked optional Preview toolbar does not obscure the reader", async ({ page }) => {
+  await page.goto("/topics/fear");
+  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+  await page.evaluate(() => new Promise<void>((resolve) => {
+    const script = document.createElement("script");
+    script.src = "https://vercel.live/_next-live/feedback/feedback.js";
+    script.addEventListener("error", () => resolve(), { once: true });
+    document.body.append(script);
+  }));
+  await expect(page.locator("html")).not.toHaveAttribute("data-shell", "fault");
+  await expect(page.getByRole("link", { name: /Isaiah 41:10/ })).toBeVisible();
+});
+
 test("Fear reset references open the matching Scripture passages", async ({ page }) => {
   await page.goto("/topics/fear");
   const firstStep = page.locator("details").nth(0);
