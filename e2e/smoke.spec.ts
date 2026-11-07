@@ -19,9 +19,11 @@ test("a blocked optional Preview toolbar does not obscure the reader", async ({ 
 
 test("Fear reset references open the matching Scripture passages", async ({ page }) => {
   await page.goto("/topics/fear");
-  const firstStep = page.locator("details").nth(0);
+  const resetSteps = page.locator('section[aria-labelledby="reset-heading"] details');
+  await expect(resetSteps).toHaveCount(4);
+  const firstStep = resetSteps.nth(0);
   await expect(firstStep.getByRole("link", { name: /Isaiah 41:10/ })).toHaveAttribute("href", "https://biblehub.com/bsb/isaiah/41.htm#10");
-  const peaceStep = page.locator("details").nth(2);
+  const peaceStep = resetSteps.nth(2);
   await peaceStep.locator("summary").click();
   const rangeLink = peaceStep.getByRole("link", { name: /Philippians 4:6–7/ });
   await expect(rangeLink).toBeVisible();
