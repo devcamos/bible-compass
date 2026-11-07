@@ -6,6 +6,7 @@ const KNOWN_OFF_VERCEL = /\/_vercel\/insights\//;
 test("a blocked optional Preview toolbar does not obscure the reader", async ({ page }) => {
   await page.goto("/topics/fear");
   await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+  await expect(page.locator("html")).not.toHaveAttribute("data-shell", "fault");
   await page.evaluate(() => new Promise<void>((resolve) => {
     const script = document.createElement("script");
     script.src = "https://vercel.live/_next-live/feedback/feedback.js";

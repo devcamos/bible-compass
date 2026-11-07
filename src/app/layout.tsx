@@ -120,7 +120,8 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           <SiteFooter />
           </SavedPagesProvider>
         </div>
-        <Analytics />
+        {/* The analytics endpoint is provided by Vercel, not the standalone reader. */}
+        {isPreviewDeployment() || process.env.VERCEL_ENV === "production" ? <Analytics /> : null}
         <PwaRegistration
           commit={process.env.VERCEL_GIT_COMMIT_SHA ?? null}
           surface={process.env.VERCEL_ENV ?? null}
