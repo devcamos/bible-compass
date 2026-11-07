@@ -104,6 +104,9 @@ export function SplashController() {
       if (!(target instanceof HTMLElement)) return;
       const tag = target.tagName;
       if (tag !== "SCRIPT" && tag !== "LINK") return;
+      // Vercel's optional Preview toolbar is not required for the reader.
+      // Keep the strict CSP and recovery for every other script or stylesheet.
+      if (tag === "SCRIPT" && /^https:\/\/vercel\.live\/_next-live\/feedback\/feedback\.js(?:[?#]|$)/.test((target as HTMLScriptElement).src)) return;
       finished = true;
       showShellFault(
         "Something needed for this page did not finish loading. Check your connection, then try again.",
