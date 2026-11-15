@@ -2,8 +2,19 @@
 <!-- Why this exists. 1–3 bullets. Lead with the user outcome. -->
 
 - Product: Bible Compass
-- Backlog / issue: https://app.notion.com/p/3be7233a96ec81ac85cfe0fe538094b9
 - Surface: local / Preview / Production (Production only after founder approval)
+
+## Issue
+Closes #<issue>
+<!-- Required. One GitHub issue per PR so merge auto-closes it. Do not use this PR for a second issue. GitHub issues are the source of truth for engineering work. -->
+
+## Type
+<!-- Pick one and apply the matching repository label (feature, bug, hotfix, revert; chore may use documentation or dependencies). -->
+- [ ] feature
+- [ ] fix
+- [ ] hotfix
+- [ ] revert
+- [ ] chore
 
 ## Planned Change
 - Intent:
@@ -11,7 +22,7 @@
 - Non-goals:
 - Acceptance:
 
-## Test plan
+## Testing
 - [ ] DoR was met before implementation
 - [ ] Product verify command passed (`npm run verify`)
 - [ ] Runtime smoke test passed for `/` and `/health`
@@ -27,14 +38,14 @@
 - [ ] Docs / backlog updated
 - [ ] How-to / Preview / practice / Nexus ops change: Notion + `#reality-orbit` card + products `agent-onboarding/HOW-TO-UPDATES.md` (not Slack-only)
 
+## Risk / rollback
+<!-- Remaining risk. What you did not test. How to roll this back if needed. -->
+
 ## Release boundary
 - [ ] Agent has **not** merged this PR
 - [ ] Auto-merge is disabled
 - [ ] Founder approval is required before merge
 - [ ] Green means **ready for founder review**, not permission to release
-
-## Risk
-<!-- Remaining risk. What you did not test. -->
 
 ## Handoff
 - Chat completion: localhost URL (required — Preview does not replace it)
