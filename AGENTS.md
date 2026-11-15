@@ -33,3 +33,13 @@ Public static-first reader. Notion is private editorial source, never a runtime 
 ## Shared foundation
 
 Read [engineering principles](https://github.com/devonte-amos-apps/pr-intelligence/blob/main/docs/engineering-principles.md) and [shared agent controls](https://github.com/devonte-amos-apps/pr-intelligence/blob/main/AGENT_RULES.md), then [this repository's rules](docs/governance/repository-rules.md). The shared controls define precedence and approval boundaries. Adoption is proposed until the prerequisite shared PR is merged; do not treat links to an unmerged document as an effective rule.
+
+## One issue, one branch, one PR
+
+Agents must follow this workflow for engineering work:
+
+- One GitHub issue maps to one branch and one pull request.
+- Name the branch `<type>/<issue-number>-<slug>`, for example `fix/19-coverage-gate` or `feature/4-cross-device-sync`. Use `feature`, `fix`, `hotfix`, `revert` or `chore` as the type.
+- The PR body must include `Closes #<issue>`. One issue per PR.
+- Do not reuse a branch across issues. Start a fresh branch from the default branch for the next issue.
+- If a later PR supersedes an earlier one, link the old PR, comment that it is superseded, and close the old PR in the same step. Do not leave parallel agent branches open for the same work.
